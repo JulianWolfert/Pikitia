@@ -27,7 +27,3 @@ src/main/webapp/WEB-INF/zk.xml -text
 src/main/webapp/index.zul -text
 src/main/webapp/test.zul -text
 src/main/webapp/timeout.zul -text
-target/classes/config/database/DataSource.xml -text
-target/classes/config/database/db.properties -text
-target/classes/config/database/import.sql -text
-target/classes/log4j.properties -text
