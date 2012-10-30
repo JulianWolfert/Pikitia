@@ -1,0 +1,12 @@
+<?page title="TestPage" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="TestPage" border="normal" apply="de.htw.fb4.bilderplattform.view.TestCodebehind">
+
+	String eingeben: <textbox id="input"></textbox>
+	<button label="Speichern" id="save"></button>
+	<vlayout id="result">
+		<label id="resultVal"></label>
+	</vlayout>
+
+</window>
+</zk>
