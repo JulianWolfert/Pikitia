@@ -15,17 +15,6 @@
 	<!-- Needed for Autowiring -->
 	<context:annotation-config />
 
-	<!-- <bean id="datasource2" -->
-	<!-- class="com.mchange.v2.c3p0.ComboPooledDataSource"> -->
-	<!-- <property name="driverClass" value="com.mysql.jdbc.Driver" /> -->
-	<!-- <property name="jdbcUrl" -->
-	<!-- value="jdbc:mysql://localhost:3306/sefw" /> -->
-	<!-- <property name="user" value="root" /> -->
-	<!-- <property name="password" value="admin" /> -->
-	<!-- <property name="minPoolSize" value="2" /> -->
-	<!-- <property name="maxPoolSize" value="4" /> -->
-	<!-- </bean> -->
-
 	<!-- Database Configuration -->
 	<import resource="classes/config/database/DataSource.xml" />
 
