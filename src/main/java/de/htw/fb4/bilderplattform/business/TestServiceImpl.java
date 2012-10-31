@@ -1,7 +1,7 @@
 package de.htw.fb4.bilderplattform.business;
 
 import de.htw.fb4.bilderplattform.dao.TestDAOImpl;
-import de.htw.fb4.bilderplattform.service.context.ApplicationContextProvider;
+import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
 
 
 // Attention: service implementation has default visibility
