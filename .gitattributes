@@ -11,7 +11,6 @@ src/main/java/de/htw/fb4/bilderplattform/dao/Book.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Test.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/TestDAOImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/User.java -text
-src/main/java/de/htw/fb4/bilderplattform/service/context/ApplicationContextProvider.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/TestCodebehind.java -text
 src/main/resources/config/database/DataSource.xml -text
 src/main/resources/config/database/db.properties -text
