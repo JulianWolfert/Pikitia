@@ -9,8 +9,8 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
-	<bean id="applicationContextProvder"
-		class="de.htw.fb4.bilderplattform.service.context.ApplicationContextProvider" />
+	<bean id="applicationContextProvider"
+		class="de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider" />
 
 	<!-- Needed for Autowiring -->
 	<context:annotation-config />
