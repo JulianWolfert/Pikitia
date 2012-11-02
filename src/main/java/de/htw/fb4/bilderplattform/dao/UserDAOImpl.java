@@ -28,17 +28,6 @@ public class UserDAOImpl extends AbstractDAO {
 		return usr;
 	}
 	
-	@Transactional
-	public User getUserByName(String username) throws Exception {
-		List<User> allUser = getAllUser();
-		for(User usr : allUser) {
-			if(usr.getUsername().equals(username))
-				return usr;
-		}
-		//TODO: custom Exception??
-		throw new Exception("No user found by username: " + username);
-	}
-	
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<User> getAllUser() {
