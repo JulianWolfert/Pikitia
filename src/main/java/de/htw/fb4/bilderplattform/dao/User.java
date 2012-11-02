@@ -1,6 +1,9 @@
 package de.htw.fb4.bilderplattform.dao;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /************************************************
  * <p>user database object</p>
@@ -22,7 +28,7 @@ import javax.persistence.UniqueConstraint;
  ************************************************/
 @Entity
 @Table(name="User", uniqueConstraints = {@UniqueConstraint(columnNames={"username"})})
-public class User implements java.io.Serializable {
+public class User implements java.io.Serializable, UserDetails {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -47,7 +53,7 @@ public class User implements java.io.Serializable {
 	
 	@Column(name="isDeleted", nullable=false, columnDefinition ="tinyint(1) default 0")
 	private boolean isDeleted;
-
+	
 	/* 
 	 * Methods
 	 * 
@@ -108,8 +114,63 @@ public class User implements java.io.Serializable {
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		if(isAdmin)
+			authorities.add(AppAuthorities.getAdminAuthority());
+		if(isNormalUser)
+			authorities.add(AppAuthorities.getUserAuthority());
+		return authorities;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 	
 	
-	
+	private static class AppAuthorities {
+
+		
+		public static GrantedAuthority getAdminAuthority() {
+			return new GrantedAuthority() {
+				private static final long serialVersionUID = 1L;
+
+				@Override
+				public String getAuthority() {
+					return "ROLE_ADMIN";
+				}
+			};
+		}
+		
+		public static GrantedAuthority getUserAuthority() {
+			return new GrantedAuthority() {
+				private static final long serialVersionUID = 1L;
+
+				@Override
+				public String getAuthority() {
+					return "ROLE_USER";
+				}
+			};
+		}
+		
+	}
 	
 }
