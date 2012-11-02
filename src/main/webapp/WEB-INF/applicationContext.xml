@@ -52,8 +52,9 @@
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 	
-	<bean id="userDao" class="de.htw.fb4.bilderplattform.dao.UserDAOImpl">
-		<property name="sessionFactory" ref="mySessionFactory" />
-	</bean>
+	<!-- designated -->
+<!-- 	<bean id="userDao" class="de.htw.fb4.bilderplattform.dao.UserDAOImpl"> -->
+<!-- 		<property name="sessionFactory" ref="mySessionFactory" /> -->
+<!-- 	</bean> -->
 
 </beans>
