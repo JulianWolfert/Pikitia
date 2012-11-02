@@ -17,7 +17,6 @@ class TestServiceImpl implements ITestService {
 		 */
 		TestDAOImpl testDAO = ApplicationContextProvider.getApplicationContext().getBean("myTestDao", TestDAOImpl.class);
 		testDAO.saveString(str);
-
 	}
 
 }

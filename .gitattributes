@@ -12,6 +12,7 @@ src/main/java/de/htw/fb4/bilderplattform/dao/Book.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Test.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/TestDAOImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/User.java -text
+src/main/java/de/htw/fb4/bilderplattform/dao/UserDAOImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/spring/context/ApplicationContextProvider.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/TestCodebehind.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/formmodel/ComplexBorderlayoutViewModel.java -text svneol=unset#text/plain
