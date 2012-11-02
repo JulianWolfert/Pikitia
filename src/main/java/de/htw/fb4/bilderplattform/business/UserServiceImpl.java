@@ -22,7 +22,7 @@ class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void updateUser(User user) {
+	public void saveOrUpdateUser(User user) {
 		UserDAOImpl userDAO = ApplicationContextProvider.getApplicationContext().getBean("userDao", UserDAOImpl.class);
 		userDAO.saveUser(user);
 	}

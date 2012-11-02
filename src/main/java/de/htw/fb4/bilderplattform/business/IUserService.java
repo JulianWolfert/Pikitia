@@ -8,6 +8,6 @@ public interface IUserService {
 
 	public User getUserByName(String username) throws UsernameNotFoundException;
 	
-	public void updateUser(User user);
+	public void saveOrUpdateUser(User user);
 	
 }
