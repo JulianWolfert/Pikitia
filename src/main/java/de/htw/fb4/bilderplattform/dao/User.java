@@ -1,5 +1,6 @@
 package de.htw.fb4.bilderplattform.dao;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -28,7 +29,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  ************************************************/
 @Entity
 @Table(name="User", uniqueConstraints = {@UniqueConstraint(columnNames={"username"})})
-public class User implements java.io.Serializable, UserDetails {
+public class User implements Serializable, UserDetails {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -54,6 +55,23 @@ public class User implements java.io.Serializable, UserDetails {
 	@Column(name="isDeleted", nullable=false, columnDefinition ="tinyint(1) default 0")
 	private boolean isDeleted;
 	
+	
+	public User(){
+		super();
+	}
+	
+	public User(String username, String password,
+			boolean isNormalUser, boolean isAdmin, Date lastUpdateDate,
+			boolean isDeleted) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.isNormalUser = isNormalUser;
+		this.isAdmin = isAdmin;
+		this.lastUpdateDate = lastUpdateDate;
+		this.isDeleted = isDeleted;
+	}
+
 	/* 
 	 * Methods
 	 * 

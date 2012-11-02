@@ -49,6 +49,8 @@
 	</bean>
 	
 	<!-- Beans Declaration -->
+	<bean id="dbInitialization" class="de.htw.fb4.bilderplattform.spring.DBInitialization" />
+	
 	<bean id="myTestDao" class="de.htw.fb4.bilderplattform.dao.TestDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
