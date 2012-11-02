@@ -51,5 +51,9 @@
 	<bean id="myTestDao" class="de.htw.fb4.bilderplattform.dao.TestDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
+	
+	<bean id="userDao" class="de.htw.fb4.bilderplattform.dao.UserDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
 
 </beans>
