@@ -1,0 +1,10 @@
+<toolbar mold="panel" align="center">
+	<toolbarbutton label="Sign in" />
+	<toolbarbutton label="Home" />
+	<toolbarbutton label="Sitemap" />
+	<toolbarbutton label="Terms" />
+	<toolbarbutton label="Report Abuse" />
+	<toolbarbutton label="Print" />
+	<separator orient="vertical" bar="true" />
+	Powered by ZK ${desktop.webApp.version} ZK Borderlayout
+</toolbar>

@@ -1,0 +1,86 @@
+<vlayout spacing="0">
+	<panel width="100%" border="normal" title="Navigation">
+		<panelchildren style="padding:5px;">
+			<vbox>
+				<menubar id="menubar" orient="vertical"
+					autodrop="true">
+					<menuitem label="Start" />
+					<menu label="Bilder">
+						<menupopup>
+							<menu label="Kaufen">
+								<menupopup>
+									<menuitem label="Kategorie 1" />
+									<menuitem label="Kategorie 1" />
+									<menuitem label="Kategorie 1" />
+								</menupopup>
+							</menu>
+							<menu label="Verkaufen">
+								<menupopup>
+									<menu label="Devices">
+										<menupopup>
+											<menuitem label="Mouse" />
+											<menuitem label="Keyboards" />
+											<menuitem
+												label="Accessories" />
+										</menupopup>
+									</menu>
+									<menuitem label="Gaming" />
+									<menuitem label="Graphic Tablets" />
+								</menupopup>
+							</menu>
+						</menupopup>
+					</menu>
+					<menu label="Mein Bereich">
+						<menupopup>
+							<menu label="Meine Daten">
+								<menupopup>
+									<menuitem label="Persönliche Daten" />
+									<menuitem label="Login ändern" />
+								</menupopup>
+							</menu>
+							<menu label="Meine Bilder">
+								<menupopup>
+									<menuitem label="Übersicht" />
+									<menuitem label="Bild hochladen" />
+								</menupopup>
+							</menu>
+						</menupopup>
+					</menu>
+					<menuitem label="Registrieren" href="registration.zul"/>
+				</menubar>
+			</vbox>
+		</panelchildren>
+	</panel>
+	<panel width="100%" border="normal" title="Why ZK ? ">
+		<panelchildren>
+			<html>
+
+
+				
+				<![CDATA[ <ul> <li>Productivity</li> <li>Security</li>
+				<li>Performance</li> <li>Totally Control</li> <li>Auto
+				Testing</li> <li>Scalability</li> <li>Flexibility</li>
+				</ul> ]]>
+				
+				
+					
+							</html>
+		</panelchildren>
+	</panel>
+	<panel width="100%" border="normal" title="Features">
+		<panelchildren>
+			<html>
+
+
+				
+				<![CDATA[ <ul> <li>Server+client Fusion</li>
+				<li>Ajax-as-a-Service</li> <li>The Event Queue</li>
+				<li>jQuery Based</li> <li>SEO Friendly</li> <li>Auto
+				Testing</li> </ul> ]]>
+				
+				
+					
+							</html>
+		</panelchildren>
+	</panel>
+</vlayout>

@@ -5,6 +5,7 @@
 /pom.xml -text
 src/main/java/de/htw/fb4/bilderplattform/business/BusinessCtx.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/ITestService.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/IUserRegistrationService.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/TestServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/AbstractDAO.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Book.java -text
@@ -13,6 +14,9 @@ src/main/java/de/htw/fb4/bilderplattform/dao/TestDAOImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/User.java -text
 src/main/java/de/htw/fb4/bilderplattform/spring/context/ApplicationContextProvider.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/TestCodebehind.java -text
+src/main/java/de/htw/fb4/bilderplattform/view/formmodel/ComplexBorderlayoutViewModel.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/formmodel/RegistrationFormViewModel.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/formvalidator/UserRegistrationFormValidator.java -text svneol=unset#text/plain
 src/main/resources/config/database/DataSource.xml -text
 src/main/resources/config/database/db.properties -text
 src/main/resources/config/database/import.sql -text
@@ -22,6 +26,12 @@ src/main/webapp/WEB-INF/applicationContext-security.xml -text
 src/main/webapp/WEB-INF/applicationContext.xml -text
 src/main/webapp/WEB-INF/web.xml -text
 src/main/webapp/WEB-INF/zk.xml -text
+src/main/webapp/css/styles.css -text svneol=unset#text/plain
 src/main/webapp/index.zul -text
+src/main/webapp/layout/footer.zul -text
+src/main/webapp/layout/header.zul -text
+src/main/webapp/layout/leftmenu.zul -text
+src/main/webapp/layout/rightmenu.zul -text
+src/main/webapp/registration.zul -text
 src/main/webapp/test.zul -text
 src/main/webapp/timeout.zul -text

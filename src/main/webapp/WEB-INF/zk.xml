@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-	Created by ZK Studio
--->
+
 
 <zk>
 	<device-config>
 		<device-type>ajax</device-type>
-		<timeout-uri>/timeout.zul</timeout-uri><!-- An empty URL can cause the browser to reload the same URL -->
+		<timeout-uri>/timeout.zul</timeout-uri><!-- An empty URL can cause the 
+			browser to reload the same URL -->
 	</device-config>
+	
+	<desktop-config>
+		<theme-uri>/css/styles.css</theme-uri>
+	</desktop-config>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeM</name>
+		<value>12px</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeS</name>
+		<value>10px</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.theme.fontSizeXS</name>
+		<value>9px</value>
+	</library-property>
 </zk>
+
+

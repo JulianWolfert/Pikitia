@@ -1,0 +1,227 @@
+<zk>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.formmodel.RegistrationFormViewModel')"
+		validationMessages="@id('vmsgs')"
+		form="@id('fx') @load(vm.user) @save(vm.user, before='submit') @validator('de.htw.fb4.bilderplattform.view.formvalidator.UserRegistrationFormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)">
+		<borderlayout sclass="complex-layout" height="810px">
+			<!-- header -->
+			<north size="90px" border="0">
+				<include src="/layout/header.zul" />
+			</north>
+			<!-- left menu -->
+			<west width="200px" border="0" flex="true" splittable="true"
+				margins="0,5,0,0">
+				<include src="/layout/leftmenu.zul" />
+			</west>
+			<!-- right menu -->
+			<east width="130px" title="Quick Links" flex="true">
+				<include src="/layout/rightmenu.zul" />
+			</east>
+			<!-- Content -->
+			<center>
+				<borderlayout sclass="inner-border">
+					<north border="0" height="4%" margins="2,3,0,0">
+						<label value="HOME" style="font-size:20px;" />
+					</north>
+					<center border="0" margins="0,3,3,3">
+						<panel title="Reference" border="normal"
+							height="100%">
+							<panelchildren>
+								<grid>
+									<columns>
+										<column label="Type"
+											width="120px" />
+										<column label="Content" />
+										<column label="Component"
+											width="200px" />
+									</columns>
+									<rows>
+										<row>
+											<label value="UserName"
+												width="150px" />
+											<hlayout>
+												<textbox
+													value="@bind(fx.userName)" width="150px" tabindex="1" />
+											</hlayout>
+											<div>
+												<label
+													sclass="hightlight">
+													Textbox
+												</label>
+											</div>
+										</row>
+										<row>
+											Password
+											<textbox type="password"
+												value="@bind(fx.password)" width="150px" tabindex="2" />
+											<div>
+												<label
+													sclass="hightlight">
+													Textbox
+												</label>
+												type = "password"
+											</div>
+										</row>
+										<!-- 				<row> -->
+										<!-- 					Re-type Password -->
+										<!-- 					<cell> -->
+										<!-- 						<textbox type="password" -->
+										<!-- 							value="@bind(vm.retypedPassword)" width="150px" tabindex="3" /> -->
+										<!-- 						<label class="error" -->
+										<!-- 							value="@load(vmsgs['password'])" /> -->
+										<!-- 					</cell> -->
+										<!-- 					<div> -->
+										<!-- 						<label sclass="hightlight">Textbox</label> -->
+										<!-- 						with value validate -->
+										<!-- 					</div> -->
+										<!-- 				</row> -->
+										<row>
+											Age:
+											<cell>
+												<intbox
+													value="@bind(fx.age)" width="150px" tabindex="4" />
+												<label class="error"
+													value="@load(vmsgs['age'])" />
+											</cell>
+											<div>
+												<label
+													sclass="hightlight">
+													Intbox
+												</label>
+												with constraint
+											</div>
+										</row>
+										<row>
+											Phone:
+											<textbox
+												constraint="no empty" value="@bind(fx.telephone)"
+												width="150px" maxlength="15" tabindex="5" />
+											<div>
+												<label
+													sclass="hightlight">
+													Textbox
+												</label>
+												with max length limit
+											</div>
+										</row>
+										<row>
+											Weight:
+											<cell>
+												<decimalbox
+													format="###.##" value="@bind(fx.weight)" width="150px"
+													tabindex="6" />
+												<label class="error"
+													value="@load(vmsgs['weight'])" />
+											</cell>
+											<div>
+												<label
+													sclass="hightlight">
+													Decimalbox
+												</label>
+												with format
+											</div>
+										</row>
+										<row>
+											Birthday:
+											<hbox align="center">
+												<datebox
+													value="@bind(fx.birthday)" format="@load(vm.dateFormat)"
+													width="150px" tabindex="7" />
+												Format :
+												<listbox
+													selectedItem="@bind(vm.dateFormat)" mold="select"
+													tabindex="8">
+													<listitem
+														label="Default" value="" />
+													<listitem
+														label="yyyy/MM/dd hh:mm a" value="yyyy/MM/dd hh:mm a" />
+													<listitem
+														label="yyyy/MM/dd" value="yyyy/MM/dd" />
+													<listitem
+														label="MM-dd-yy" value="MM-dd-yy" />
+												</listbox>
+											</hbox>
+											<div>
+												<label
+													sclass="hightlight">
+													Datebox
+												</label>
+												and
+												<label
+													sclass="hightlight">
+													Listbox
+												</label>
+												in select mold
+											</div>
+										</row>
+										<row>
+											E-mail:
+											<cell>
+												<textbox
+													value="@bind(fx.email)" width="150px" tabindex="9" />
+												<label class="error"
+													value="@load(vmsgs['email'])" />
+											</cell>
+											<div>
+												<label
+													sclass="hightlight">
+													Textbox
+												</label>
+												with regexp constraint
+											</div>
+										</row>
+										<row>
+											Memo:
+											<vlayout>
+												<div
+													style="width:375px;text-align:right;padding:0;">
+													Adjust Height:
+													<spinner
+														constraint="no negative,no zero"
+														value="@load(vm.memoHeight)"
+														onChanging="@command('changeMemoHeight')" tabindex="10" />
+												</div>
+												<textbox
+													rows="@load(vm.memoHeight)" value="@bind(fx.memo)"
+													width="370px;" tabindex="11" />
+											</vlayout>
+											<div>
+												<label
+													sclass="hightlight">
+													Textbox
+												</label>
+												with multiple rows and
+												<label
+													sclass="hightlight">
+													Spinner
+												</label>
+											</div>
+										</row>
+										<row>
+											<cell colspan="3"
+												style="text-align:center">
+												<vlayout>
+													<label
+														visible="@load(empty vmsgs)"
+														value="@load(empty vmsgs ? 'Form successfully submitted!' : '', before='submit')" />
+													<button
+														label="Submit" onClick="@command('submit')" width="100px"
+														height="30px" />
+												</vlayout>
+											</cell>
+										</row>
+									</rows>
+								</grid>
+							</panelchildren>
+						</panel>
+					</center>
+				</borderlayout>
+			</center>
+			<!-- footer -->
+			<south size="40px" border="0"
+				style="background: none repeat scroll 0 0 ;">
+				<include src="/layout/footer.zul" />
+			</south>
+		</borderlayout>
+	</div>
+</zk>

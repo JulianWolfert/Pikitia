@@ -1,6 +1,41 @@
-<?page title="Auto Generated index.zul"?>
-<window title="Hello World!!" border="normal" width="200px">
-
-<label value="You are using: ${desktop.webApp.version}"/>
-
-</window>
+<zk>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.formviewmodel.ComplexBorderlayoutViewModel')">
+		<borderlayout sclass="complex-layout" height="810px">
+			<!-- header -->
+			<north size="90px" border="0">
+				<include src="/layout/header.zul" />
+			</north>
+			<!-- left menu -->
+			<west width="200px" border="0" flex="true" splittable="true"
+				margins="0,5,0,0">
+				<include src="/layout/leftmenu.zul" />
+			</west>
+			<!-- right menu -->
+			<east width="130px" title="Quick Links" flex="true">
+				<include src="/layout/rightmenu.zul" />
+			</east>
+			<!-- Content -->
+			<center>
+				<borderlayout sclass="inner-border">
+					<north border="0" height="4%" margins="2,3,0,0">
+						<label value="HOME" style="font-size:20px;" />
+					</north>
+					<center border="0" margins="0,3,3,3">
+						<panel title="Bildergalerie" border="normal"
+							height="100%">
+							<panelchildren>
+								
+							</panelchildren>
+						</panel>
+					</center>
+				</borderlayout>
+			</center>
+			<!-- footer -->
+			<south size="40px" border="0"
+				style="background: none repeat scroll 0 0 ;">
+				<include src="/layout/footer.zul" />
+			</south>
+		</borderlayout>
+	</div>
+</zk>
