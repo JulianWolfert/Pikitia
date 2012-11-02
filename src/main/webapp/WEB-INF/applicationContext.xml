@@ -38,6 +38,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>de.htw.fb4.bilderplattform.dao.Test</value>
+				<value>de.htw.fb4.bilderplattform.dao.User</value>
 			</list>
 		</property>
 	</bean>
@@ -52,9 +53,8 @@
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 	
-	<!-- designated -->
-<!-- 	<bean id="userDao" class="de.htw.fb4.bilderplattform.dao.UserDAOImpl"> -->
-<!-- 		<property name="sessionFactory" ref="mySessionFactory" /> -->
-<!-- 	</bean> -->
+	<bean id="userDao" class="de.htw.fb4.bilderplattform.dao.UserDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
 
 </beans>
