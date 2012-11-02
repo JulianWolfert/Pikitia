@@ -10,14 +10,23 @@
     <intercept-url pattern="/**" access="ROLE_USER" />
   </http>
   
+  <!-- users are now stored in the database so this is not needed anymore -->
+<!--   <authentication-manager> -->
+<!--     <authentication-provider> -->
+<!--       <user-service> -->
+<!--         <user name="josch" password="josch" authorities="ROLE_USER, ROLE_ADMIN" /> -->
+<!--         <user name="wojtek" password="wojtek" authorities="ROLE_USER, ROLE_ADMIN" /> -->
+<!--         <user name="gast" password="gast" authorities="ROLE_USER" /> -->
+<!--       </user-service> -->
+<!--     </authentication-provider> -->
+<!--   </authentication-manager> -->
+  
+  <beans:bean id="springUserProviderService" class="de.htw.fb4.bilderplattform.spring.SpringUserProviderService">
+  </beans:bean>
+  
   <authentication-manager>
-    <authentication-provider>
-      <user-service>
-        <user name="josch" password="josch" authorities="ROLE_USER, ROLE_ADMIN" />
-        <user name="wojtek" password="wojtek" authorities="ROLE_USER, ROLE_ADMIN" />
-        <user name="gast" password="gast" authorities="ROLE_USER" />
-      </user-service>
-    </authentication-provider>
+  	<authentication-provider user-service-ref="springUserProviderService">
+  	</authentication-provider>
   </authentication-manager>
   
 </beans:beans>
