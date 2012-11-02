@@ -21,4 +21,10 @@ class UserServiceImpl implements IUserService {
 		throw new UsernameNotFoundException(username);
 	}
 
+	@Override
+	public void updateUser(User user) {
+		UserDAOImpl userDAO = ApplicationContextProvider.getApplicationContext().getBean("userDao", UserDAOImpl.class);
+		userDAO.saveUser(user);
+	}
+
 }
