@@ -1,6 +1,6 @@
 <zk>
 	<div apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.formviewmodel.ComplexBorderlayoutViewModel')">
+		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.formmodel.ComplexBorderlayoutViewModel')">
 		<borderlayout sclass="complex-layout" height="810px">
 			<!-- header -->
 			<north size="90px" border="0">
