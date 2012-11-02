@@ -6,7 +6,9 @@
 src/main/java/de/htw/fb4/bilderplattform/business/BusinessCtx.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/ITestService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IUserRegistrationService.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/business/IUserService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/TestServiceImpl.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/UserServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/AbstractDAO.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Book.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Test.java -text

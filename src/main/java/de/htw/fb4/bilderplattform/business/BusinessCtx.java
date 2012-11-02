@@ -16,6 +16,7 @@ public class BusinessCtx {
 	
 	// services
 	private ITestService testService; 
+	private IUserService userService;
 	
 	// singleton getter
 	public static BusinessCtx getInstance() {
@@ -27,6 +28,12 @@ public class BusinessCtx {
 		if(testService == null)
 			this.testService = new TestServiceImpl();
 		return testService;
+	}
+	
+	public IUserService getUserService() {
+		if(userService == null)
+			this.userService = new UserServiceImpl();
+		return userService;
 	}
 	
 }
