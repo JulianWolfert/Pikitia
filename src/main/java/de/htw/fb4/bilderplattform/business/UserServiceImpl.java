@@ -22,7 +22,7 @@ class UserServiceImpl implements IUserService {
 	}
 	
 	@Override
-	public List<User> getAllUsers()	throws UsernameNotFoundException {
+	public List<User> getAllUser()	throws UsernameNotFoundException {
 		UserDAOImpl userDAO = ApplicationContextProvider.getApplicationContext().getBean("userDao", UserDAOImpl.class);
 		return userDAO.getAllUser();
 	}

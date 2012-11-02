@@ -10,7 +10,7 @@ public interface IUserService {
 
 	public User getUserByName(String username) throws UsernameNotFoundException;
 
-	public List<User> getAllUsers() throws UsernameNotFoundException;
+	public List<User> getAllUser() throws UsernameNotFoundException;
 	
 	public void saveOrUpdateUser(User user);
 	
