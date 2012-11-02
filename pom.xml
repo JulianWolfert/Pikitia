@@ -9,6 +9,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bilderplattform</name>
 	<description>Description</description>
+	
+	<properties>
+		<zk.version>6.5.0</zk.version>
+<!-- 		<zats.version>0.9.0</zats.version> -->
+<!-- 		<maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format> -->
+	</properties>
+	
 	<repositories>
 		<repository>
 			<id>maven2-repository.dev.java.net</id>
@@ -21,11 +28,11 @@
 			<name>ZK CE Repository</name>
 			<url>http://mavensync.zkoss.org/maven2</url>
 		</repository>
-		<repository>
-			<id>ZK EVAL</id>
-			<name>ZK Evaluation Repository</name>
-			<url>http://mavensync.zkoss.org/eval</url>
-		</repository>
+<!-- 		<repository> -->
+<!-- 			<id>ZK EVAL</id> -->
+<!-- 			<name>ZK Evaluation Repository</name> -->
+<!-- 			<url>http://mavensync.zkoss.org/eval</url> -->
+<!-- 		</repository> -->
 	</repositories>
 
 	<!-- required for build process -->
@@ -48,22 +55,22 @@
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkplus</artifactId>
-			<version>6.5.0</version>
+			<version>${zk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zhtml</artifactId>
-			<version>6.5.0</version>
+			<version>${zk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zkbind</artifactId>
-			<version>6.5.0</version>
+			<version>${zk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.zk</groupId>
 			<artifactId>zul</artifactId>
-			<version>6.5.0</version>
+			<version>${zk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -79,12 +86,12 @@
 		<dependency>
 			<groupId>org.zkoss.theme</groupId>
 			<artifactId>sapphire</artifactId>
-			<version>6.5.0</version>
+			<version>${zk.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zkoss.theme</groupId>
 			<artifactId>silvertail</artifactId>
-			<version>6.5.0</version>
+			<version>${zk.version}</version>
 		</dependency>
 
 		<dependency>
