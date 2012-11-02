@@ -28,7 +28,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
 				<prop key="hibernate.show_sql">false</prop>
 				<!-- create database tables -->
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<!-- only update -->
 <!-- 				<prop key="hibernate.hbm2ddl.auto">update</prop> -->
 <!-- 				<prop key="hibernate.current_session_context_class">thread</prop> -->
