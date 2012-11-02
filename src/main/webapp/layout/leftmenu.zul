@@ -4,7 +4,7 @@
 			<vbox>
 				<menubar id="menubar" orient="vertical"
 					autodrop="true">
-					<menuitem label="Start" />
+					<menuitem label="Start" href="index.zul"/>
 					<menu label="Bilder">
 						<menupopup>
 							<menu label="Kaufen">
