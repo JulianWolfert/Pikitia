@@ -1,8 +1,8 @@
 <zk>
 	<div apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.formmodel.RegistrationFormViewModel')"
+		viewModel="@id('registrationmodel') @init('de.htw.fb4.bilderplattform.view.formmodel.RegistrationFormViewModel')"
 		validationMessages="@id('vmsgs')"
-		form="@id('fx') @load(vm.user) @save(vm.user, before='submit') @validator('de.htw.fb4.bilderplattform.view.formvalidator.UserRegistrationFormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)">
+		form="@id('fx') @load(registrationuser) @save(registrationuser, before='submit') @validator('de.htw.fb4.bilderplattform.view.formvalidator.UserRegistrationFormValidator', retypedPassword=registrationmodel.retypedPassword, captcha=registrationmodel.captcha, captchaInput=registrationmodel.captchaInput)">
 		<borderlayout sclass="complex-layout" height="810px">
 			<!-- header -->
 			<north size="90px" border="0">
@@ -66,7 +66,7 @@
 										<!-- 					Re-type Password -->
 										<!-- 					<cell> -->
 										<!-- 						<textbox type="password" -->
-										<!-- 							value="@bind(vm.retypedPassword)" width="150px" tabindex="3" /> -->
+										<!-- 							value="@bind(registrationmodel.retypedPassword)" width="150px" tabindex="3" /> -->
 										<!-- 						<label class="error" -->
 										<!-- 							value="@load(vmsgs['password'])" /> -->
 										<!-- 					</cell> -->
@@ -125,11 +125,11 @@
 											Birthday:
 											<hbox align="center">
 												<datebox
-													value="@bind(fx.birthday)" format="@load(vm.dateFormat)"
+													value="@bind(fx.birthday)" format="@load(registrationmodel.dateFormat)"
 													width="150px" tabindex="7" />
 												Format :
 												<listbox
-													selectedItem="@bind(vm.dateFormat)" mold="select"
+													selectedItem="@bind(registrationmodel.dateFormat)" mold="select"
 													tabindex="8">
 													<listitem
 														label="Default" value="" />
@@ -178,11 +178,11 @@
 													Adjust Height:
 													<spinner
 														constraint="no negative,no zero"
-														value="@load(vm.memoHeight)"
+														value="@load(registrationmodel.memoHeight)"
 														onChanging="@command('changeMemoHeight')" tabindex="10" />
 												</div>
 												<textbox
-													rows="@load(vm.memoHeight)" value="@bind(fx.memo)"
+													rows="@load(registrationmodel.memoHeight)" value="@bind(fx.memo)"
 													width="370px;" tabindex="11" />
 											</vlayout>
 											<div>

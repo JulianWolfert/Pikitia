@@ -9,13 +9,12 @@ import org.zkoss.zk.ui.event.InputEvent;
 import de.htw.fb4.bilderplattform.dao.User;
 
 public class RegistrationFormViewModel {
-	
+
 	private User user;
 	private String dateFormat;
 	private int memoHeight = 6;
 	private String foregroundColour = "#000000", backgroundColour = "#FDC966";
 
-	
 	public User getUser() {
 		return user;
 	}
