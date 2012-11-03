@@ -1,6 +1,9 @@
 package de.htw.fb4.bilderplattform.dao;
 
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -18,75 +21,76 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /************************************************
- * <p>user database object</p>
+ * <p>
+ * user database object
+ * </p>
  * 
  * <p>
+ * 
  * @author Josch Rossa
  * @author konitzer
- * </p>
- * <p>
- * 02.11.2012
- * </p>
+ *         </p>
+ *         <p>
+ *         02.11.2012
+ *         </p>
  ************************************************/
 @Entity
-@Table(name="User", uniqueConstraints = {@UniqueConstraint(columnNames={"username"})})
+@Table(name = "User", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }) })
 public class User implements Serializable, UserDetails {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="idUser")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "idUser")
 	private Integer idUser;
 
-	@Column(name="username", nullable=false)
+	@Column(name = "username", nullable = false)
 	private String username;
-	
-	@Column(name="password", nullable=false)
+
+	@Column(name = "password", nullable = false)
 	private String password;
-	
-	@Column(name="isNormalUser")
+
+	@Column(name = "email", nullable = false)
+	private String email;
+
+	@Column(name = "isNormalUser")
 	private boolean isNormalUser = false;
-	
-	@Column(name="isAdmin")
+
+	@Column(name = "isAdmin")
 	private boolean isAdmin = false;
-	
-	@Column(name="lastUpdateDate")
+
+	@Column(name = "lastUpdateDate")
 	private Date lastUpdateDate = new Date();
-	
-	@Column(name="isDeleted", nullable=false, columnDefinition ="tinyint(1) default 0")
-	private boolean isDeleted;
-	
-	public User(){
+
+	@Column(name = "isDeleted", nullable = false, columnDefinition = "tinyint(1) default 0")
+	private boolean isDeleted = false;
+
+	public User() {
 		super();
 	}
-	
-	public User(String username, String password){
+
+	public User(String username, String password, String email) {
 		super();
 		this.username = username;
-		this.password = password;
+		this.password = encryptPassword(password);
+		this.email = email;
 	}
-	
-	public User(String username, String password,
-			boolean isNormalUser, boolean isAdmin,
-			boolean isDeleted) {
+
+	public User(String username, String password, String email,
+			boolean isNormalUser, boolean isAdmin, boolean isDeleted) {
 		super();
 		this.username = username;
-		this.password = password;
+		this.password = encryptPassword(password);
+		this.email = email;
 		this.isNormalUser = isNormalUser;
 		this.isAdmin = isAdmin;
 	}
 
-	/* 
+	/*
 	 * Methods
-	 * 
 	 */
-	
 	public Integer getIdUser() {
 		return idUser;
-	}
-
-	public void setIdUser(Integer idUser) {
-		this.idUser = idUser;
 	}
 
 	public String getUsername() {
@@ -102,7 +106,15 @@ public class User implements Serializable, UserDetails {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = encryptPassword(password);
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public boolean isNormalUser() {
@@ -136,9 +148,9 @@ public class User implements Serializable, UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		if(isAdmin)
+		if (isAdmin)
 			authorities.add(AppAuthorities.getAdminAuthority());
-		if(isNormalUser)
+		if (isNormalUser)
 			authorities.add(AppAuthorities.getUserAuthority());
 		return authorities;
 	}
@@ -162,11 +174,9 @@ public class User implements Serializable, UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-	
-	
+
 	private static class AppAuthorities {
 
-		
 		public static GrantedAuthority getAdminAuthority() {
 			return new GrantedAuthority() {
 				private static final long serialVersionUID = 1L;
@@ -177,7 +187,7 @@ public class User implements Serializable, UserDetails {
 				}
 			};
 		}
-		
+
 		public static GrantedAuthority getUserAuthority() {
 			return new GrantedAuthority() {
 				private static final long serialVersionUID = 1L;
@@ -188,7 +198,20 @@ public class User implements Serializable, UserDetails {
 				}
 			};
 		}
-		
 	}
 	
+	private String encryptPassword(String password) {
+		MessageDigest md5;
+		String hashValue = null;
+		try {
+			md5 = MessageDigest.getInstance("MD5");
+			md5.update(password.getBytes());
+			BigInteger hash = new BigInteger(1, md5.digest());
+			hashValue = hash.toString(16);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return hashValue;
+	}
 }

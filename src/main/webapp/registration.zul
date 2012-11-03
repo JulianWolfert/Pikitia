@@ -1,8 +1,8 @@
 <zk>
 	<div apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('registrationmodel') @init('de.htw.fb4.bilderplattform.view.formmodel.RegistrationFormViewModel')"
+		viewModel="@id('registration_vm') @init('de.htw.fb4.bilderplattform.view.vm.RegistrationVM')"
 		validationMessages="@id('vmsgs')"
-		form="@id('fx') @load(registrationuser) @save(registrationuser, before='submit') @validator('de.htw.fb4.bilderplattform.view.formvalidator.UserRegistrationFormValidator', retypedPassword=registrationmodel.retypedPassword, captcha=registrationmodel.captcha, captchaInput=registrationmodel.captchaInput)">
+		form="@id('fx')  @save(registration_vm.user, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.RegistrationValidator', retypedPassword=registration_vm.retypedPassword)">
 		<borderlayout sclass="complex-layout" height="810px">
 			<!-- header -->
 			<north size="90px" border="0">
@@ -17,186 +17,56 @@
 			<east width="130px" title="Quick Links" flex="true">
 				<include src="/layout/rightmenu.zul" />
 			</east>
-			<!-- Content -->
+			<!-- content -->
 			<center>
 				<borderlayout sclass="inner-border">
-					<north border="0" height="4%" margins="2,3,0,0">
-						<label value="Registrierung" style="font-size:20px;" />
-					</north>
+<!-- 					<north border="0" height="4%" margins="2,3,0,0"> -->
+<!-- 						<label value="Registrierung" style="font-size:20px;" /> -->
+<!-- 					</north> -->
 					<center border="0" margins="0,3,3,3">
-						<panel title="Reference" border="normal"
+						<panel title="Registrierung" border="normal"
 							height="100%">
 							<panelchildren>
 								<grid>
 									<columns>
-										<column label="Type"
-											width="120px" />
-										<column label="Content" />
-										<column label="Component"
+										<column 
 											width="200px" />
+										<column  />
 									</columns>
 									<rows>
 										<row>
-											<label value="UserName"
-												width="150px" />
+											<label value="Benutzername"
+												width="200px" />
 											<hlayout>
 												<textbox
-													value="@bind(fx.userName)" width="150px" tabindex="1" />
+													value="@bind(fx.username)" width="150px" tabindex="1" />
 											</hlayout>
-											<div>
-												<label
-													sclass="hightlight">
-													Textbox
-												</label>
-											</div>
 										</row>
 										<row>
-											Password
+											Passwort
 											<textbox type="password"
 												value="@bind(fx.password)" width="150px" tabindex="2" />
-											<div>
-												<label
-													sclass="hightlight">
-													Textbox
-												</label>
-												type = "password"
-											</div>
 										</row>
-										<!-- 				<row> -->
-										<!-- 					Re-type Password -->
-										<!-- 					<cell> -->
-										<!-- 						<textbox type="password" -->
-										<!-- 							value="@bind(registrationmodel.retypedPassword)" width="150px" tabindex="3" /> -->
-										<!-- 						<label class="error" -->
-										<!-- 							value="@load(vmsgs['password'])" /> -->
-										<!-- 					</cell> -->
-										<!-- 					<div> -->
-										<!-- 						<label sclass="hightlight">Textbox</label> -->
-										<!-- 						with value validate -->
-										<!-- 					</div> -->
-										<!-- 				</row> -->
 										<row>
-											Age:
+											Passwortwiederholung
 											<cell>
-												<intbox
-													value="@bind(fx.age)" width="150px" tabindex="4" />
+												<textbox type="password"
+													value="@bind(registration_vm.retypedPassword)"
+													width="150px" tabindex="3" />
 												<label class="error"
-													value="@load(vmsgs['age'])" />
+													value="@load(vmsgs['password'])" />
 											</cell>
-											<div>
-												<label
-													sclass="hightlight">
-													Intbox
-												</label>
-												with constraint
-											</div>
 										</row>
 										<row>
-											Phone:
-											<textbox
-												constraint="no empty" value="@bind(fx.telephone)"
-												width="150px" maxlength="15" tabindex="5" />
-											<div>
-												<label
-													sclass="hightlight">
-													Textbox
-												</label>
-												with max length limit
-											</div>
-										</row>
-										<row>
-											Weight:
-											<cell>
-												<decimalbox
-													format="###.##" value="@bind(fx.weight)" width="150px"
-													tabindex="6" />
-												<label class="error"
-													value="@load(vmsgs['weight'])" />
-											</cell>
-											<div>
-												<label
-													sclass="hightlight">
-													Decimalbox
-												</label>
-												with format
-											</div>
-										</row>
-										<row>
-											Birthday:
-											<hbox align="center">
-												<datebox
-													value="@bind(fx.birthday)" format="@load(registrationmodel.dateFormat)"
-													width="150px" tabindex="7" />
-												Format :
-												<listbox
-													selectedItem="@bind(registrationmodel.dateFormat)" mold="select"
-													tabindex="8">
-													<listitem
-														label="Default" value="" />
-													<listitem
-														label="yyyy/MM/dd hh:mm a" value="yyyy/MM/dd hh:mm a" />
-													<listitem
-														label="yyyy/MM/dd" value="yyyy/MM/dd" />
-													<listitem
-														label="MM-dd-yy" value="MM-dd-yy" />
-												</listbox>
-											</hbox>
-											<div>
-												<label
-													sclass="hightlight">
-													Datebox
-												</label>
-												and
-												<label
-													sclass="hightlight">
-													Listbox
-												</label>
-												in select mold
-											</div>
-										</row>
-										<row>
-											E-mail:
+											Email:
 											<cell>
 												<textbox
-													value="@bind(fx.email)" width="150px" tabindex="9" />
+													value="@bind(fx.email)" width="150px" tabindex="4" />
 												<label class="error"
 													value="@load(vmsgs['email'])" />
 											</cell>
-											<div>
-												<label
-													sclass="hightlight">
-													Textbox
-												</label>
-												with regexp constraint
-											</div>
 										</row>
-										<row>
-											Memo:
-											<vlayout>
-												<div
-													style="width:375px;text-align:right;padding:0;">
-													Adjust Height:
-													<spinner
-														constraint="no negative,no zero"
-														value="@load(registrationmodel.memoHeight)"
-														onChanging="@command('changeMemoHeight')" tabindex="10" />
-												</div>
-												<textbox
-													rows="@load(registrationmodel.memoHeight)" value="@bind(fx.memo)"
-													width="370px;" tabindex="11" />
-											</vlayout>
-											<div>
-												<label
-													sclass="hightlight">
-													Textbox
-												</label>
-												with multiple rows and
-												<label
-													sclass="hightlight">
-													Spinner
-												</label>
-											</div>
-										</row>
+										
 										<row>
 											<cell colspan="3"
 												style="text-align:center">

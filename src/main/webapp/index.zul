@@ -18,9 +18,9 @@
 			<!-- Content -->
 			<center>
 				<borderlayout sclass="inner-border">
-					<north border="0" height="4%" margins="2,3,0,0">
-						<label value="HOME" style="font-size:20px;" />
-					</north>
+<!-- 					<north border="0" height="4%" margins="2,3,0,0"> -->
+<!-- 						<label value="HOME" style="font-size:20px;" /> -->
+<!-- 					</north> -->
 					<center border="0" margins="0,3,3,3">
 						<panel title="Bildergalerie" border="normal"
 							height="100%">

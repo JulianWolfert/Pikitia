@@ -1,4 +1,4 @@
-package de.htw.fb4.bilderplattform.view.formmodel;
+package de.htw.fb4.bilderplattform.view.vm;
 
 
 import java.util.ArrayList;
