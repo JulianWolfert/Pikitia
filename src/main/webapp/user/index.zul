@@ -1,0 +1,6 @@
+<?page title="TestUserPage" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="TestUserPage" border="normal">
+	<label value="I am User"></label>
+</window>
+</zk>

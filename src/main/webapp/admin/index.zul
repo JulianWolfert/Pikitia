@@ -1,1 +1,6 @@
-ADMIN-BEREICH
+<?page title="TestAdminPage" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="TestAdminPage" border="normal">
+	<label value="I am Admin"></label>
+</window>
+</zk>
