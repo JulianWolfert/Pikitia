@@ -21,6 +21,7 @@ public class DBInitialization implements InitializingBean{
 	public DBInitialization(){
 		adminUsers.add(new User("wojtek", "wojtek", true, true, false));
 		adminUsers.add(new User("josch", "josch", true, true, false));
+		adminUsers.add(new User("peter", "peter", true, true, false));
 	}
 	
 	private void createAdminUsers(){
