@@ -32,6 +32,7 @@ src/main/webapp/WEB-INF/applicationContext.xml -text
 src/main/webapp/WEB-INF/web.xml -text
 src/main/webapp/WEB-INF/zk.xml -text
 src/main/webapp/admin/index.zul -text
+src/main/webapp/admin/userAdministration.zul -text
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
 src/main/webapp/index.zul -text
 src/main/webapp/layout/footer.zul -text
