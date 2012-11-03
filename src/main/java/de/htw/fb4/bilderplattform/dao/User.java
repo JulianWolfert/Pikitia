@@ -119,19 +119,19 @@ public class User implements Serializable, UserDetails {
 		this.email = email;
 	}
 
-	public boolean isNormalUser() {
+	public boolean getIsNormalUser() {
 		return isNormalUser;
 	}
 
-	public void setNormalUser(boolean isNormalUser) {
+	public void setIsNormalUser(boolean isNormalUser) {
 		this.isNormalUser = isNormalUser;
 	}
 
-	public boolean isAdmin() {
+	public boolean getIsAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setIsAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 
