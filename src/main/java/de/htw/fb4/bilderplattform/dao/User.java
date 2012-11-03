@@ -44,11 +44,11 @@ public class User implements Serializable, UserDetails {
 	@Column(name="password", nullable=false)
 	private String password;
 	
-	@Column(name="isNormalUser", nullable=false)
-	private boolean isNormalUser;
+	@Column(name="isNormalUser")
+	private boolean isNormalUser = false;
 	
-	@Column(name="isAdmin", nullable=false)
-	private boolean isAdmin;
+	@Column(name="isAdmin")
+	private boolean isAdmin = false;
 	
 	@Column(name="lastUpdateDate")
 	private Date lastUpdateDate = new Date();
@@ -56,9 +56,14 @@ public class User implements Serializable, UserDetails {
 	@Column(name="isDeleted", nullable=false, columnDefinition ="tinyint(1) default 0")
 	private boolean isDeleted;
 	
-	
 	public User(){
 		super();
+	}
+	
+	public User(String username, String password){
+		super();
+		this.username = username;
+		this.password = password;
 	}
 	
 	public User(String username, String password,
@@ -69,7 +74,6 @@ public class User implements Serializable, UserDetails {
 		this.password = password;
 		this.isNormalUser = isNormalUser;
 		this.isAdmin = isAdmin;
-		this.isDeleted = isDeleted;
 	}
 
 	/* 
