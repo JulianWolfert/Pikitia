@@ -1,5 +1,6 @@
 package de.htw.fb4.bilderplattform.business;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -30,6 +31,7 @@ class UserServiceImpl implements IUserService {
 	@Override
 	public void saveOrUpdateUser(User user) {
 		UserDAOImpl userDAO = ApplicationContextProvider.getApplicationContext().getBean("userDao", UserDAOImpl.class);
+		user.setLastUpdateDate(Calendar.getInstance().getTime());
 		if(user!=null) userDAO.saveUser(user);
 	}
 
