@@ -30,7 +30,7 @@ public class RegistrationValidator extends AbstractValidator {
 		
 		if (password == null || retype == null || (!password.equals(retype))) {
 			this.addInvalidMessage(ctx, "password",
-					"Ihre Passwörter stimmen nicht überein!");
+					"Ihre PasswÃ¶rter stimmen nicht Ãœberein!");
 		}
 	}
 
@@ -42,7 +42,7 @@ public class RegistrationValidator extends AbstractValidator {
 
 	private void validateEmail(ValidationContext ctx, String email) {
 		if (email == null || !email.matches(".+@.+\\.[a-z]+")) {
-			this.addInvalidMessage(ctx, "email", "Bitte geben Sie eine gültige Email Adresse ein!");
+			this.addInvalidMessage(ctx, "email", "Bitte geben Sie eine gÃ¼ltige Email Adresse ein!");
 		}
 	}
 }
