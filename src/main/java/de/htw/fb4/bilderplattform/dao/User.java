@@ -139,6 +139,10 @@ public class User implements Serializable, UserDetails {
 		return lastUpdateDate;
 	}
 
+	public void setLastUpdateDate(Date lastUpdateDate) {
+		this.lastUpdateDate=lastUpdateDate;
+	}
+	
 	public boolean isDeleted() {
 		return isDeleted;
 	}
