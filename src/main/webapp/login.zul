@@ -1,0 +1,26 @@
+<?page title="Login" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Login Seite" border="normal">
+	<groupbox if="${not empty param.error}">
+		<label style="color:red" value="Login fehlgeschlagen. Bitte probieren Sie es noch einmal (Sie Pfeife!)." />
+	</groupbox>
+	<groupbox>
+    <caption>Login</caption>
+    <h:form id="f" name="f" action="j_spring_security_check" method="POST"
+    xmlns:h="http://www.w3.org/1999/xhtml">
+        <grid>
+            <rows>
+                <row>User: <textbox id="u" name="j_username"/></row>
+                <row>Password: <textbox id="p" type="password" name="j_password"/></row>
+                <row spans="2">
+                    <hbox>
+                        <h:input type="submit" value="Login"/>
+                        <h:input type="reset" value="Reset"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
+    </h:form>
+    </groupbox>
+</window>
+</zk>
