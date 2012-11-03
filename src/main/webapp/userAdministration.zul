@@ -1,0 +1,78 @@
+<zk>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.UserAdministrationVM')">
+		<borderlayout sclass="complex-layout" height="810px">
+			<!-- header -->
+			<north size="90px" border="0">
+				<!-- <include src="/layout/header.zul" /> -->
+			</north>
+			<!-- left menu -->
+			<west width="200px" border="0" flex="true" splittable="true"
+				margins="0,5,0,0">
+				<!-- <include src="/layout/leftmenu.zul" /> -->
+			</west>
+			<!-- right menu -->
+			<east width="130px" title="Quick Links" flex="true">
+				<!-- <include src="/layout/rightmenu.zul" /> -->
+			</east>
+			<!-- Content -->
+			<center>
+				<borderlayout sclass="inner-border">
+					<north border="0" height="4%" margins="2,3,0,0">
+						<label value="Benutzerverwaltung"
+							style="font-size:20px;" />
+					</north>
+					<center border="0" margins="0,3,3,3">
+						<panel title="Benutzer" border="normal"
+							height="100%">
+							<panelchildren>
+								<hlayout spacing="0" height="100%">
+									<listbox vflex="true" hflex="1"
+										model="@load(vm.userList)"
+										selectedItem="@bind(vm.selectedUser)">
+										<listhead>
+											<listheader label="Name" />
+										</listhead>
+										<template name="model"
+											var="user">
+											<listitem>
+												<listcell
+													label="@load(user.username)" />
+											</listitem>
+										</template>
+
+									</listbox>
+									<grid vflex="true" hflex="1">
+										<columns>
+											<column label="Items" />
+											<column label="Content" />
+										</columns>
+										<rows>
+											<row>
+												<label value="Name" />
+												<textbox
+													onChange="@command('updateUser')"
+													value="@bind(vm.selectedUser.username)" />
+											</row>
+											<row>
+												<label value="Passwort" />
+												<textbox
+													onChange="@command('updateUser')"
+													value="@bind(vm.selectedUser.password)" />
+											</row>
+										</rows>
+									</grid>
+								</hlayout>
+							</panelchildren>
+						</panel>
+					</center>
+				</borderlayout>
+			</center>
+			<!-- footer -->
+			<south size="40px" border="0"
+				style="background: none repeat scroll 0 0 ;">
+				<include src="/layout/footer.zul" />
+			</south>
+		</borderlayout>
+	</div>
+</zk>
