@@ -1,26 +1,72 @@
 <?page title="Login" contentType="text/html;charset=UTF-8"?>
 <zk>
-<window title="Login Seite" border="normal">
-	<groupbox if="${not empty param.error}">
-		<label style="color:red" value="Login fehlgeschlagen. Bitte probieren Sie es noch einmal (Sie Pfeife!)." />
-	</groupbox>
-	<groupbox>
-    <caption>Login</caption>
-    <h:form id="f" name="f" action="j_spring_security_check" method="POST"
-    xmlns:h="http://www.w3.org/1999/xhtml">
-        <grid>
-            <rows>
-                <row>User: <textbox id="u" name="j_username"/></row>
-                <row>Password: <textbox id="p" type="password" name="j_password"/></row>
-                <row spans="2">
-                    <hbox>
-                        <h:input type="submit" value="Login"/>
-                        <h:input type="reset" value="Reset"/>
-                    </hbox>
-                </row>
-            </rows>
-        </grid>
-    </h:form>
-    </groupbox>
-</window>
+
+	<div>
+		<borderlayout sclass="complex-layout" height="810px">
+			<!-- header -->
+			<north size="90px" border="0">
+				<include src="/layout/header.zul" />
+			</north>
+			<!-- left menu -->
+			<west width="200px" border="0" flex="true" splittable="true"
+				margins="0,5,0,0">
+				<include src="/layout/leftmenu.zul" />
+			</west>
+			<!-- right menu -->
+			<east width="130px" title="Quick Links" flex="true">
+				<include src="/layout/rightmenu.zul" />
+			</east>
+			<!-- Content -->
+			<center>
+					<borderlayout sclass="inner-border">
+						<center border="0" margins="0,3,3,3">
+							<panel title="Login Seite" border="normal"
+								height="100%">
+								<panelchildren>
+									<groupbox
+										if="${not empty param.error}">
+										<label style="color:red"
+											value="Login fehlgeschlagen. Bitte probieren Sie es noch einmal (Sie Pfeife!)." />
+									</groupbox>
+									<groupbox>
+										<caption>Login</caption>
+										<h:form id="f" name="f"
+											action="j_spring_security_check" method="POST"
+											xmlns:h="http://www.w3.org/1999/xhtml">
+											<grid>
+												<rows>
+													<row>
+														User:
+														<textbox id="u"
+															name="j_username" />
+													</row>
+													<row>
+														Password:
+														<textbox id="p"
+															type="password" name="j_password" />
+													</row>
+													<row spans="2">
+														<hbox>
+															<h:input
+																type="submit" value="Login" />
+															<h:input
+																type="reset" value="Reset" />
+														</hbox>
+													</row>
+												</rows>
+											</grid>
+										</h:form>
+									</groupbox>
+								</panelchildren>
+							</panel>
+						</center>
+					</borderlayout>
+			</center>
+			<!-- footer -->
+			<south size="40px" border="0"
+				style="background: none repeat scroll 0 0 ;">
+				<include src="/layout/footer.zul" />
+			</south>
+		</borderlayout>
+	</div>
 </zk>

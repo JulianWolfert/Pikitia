@@ -20,27 +20,28 @@
 			<!-- content -->
 			<center>
 				<borderlayout sclass="inner-border">
-<!-- 					<north border="0" height="4%" margins="2,3,0,0"> -->
-<!-- 						<label value="Registrierung" style="font-size:20px;" /> -->
-<!-- 					</north> -->
+					<!-- 					<north border="0" height="4%" margins="2,3,0,0"> -->
+					<!-- 						<label value="Registrierung" style="font-size:20px;" /> -->
+					<!-- 					</north> -->
 					<center border="0" margins="0,3,3,3">
 						<panel title="Registrierung" border="normal"
 							height="100%">
 							<panelchildren>
 								<grid>
 									<columns>
-										<column 
-											width="200px" />
-										<column  />
+										<column width="200px" />
+										<column />
 									</columns>
 									<rows>
 										<row>
-											<label value="Benutzername"
-												width="200px" />
-											<hlayout>
-												<textbox
-													value="@bind(fx.username)" width="150px" tabindex="1" />
-											</hlayout>
+											Benutzername
+											<cell>
+												<textbox 
+													value="@bind(fx.username)"
+													width="150px" tabindex="1" />
+												<label class="error"
+													value="@load(vmsgs['username'])" />
+											</cell>
 										</row>
 										<row>
 											Passwort
@@ -66,7 +67,6 @@
 													value="@load(vmsgs['email'])" />
 											</cell>
 										</row>
-										
 										<row>
 											<cell colspan="3"
 												style="text-align:center">

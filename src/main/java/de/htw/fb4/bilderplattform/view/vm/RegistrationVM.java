@@ -35,8 +35,8 @@ public class RegistrationVM {
 	public void setRetypedPassword(String retypedPassword) {
 		this.retypedPassword = retypedPassword;
 	}
-	
-	@NotifyChange("newUser") 
+
+	@NotifyChange("newUser")
 	@Command
 	public void submit() {
 		BusinessCtx.getInstance().getUserService().saveOrUpdateUser(user);
