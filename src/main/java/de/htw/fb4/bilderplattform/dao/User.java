@@ -143,11 +143,11 @@ public class User implements Serializable, UserDetails {
 		this.lastUpdateDate=lastUpdateDate;
 	}
 	
-	public boolean isDeleted() {
-		return isDeleted;
+	public boolean getIsDeleted() {
+		return this.isDeleted;
 	}
 
-	public void setDeleted(boolean isDeleted) {
+	public void setIsDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
 

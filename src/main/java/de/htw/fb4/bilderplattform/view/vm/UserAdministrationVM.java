@@ -37,4 +37,10 @@ public class UserAdministrationVM {
 		BusinessCtx.getInstance().getUserService()
 				.saveOrUpdateUser(this.selectedUser);
 	}
+
+	@Command
+	public void deleteUser() {
+		BusinessCtx.getInstance().getUserService()
+				.deleteUser(this.selectedUser);
+	}
 }

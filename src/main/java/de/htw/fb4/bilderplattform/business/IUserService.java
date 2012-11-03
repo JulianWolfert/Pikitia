@@ -14,4 +14,6 @@ public interface IUserService {
 	
 	public void saveOrUpdateUser(User user);
 	
+	public void deleteUser(User user);
+	
 }

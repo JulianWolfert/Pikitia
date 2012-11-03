@@ -38,7 +38,7 @@ public class UserDAOImpl extends AbstractDAO {
 	@Transactional
 	public void deleteUser(int idUser) {
 		User usr = getUserByID(idUser);
-		usr.setDeleted(true);
+		usr.setIsDeleted(true);
 		sessionFactory.getCurrentSession().saveOrUpdate(usr);
 	}
 	
