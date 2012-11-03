@@ -19,8 +19,8 @@ src/main/java/de/htw/fb4/bilderplattform/spring/SpringUserProviderService.java -
 src/main/java/de/htw/fb4/bilderplattform/spring/context/ApplicationContextProvider.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/TestCodebehind.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/validator/RegistrationValidator.java -text svneol=unset#text/plain
-src/main/java/de/htw/fb4/bilderplattform/view/vm/ComplexBorderlayoutViewModel.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/WebsiteLayoutVM.java -text svneol=unset#text/plain
 src/main/resources/config/database/DataSource.xml -text
 src/main/resources/config/database/db.properties -text
 src/main/resources/config/database/import.sql -text

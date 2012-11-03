@@ -72,7 +72,8 @@ public class User implements Serializable, UserDetails {
 	public User(String username, String password, String email) {
 		super();
 		this.username = username;
-		this.password = encryptPassword(password);
+//		this.password = encryptPassword(password);
+		this.password = password;
 		this.email = email;
 	}
 
@@ -80,7 +81,8 @@ public class User implements Serializable, UserDetails {
 			boolean isNormalUser, boolean isAdmin, boolean isDeleted) {
 		super();
 		this.username = username;
-		this.password = encryptPassword(password);
+//		this.password = encryptPassword(password);
+		this.password = password;
 		this.email = email;
 		this.isNormalUser = isNormalUser;
 		this.isAdmin = isAdmin;

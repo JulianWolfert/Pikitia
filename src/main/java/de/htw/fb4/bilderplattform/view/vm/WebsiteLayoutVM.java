@@ -17,7 +17,7 @@ import org.zkoss.zul.Area;
 import org.zkoss.zul.PieModel;
 import org.zkoss.zul.SimplePieModel;
 
-public class ComplexBorderlayoutViewModel {
+public class WebsiteLayoutVM {
 
 	private static final String searchUrl = "http://www.zkoss.org/doc/searchresult.jsp?cx=008321236477929467003%3A63kdpeqkkvw&cof=FORID%3A11&q=";
 
