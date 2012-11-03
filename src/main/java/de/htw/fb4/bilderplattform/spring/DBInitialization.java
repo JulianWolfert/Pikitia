@@ -1,6 +1,8 @@
 package de.htw.fb4.bilderplattform.spring;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.InitializingBean;
 
@@ -14,12 +16,17 @@ import de.htw.fb4.bilderplattform.dao.User;
  */
 public class DBInitialization implements InitializingBean{
 	
+	private final static List<User> adminUsers = new ArrayList<User>();
+	
+	public DBInitialization(){
+		adminUsers.add(new User("wojtek", "wojtek", true, true, false));
+		adminUsers.add(new User("josch", "josch", true, true, false));
+	}
+	
 	private void createAdminUsers(){
-		User user = new User("wojtek", "wojtek", true, true, new Date(), false);
-		BusinessCtx.getInstance().getUserService().saveOrUpdateUser(user);
-		
-		user = new User("josch", "josch", true, true, new Date(), false);
-		BusinessCtx.getInstance().getUserService().saveOrUpdateUser(user);
+		for(User user : adminUsers){
+			BusinessCtx.getInstance().getUserService().saveOrUpdateUser(user);
+		}
 	}
 
 	@Override

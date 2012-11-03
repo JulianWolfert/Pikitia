@@ -22,6 +22,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * 
  * <p>
  * @author Josch Rossa
+ * @author konitzer
  * </p>
  * <p>
  * 02.11.2012
@@ -49,8 +50,8 @@ public class User implements Serializable, UserDetails {
 	@Column(name="isAdmin", nullable=false)
 	private boolean isAdmin;
 	
-	@Column(name="lastUpdateDate", nullable=false)
-	private Date lastUpdateDate;
+	@Column(name="lastUpdateDate")
+	private Date lastUpdateDate = new Date();
 	
 	@Column(name="isDeleted", nullable=false, columnDefinition ="tinyint(1) default 0")
 	private boolean isDeleted;
@@ -61,14 +62,13 @@ public class User implements Serializable, UserDetails {
 	}
 	
 	public User(String username, String password,
-			boolean isNormalUser, boolean isAdmin, Date lastUpdateDate,
+			boolean isNormalUser, boolean isAdmin,
 			boolean isDeleted) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.isNormalUser = isNormalUser;
 		this.isAdmin = isAdmin;
-		this.lastUpdateDate = lastUpdateDate;
 		this.isDeleted = isDeleted;
 	}
 
@@ -119,10 +119,6 @@ public class User implements Serializable, UserDetails {
 
 	public Date getLastUpdateDate() {
 		return lastUpdateDate;
-	}
-
-	public void setLastUpdateDate(Date lastUpdateDate) {
-		this.lastUpdateDate = lastUpdateDate;
 	}
 
 	public boolean isDeleted() {
