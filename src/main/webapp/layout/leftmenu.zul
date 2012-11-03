@@ -47,6 +47,7 @@
 						</menupopup>
 					</menu>
 					<menuitem label="Registrieren" href="registration.zul"/>
+					<menuitem label="Login" href="admin/index.zul"/>
 				</menubar>
 			</vbox>
 		</panelchildren>
