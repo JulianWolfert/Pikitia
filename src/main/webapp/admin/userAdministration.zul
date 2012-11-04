@@ -33,6 +33,9 @@
 										<listhead>
 											<listheader label="Name" />
 											<listheader label="Stand" />
+											<listheader>
+												<button label="Anlegen" />
+											</listheader>
 										</listhead>
 										<template name="model"
 											var="user">
@@ -41,15 +44,15 @@
 													label="@load(user.username)" />
 												<listcell
 													label="@load(user.lastUpdateDate)" />
+												<listcell>
+													<button
+														label="Löschen"
+														onClick="@command('deleteUser',user=user)" />
+												</listcell>
 											</listitem>
 										</template>
-
 									</listbox>
 									<grid vflex="true" hflex="1">
-										<columns>
-											<column label="Items" />
-											<column label="Content" />
-										</columns>
 										<rows>
 											<row>
 												<label value="Name" />

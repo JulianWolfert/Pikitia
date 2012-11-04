@@ -1,46 +1,84 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
 
+import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.dao.User;
 
+/**
+ * 
+ * @author Peter Horn
+ *
+ */
 public class UserAdministrationVM {
-	private User selectedUser;
-	private List<User> users = BusinessCtx.getInstance().getUserService()
-			.getAllUser();
+	private class UserModelList extends ListModelList<User>{
+		private static final long serialVersionUID = 1L;
+		private User selectedUser=null;
+
+		public UserModelList(Collection<User> userList) {
+			super(userList);
+		}
+		
+		public void setSelectedUser(User selectedUser){
+			this.selectedUser=selectedUser;
+			ArrayList<User> list = new ArrayList<>();
+			list.add(selectedUser);
+			this.setSelection(list);
+		}
+		
+		public User getSelectedUser(){
+			return this.selectedUser;
+		}
+	} 
+	private UserModelList userList = new UserModelList(BusinessCtx.getInstance().getUserService().getAllUser()) ;
 
 	@Init
 	public void init() {
-		if (!this.users.isEmpty()) {
-			this.selectedUser = users.get(0);
+		if (!this.userList.isEmpty()) {
+			this.userList.setSelectedUser(userList.get(0));
 		}
 	}
 
-	public List<User> getUserList() {
-		return this.users;
+	public ListModelList<User> getUserList() {
+		return this.userList;
 	}
 
 	public void setSelectedUser(User selected) {
-		this.selectedUser = selected;
+		this.userList.setSelectedUser(selected);
 	}
 
 	public User getSelectedUser() {
-		return this.selectedUser;
+		return this.userList.getSelectedUser();
 	}
 
 	@Command
 	public void updateUser() {
-		BusinessCtx.getInstance().getUserService()
-				.saveOrUpdateUser(this.selectedUser);
+		BusinessCtx.getInstance().getUserService().saveOrUpdateUser(this.getSelectedUser());
 	}
 
 	@Command
-	public void deleteUser() {
-		BusinessCtx.getInstance().getUserService()
-				.deleteUser(this.selectedUser);
+	public void deleteUser(@BindingParam("user") final User user) {
+		Messagebox.show("Benutzer \"" + user.getUsername() + "\" löschen?", "Benutzer löschen", Messagebox.YES | Messagebox.NO, Messagebox.QUESTION, new EventListener<Event>() {
+			@Override
+			public void onEvent(Event event) throws Exception {
+				if (((Integer) event.getData()).intValue() == Messagebox.YES) {
+					BusinessCtx.getInstance().getUserService().deleteUser(user);
+					UserAdministrationVM.this.userList.remove(user);
+					if (!UserAdministrationVM.this.userList.isEmpty()) {
+						UserAdministrationVM.this.userList.setSelectedUser(UserAdministrationVM.this.userList.get(0));
+					}
+					return;
+				}
+			}
+		});
 	}
 }
