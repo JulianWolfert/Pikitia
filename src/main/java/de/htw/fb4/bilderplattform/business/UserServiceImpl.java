@@ -44,15 +44,13 @@ class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	@Transactional
 	public void deleteUser(User user) {
 		if (user == null) {
 			return;
 		}
 		UserDAOImpl userDAO = ApplicationContextProvider
 				.getApplicationContext().getBean("userDao", UserDAOImpl.class);
-		user.setIsDeleted(true);
-		userDAO.saveUser(user);
+		userDAO.deleteUser(user);
 	}
 
 }
