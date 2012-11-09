@@ -32,12 +32,7 @@
 					</menu>
 					<menu label="Mein Bereich">
 						<menupopup>
-							<menu label="Meine Daten">
-								<menupopup>
-									<menuitem label="Persönliche Daten" />
-									<menuitem label="Login ändern" />
-								</menupopup>
-							</menu>
+							<menuitem label="Meine Daten" href="user/userUpdate.zul" />
 							<menu label="Meine Bilder">
 								<menupopup>
 									<menuitem label="Übersicht" />

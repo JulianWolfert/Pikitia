@@ -1,0 +1,95 @@
+<?page title="Änderung Ihrer Account-Daten" contentType="text/html;charset=UTF-8"?>
+<zk>
+<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('update_vm') @init('de.htw.fb4.bilderplattform.view.vm.UserUpdateVM')"
+		validationMessages="@id('vmsgs')"
+		form="@id('fx')  @load (update_vm.user) @save(update_vm.user, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.UserUpdateValidator', retypedPassword=update_vm.retypedPassword)">
+		<borderlayout sclass="complex-layout" height="810px">
+			<!-- header -->
+			<north size="90px" border="0">
+				<include src="/layout/header.zul" />
+			</north>
+			<!-- left menu -->
+			<west width="200px" border="0" flex="true" splittable="true"
+				margins="0,5,0,0">
+				<include src="/layout/leftmenu.zul" />
+			</west>
+			<!-- right menu -->
+			<east width="130px" title="Quick Links" flex="true">
+				<include src="/layout/rightmenu.zul" />
+			</east>
+			<!-- content -->
+			<center>
+				<borderlayout sclass="inner-border">
+					<center border="0" margins="0,3,3,3">
+						<panel title="Änderung Ihrer Account-Daten" border="normal"
+							height="100%">
+							<panelchildren>
+								<grid>
+									<columns>
+										<column width="200px" />
+										<column />
+									</columns>
+									<rows>
+										<row>
+											Benutzername
+											<cell>
+												<textbox 
+													value="@bind(fx.username)"
+													width="150px" tabindex="1" />
+												<label class="error"
+													value="@load(vmsgs['username'])" />
+											</cell>
+										</row>
+										<row>
+											Passwort
+											<textbox type="password"
+												value="@bind(fx.password)" width="150px" tabindex="2" />
+										</row>
+										<row>
+											Passwortwiederholung
+											<cell>
+												<textbox type="password"
+													value="@bind(update_vm.retypedPassword)"
+													width="150px" tabindex="3" />
+												<label class="error"
+													value="@load(vmsgs['password'])" />
+											</cell>
+										</row>
+										<row>
+											Email:
+											<cell>
+												<textbox
+													value="@bind(fx.email)" width="150px" tabindex="4" />
+												<label class="error"
+													value="@load(vmsgs['email'])" />
+											</cell>
+										</row>
+										<row>
+											<cell colspan="3"
+												style="text-align:center">
+												<vlayout>
+													<label
+														visible="@load(empty vmsgs)"
+														value="@load(empty vmsgs ? 'Änderungen erfolgreich gespeichert!' : '', before='submit')" />
+													<button
+														label="Änderungen speichern" onClick="@command('submit')" width="150px"
+														height="30px" />
+												</vlayout>
+											</cell>
+										</row>
+									</rows>
+								</grid>
+							</panelchildren>
+						</panel>
+					</center>
+				</borderlayout>
+			</center>
+			<!-- footer -->
+			<south size="40px" border="0"
+				style="background: none repeat scroll 0 0 ;">
+				<include src="/layout/footer.zul" />
+			</south>
+		</borderlayout>
+	</div>
+</zk>
