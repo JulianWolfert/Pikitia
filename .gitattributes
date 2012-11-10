@@ -4,6 +4,7 @@
 .settings/org.eclipse.m2e.core.prefs -text
 /pom.xml -text
 src/main/java/de/htw/fb4/bilderplattform/business/BusinessCtx.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/IMessageService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/ITestService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IUserService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/MessageServiceImpl.java -text
