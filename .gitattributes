@@ -9,6 +9,7 @@ src/main/java/de/htw/fb4/bilderplattform/business/IUserService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/TestServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/UserServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/AbstractDAO.java -text
+src/main/java/de/htw/fb4/bilderplattform/dao/Message.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Picture.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Test.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/TestDAOImpl.java -text
