@@ -56,12 +56,12 @@
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 	
-	<bean id="userDao" class="de.htw.fb4.bilderplattform.dao.UserDAOImpl">
-		<property name="sessionFactory" ref="mySessionFactory" />
+	<bean id="msgDao" class="de.htw.fb4.bilderplattform.dao.MessageDAOImpl"> 
+	    <property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 	
-	<bean id="messageDao" class="de.htw.fb4.bilderplattform.dao.MessageDAOImpl"> 
-	    <property name="sessionFactory" ref="mySessionFactory" />
+	<bean id="userDao" class="de.htw.fb4.bilderplattform.dao.UserDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 
 </beans>

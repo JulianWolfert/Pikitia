@@ -1,11 +1,6 @@
 package de.htw.fb4.bilderplattform.dao;
 
-import java.util.List;
-
-import org.hibernate.Query;
 import org.springframework.transaction.annotation.Transactional;
-
-import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
 
 /************************************************
  * <p>message DAO</p>
@@ -21,7 +16,6 @@ public class MessageDAOImpl extends AbstractDAO {
 
 	@Transactional
 	public void saveMessage(Message message) {
-		
 		sessionFactory.getCurrentSession().saveOrUpdate(message);
 	}
 	

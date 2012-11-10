@@ -6,9 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -59,14 +57,14 @@ public class Message implements java.io.Serializable {
 	
 	
 	// constructor for starting a new conversation
-	public Message(Integer idSender, Integer idReceiver, String title, String text) {
-		
-		// find the last topicId and increment it by 1
-		this.idSender = idSender;
-		this.idReceiver = idReceiver;
-		this.title = title;
-		this.text = text;
-	}
+//	public Message(Integer idSender, Integer idReceiver, String title, String text) {
+//		
+//		// find the last topicId and increment it by 1
+//		this.idSender = idSender;
+//		this.idReceiver = idReceiver;
+//		this.title = title;
+//		this.text = text;
+//	}
 	
 	// constructor for replying to an existent message
 	public Message(Integer idSender, Integer idReceiver, Integer idTopic, String title, String text) {

@@ -3,7 +3,6 @@ package de.htw.fb4.bilderplattform.business;
 import java.util.Calendar;
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
 
 import de.htw.fb4.bilderplattform.dao.Message;
 import de.htw.fb4.bilderplattform.dao.MessageDAOImpl;
@@ -13,13 +12,11 @@ class MessageServiceImpl implements IMessageService {
 
 	
 	@Override
-	@Transactional
 	public void saveMessage(Message message){
 		if(message == null){
 			return;
 		}
-		MessageDAOImpl messageDAO = ApplicationContextProvider
-				.getApplicationContext().getBean("messageDAO", MessageDAOImpl.class);
+		MessageDAOImpl messageDAO = ApplicationContextProvider.getApplicationContext().getBean("msgDao", MessageDAOImpl.class);
 		messageDAO.saveMessage(message);
 	}
 	
