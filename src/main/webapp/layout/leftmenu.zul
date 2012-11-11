@@ -32,7 +32,7 @@
 					</menu>
 					<menu label="Mein Bereich">
 						<menupopup>
-							<menuitem label="Meine Daten" href="user/userUpdate.zul" />
+							<menuitem label="Meine Daten" href="userUpdate.zul" />
 							<menu label="Meine Bilder">
 								<menupopup>
 									<menuitem label="Übersicht" />
