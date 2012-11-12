@@ -41,6 +41,8 @@ src/main/webapp/admin/index.zul -text
 src/main/webapp/admin/userAdministration.zul -text
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
 src/main/webapp/images/Logo.png -text
+src/main/webapp/images/add_small.png -text
+src/main/webapp/images/delete_small.png -text
 src/main/webapp/index.zul -text
 src/main/webapp/layout/footer.zul -text
 src/main/webapp/layout/header.zul -text
