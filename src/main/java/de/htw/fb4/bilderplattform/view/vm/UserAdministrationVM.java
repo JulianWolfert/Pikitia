@@ -19,7 +19,7 @@ import de.htw.fb4.bilderplattform.dao.User;
  * @author Peter Horn
  *
  */
-public class UserAdministrationVM {
+public class UserAdministrationVM extends WebsiteLayoutVM{
 	private class UserModelList extends ListModelList<User>{
 		private static final long serialVersionUID = 1L;
 		private User selectedUser=null;

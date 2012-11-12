@@ -4,16 +4,16 @@
 		<borderlayout sclass="complex-layout" height="810px">
 			<!-- header -->
 			<north size="150px" border="0">
-				<!-- <include src="/layout/header.zul" /> -->
+				<include src="/layout/header.zul" />
 			</north>
 			<!-- left menu -->
 			<west width="200px" border="0" flex="true" splittable="true"
 				margins="0,5,0,0">
-				<!-- <include src="/layout/leftmenu.zul" /> -->
+				<include src="/layout/leftmenu.zul" />
 			</west>
 			<!-- right menu -->
 			<east width="130px" title="Quick Links" flex="true">
-				<!-- <include src="/layout/rightmenu.zul" /> -->
+				<include src="/layout/rightmenu.zul" />
 			</east>
 			<!-- Content -->
 			<center>
@@ -33,8 +33,13 @@
 										<listhead>
 											<listheader label="Name" />
 											<listheader label="Stand" />
-											<listheader>
-												<button label="Anlegen" />
+											<listheader width="64px"
+												align="center">
+												<a
+													href="/registration.zul">
+													<image
+														src="/images/add_small.png" />
+												</a>
 											</listheader>
 										</listhead>
 										<template name="model"
@@ -45,8 +50,8 @@
 												<listcell
 													label="@load(user.lastUpdateDate)" />
 												<listcell>
-													<button
-														label="Löschen"
+													<image
+														src="/images/delete_small.png"
 														onClick="@command('deleteUser',user=user)" />
 												</listcell>
 											</listitem>
