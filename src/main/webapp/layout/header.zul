@@ -3,5 +3,5 @@
 		<textbox sclass="demo-search-inp" value="@bind(vm.search)" />
 		<button label="Search ZK Resource" onClick="@command('search')" />
 	</div>
-	Bilderplattform-Logo	
+	<image src="/images/Logo.png"/>	
 </div>

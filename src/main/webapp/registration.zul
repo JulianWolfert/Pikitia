@@ -5,7 +5,7 @@
 		form="@id('fx')  @save(registration_vm.user, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.RegistrationValidator', retypedPassword=registration_vm.retypedPassword)">
 		<borderlayout sclass="complex-layout" height="810px">
 			<!-- header -->
-			<north size="90px" border="0">
+			<north size="150px" border="0">
 				<include src="/layout/header.zul" />
 			</north>
 			<!-- left menu -->

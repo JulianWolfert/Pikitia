@@ -40,6 +40,7 @@ src/main/webapp/WEB-INF/zk.xml -text
 src/main/webapp/admin/index.zul -text
 src/main/webapp/admin/userAdministration.zul -text
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
+src/main/webapp/images/Logo.png -text
 src/main/webapp/index.zul -text
 src/main/webapp/layout/footer.zul -text
 src/main/webapp/layout/header.zul -text
@@ -50,4 +51,4 @@ src/main/webapp/registration.zul -text
 src/main/webapp/test.zul -text
 src/main/webapp/timeout.zul -text
 src/main/webapp/user/index.zul -text
-src/main/webapp/userUpdate.zul -text
+src/main/webapp/user/userUpdate.zul -text

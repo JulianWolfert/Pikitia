@@ -3,7 +3,7 @@
 		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.UserAdministrationVM')">
 		<borderlayout sclass="complex-layout" height="810px">
 			<!-- header -->
-			<north size="90px" border="0">
+			<north size="150px" border="0">
 				<!-- <include src="/layout/header.zul" /> -->
 			</north>
 			<!-- left menu -->
