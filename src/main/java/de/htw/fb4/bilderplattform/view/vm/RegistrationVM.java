@@ -39,6 +39,7 @@ public class RegistrationVM {
 	@NotifyChange("newUser")
 	@Command
 	public void submit() {
+		user.setIsNormalUser(true);
 		BusinessCtx.getInstance().getUserService().saveOrUpdateUser(user);
 	}
 }

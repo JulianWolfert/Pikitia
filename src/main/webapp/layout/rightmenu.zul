@@ -1,19 +1,8 @@
 <vlayout>
 	<html>
 
-		
-		<![CDATA[ <ul> <li>Tutorial</li> <li>Docs</li> <li>ZK vs
-		GWT</li> <li>ZK vs Ajax JSF</li> <li>Forum</li> <li>FAQ</li>
-		<li>Contact us</li> </ul> ]]>
-		
-			
-					</html>
+	</html>
 	<vlayout style="text-align:center;">
-		<a href="http://www.zkoss.org/download/zk/ce" sclass="dl-link"
-			target="_zkdemo">
-			<image src="/images/DownloadNow.jpg" />
-		</a>
-		<toolbarbutton label="Download"
-			href="http://www.zkoss.org/download/zk/ce" target="_zkdemo" />
+
 	</vlayout>
 </vlayout>
