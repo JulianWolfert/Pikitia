@@ -36,7 +36,7 @@ public class UserUpdateValidator extends AbstractValidator{
 			//TODO: changing regex
 			if (!username.matches("[A-Za-z0-9]+")) {
 				this.addInvalidMessage(ctx, "username",
-						"Der Benutzername enthält ungültige Zeichen!");
+						"Der Benutzername enth\u00e4lt ung\u00fcltige Zeichen!");
 			}else if(username.length() < 4){
 				this.addInvalidMessage(ctx, "username",
 						"Der Benutzername ist zu kurz!");
@@ -48,7 +48,7 @@ public class UserUpdateValidator extends AbstractValidator{
 			String retype) {
 		if (password == null || retype == null || (!password.equals(retype))) {
 			this.addInvalidMessage(ctx, "password",
-					"Ihre Passwörter stimmen nicht überein!");
+					"Ihre Passw\u00f6rter stimmen nicht \u00fcberein!");
 		}else if(!password.matches("^\\S{6,}$")){
 			this.addInvalidMessage(ctx, "password",
 					"Ihr Passwort ist zu kurz!");
@@ -58,7 +58,7 @@ public class UserUpdateValidator extends AbstractValidator{
 	private void validateEmail(ValidationContext ctx, String email) {
 		if (email == null || !email.matches(".+@.+\\.[a-z]+")) {
 			this.addInvalidMessage(ctx, "email",
-					"Bitte geben Sie eine gültige Email Adresse ein!");
+					"Bitte geben Sie eine g\u00fcltige Email Adresse ein!");
 		}
 	}
 	
