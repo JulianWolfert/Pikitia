@@ -64,4 +64,14 @@
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 
+	<bean id="appProperties" class="de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil">
+	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+	    <property name="locations">
+	    <list>
+	        <value>WEB-INF/classes/mail.properties</value>
+	        <value>WEB-INF/classes/errors.properties</value>
+	    </list>
+	    </property>
+	</bean>
+
 </beans>
