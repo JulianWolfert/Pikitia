@@ -2,4 +2,6 @@
 /.metadata
 /.settings
 src/main/resources
+src/main/resources/config
+src/main/resources/log4j.properties
 /target
