@@ -19,6 +19,7 @@ public class BusinessCtx {
 	private ITestService testService; 
 	private IUserService userService;
 	private IMessageService messageService;
+	private IMailService mailService;
 	
 	// singleton getter
 	public static BusinessCtx getInstance() {
@@ -42,6 +43,12 @@ public class BusinessCtx {
 		if(messageService == null)
 			this.messageService = new MessageServiceImpl();
 		return messageService;
+	}
+	
+	public IMailService getMailService() {
+		if(mailService == null)
+			this.mailService = new MailServiceImpl();
+		return mailService;
 	}
 	
 }

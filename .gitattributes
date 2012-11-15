@@ -4,12 +4,16 @@
 .settings/org.eclipse.m2e.core.prefs -text
 /pom.xml -text
 src/main/java/de/htw/fb4/bilderplattform/business/BusinessCtx.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/IMailService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IMessageService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/ITestService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IUserService.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/MailServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/MessageServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/TestServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/UserServiceImpl.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/mail/IMail.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/mail/MailImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/AbstractDAO.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Message.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/MessageDAOImpl.java -text
@@ -19,6 +23,7 @@ src/main/java/de/htw/fb4/bilderplattform/dao/TestDAOImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/User.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/UserDAOImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/spring/DBInitialization.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/spring/SpringPropertiesUtil.java -text
 src/main/java/de/htw/fb4/bilderplattform/spring/SpringUserProviderService.java -text
 src/main/java/de/htw/fb4/bilderplattform/spring/context/ApplicationContextProvider.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/TestCodebehind.java -text
