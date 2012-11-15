@@ -8,6 +8,7 @@ import org.zkoss.bind.ValidationContext;
 import org.zkoss.bind.validator.AbstractValidator;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
  * 
@@ -65,8 +66,7 @@ public class RegistrationValidator extends AbstractValidator {
 
 	private void validateEmail(ValidationContext ctx, String email) {
 		if (email == null || !email.matches(".+@.+\\.[a-z]+")) {
-			this.addInvalidMessage(ctx, "email",
-					"Bitte geben Sie eine g\u00fcltige Email Adresse ein!");
+			this.addInvalidMessage(ctx, "email", SpringPropertiesUtil.getProperty("err.chooseValidMail"));
 		}
 	}
 
