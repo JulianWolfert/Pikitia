@@ -1,9 +1,5 @@
 package de.htw.fb4.bilderplattform.business;
 
-import java.util.Calendar;
-import java.util.List;
-
-
 import de.htw.fb4.bilderplattform.dao.Message;
 import de.htw.fb4.bilderplattform.dao.MessageDAOImpl;
 import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;

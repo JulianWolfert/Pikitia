@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -28,7 +29,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * <p>
  * 
  * @author Josch Rossa
- * @author konitzer
+ * @author Wojciech Konitzer
  *         </p>
  *         <p>
  *         02.11.2012
@@ -64,6 +65,9 @@ public class User implements Serializable, UserDetails {
 
 	@Column(name = "isDeleted", nullable = false, columnDefinition = "tinyint(1) default 0")
 	private boolean isDeleted = false;
+	
+	@OneToMany(mappedBy="user")
+	private List<Image> images = new ArrayList<Image>();
 
 	public User() {
 		super();
@@ -150,6 +154,14 @@ public class User implements Serializable, UserDetails {
 
 	public void setIsDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+	
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
 	@Override

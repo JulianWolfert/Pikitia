@@ -11,7 +11,7 @@ import de.htw.fb4.bilderplattform.dao.User;
 
 /**
  * 
- * @author konitzer
+ * @author Wojciech Konitzer
  * 
  */
 public class RegistrationVM {

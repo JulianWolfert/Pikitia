@@ -13,7 +13,7 @@ import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
  * @since 07.11.2012
- * @author Julian Wolfert & konitzer
+ * @author Julian Wolfert & Wojciech Konitzer
  * 
  */
 public class UserUpdateValidator extends AbstractValidator{

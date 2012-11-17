@@ -28,9 +28,9 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
 				<prop key="hibernate.show_sql">false</prop>
 				<!-- create database tables -->
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<!--  <prop key="hibernate.hbm2ddl.auto">create</prop>-->
 				<!-- only update -->
-<!-- 				<prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 <!-- 				<prop key="hibernate.current_session_context_class">thread</prop> -->
 			</props>
 		</property>
@@ -40,6 +40,7 @@
 				<value>de.htw.fb4.bilderplattform.dao.Test</value>
 				<value>de.htw.fb4.bilderplattform.dao.User</value>
 				<value>de.htw.fb4.bilderplattform.dao.Message</value>
+				<value>de.htw.fb4.bilderplattform.dao.Image</value>
 			</list>
 		</property>
 	</bean>
@@ -61,6 +62,10 @@
 	</bean>
 	
 	<bean id="userDao" class="de.htw.fb4.bilderplattform.dao.UserDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="imageDao" class="de.htw.fb4.bilderplattform.dao.ImageDAOImpl">
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 

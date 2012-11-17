@@ -12,7 +12,9 @@ import de.htw.fb4.bilderplattform.dao.User;
 
 /**
  * 
- * @author konitzer
+ * @author Wojciech Konitzer
+ * 
+ * TODO: moving to correct directory
  *
  */
 public class DBInitialization implements InitializingBean{
@@ -21,7 +23,7 @@ public class DBInitialization implements InitializingBean{
 	private final static List<Message> initialMessages = new ArrayList<Message>();
 	
 	public DBInitialization(){
-		adminUsers.add(new User("wojtek", "wojtek", "w.konitzer@gmx.de", true, true, false));
+		adminUsers.add(new User("wojtek", "wojtek", "w.konitzer@gmx.de", true, false, false));
 		adminUsers.add(new User("josch", "josch", "s0537867@htw-berlin.de", true, true, false));
 		adminUsers.add(new User("peter", "peter", "s0523841@htw-berlin.de", true, true, false));
 		adminUsers.add(new User("ben", "ben", "s0528397@htw-berlin.de", true, true, false));
