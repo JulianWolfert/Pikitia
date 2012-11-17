@@ -13,6 +13,8 @@ import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
 /**
  * 
  * @author Wojciech Konitzer
+ * 
+ * 17.11.2012
  *
  */
 public class ImageServiceImpl implements IImageService {
@@ -32,7 +34,6 @@ public class ImageServiceImpl implements IImageService {
 		return imageDAO.getAllImages();
 	}
 
-	//TODO: Saving in directory
 	@Override
 	public void saveOrUpdateImage(Image image) {
 		if (image == null) {
