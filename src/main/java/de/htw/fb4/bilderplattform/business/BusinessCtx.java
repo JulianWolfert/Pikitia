@@ -3,8 +3,8 @@ package de.htw.fb4.bilderplattform.business;
 /************************************************
  * <p>gives access to all business services</p>
  * <p>
- * @author Josch Rossa
- * 		   ben
+ * @author Josch Rossa,
+ * 		   ben, konitzer
  * </p>
  * <p>
  * 24.10.2012
@@ -20,6 +20,7 @@ public class BusinessCtx {
 	private IUserService userService;
 	private IMessageService messageService;
 	private IMailService mailService;
+	private IImageService imageService;
 	
 	// singleton getter
 	public static BusinessCtx getInstance() {
@@ -49,6 +50,12 @@ public class BusinessCtx {
 		if(mailService == null)
 			this.mailService = new MailServiceImpl();
 		return mailService;
+	}
+	
+	public IImageService getIImageService() {
+		if(imageService == null)
+			this.imageService = new ImageServiceImpl();
+		return imageService;
 	}
 	
 }

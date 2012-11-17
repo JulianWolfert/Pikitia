@@ -19,15 +19,18 @@ import de.htw.fb4.bilderplattform.dao.User;
  */
 public class DBInitialization implements InitializingBean{
 	
-	private final static List<User> adminUsers = new ArrayList<User>();
+	private final static List<User> users = new ArrayList<User>();
 	private final static List<Message> initialMessages = new ArrayList<Message>();
 	
 	public DBInitialization(){
-		adminUsers.add(new User("wojtek", "wojtek", "w.konitzer@gmx.de", true, false, false));
-		adminUsers.add(new User("josch", "josch", "s0537867@htw-berlin.de", true, true, false));
-		adminUsers.add(new User("peter", "peter", "s0523841@htw-berlin.de", true, true, false));
-		adminUsers.add(new User("ben", "ben", "s0528397@htw-berlin.de", true, true, false));
-		adminUsers.add(new User("julian", "julian", "bla@htw-berlin.de", true, true, false));
+		//add normal users
+		users.add(new User("wojtek", "wojtek", "w.konitzer@gmx.de", true, false, false));
+		
+		//add admin users
+		users.add(new User("josch", "josch", "s0537867@htw-berlin.de", true, true, false));
+		users.add(new User("peter", "peter", "s0523841@htw-berlin.de", true, true, false));
+		users.add(new User("ben", "ben", "s0528397@htw-berlin.de", true, true, false));
+		users.add(new User("julian", "julian", "bla@htw-berlin.de", true, true, false));
 		
 		initialMessages.add(new Message(4, 3, 1, "Titel_01", "Text_01"));
 		initialMessages.add(new Message(4, 3, 1, "Titel_02", "Text_02"));
@@ -35,8 +38,8 @@ public class DBInitialization implements InitializingBean{
 		initialMessages.add(new Message(3, 4, 1, "Titel_04", "Text_04"));
 	}
 	
-	private void createAdminUsers(){
-		for(User user : adminUsers){
+	private void createUsers(){
+		for(User user : users){
 			BusinessCtx.getInstance().getUserService().saveOrUpdateUser(user);
 		}
 	}
@@ -49,7 +52,7 @@ public class DBInitialization implements InitializingBean{
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		createAdminUsers();
+		createUsers();
 		createInitialMessages();
 	}
 }

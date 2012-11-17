@@ -4,7 +4,7 @@
 			<vbox>
 				<menubar id="menubar" orient="vertical"
 					autodrop="true">
-					<menuitem label="Start" href="/index.zul"/>
+					<menuitem label="Start" href="/index.zul" />
 					<menu label="Bilder">
 						<menupopup>
 							<menu label="Kaufen">
@@ -32,51 +32,25 @@
 					</menu>
 					<menu label="Mein Bereich">
 						<menupopup>
-							<menuitem label="Meine Daten" href="/user/userUpdate.zul" />
+							<menuitem label="Meine Daten"
+								href="/user/userUpdate.zul" />
 							<menu label="Meine Bilder">
 								<menupopup>
 									<menuitem label="Übersicht" />
-									<menuitem label="Bild hochladen" />
+									<menuitem label="Bild hochladen"
+										href="/user/imageUpload.zul" />
 								</menupopup>
 							</menu>
 						</menupopup>
 					</menu>
-					<menuitem label="Registrieren" href="/registration.zul"/>
-					<menuitem label="Login" href="/admin/index.zul"/>
+					<menuitem label="Registrieren"
+						href="/registration.zul" />
+					<!-- Erstmal so zu Testzwecken -->
+					<menuitem label="Admin Login"
+						href="/admin/index.zul" />
+					<menuitem label="User Login" href="/user/index.zul" />
 				</menubar>
 			</vbox>
-		</panelchildren>
-	</panel>
-	<panel width="100%" border="normal" title="Why ZK ? ">
-		<panelchildren>
-			<html>
-
-
-				
-				<![CDATA[ <ul> <li>Productivity</li> <li>Security</li>
-				<li>Performance</li> <li>Totally Control</li> <li>Auto
-				Testing</li> <li>Scalability</li> <li>Flexibility</li>
-				</ul> ]]>
-				
-				
-					
-							</html>
-		</panelchildren>
-	</panel>
-	<panel width="100%" border="normal" title="Features">
-		<panelchildren>
-			<html>
-
-
-				
-				<![CDATA[ <ul> <li>Server+client Fusion</li>
-				<li>Ajax-as-a-Service</li> <li>The Event Queue</li>
-				<li>jQuery Based</li> <li>SEO Friendly</li> <li>Auto
-				Testing</li> </ul> ]]>
-				
-				
-					
-							</html>
 		</panelchildren>
 	</panel>
 </vlayout>

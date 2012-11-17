@@ -1,6 +1,42 @@
 <?page title="TestUserPage" contentType="text/html;charset=UTF-8"?>
 <zk>
-<window title="TestUserPage" border="normal">
-	<label value="I am User"></label>
-</window>
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.WebsiteLayoutVM')">
+		<borderlayout sclass="complex-layout" height="810px">
+			<!-- header -->
+			<north size="150px" border="0">
+				<include src="/layout/header.zul" />
+			</north>
+			<!-- left menu -->
+			<west width="200px" border="0" flex="true" splittable="true"
+				margins="0,5,0,0">
+				<include src="/layout/leftmenu.zul" />
+			</west>
+			<!-- right menu -->
+			<east width="130px" title="Quick Links" flex="true">
+				<include src="/layout/rightmenu.zul" />
+			</east>
+			<!-- Content -->
+			<center>
+				<borderlayout sclass="inner-border">
+					<center border="0" margins="0,3,3,3">
+						<panel title="Bildergalerie" border="normal"
+							height="100%">
+							<panelchildren>
+								<window title="TestUserPage"
+									border="normal">
+									<label value="I am User"></label>
+								</window>
+							</panelchildren>
+						</panel>
+					</center>
+				</borderlayout>
+			</center>
+			<!-- footer -->
+			<south size="40px" border="0"
+				style="background: none repeat scroll 0 0 ;">
+				<include src="/layout/footer.zul" />
+			</south>
+		</borderlayout>
+	</div>
 </zk>

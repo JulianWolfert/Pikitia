@@ -55,4 +55,8 @@ public class ImageServiceImpl implements IImageService {
 		imageDAO.deleteImage(image);
 	}
 
+	//TODO: image upload to directory
+	private void uploadImageToDirectory(){
+		
+	}
 }
