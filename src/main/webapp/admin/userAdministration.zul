@@ -61,10 +61,8 @@
 										<rows>
 											<row>
 												<label value="Name" />
-												<textbox
-													onChange="@command('updateUser')"
-													value="@bind(vm.selectedUser.username)"
-													constraint="no empty: Bitte Name eingeben" />
+												<label
+													value="@load(vm.selectedUser.username)" />
 											</row>
 											<row>
 												<label value="Passwort" />
