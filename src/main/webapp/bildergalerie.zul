@@ -65,9 +65,59 @@
 	    
 	</script>
 
+	<n:style type="text/css">
+		ul#demo-block{ margin:0 15px 15px 15px; }
+			ul#demo-block li{ margin:0 0 10px 0; padding:10px; display:inline; float:left; clear:both; color:#aaa; background:url('img/bg-black.png'); font:11px Helvetica, Arial, sans-serif; }
+			ul#demo-block li a{ color:#eee; font-weight:bold; }
+	</n:style>
+
 <window title="new page title" border="normal">
 
 	<button id="_pcm1"></button>
+
+	<!--Thumbnail Navigation-->
+	<n:div id="prevthumb"></n:div>
+	<n:div id="nextthumb"></n:div>
+	
+	<!--Arrow Navigation-->
+	<n:a id="prevslide" class="load-item"></n:a>
+	<n:a id="nextslide" class="load-item"></n:a>
+	
+	<n:div id="thumb-tray" class="load-item">
+		<n:div id="thumb-back"></n:div>
+		<n:div id="thumb-forward"></n:div>
+	</n:div>
+	
+	<!--Time Bar-->
+	<n:div id="progress-back" class="load-item">
+		<n:div id="progress-bar"></n:div>
+	</n:div>
+	
+	<!--Control Bar-->
+	<n:div id="controls-wrapper" class="load-item">
+		<n:div id="controls">
+			
+			<n:a id="play-button">
+				<n:img id="pauseplay" src="divers/img/pause.png"/>
+			</n:a>
+		
+			<!--Slide counter-->
+			<n:div id="slidecounter">
+				<n:span class="slidenumber"></n:span> / <n:span class="totalslides"></n:span>
+			</n:div>
+			
+			<!--Slide captions displayed here-->
+			<n:div id="slidecaption"></n:div>
+			
+			<!--Thumb Tray button-->
+			<n:a id="tray-button"><n:img id="tray-arrow" src="divers/img/button-tray-up.png"/></n:a>
+			
+			<!--Navigation-->
+			<n:ul id="slide-list"></n:ul>
+			
+		</n:div>
+	</n:div>
+	
 
 </window>
 </zk>

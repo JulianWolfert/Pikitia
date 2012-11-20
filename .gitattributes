@@ -52,6 +52,22 @@ src/main/webapp/admin/userAdministration.zul -text
 src/main/webapp/bildergalerie.zul -text
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
 src/main/webapp/divers/css/supersized.css -text
+src/main/webapp/divers/img/back.png -text
+src/main/webapp/divers/img/bg-black.png -text
+src/main/webapp/divers/img/bg-hover.png -text
+src/main/webapp/divers/img/button-tray-down.png -text
+src/main/webapp/divers/img/button-tray-up.png -text
+src/main/webapp/divers/img/forward.png -text
+src/main/webapp/divers/img/nav-bg.png -text
+src/main/webapp/divers/img/nav-dot.png -text
+src/main/webapp/divers/img/pause.png -text
+src/main/webapp/divers/img/play.png -text
+src/main/webapp/divers/img/progress-back.png -text
+src/main/webapp/divers/img/progress-bar.png -text
+src/main/webapp/divers/img/progress.gif -text
+src/main/webapp/divers/img/supersized-logo.png -text
+src/main/webapp/divers/img/thumb-back.png -text
+src/main/webapp/divers/img/thumb-forward.png -text
 src/main/webapp/divers/js/jquery.easing.min.js -text
 src/main/webapp/divers/js/supersized.3.2.7.js -text
 src/main/webapp/divers/js/supersized.3.2.7.min.js -text
