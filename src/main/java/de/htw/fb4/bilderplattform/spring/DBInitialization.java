@@ -31,6 +31,7 @@ public class DBInitialization implements InitializingBean{
 		users.add(new User("peter", "peter", "s0523841@htw-berlin.de", true, true, false));
 		users.add(new User("ben", "ben", "s0528397@htw-berlin.de", true, true, false));
 		users.add(new User("julian", "julian", "bla@htw-berlin.de", true, true, false));
+		users.add(new User("jonathan", "jonathan", "s0538298@htw-berlin.de", true, true, false));
 		
 		initialMessages.add(new Message(4, 3, 1, "Titel_01", "Text_01"));
 		initialMessages.add(new Message(4, 3, 1, "Titel_02", "Text_02"));
