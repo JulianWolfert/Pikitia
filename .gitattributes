@@ -49,7 +49,15 @@ src/main/webapp/WEB-INF/web.xml -text
 src/main/webapp/WEB-INF/zk.xml -text
 src/main/webapp/admin/index.zul -text
 src/main/webapp/admin/userAdministration.zul -text
+src/main/webapp/bildergalerie.zul -text
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
+src/main/webapp/divers/css/supersized.css -text
+src/main/webapp/divers/js/jquery.easing.min.js -text
+src/main/webapp/divers/js/supersized.3.2.7.js -text
+src/main/webapp/divers/js/supersized.3.2.7.min.js -text
+src/main/webapp/divers/theme/supersized.shutter.css -text
+src/main/webapp/divers/theme/supersized.shutter.js -text
+src/main/webapp/divers/theme/supersized.shutter.min.js -text
 src/main/webapp/images/Logo.png -text
 src/main/webapp/images/add_small.png -text
 src/main/webapp/images/delete_small.png -text
