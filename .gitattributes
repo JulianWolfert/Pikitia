@@ -76,6 +76,7 @@ src/main/webapp/divers/theme/supersized.shutter.js -text
 src/main/webapp/divers/theme/supersized.shutter.min.js -text
 src/main/webapp/images/2.jpg -text
 src/main/webapp/images/Logo.png -text
+src/main/webapp/images/Logo2.png -text
 src/main/webapp/images/add_small.png -text
 src/main/webapp/images/delete_small.png -text
 src/main/webapp/index.zul -text
