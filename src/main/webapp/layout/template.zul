@@ -11,7 +11,7 @@
 
 <n:div id="content_small">
 
-<label value="I am Admin"></label>
+
 
 </n:div>			    
 				
@@ -19,4 +19,3 @@
 
 
 </zk>
-

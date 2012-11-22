@@ -74,14 +74,14 @@ src/main/webapp/divers/js/supersized.3.2.7.min.js -text
 src/main/webapp/divers/theme/supersized.shutter.css -text
 src/main/webapp/divers/theme/supersized.shutter.js -text
 src/main/webapp/divers/theme/supersized.shutter.min.js -text
+src/main/webapp/images/2.jpg -text
 src/main/webapp/images/Logo.png -text
 src/main/webapp/images/add_small.png -text
 src/main/webapp/images/delete_small.png -text
 src/main/webapp/index.zul -text
 src/main/webapp/layout/footer.zul -text
-src/main/webapp/layout/header.zul -text
-src/main/webapp/layout/leftmenu.zul -text
-src/main/webapp/layout/rightmenu.zul -text
+src/main/webapp/layout/header_menu.zul -text
+src/main/webapp/layout/template.zul -text
 src/main/webapp/login.zul -text
 src/main/webapp/registration.zul -text
 src/main/webapp/test.zul -text

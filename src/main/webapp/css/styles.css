@@ -1,3 +1,40 @@
+#header {
+ height: 15%;
+ background: rgb(96,108,136);
+background: -moz-linear-gradient(top, rgba(96,108,136,1) 0%, rgba(63,76,107,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(96,108,136,1)), color-stop(100%,rgba(63,76,107,1)));
+background: -webkit-linear-gradient(top, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+background: -o-linear-gradient(top, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+background: -ms-linear-gradient(top, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+background: linear-gradient(to bottom, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 );	
+}
+#header_image {
+ padding-left: 20px;
+ width: 30%;
+ float: left;
+}
+#header_menu_buttons {
+ width: 50%;
+ float: left;
+}
+#header_search {
+ width: 10%;
+ float: left;
+}
+
+#content {
+	padding-top: 10px;
+}
+
+#content_small {
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
 .container,.z-menubar-hor,.z-menubar-ver {
 	border: 1px solid #D8D8D8;
 	background-color: #FFFFFF;
@@ -50,4 +87,19 @@
 }
 .error {
 	color: red; 
+}
+
+#header_image {
+	width:25%;
+	float:left;
+}
+
+#header_menu_buttons {
+	width:50%;
+	float:left;
+}
+
+#header_search {
+	width:25%;
+	float:left;
 }

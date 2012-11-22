@@ -1,7 +1,0 @@
-<div>
-	<div style="float:right">
-		<textbox sclass="demo-search-inp" value="@bind(vm.search)" />
-		<button label="Suche" onClick="@command('search')" />
-	</div>
-	<image src="/images/Logo.png"/>	
-</div>

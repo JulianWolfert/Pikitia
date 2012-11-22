@@ -1,0 +1,76 @@
+<zk xmlns:n="native" xmlns:c="client">
+<n:div id="header_menu">
+
+	<n:div id="header_image">
+		<image src="/images/Logo.png"/>
+	</n:div>
+	
+	<n:div id="header_menu_buttons">
+	<vbox>
+					<menubar id="menubar" orient="horizontal"
+						autodrop="true">
+						<menuitem label="Start" href="/index.zul" />
+						<menu label="Bilder">
+							<menupopup>
+								<menu label="Kaufen">
+									<menupopup>
+										<menuitem label="Kategorie 1" />
+										<menuitem label="Kategorie 1" />
+										<menuitem label="Kategorie 1" />
+									</menupopup>
+								</menu>
+								<menu label="Verkaufen">
+									<menupopup>
+										<menu label="Devices">
+											<menupopup>
+												<menuitem label="Mouse" />
+												<menuitem label="Keyboards" />
+												<menuitem
+													label="Accessories" />
+											</menupopup>
+										</menu>
+										<menuitem label="Gaming" />
+										<menuitem label="Graphic Tablets" />
+									</menupopup>
+								</menu>
+							</menupopup>
+						</menu>
+						<menu label="Mein Bereich">
+							<menupopup>
+								<menuitem label="Meine Daten"
+									href="/user/userUpdate.zul" />
+								<menu label="Meine Bilder">
+									<menupopup>
+										<menuitem label="Übersicht" />
+										<menuitem label="Bild hochladen"
+											href="/user/imageUpload.zul" />
+									</menupopup>
+								</menu>
+								<menuitem label="User-Testpage"
+									href="/user/index.zul" />
+							</menupopup>
+						</menu>
+						<menu label="Adminbereich">
+							<menupopup>
+								<menuitem label="Admin-Testpage"
+									href="/admin/index.zul" />
+								<menuitem label="User-Administration"
+									href="/admin/userAdministration.zul" />
+							</menupopup>
+						</menu>
+						<menuitem label="Registrieren"
+							href="/registration.zul" />
+						<!-- Erstmal so zu Testzwecken -->
+						<menuitem label="Login"
+							href="/login.zul" />
+					</menubar>
+				</vbox>
+	</n:div>
+	<n:div id="header_search">
+			<textbox sclass="demo-search-inp" value="@bind(vm.search)" />
+			<button label="Suche" onClick="@command('search')" />
+	</n:div>
+
+			
+</n:div>
+</zk>

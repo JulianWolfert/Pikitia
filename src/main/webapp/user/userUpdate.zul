@@ -1,27 +1,20 @@
-<?page title="Änderung Ihrer Account-Daten" contentType="text/html;charset=UTF-8"?>
-<zk>
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:c="client">
+	
+<n:div id="header">
+			
+			<include src="/layout/header_menu.zul" />
+
+</n:div>
+<n:div id="content">
+<n:div id="content_small">
+
 <div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('update_vm') @init('de.htw.fb4.bilderplattform.view.vm.UserUpdateVM')"
 		validationMessages="@id('vmsgs')"
 		form="@id('fx')  @load (update_vm.user) @save(update_vm.user, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.UserUpdateValidator', retypedPassword=update_vm.retypedPassword)">
 		<borderlayout sclass="complex-layout" height="810px">
-			<!-- header -->
-			<north size="150px" border="0">
-				<include src="/layout/header.zul" />
-			</north>
-			<!-- left menu -->
-			<west width="200px" border="0" flex="true" splittable="true"
-				margins="0,5,0,0">
-				<include src="/layout/leftmenu.zul" />
-			</west>
-			<!-- right menu -->
-			<east width="130px" title="Quick Links" flex="true">
-				<include src="/layout/rightmenu.zul" />
-			</east>
-			<!-- content -->
-			<center>
-				<borderlayout sclass="inner-border">
-					<center border="0" margins="0,3,3,3">
+			<center border="0" margins="0,3,3,3">
 						<panel title="Änderung Ihrer Account-Daten" border="normal"
 							height="100%">
 							<panelchildren>
@@ -84,12 +77,11 @@
 						</panel>
 					</center>
 				</borderlayout>
-			</center>
-			<!-- footer -->
-			<south size="40px" border="0"
-				style="background: none repeat scroll 0 0 ;">
-				<include src="/layout/footer.zul" />
-			</south>
-		</borderlayout>
 	</div>
+
+</n:div>
+				
+</n:div>
+
+
 </zk>
