@@ -2,7 +2,7 @@
 <n:div id="header_menu">
 
 	<n:div id="header_image">
-		<image src="/images/Logo.png"/>
+		<image src="/images/Logo2.png"/>
 	</n:div>
 	
 	<n:div id="header_menu_buttons">
