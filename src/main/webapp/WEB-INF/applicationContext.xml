@@ -41,6 +41,12 @@
 				<value>de.htw.fb4.bilderplattform.dao.User</value>
 				<value>de.htw.fb4.bilderplattform.dao.Message</value>
 				<value>de.htw.fb4.bilderplattform.dao.Image</value>
+				<value>de.htw.fb4.bilderplattform.dao.Comment</value>
+				<value>de.htw.fb4.bilderplattform.dao.Purchase</value>
+				<value>de.htw.fb4.bilderplattform.dao.UserPurchase</value>
+				<value>de.htw.fb4.bilderplattform.dao.GuestPurchase</value>
+				<value>de.htw.fb4.bilderplattform.dao.Bankaccount</value>
+				<value>de.htw.fb4.bilderplattform.dao.Purchase_Image</value>
 			</list>
 		</property>
 	</bean>
