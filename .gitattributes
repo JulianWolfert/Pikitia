@@ -17,14 +17,20 @@ src/main/java/de/htw/fb4/bilderplattform/business/UserServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/mail/IMail.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/mail/MailImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/AbstractDAO.java -text
+src/main/java/de/htw/fb4/bilderplattform/dao/Bankaccount.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/dao/Comment.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/dao/GuestPurchase.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Image.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/ImageDAOImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Message.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/MessageDAOImpl.java -text
+src/main/java/de/htw/fb4/bilderplattform/dao/Purchase.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/dao/Purchase_Image.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Test.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/TestDAOImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/User.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/UserDAOImpl.java -text
+src/main/java/de/htw/fb4/bilderplattform/dao/UserPurchase.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/spring/DBInitialization.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/spring/SpringPropertiesUtil.java -text
 src/main/java/de/htw/fb4/bilderplattform/spring/SpringUserProviderService.java -text
