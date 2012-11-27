@@ -97,6 +97,7 @@ src/main/webapp/login.zul -text
 src/main/webapp/registration.zul -text
 src/main/webapp/test.zul -text
 src/main/webapp/timeout.zul -text
+src/main/webapp/user/addImage.zul -text
 src/main/webapp/user/imageUpload.zul -text
 src/main/webapp/user/index.zul -text
 src/main/webapp/user/userUpdate.zul -text
