@@ -1,6 +1,8 @@
 package de.htw.fb4.bilderplattform.business;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -28,6 +30,10 @@ public interface IImageService {
 	public List<Image> getAllImages();
 	
 	public void saveOrUpdateImage(Image image);
+	
+	public void saveOrUpdateImage(Image image, File imageFile, InputStream imageData);
+	
+	public InputStream getImageData(Image image);
 	
 	public void deleteImage(Image image);
 	
