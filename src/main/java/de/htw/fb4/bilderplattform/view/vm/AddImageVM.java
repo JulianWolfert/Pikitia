@@ -17,6 +17,11 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 
+/**
+ * 
+ * @author Peter Horn
+ *
+ */
 public class AddImageVM {
 	// TODO:
 	private final String testFolder = "/home/eagle/Desktop/images";
