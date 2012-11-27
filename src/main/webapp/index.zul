@@ -14,7 +14,7 @@
 <n:div id="content">
  
  	<n:div id="content_fullsize">
-    	<n:img src="images/2.jpg"></n:img>
+    	<n:img src="images/2.jpg" style="width:100%;"></n:img>
     </n:div>
     
 </n:div>    

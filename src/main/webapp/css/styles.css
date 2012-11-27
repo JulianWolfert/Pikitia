@@ -1,5 +1,5 @@
 #header {
- height: 15%;
+ height: 155px;
  background: rgb(96,108,136);
 background: -moz-linear-gradient(top, rgba(96,108,136,1) 0%, rgba(63,76,107,1) 100%);
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(96,108,136,1)), color-stop(100%,rgba(63,76,107,1)));
@@ -31,6 +31,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', end
 	width: 60%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#content_fullsize {
+	width: 100%;
 }
 
 
