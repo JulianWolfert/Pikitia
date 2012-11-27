@@ -44,7 +44,7 @@ public class Image implements Serializable {
 	private String description;
 
 	@Column(name = "price")
-	private String price;
+	private Double price;
 
 	@Column(name = "filename")
 	private String filename;
@@ -52,6 +52,7 @@ public class Image implements Serializable {
 	@Column(name = "timeStamp")
 	private Date timeStamp = new Date();
 
+	//TODO: statt username -> idUser
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "username")
 	private User user;
@@ -76,11 +77,11 @@ public class Image implements Serializable {
 		this.description = description;
 	}
 
-	public String getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
