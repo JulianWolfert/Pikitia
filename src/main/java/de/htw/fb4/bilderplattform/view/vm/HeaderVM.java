@@ -31,7 +31,7 @@ public class HeaderVM {
 	
 	public String getLogPath() {
 		if(BusinessCtx.getInstance().getUserService().isAUserAuthenticated()) {
-			return "./j_spring_security_logout";
+			return "/j_spring_security_logout";
 		}
 		return "./login.zul";
 	}
