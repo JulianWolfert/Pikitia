@@ -40,12 +40,14 @@ src/main/java/de/htw/fb4/bilderplattform/view/composer/ImageUploadComposer.java 
 src/main/java/de/htw/fb4/bilderplattform/view/validator/RegistrationValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/UserUpdateValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/HeaderVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserAdministrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserUpdateVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/WebsiteLayoutVM.java -text svneol=unset#text/plain
 src/main/resources/config/database/DataSource.xml -text svneol=unset#text/plain
 src/main/resources/config/database/db.properties -text svneol=unset#text/plain
+src/main/resources/divers.properties -text
 src/main/resources/errors.properties -text
 src/main/resources/log4j.properties -text svneol=unset#text/plain
 src/main/resources/mail.properties -text

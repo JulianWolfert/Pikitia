@@ -30,7 +30,7 @@ public class MailServiceImpl implements IMailService {
 	@SuppressWarnings("restriction")
 	@Override
 	public void sendMail(IMail mail) throws IOException, AddressException,
-			MessagingException {
+			MessagingException {		
 		Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
 		Session session = createSession();
 		Transport transport = session.getTransport();

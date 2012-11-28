@@ -1,5 +1,6 @@
 <zk xmlns:n="native" xmlns:c="client">
-<n:div id="header_menu">
+<n:div id="header_menu" apply="org.zkoss.bind.BindComposer" 
+viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 
 	<n:div id="header_image">
 		<image src="/images/Logo2.png"/>
@@ -61,8 +62,8 @@
 						<menuitem label="Registrieren"
 							href="/registration.zul" />
 						<!-- Erstmal so zu Testzwecken -->
-						<menuitem label="Login"
-							href="/login.zul" />
+						<menuitem id="loginMenuItem" label="@bind(vm.logLabel)"
+							href="@bind(vm.logPath)" />
 					</menubar>
 				</vbox>
 	</n:div>

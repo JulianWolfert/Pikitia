@@ -3,6 +3,9 @@ package de.htw.fb4.bilderplattform.business;
 import java.util.Calendar;
 import java.util.List;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,4 +56,13 @@ class UserServiceImpl implements IUserService {
 		userDAO.deleteUser(user);
 	}
 
+	@Override
+	public boolean isAUserAuthenticated() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if(auth != null && !(auth instanceof AnonymousAuthenticationToken) && auth.isAuthenticated()) {
+			return true;
+		}
+		return false;
+	}
+	
 }

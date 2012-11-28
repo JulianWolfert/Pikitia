@@ -81,6 +81,7 @@
 	    <list>
 	        <value>WEB-INF/classes/mail.properties</value>
 	        <value>WEB-INF/classes/errors.properties</value>
+	        <value>WEB-INF/classes/divers.properties</value>
 	    </list>
 	    </property>
 	</bean>

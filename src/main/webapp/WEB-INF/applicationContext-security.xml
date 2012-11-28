@@ -12,6 +12,7 @@
     <form-login login-page="/login.zul"
     		authentication-failure-url="/login.zul?error=true"               
             default-target-url="/index.zul" />
+    <logout logout-success-url="/index.zul"/>
   </http>
   
   <!-- users are now stored in the database so this is not needed anymore -->
