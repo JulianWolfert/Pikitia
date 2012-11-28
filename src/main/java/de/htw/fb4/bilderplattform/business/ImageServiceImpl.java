@@ -9,12 +9,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.ImageDAOImpl;
-import de.htw.fb4.bilderplattform.dao.User;
-import de.htw.fb4.bilderplattform.dao.UserDAOImpl;
 import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
 
 /**

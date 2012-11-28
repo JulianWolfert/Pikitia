@@ -1,6 +1,5 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
 
@@ -17,7 +16,7 @@ public class UserUpdateVM {
 	
 	
 	// the logged in user
-	private User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	private User user = BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser();
 	private String retypedPassword;
 	
 	public UserUpdateVM () {

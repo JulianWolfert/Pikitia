@@ -56,4 +56,6 @@ public class DBInitialization implements InitializingBean{
 		createUsers();
 		createInitialMessages();
 	}
+	
+	
 }

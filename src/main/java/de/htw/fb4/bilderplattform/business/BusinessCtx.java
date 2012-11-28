@@ -24,7 +24,9 @@ public class BusinessCtx {
 	
 	// singleton getter
 	public static BusinessCtx getInstance() {
-		return instance;
+		synchronized (instance) {
+			return instance;
+		}
 	}
 
 	// initiates service only if it is really used
@@ -35,8 +37,9 @@ public class BusinessCtx {
 	}
 	
 	public IUserService getUserService() {
-		if(userService == null)
+		if(userService == null) {
 			this.userService = new UserServiceImpl();
+		}
 		return userService;
 	}
 	

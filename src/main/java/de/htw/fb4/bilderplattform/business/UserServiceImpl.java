@@ -64,5 +64,10 @@ class UserServiceImpl implements IUserService {
 		}
 		return false;
 	}
+
+	@Override
+	public User getCurrentlyLoggedInUser() {
+		return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	}
 	
 }

@@ -28,4 +28,7 @@ public interface IUserService {
 	// jro: check if a user is authenticated in this session
 	public boolean isAUserAuthenticated();
 	
+	// jro: Same as (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	public User getCurrentlyLoggedInUser();
+	
 }
