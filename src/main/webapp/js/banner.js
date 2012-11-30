@@ -4,7 +4,15 @@ var autoSwitcherOn = true;
 var intervall = 3000;
 var autoSwitcher = window.setInterval("nextImg()", intervall);
 
-window.onload=resetBannerSize;
+window.onload = init;
+
+function init() {
+	var $first = $('.banner_imglist img').first();
+	
+	$first.addClass('active');
+	resetBannerSize();
+	$first.fadeIn(1000);
+}
 
 function resetBannerSize() {
 	$('.banner_imglist').width($('.banner_imglist img.active').width());
@@ -34,7 +42,7 @@ function nextImg() {
 	$next.addClass('active');
 	$active.removeClass('active');
 	resetBannerSize();
-	
+
 	$next.fadeIn(1000);
 	$active.fadeOut(1000);
 }
@@ -49,7 +57,7 @@ function prevImg() {
 	$prev.addClass('active');
 	$active.removeClass('active');
 	resetBannerSize();
-	
+
 	$prev.fadeIn(1000);
 	$active.fadeOut(1000);
 }

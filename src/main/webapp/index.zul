@@ -12,7 +12,7 @@
 	    	<!-- <n:img src="images/2.jpg" style="width:100%;"></n:img> -->
 	    	<div xmlns:w="client" class="banner">
 				<div class="banner_imglist">		
-					<image src="/images/banner/img01.jpg" class="active" style="display:block;"></image>
+					<image src="/images/banner/img01.jpg"></image>
 					<image src="/images/banner/img02.jpg"></image>
 					<image src="/images/banner/img03.jpg"></image>
 					<image src="/images/banner/img04.jpg"></image>
