@@ -1,3 +1,5 @@
+//created by Peter Horn
+
 var autoSwitcherOn = true;
 var intervall = 3000;
 var autoSwitcher = window.setInterval("nextImg()", intervall);
