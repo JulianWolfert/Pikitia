@@ -88,6 +88,16 @@ src/main/webapp/images/2.jpg -text
 src/main/webapp/images/Logo.png -text
 src/main/webapp/images/Logo2.png -text
 src/main/webapp/images/add_small.png -text
+src/main/webapp/images/banner/img01.jpg -text
+src/main/webapp/images/banner/img02.jpg -text
+src/main/webapp/images/banner/img03.jpg -text
+src/main/webapp/images/banner/img04.jpg -text
+src/main/webapp/images/banner/img05.jpg -text
+src/main/webapp/images/banner/img06.jpg -text
+src/main/webapp/images/banner/img07.jpg -text
+src/main/webapp/images/banner/next.png -text
+src/main/webapp/images/banner/play.png -text
+src/main/webapp/images/banner/prev.png -text
 src/main/webapp/images/blank.png -text
 src/main/webapp/images/delete_small.png -text
 src/main/webapp/images/load.png -text
