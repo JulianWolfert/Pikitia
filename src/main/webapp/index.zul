@@ -1,39 +1,31 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="slides.min.jquery.js"></script>
-<script type="text/javascript" src="/js/banner.js"/>
-<style src="/css/banner.css" />
-	
-<n:div id="header">
-			
-	<include src="/layout/header_menu.zul" />
-
-</n:div>
-
-<n:div id="content">
- 
- 	<n:div id="content_fullsize">
-    	<!-- <n:img src="images/2.jpg" style="width:100%;"></n:img> -->
-    		<div xmlns:w="client" class="banner">
-		<div class="banner_imglist">		
-			<image src="/images/banner/img01.jpg" class="active" style="display:block;"></image>
-			<image src="/images/banner/img02.jpg"></image>
-			<image src="/images/banner/img03.jpg"></image>
-			<image src="/images/banner/img04.jpg"></image>
-			<image src="/images/banner/img05.jpg"></image>
-			<image src="/images/banner/img06.jpg"></image>
-			<image src="/images/banner/img07.jpg"></image>		
-		</div>
-		<div class="banner_navigation">
-			<image src="/images/banner/prev.png" w:onClick="clickPrev();"></image>
-			<image src="/images/banner/play.png" w:onClick="clickPlay();"></image>
-			<image src="/images/banner/next.png" w:onClick="clickNext();"></image>
-		</div>
-	</div>
-    	
-    </n:div>
-    
-</n:div>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="slides.min.jquery.js"></script>
+	<script type="text/javascript" src="/js/banner.js"/>
+	<style src="/css/banner.css" />		
+	<n:div id="header">
+		<include src="/layout/header_menu.zul" />
+	</n:div>
+	<n:div id="content">
+	 	<n:div id="content_fullsize">
+	    	<!-- <n:img src="images/2.jpg" style="width:100%;"></n:img> -->
+	    	<div xmlns:w="client" class="banner">
+				<div class="banner_imglist">		
+					<image src="/images/banner/img01.jpg" class="active" style="display:block;"></image>
+					<image src="/images/banner/img02.jpg"></image>
+					<image src="/images/banner/img03.jpg"></image>
+					<image src="/images/banner/img04.jpg"></image>
+					<image src="/images/banner/img05.jpg"></image>
+					<image src="/images/banner/img06.jpg"></image>
+					<image src="/images/banner/img07.jpg"></image>		
+				</div>
+				<div class="banner_navigation">
+					<image src="/images/banner/prev.png" w:onClick="clickPrev();"></image>
+					<image src="/images/banner/play.png" w:onClick="clickPlay();"></image>
+					<image src="/images/banner/next.png" w:onClick="clickNext();"></image>
+				</div>
+			</div>
+	    </n:div>
+	</n:div>
 </zk>
