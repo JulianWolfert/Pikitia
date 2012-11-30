@@ -59,6 +59,7 @@ src/main/webapp/WEB-INF/zk.xml -text
 src/main/webapp/admin/index.zul -text
 src/main/webapp/admin/userAdministration.zul -text
 src/main/webapp/bildergalerie.zul -text
+src/main/webapp/css/banner.css -text svneol=unset#text/plain
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
 src/main/webapp/divers/css/supersized.css -text
 src/main/webapp/divers/img/back.png -text
@@ -92,6 +93,7 @@ src/main/webapp/images/delete_small.png -text
 src/main/webapp/images/load.png -text
 src/main/webapp/images/save.png -text
 src/main/webapp/index.zul -text
+src/main/webapp/js/banner.js -text svneol=unset#text/plain
 src/main/webapp/layout/footer.zul -text
 src/main/webapp/layout/header_menu.zul -text
 src/main/webapp/layout/template.zul -text

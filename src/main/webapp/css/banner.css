@@ -1,0 +1,31 @@
+.banner {
+	text-align: center;
+	background-color: #54607d;
+	margin: 0;
+	padding: 20px;
+}
+
+.banner_navigation img:hover {
+	cursor: pointer;
+}
+
+.banner_imglist {
+	position: relative;
+	height: 387px;
+	width: 516px;
+	margin: auto;
+}
+
+.banner_imglist img {
+	display: none;
+	position: absolute;
+	box-shadow: 0px 0px 15px #000000;
+	border: 1px solid #fff;
+	top: 0;
+	left: 0;
+}
+
+.banner_imglist img.active {
+	
+}
+}
