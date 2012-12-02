@@ -3,6 +3,8 @@ package de.htw.fb4.bilderplattform.view.vm;
 import org.zkoss.bind.annotation.Command;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.ISearchService;
+import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /************************************************
@@ -41,8 +43,11 @@ public class HeaderVM {
 	}
 	
 	@Command
-	private void search() {
-		// TODO Auto-generated method stub
+	public void search() {
+		ISearchService searchService = BusinessCtx.getInstance().getSearchService();
+		for(Image img : searchService.searchImages(search)) {
+			System.out.println("FOUND: " + img.getFilename());
+		}
 
 	}
 	

@@ -7,11 +7,13 @@ src/main/java/de/htw/fb4/bilderplattform/business/BusinessCtx.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IImageService.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/IMailService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IMessageService.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/ISearchService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/ITestService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IUserService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/ImageServiceImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/MailServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/MessageServiceImpl.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/SearchServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/TestServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/UserServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/mail/IMail.java -text

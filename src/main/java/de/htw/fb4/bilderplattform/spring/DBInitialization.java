@@ -37,6 +37,8 @@ public class DBInitialization implements InitializingBean{
 		initialMessages.add(new Message(4, 3, 1, "Titel_02", "Text_02"));
 		initialMessages.add(new Message(3, 4, 1, "Titel_03", "Text_03"));
 		initialMessages.add(new Message(3, 4, 1, "Titel_04", "Text_04"));
+		
+		
 	}
 	
 	private void createUsers(){
