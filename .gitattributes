@@ -42,6 +42,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/composer/ImageUploadComposer.java 
 src/main/java/de/htw/fb4/bilderplattform/view/validator/RegistrationValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/UserUpdateValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/GalleryVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/HeaderVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserAdministrationVM.java -text svneol=unset#text/plain
@@ -87,7 +88,13 @@ src/main/webapp/divers/js/supersized.3.2.7.min.js -text
 src/main/webapp/divers/theme/supersized.shutter.css -text
 src/main/webapp/divers/theme/supersized.shutter.js -text
 src/main/webapp/divers/theme/supersized.shutter.min.js -text
+src/main/webapp/gallery.zul -text
+src/main/webapp/images/1.jpg -text
+src/main/webapp/images/1_s.jpg -text
 src/main/webapp/images/2.jpg -text
+src/main/webapp/images/2_s.jpg -text
+src/main/webapp/images/3.jpg -text
+src/main/webapp/images/3_s.jpg -text
 src/main/webapp/images/Logo.png -text
 src/main/webapp/images/Logo2.png -text
 src/main/webapp/images/add_small.png -text
@@ -105,6 +112,7 @@ src/main/webapp/images/blank.png -text
 src/main/webapp/images/delete_small.png -text
 src/main/webapp/images/load.png -text
 src/main/webapp/images/save.png -text
+src/main/webapp/images/search.png -text
 src/main/webapp/index.zul -text
 src/main/webapp/js/banner.js -text svneol=unset#text/plain
 src/main/webapp/layout/footer.zul -text
