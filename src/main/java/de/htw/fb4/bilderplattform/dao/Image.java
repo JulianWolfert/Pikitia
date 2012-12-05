@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.mysql.jdbc.Blob;
+
 /************************************************
  * <p>
  * image database object
@@ -46,8 +48,11 @@ public class Image implements Serializable {
 	@Column(name = "price")
 	private Double price;
 
-	@Column(name = "filename")
-	private String filename;
+	@Column(name = "file")
+	private Blob file;
+
+	@Column(name = "preview_file")
+	private Blob preview_file;
 
 	@Column(name = "timeStamp")
 	private Date timeStamp = new Date();
@@ -85,12 +90,20 @@ public class Image implements Serializable {
 		this.price = price;
 	}
 
-	public String getFilename() {
-		return filename;
+	public Blob getFilename() {
+		return file;
 	}
 
-	public void setFilename(String filename) {
-		this.filename = filename;
+	public void setFilename(Blob filename) {
+		this.file = filename;
+	}
+	
+	public Blob getPreview_file() {
+		return preview_file;
+	}
+	
+	public void setPreview_file(Blob preview_file) {
+		this.preview_file = preview_file;
 	}
 
 	public Date getTimeStamp() {
