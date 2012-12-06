@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -46,19 +47,31 @@ public class Image implements Serializable {
 	@Column(name = "price")
 	private Double price;
 
-	@Column(name = "filename")
-	private String filename;
+	@Column(name = "file")
+	@Lob
+	private byte[] file;
+
+	@Column(name = "preview_file")
+	@Lob
+	private byte[] preview_file;
 
 	@Column(name = "timeStamp")
 	private Date timeStamp = new Date();
 
-	//TODO: statt username -> idUser
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "idUser")
 	private User user;
 
 	public Image() {
 		
+	}
+	
+	public Integer getIdImage() {
+		return idImage;
+	}
+	
+	public void setIdImage(Integer idImage) {
+		this.idImage = idImage;
 	}
 
 	public String getTitle() {
@@ -85,12 +98,20 @@ public class Image implements Serializable {
 		this.price = price;
 	}
 
-	public String getFilename() {
-		return filename;
+	public byte[] getFile() {
+		return file;
 	}
 
-	public void setFilename(String filename) {
-		this.filename = filename;
+	public void setFile(byte[] filename) {
+		this.file = filename;
+	}
+	
+	public byte[] getPreview_file() {
+		return preview_file;
+	}
+	
+	public void setPreview_file(byte[] preview_file) {
+		this.preview_file = preview_file;
 	}
 
 	public Date getTimeStamp() {

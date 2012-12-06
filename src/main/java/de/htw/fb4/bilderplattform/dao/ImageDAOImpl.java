@@ -30,7 +30,7 @@ import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
 public class ImageDAOImpl extends AbstractDAO {
 
 	static final Logger logger = Logger.getLogger(ImageDAOImpl.class);
-	
+
 	@Transactional
 	public void saveImage(Image image) {
 		sessionFactory.getCurrentSession().saveOrUpdate(image);
@@ -38,51 +38,56 @@ public class ImageDAOImpl extends AbstractDAO {
 
 	@Transactional
 	public Image getImageByID(int idImage) {
-		Image image = (Image) sessionFactory.getCurrentSession().load(Image.class,
-				idImage);
+		Image image = (Image) sessionFactory.getCurrentSession().load(
+				Image.class, idImage);
 		return image;
 	}
-	
+
 	@Transactional
 	public Image getImageByUsername(String username) {
-		Image image = (Image) sessionFactory.getCurrentSession().load(Image.class,
-				username);
+		Image image = (Image) sessionFactory.getCurrentSession().load(
+				Image.class, username);
 		return image;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Image> getAllImages() {
-		List<Image> images = null;
-		Session session = sessionFactory.getCurrentSession();
-
-        Transaction transaction = session.beginTransaction();
-        try {
-        	images = session.createQuery("from Image").list();
-            transaction.commit();
-        } catch (DataAccessException dae) {
-            logger.error("getAllImages throws exception: ", dae);
-            transaction.rollback();
-        }
-        return images;
+		//TODO: FUNZT NICHT!!!!!!!
+		// List<Image> images = null;
+		// Session session = sessionFactory.getCurrentSession();
+		//
+		// Transaction transaction = session.beginTransaction();
+		// try {
+		// images = session.createQuery("from Image").list();
+		// transaction.commit();
+		// } catch (DataAccessException dae) {
+		// logger.error("getAllImages throws exception: ", dae);
+		// transaction.rollback();
+		// }
+		// return images;
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"SELECT u FROM Image u");
+		return (List<Image>) query.list();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Image> getAllImagesByUsername(String username) {
 		List<Image> images = null;
 		Session session = sessionFactory.getCurrentSession();
 
-        Transaction transaction = session.beginTransaction();
-        try {
-        	Criteria criteria = session.createCriteria(Image.class).add(Restrictions.eq("username", username));
-        	images = criteria.list();
-            transaction.commit();
-        } catch (DataAccessException dae) {
-            logger.error("getAllImagesByUsername throws exception: ", dae);
-            transaction.rollback();
-        }
-        return images;
+		Transaction transaction = session.beginTransaction();
+		try {
+			Criteria criteria = session.createCriteria(Image.class).add(
+					Restrictions.eq("username", username));
+			images = criteria.list();
+			transaction.commit();
+		} catch (DataAccessException dae) {
+			logger.error("getAllImagesByUsername throws exception: ", dae);
+			transaction.rollback();
+		}
+		return images;
 	}
 
 	@Transactional
@@ -96,4 +101,3 @@ public class ImageDAOImpl extends AbstractDAO {
 		this.saveImage(image);
 	}
 }
-
