@@ -52,7 +52,7 @@ public class ImageUploadComposer extends GenericForwardComposer<Component> {
 			
 			//upload images to server directory
 			for(Image image : validImages){
-				BusinessCtx.getInstance().getIImageService().saveOrUpdateImage(image);
+				BusinessCtx.getInstance().getIImageService().saveOrUpdateImage(image, BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser());
 			}			
 			Messagebox.show(sb.toString());			
 		} else {

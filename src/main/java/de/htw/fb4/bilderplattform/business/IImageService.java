@@ -29,9 +29,9 @@ public interface IImageService {
 
 	public List<Image> getAllImages();
 	
-	public void saveOrUpdateImage(Image image);
+	public void saveOrUpdateImage(Image image, User user);
 	
-	public void saveOrUpdateImage(Image image, InputStream imageData);
+	public void saveOrUpdateImage(Image image, InputStream imageData, User user);
 	
 	public void deleteImage(Image image);
 }

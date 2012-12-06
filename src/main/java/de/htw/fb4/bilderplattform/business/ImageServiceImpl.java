@@ -24,6 +24,7 @@ import javax.imageio.ImageIO;
 
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.ImageDAOImpl;
+import de.htw.fb4.bilderplattform.dao.User;
 import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
 
 /**
@@ -56,7 +57,7 @@ public class ImageServiceImpl implements IImageService {
 	}
 
 	@Override
-	public void saveOrUpdateImage(Image image) {
+	public void saveOrUpdateImage(Image image, User user) {
 		if (image == null) {
 			return;
 		}
@@ -65,14 +66,14 @@ public class ImageServiceImpl implements IImageService {
 				.getApplicationContext()
 				.getBean("imageDao", ImageDAOImpl.class);
 		image.setTimeStamp(Calendar.getInstance().getTime());
-		image.setUser(BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser());
+		image.setUser(user);
 		imageDAO.saveImage(image);
 	}
 
 	@Override
-	public void saveOrUpdateImage(Image image, InputStream imageData) {
+	public void saveOrUpdateImage(Image image, InputStream imageData, User user) {
 		this.setImageData(image, imageData);
-		this.saveOrUpdateImage(image);
+		this.saveOrUpdateImage(image, user);
 	}
 
 	@Override

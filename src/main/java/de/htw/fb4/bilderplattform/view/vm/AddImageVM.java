@@ -76,7 +76,9 @@ public class AddImageVM {
 				.getInstance()
 				.getIImageService()
 				.saveOrUpdateImage(this.image,
-						this.uploadImg.getContent().getStreamData());
+						this.uploadImg.getContent().getStreamData(), BusinessCtx
+						.getInstance()
+						.getUserService().getCurrentlyLoggedInUser());
 		Executions.sendRedirect("/user/addImage.zul");
 	}
 

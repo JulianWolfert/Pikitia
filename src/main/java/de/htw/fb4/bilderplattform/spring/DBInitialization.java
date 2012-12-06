@@ -1,6 +1,11 @@
 package de.htw.fb4.bilderplattform.spring;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,9 +31,8 @@ public class DBInitialization implements InitializingBean{
 	
 	private final static List<User> users = new ArrayList<User>();
 	private final static List<Message> initialMessages = new ArrayList<Message>();
-	private final static List<byte[]> initialPictures = new ArrayList<byte[]>();
-	private final static List<byte[]> initialPreviewPictures = new ArrayList<byte[]>();
-	private final static List<byte[]> initialThumbnailPictures = new ArrayList<byte[]>();
+	private final static List<String> initialPictures = new ArrayList<String>();
+	private final static List<String> initialThumbnailPictures = new ArrayList<String>();
 	
 	
 	public DBInitialization(){
@@ -50,50 +54,32 @@ public class DBInitialization implements InitializingBean{
 		//TODO: file input stream / dann setImageData mit stream und image object
 		// anschliesend setOrUpdateImage
 		
-		this.getClass().getResource("/initimages/1.jpg").getFile().getBytes();
+		initialPictures.add(this.getClass().getResource("/initimages/1.jpg").getFile());
+		initialPictures.add(this.getClass().getResource("/initimages/2.jpg").getFile());
+		initialPictures.add(this.getClass().getResource("/initimages/3.jpg").getFile());
 		
-		initialPictures.add(this.getClass().getResource("/initimages/1.jpg").getFile().getBytes());
-		initialPictures.add(this.getClass().getResource("/initimages/2.jpg").getFile().getBytes());
-		initialPictures.add(this.getClass().getResource("/initimages/3.jpg").getFile().getBytes());	
-		
-		initialPreviewPictures.add(this.getClass().getResource("/initimages/1_preview.jpg").getFile().getBytes());
-		initialPreviewPictures.add(this.getClass().getResource("/initimages/2_preview.jpg").getFile().getBytes());
-		initialPreviewPictures.add(this.getClass().getResource("/initimages/3_preview.jpg").getFile().getBytes());
-		
-		initialThumbnailPictures.add(this.getClass().getResource("/initimages/1_preview.jpg").getFile().getBytes());
-		initialThumbnailPictures.add(this.getClass().getResource("/initimages/2_preview.jpg").getFile().getBytes());
-		initialThumbnailPictures.add(this.getClass().getResource("/initimages/3_preview.jpg").getFile().getBytes());	
+		initialThumbnailPictures.add(this.getClass().getResource("/initimages/1_thumbnail.jpg").getFile());
+		initialThumbnailPictures.add(this.getClass().getResource("/initimages/2_thumbnail.jpg").getFile());
+		initialThumbnailPictures.add(this.getClass().getResource("/initimages/3_thumbnail.jpg").getFile());
 	}
 	
 	private void createInitialPictures() throws FileNotFoundException{
 		Integer imgId = 0;
-		for(byte[] picture : initialPictures){
-//			InputStream input = new FileInputStream(string);
+		User user = BusinessCtx.getInstance().getUserService().getUserByName("jonathan");
+		
+		for(String filename : initialPictures){
+			InputStream input = new FileInputStream(filename);
 			// TODO: image object noch mit infos fuellen
 			//  dann input stream übergeben.
 			Image image = new Image();
 			image.setDescription("description"+ imgId);
-			
 			image.setPrice(23.42);
 			image.setTimeStamp(new Date());
 			image.setTitle("title" + imgId);
-			image.setUser(BusinessCtx.getInstance().getUserService().getUserByName("jonathan"));
-		
-			image.setPreview_file(initialPreviewPictures.get(imgId));
-			image.setThumbnail_file(initialThumbnailPictures.get(imgId));
-			
 			imgId ++;
-			image.setFile(picture);
-			
-			ImageDAOImpl imageDAO = ApplicationContextProvider
-					.getApplicationContext()
-					.getBean("imageDao", ImageDAOImpl.class);
-			
-			
-			imageDAO.saveImage(image);
 			
 			//An der Stelle haben wir keinen eingeloggten User!
-//			BusinessCtx.getInstance().getIImageService().saveOrUpdateImage(image, input);
+			BusinessCtx.getInstance().getIImageService().saveOrUpdateImage(image, input, user);
 		}
 
 	}
@@ -116,6 +102,25 @@ public class DBInitialization implements InitializingBean{
 		createInitialMessages();
 		createInitialPictures();
 	}
+	
+	private byte[] convertFileToBytes(File file) {
+		FileInputStream fileInputStream;
+		byte[] data = null;
+		try {
+			fileInputStream = new FileInputStream(file);
+			data = new byte[(int) file.length()];
+			fileInputStream.read(data);
+			fileInputStream.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return data;
+	}
+
 	
 	
 }
