@@ -46,7 +46,7 @@ public class HeaderVM {
 	public void search() {
 		ISearchService searchService = BusinessCtx.getInstance().getSearchService();
 		for(Image img : searchService.searchImages(search)) {
-			System.out.println("FOUND: " + img.getFilename());
+			System.out.println("FOUND: " + img.getFile());
 		}
 
 	}
