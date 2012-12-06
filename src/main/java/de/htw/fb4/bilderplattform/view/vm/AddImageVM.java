@@ -1,6 +1,10 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.zkoss.bind.BindContext;
@@ -11,6 +15,7 @@ import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.zul.Image;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
@@ -20,11 +25,9 @@ import de.htw.fb4.bilderplattform.business.BusinessCtx;
 /**
  * 
  * @author Peter Horn
- *
+ * 
  */
 public class AddImageVM {
-	// TODO:
-	private final String testFolder = "/home/eagle/Desktop/images";
 
 	@Wire
 	private Image uploadImg;
@@ -69,16 +72,12 @@ public class AddImageVM {
 			Messagebox.show("Es wurde kein Bild hochgeladen.");
 			return;
 		}
-		// TODO: user ermitteln!!!
-		this.image.setUser(BusinessCtx.getInstance().getUserService()
-				.getUserByName("peter"));
-		File f = new File(this.testFolder, this.image.getUser().getUsername()
-				+ "_" + (new Date()).getTime() + "_"
-				+ uploadImg.getContent().getName());
 		BusinessCtx
 				.getInstance()
 				.getIImageService()
-				.saveOrUpdateImage(this.image, f,
+				.saveOrUpdateImage(this.image,
 						this.uploadImg.getContent().getStreamData());
+		Executions.sendRedirect("/user/addImage.zul");
 	}
+
 }
