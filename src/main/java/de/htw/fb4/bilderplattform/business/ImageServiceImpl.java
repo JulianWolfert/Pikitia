@@ -1,13 +1,26 @@
 package de.htw.fb4.bilderplattform.business;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.ImageDAOImpl;
@@ -21,6 +34,8 @@ import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
  * 
  */
 public class ImageServiceImpl implements IImageService {
+	// the size of the preview image in pixels
+	private final int preview_size_px = 200;
 
 	@Override
 	public List<Image> getImagesByUsername(String username) {
@@ -41,18 +56,6 @@ public class ImageServiceImpl implements IImageService {
 	}
 
 	@Override
-	public void saveOrUpdateImage(Image image, File imageFile,
-			InputStream imageData) {
-		if (image == null) {
-			return;
-		}
-		if (this.uploadImageToDirectory(image, imageFile, imageData)) {
-			image.setFilename(imageFile.getAbsolutePath());
-			this.saveOrUpdateImage(image);
-		}
-	}
-
-	@Override
 	public void saveOrUpdateImage(Image image) {
 		if (image == null) {
 			return;
@@ -62,7 +65,14 @@ public class ImageServiceImpl implements IImageService {
 				.getApplicationContext()
 				.getBean("imageDao", ImageDAOImpl.class);
 		image.setTimeStamp(Calendar.getInstance().getTime());
+		image.setUser(BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser());
 		imageDAO.saveImage(image);
+	}
+
+	@Override
+	public void saveOrUpdateImage(Image image, InputStream imageData) {
+		this.setImageData(image, imageData);
+		this.saveOrUpdateImage(image);
 	}
 
 	@Override
@@ -74,62 +84,57 @@ public class ImageServiceImpl implements IImageService {
 				.getApplicationContext()
 				.getBean("imageDao", ImageDAOImpl.class);
 		imageDAO.deleteImage(image);
-		this.deleteImageData(image);
 	}
 
-	@Override
-	public InputStream getImageData(Image image) {
-		try {
-			return new FileInputStream(new File(image.getFilename()));
-		} catch (Exception e) {
-			e.printStackTrace();
+	private void setImageData(Image image, InputStream in) {
+		if (in == null || image == null) {
+			return;
 		}
-		return null;
-	}
-
-	private void deleteImageData(Image image) {
-		File f = new File(image.getFilename());
-		f.delete();
-	}
-
-	private boolean uploadImageToDirectory(Image image, File imageFile,
-			InputStream imageData) {
 		int b = -1;
-		boolean returnedValue = false;
-		OutputStream os = null;
-		File oldImageFile = image.getFilename() != null ? new File(
-				image.getFilename()) : null;
+		byte[] data = null;
+		byte[] data_preview = null;
+		ArrayList<Integer> bytes = new ArrayList<Integer>();
 		try {
-			// delete old image if exists
-			if (oldImageFile != null) {
-				if (oldImageFile.exists()) {
-					oldImageFile.delete();
+			while ((b = in.read()) != -1) {
+				bytes.add(b);
+			}
+			if (bytes.size() > 0) {
+				// original
+				data = new byte[bytes.size()];
+				for (int i = 0; i < data.length; i++) {
+					data[i] = bytes.get(i).byteValue();
 				}
+				data_preview = this.scaleImg(data);
 			}
-			imageFile.createNewFile();
-			os = new FileOutputStream(imageFile);
-			while ((b = imageData.read()) != -1) {
-				os.write(b);
-			}
-			returnedValue = true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (os != null) {
-					os.close();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			try {
-				if (imageData != null) {
-					imageData.close();
+				if (in != null) {
+					in.close();
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return returnedValue;
+		image.setFile(data);
+		image.setPreview_file(data_preview);
+	}
+
+	private byte[] scaleImg(byte[] data) throws IOException {
+		BufferedImage img = ImageIO
+				.read(new ByteArrayInputStream(data));
+		int preview_size = img.getHeight() > img.getWidth() ? img
+				.getHeight() : img.getHeight();
+		double scale = (double) this.preview_size_px / (double) preview_size;
+
+		AffineTransform tx = new AffineTransform();
+		tx.scale(scale, scale);
+		AffineTransformOp op = new AffineTransformOp(tx,
+				AffineTransformOp.TYPE_BILINEAR);		
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		ImageIO.write(op.filter(img, null), "png", os);
+
+		return os.toByteArray();
 	}
 }

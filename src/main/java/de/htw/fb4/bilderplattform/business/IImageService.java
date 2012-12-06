@@ -31,11 +31,8 @@ public interface IImageService {
 	
 	public void saveOrUpdateImage(Image image);
 	
-	public void saveOrUpdateImage(Image image, File imageFile, InputStream imageData);
-	
-	public InputStream getImageData(Image image);
+	public void saveOrUpdateImage(Image image, InputStream imageData);
 	
 	public void deleteImage(Image image);
-	
 }
 
