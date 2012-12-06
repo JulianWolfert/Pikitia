@@ -54,6 +54,10 @@ public class Image implements Serializable {
 	@Column(name = "preview_file")
 	@Lob
 	private byte[] preview_file;
+	
+	@Column(name = "thumbnail_file")
+	@Lob
+	private byte[] thumbnail_file;
 
 	@Column(name = "timeStamp")
 	private Date timeStamp = new Date();
@@ -112,6 +116,14 @@ public class Image implements Serializable {
 	
 	public void setPreview_file(byte[] preview_file) {
 		this.preview_file = preview_file;
+	}
+
+	public byte[] getThumbnail_file() {
+		return thumbnail_file;
+	}
+
+	public void setThumbnail_file(byte[] thumbnail_file) {
+		this.thumbnail_file = thumbnail_file;
 	}
 
 	public Date getTimeStamp() {
