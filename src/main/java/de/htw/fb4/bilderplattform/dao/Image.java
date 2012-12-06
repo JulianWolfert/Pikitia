@@ -70,9 +70,9 @@ public class Image implements Serializable {
 		return idImage;
 	}
 	
-	public void setIdImage(Integer idImage) {
-		this.idImage = idImage;
-	}
+//	public void setIdImage(Integer idImage) {
+//		this.idImage = idImage;
+//	}
 
 	public String getTitle() {
 		return title;

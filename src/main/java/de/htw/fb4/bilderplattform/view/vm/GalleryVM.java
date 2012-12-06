@@ -20,40 +20,40 @@ public class GalleryVM {
 		List<Image> initialImages = new ArrayList<Image>();
 		
 		Image img1 = new Image();
-		img1.setFilename("/images/1.jpg");
+		//img1.setFilename("/images/1.jpg");
 		img1.setDescription("/images/1_s.jpg");
 		Image img2 = new Image();
-		img2.setFilename("/images/2.jpg");
+		//img2.setFilename("/images/2.jpg");
 		img2.setDescription("/images/2_s.jpg");
 		Image img3 = new Image();
-		img3.setFilename("/images/3.jpg");
+		//img3.setFilename("/images/3.jpg");
 		img3.setDescription("/images/3_s.jpg");
 		Image img4 = new Image();
-		img4.setFilename("/images/1.jpg");
+		//img4.setFilename("/images/1.jpg");
 		img4.setDescription("/images/1_s.jpg");
 		Image img5 = new Image();
-		img5.setFilename("/images/2.jpg");
+		//img5.setFilename("/images/2.jpg");
 		img5.setDescription("/images/2_s.jpg");
 		Image img6 = new Image();
-		img6.setFilename("/images/3.jpg");
+		//img6.setFilename("/images/3.jpg");
 		img6.setDescription("/images/3_s.jpg");
 		Image img7 = new Image();
-		img7.setFilename("/images/1.jpg");
+		//img7.setFilename("/images/1.jpg");
 		img7.setDescription("/images/1_s.jpg");
 		Image img8 = new Image();
-		img8.setFilename("/images/2.jpg");
+		//img8.setFilename("/images/2.jpg");
 		img8.setDescription("/images/2_s.jpg");
 		Image img9 = new Image();
-		img9.setFilename("/images/3.jpg");
+		//img9.setFilename("/images/3.jpg");
 		img9.setDescription("/images/3_s.jpg");
 		Image img10 = new Image();
-		img10.setFilename("/images/1.jpg");
+		//img10.setFilename("/images/1.jpg");
 		img10.setDescription("/images/1_s.jpg");
 		Image img11 = new Image();
-		img11.setFilename("/images/2.jpg");
+		//img11.setFilename("/images/2.jpg");
 		img11.setDescription("/images/2_s.jpg");
 		Image img12 = new Image();
-		img12.setFilename("/images/3.jpg");
+		//img12.setFilename("/images/3.jpg");
 		img12.setDescription("/images/3_s.jpg");
 		
 		initialImages.add(img12);
@@ -98,13 +98,13 @@ public class GalleryVM {
 		List<Image> initialImages = new ArrayList<Image>();
 		
 		Image img1 = new Image();
-		img1.setFilename("/images/1.jpg");
+		//img1.setFilename("/images/1.jpg");
 		img1.setDescription("/images/1_s.jpg");
 		Image img2 = new Image();
-		img2.setFilename("/images/2.jpg");
+		//img2.setFilename("/images/2.jpg");
 		img2.setDescription("/images/2_s.jpg");
 		Image img3 = new Image();
-		img3.setFilename("/images/3.jpg");
+		//img3.setFilename("/images/3.jpg");
 		img3.setDescription("/images/3_s.jpg");
 
 		

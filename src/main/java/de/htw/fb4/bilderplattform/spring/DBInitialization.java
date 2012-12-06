@@ -1,11 +1,16 @@
 package de.htw.fb4.bilderplattform.spring;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.InitializingBean;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.Message;
 import de.htw.fb4.bilderplattform.dao.User;
 
@@ -21,6 +26,7 @@ public class DBInitialization implements InitializingBean{
 	
 	private final static List<User> users = new ArrayList<User>();
 	private final static List<Message> initialMessages = new ArrayList<Message>();
+	private final static List<String> initialPicturePath = new ArrayList<String>();
 	
 	public DBInitialization(){
 		//add normal users
@@ -37,6 +43,34 @@ public class DBInitialization implements InitializingBean{
 		initialMessages.add(new Message(4, 3, "s0528397@htw-berlin.de", 1, "Titel_02", "Text_02"));
 		initialMessages.add(new Message(3, 4, "s0528397@htw-berlin.de", 1, "Titel_03", "Text_03"));
 		initialMessages.add(new Message(3, 4, "s0528397@htw-berlin.de", 1, "Titel_04", "Text_04"));
+		
+		//TODO: file input stream / dann setImageData mit stream und image object
+		// anschliesend setOrUpdateImage
+		initialPicturePath.add("/images/initbild1.jpg");
+		initialPicturePath.add("/images/initbild2.jpg");
+		initialPicturePath.add("/images/initbild3.jpg");
+		initialPicturePath.add("/images/initbild4.jpg");
+		
+	}
+	
+	private void createInitialPictures() throws FileNotFoundException{
+		Integer counter = 0;
+		for(String string : initialPicturePath){
+			InputStream input = new FileInputStream(string);
+			// TODO: image object noch mit infos fuellen
+			//  dann input stream übergeben.
+			
+			Image image = new Image();
+			image.setDescription("eine testdatei"+ counter +"ole ole");
+			counter ++;
+			image.setPrice(23.42);
+			image.setTimeStamp(new Date());
+			image.setTitle("ein Testbild" + counter);
+			image.setUser(BusinessCtx.getInstance().getUserService().getUserByName("jonathan"));
+			
+			BusinessCtx.getInstance().getIImageService().saveOrUpdateImage(image, input);
+		}
+		
 		
 		
 	}
@@ -57,6 +91,7 @@ public class DBInitialization implements InitializingBean{
 	public void afterPropertiesSet() throws Exception {
 		createUsers();
 		createInitialMessages();
+		createInitialPictures();
 	}
 	
 	
