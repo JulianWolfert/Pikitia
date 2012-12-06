@@ -39,7 +39,7 @@ public class ImageUploadComposer extends GenericForwardComposer<Component> {
 			for (Media m : e.getMedias()) {
 				if(m.getContentType().equals("image/jpeg") || m.getContentType().equals("image/gif")){
 					Image newImage = new Image();
-					newImage.setFilename(m.getName());
+					newImage.setFile(m.getByteData());
 					validImages.add(newImage);
 				}else{
 					sb.append(m.getName());
