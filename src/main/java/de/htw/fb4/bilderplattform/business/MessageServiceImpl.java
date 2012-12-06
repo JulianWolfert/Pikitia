@@ -1,8 +1,16 @@
 package de.htw.fb4.bilderplattform.business;
 
+import java.util.List;
+
 import de.htw.fb4.bilderplattform.dao.Message;
 import de.htw.fb4.bilderplattform.dao.MessageDAOImpl;
 import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
+
+/**
+ * @since 04.12.2012
+ * @author Benjamin Schock
+ * 
+ */
 
 class MessageServiceImpl implements IMessageService {
 
@@ -12,10 +20,32 @@ class MessageServiceImpl implements IMessageService {
 		if(message == null){
 			return;
 		}
-		MessageDAOImpl messageDAO = ApplicationContextProvider.getApplicationContext().getBean("msgDao", MessageDAOImpl.class);
+		MessageDAOImpl messageDAO = ApplicationContextProvider
+				.getApplicationContext().getBean("msgDao", MessageDAOImpl.class);
 		messageDAO.saveMessage(message);
 	}
 	
+	@Override
+	public List<Message> getMessageList(int idUser){		
+		MessageDAOImpl messageDAO = ApplicationContextProvider
+				.getApplicationContext().getBean("msgDao", MessageDAOImpl.class);
+		return messageDAO.getMessageList(idUser);		
+	}
+	
+	
+	@Override
+	public void deleteMessage(int idMessage){
+		MessageDAOImpl messageDAO = ApplicationContextProvider
+				.getApplicationContext().getBean("msgDao", MessageDAOImpl.class);
+		messageDAO.deleteMessage(idMessage);
+	}
+	
+	@Override
+	public void deleteMessage(Message message){
+		MessageDAOImpl messageDAO = ApplicationContextProvider
+				.getApplicationContext().getBean("msgDao", MessageDAOImpl.class);
+		messageDAO.deleteMessage(message);
+	}
 	
 	
 	/*

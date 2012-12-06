@@ -9,17 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-/************************************************
- * <p>message database object</p>
+/**
+ * @since 10.11.2012
+ * @author Benjamin Schock
  * 
- * <p>
- * @author ben
- * </p>
- * <p>
- * 10.11.2012
- * </p>
- ************************************************/
+ */
+
 @Entity
 @Table(name="Message")
 public class Message implements java.io.Serializable {
@@ -31,30 +26,38 @@ public class Message implements java.io.Serializable {
 	private Integer idMessage;
 	
 	@Column(name = "timeStamp")
-	private Date timeStamp = new Date();
+	private Date timeStamp;
 	
 	// Foreign-Key relationships must be realized
 	//@ManyToOne 
 	//@JoinColumn(name="idSender")
-	@Column(name="idSender")
-	private Integer idSender;
+	@Column(name="idSender_idUser")
+	private Integer idSender_idUser;
 
 	// Foreign-Key relationships must be realized
 	//@ManyToOne 
 	//@JoinColumn(name="idSender")
-	@Column(name="idReceiver", nullable=false)
-	private Integer idReceiver;
+	@Column(name="idReceiver_idUser", nullable=false)
+	private Integer idReceiver_idUser;
+	
+	// if its a Mail, then this shouldn't be empty
+	@Column(name="email")
+	private String email;
 	
 	// to which conversation/topic belongs this certain message
 	@Column(name="idTopic", nullable=false)
 	private Integer idTopic;
 	
-	@Column(name="title")
-	private String title;
+	@Column(name="subject")
+	private String subject;
 
 	@Column(name="text")
 	private String text;
 	
+	@Column(name = "isDeleted", nullable = false, columnDefinition = "tinyint(1) default 0")
+	private boolean isDeleted = false;
+	
+		
 	
 	// constructor for starting a new conversation
 //	public Message(Integer idSender, Integer idReceiver, String title, String text) {
@@ -67,13 +70,15 @@ public class Message implements java.io.Serializable {
 //	}
 	
 	// constructor for replying to an existent message
-	public Message(Integer idSender, Integer idReceiver, Integer idTopic, String title, String text) {
-		
-		this.idSender = idSender;
-		this.idReceiver = idReceiver;
+	public Message(Integer idSender_idUser, Integer idReceiver_idUser, String email, Integer idTopic, String subject, String text) {
+	
+		this.timeStamp = new Date();
+		this.idSender_idUser = idSender_idUser;
+		this.idReceiver_idUser = idReceiver_idUser;
+		this.email = email;
 		this.idTopic = idTopic;
-		this.title = title;
-		this.text = text;
+		this.subject = subject;
+		this.text = text;		
 	}
 	
 	
@@ -86,20 +91,28 @@ public class Message implements java.io.Serializable {
 		return this.timeStamp;
 	}
 	
-	public Integer getIdSender() {
-		return this.idSender;
+	public Integer getIdSender_idUser() {
+		return this.idSender_idUser;
 	}
 
-	public void setIdSender(Integer idSender) {
-		this.idSender = idSender;
+	public void setIdSender(Integer idSender_idUser) {
+		this.idSender_idUser = idSender_idUser;
 	}
 	
-	public Integer getIdReceiver() {
-		return this.idReceiver;
+	public Integer getIdReceiver_idUser() {
+		return this.idReceiver_idUser;
 	}
 
-	public void setIdReceivwer(Integer idReceiver) {
-		this.idReceiver = idReceiver;
+	public void setIdReceivwer(Integer idReceiver_idUser) {
+		this.idReceiver_idUser = idReceiver_idUser;
+	}
+	
+	public String getEmail(){
+		return this.email;
+	}
+	
+	public void setEmail(String email){
+		this.email = email;
 	}
 	
 	public Integer getIdTopic() {
@@ -110,12 +123,12 @@ public class Message implements java.io.Serializable {
 		this.idTopic = idTopic;
 	}
 
-	public String getTitle() {
-		return this.title;
+	public String getSubject() {
+		return this.subject;
 	}
 	
-	public void setTitle(String title){
-		this.title = title;
+	public void setSubject(String subject){
+		this.subject = subject;
 	}
 
 	public String getText(){
@@ -125,5 +138,12 @@ public class Message implements java.io.Serializable {
 	public void setText(String text){
 		this.text = text;
 	}
-
+	
+	public boolean getIsDeleted(){
+		return this.isDeleted;
+	}
+	
+	public void setIsDeleted(boolean isDeleted){
+		this.isDeleted = isDeleted;
+	}
 }
