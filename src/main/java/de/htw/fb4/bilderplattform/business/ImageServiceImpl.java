@@ -36,7 +36,7 @@ import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
  */
 public class ImageServiceImpl implements IImageService {
 	// the size of the preview image in pixels
-	private final int preview_size_px = 200;
+	private final int preview_size_px = 800;
 
 	@Override
 	public List<Image> getImagesByUsername(String username) {

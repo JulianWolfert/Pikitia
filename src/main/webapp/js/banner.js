@@ -1,22 +1,43 @@
 //created by Peter Horn
 
-var autoSwitcherOn = true;
+//configuration
 var intervall = 3000;
+
+//do not change values!
+var autoSwitcherOn = true;
+var animationIsRunning=false;
 var autoSwitcher = window.setInterval("nextImg()", intervall);
 
 window.onload = init;
 
 function init() {
 	var $first = $('.banner_imglist img').first();
+	var banner_height=$('.banner_imglist').height();
+	var banner_width=$('.banner_imglist').width();
+	
+	$('.banner_imglist img').each( function(){
+		img_height = $(this).height();
+		img_width = $(this).width();
+		img_quotient = img_width / img_height;
+		banner_quotient = banner_width / banner_height;
+
+		if(img_quotient < banner_quotient){
+			scale = banner_width / img_width;
+			$(this).height(img_height * scale);
+			$(this).width(img_width * scale);
+			img_magin_top = "-"+(img_height*scale-banner_height)/2+"px";
+			$(this).css("margin-top",img_magin_top);
+		}else{
+			scale = banner_height / img_height;
+			$(this).height(img_height * scale);
+			$(this).width(img_width * scale);
+			img_magin_left = "-"+(img_width*scale-banner_width)/2+"px";
+			$(this).css("margin-left",img_magin_left);
+		}
+	});
 	
 	$first.addClass('active');
-	resetBannerSize();
-	$first.fadeIn(1000);
-}
-
-function resetBannerSize() {
-	$('.banner_imglist').width($('.banner_imglist img.active').width());
-	$('.banner_imglist').height($('.banner_imglist img.active').height());
+	$first.show();
 }
 
 function resetAutoSwitcher() {
@@ -33,6 +54,10 @@ function stopAutoSwitcher() {
 }
 
 function nextImg() {
+	if(animationIsRunning){
+		return;
+	}
+	
 	var $active = $('.banner_imglist img.active');
 	var $next = $active.next();
 
@@ -41,13 +66,17 @@ function nextImg() {
 	}
 	$next.addClass('active');
 	$active.removeClass('active');
-	resetBannerSize();
 
-	$next.fadeIn(1000);
-	$active.fadeOut(1000);
+	animationIsRunning=true;
+	$next.stop().show("slide", { direction: "left" }, 1000);
+	$active.stop().hide("slide", { direction: "right" }, 1000, function(){animationIsRunning=false;});
 }
 
 function prevImg() {
+	if(animationIsRunning){
+		return;
+	}
+
 	var $active = $('.banner_imglist img.active');
 	var $prev = $active.prev();
 
@@ -56,10 +85,10 @@ function prevImg() {
 	}
 	$prev.addClass('active');
 	$active.removeClass('active');
-	resetBannerSize();
 
-	$prev.fadeIn(1000);
-	$active.fadeOut(1000);
+	animationIsRunning=true;
+	$prev.show("slide", { direction: "right" }, 1000);
+	$active.stop().hide("slide", { direction: "left" }, 1000, function(){animationIsRunning=false;});
 }
 
 function clickNext() {

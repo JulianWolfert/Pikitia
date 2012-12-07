@@ -125,6 +125,7 @@ src/main/webapp/images/save.png -text
 src/main/webapp/images/search.png -text
 src/main/webapp/index.zul -text
 src/main/webapp/js/banner.js -text svneol=unset#text/plain
+src/main/webapp/js/jquery-ui-1.9.2.custom.min.js -text svneol=unset#text/plain
 src/main/webapp/layout/footer.zul -text
 src/main/webapp/layout/header_menu.zul -text
 src/main/webapp/layout/template.zul -text
