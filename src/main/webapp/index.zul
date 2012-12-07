@@ -4,7 +4,8 @@
 		src="http://code.jquery.com/jquery-latest.min.js">
 	</script>
 	<script type="text/javascript" src="slides.min.jquery.js"></script>
-	<script type="text/javascript" src="/js/banner.js" />
+	<script type="text/javascript" src="/js/jquery-ui-1.9.2.custom.min.js" ></script>
+	<script type="text/javascript" src="/js/banner.js" ></script>	
 	<style src="/css/banner.css" />
 	<n:div id="header">
 		<include src="/layout/header_menu.zul" />
