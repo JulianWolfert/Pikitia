@@ -1,0 +1,43 @@
+<?page title="Accountdaten" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:c="client">
+
+
+<n:div id="header">
+			
+			<include src="/layout/header_menu2.zul" />
+
+</n:div>
+<n:div id="content">
+<n:div id="content_small">
+
+<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('update_vm') @init('de.htw.fb4.bilderplattform.view.vm.UserUpdateVM')"
+		validationMessages="@id('vmsgs')"
+		form="@id('fx')  @load (update_vm.user) @save(update_vm.user, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.UserUpdateValidator', retypedPassword=update_vm.retypedPassword)">
+
+		<n:form>
+	  	<n:fieldset>
+		    <n:legend>Ändern Ihrer Accountdaten</n:legend>
+		    <n:label>Benutzername</n:label>
+		    <textbox value="@bind(fx.username)" type="text"></textbox>
+		    <n:label>Passwort</n:label>
+		    <textbox value="@bind(fx.password)" type="password"></textbox>
+		    <n:label>Passwortwiederholung</n:label>
+		    <textbox value="@bind(update_vm.retypedPassword)" type="password"></textbox>
+		    <n:label>E-Mail-Adresse</n:label>
+		    <textbox value="@bind(fx.email)" type="text"></textbox> 
+		 </n:fieldset>
+		 <button class="btn" onClick="@command('submit')">Änderungen speichern</button>
+		</n:form>
+
+	
+</div>
+
+
+
+</n:div>
+				
+</n:div>
+
+
+</zk>

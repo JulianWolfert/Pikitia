@@ -1,0 +1,27 @@
+<zk xmlns:n="native" xmlns:c="client">
+
+<div class="modal-header">
+			<n:button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">
+				×
+			</n:button>
+			<n:h3 id="myModalLabel">Login</n:h3>
+		</div>
+		<div class="modal-body">
+			<n:form class="form-horizontal">
+				<div class="control-group">
+					<n:label class="control-label" for="inputEmail">Benutzername</n:label>
+					<div class="controls">
+					<textbox type="text" value="@bind(fx.username)" placeholder="Benutzername" id="inputEmail"></textbox>
+					</div>
+				</div>
+			</n:form>	
+		</div>
+		<div class="modal-footer">
+			<n:button class="btn" data-dismiss="modal" aria-hidden="true">
+				Abbrechen
+			</n:button>
+			<button class="btn btn-primary" onClick="@command('submit')">Login</button>
+		</div>
+
+</zk>

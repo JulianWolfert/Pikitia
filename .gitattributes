@@ -76,6 +76,7 @@ src/main/webapp/bannerTest.zul -text
 src/main/webapp/bildergalerie.zul -text
 src/main/webapp/contactForm.zul -text
 src/main/webapp/css/banner.css -text svneol=unset#text/plain
+src/main/webapp/css/bootstrap.min.css -text svneol=unset#text/plain
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
 src/main/webapp/divers/css/supersized.css -text
 src/main/webapp/divers/img/back.png -text
@@ -101,11 +102,8 @@ src/main/webapp/divers/theme/supersized.shutter.css -text
 src/main/webapp/divers/theme/supersized.shutter.js -text
 src/main/webapp/divers/theme/supersized.shutter.min.js -text
 src/main/webapp/gallery.zul -text
-src/main/webapp/images/1.jpg -text
 src/main/webapp/images/1_s.jpg -text
-src/main/webapp/images/2.jpg -text
 src/main/webapp/images/2_s.jpg -text
-src/main/webapp/images/3.jpg -text
 src/main/webapp/images/3_s.jpg -text
 src/main/webapp/images/Logo.png -text
 src/main/webapp/images/Logo2.png -text
@@ -121,21 +119,28 @@ src/main/webapp/images/banner/next.png -text
 src/main/webapp/images/banner/play.png -text
 src/main/webapp/images/banner/prev.png -text
 src/main/webapp/images/blank.png -text
+src/main/webapp/images/cart.png -text
 src/main/webapp/images/delete_small.png -text
 src/main/webapp/images/load.png -text
 src/main/webapp/images/save.png -text
 src/main/webapp/images/search.png -text
 src/main/webapp/index.zul -text
 src/main/webapp/js/banner.js -text svneol=unset#text/plain
+src/main/webapp/js/bootstrap.js -text svneol=unset#text/plain
+src/main/webapp/js/bootstrap.min.js -text svneol=unset#text/plain
 src/main/webapp/js/jquery-ui-1.9.2.custom.min.js -text svneol=unset#text/plain
 src/main/webapp/layout/footer.zul -text
 src/main/webapp/layout/header_menu.zul -text
+src/main/webapp/layout/header_menu2.zul -text
 src/main/webapp/layout/template.zul -text
 src/main/webapp/login.zul -text
+src/main/webapp/login_modal.zul -text
 src/main/webapp/registration.zul -text
+src/main/webapp/registration_modal.zul -text
 src/main/webapp/test.zul -text
 src/main/webapp/timeout.zul -text
 src/main/webapp/user/addImage.zul -text
 src/main/webapp/user/imageUpload.zul -text
 src/main/webapp/user/index.zul -text
 src/main/webapp/user/userUpdate.zul -text
+src/main/webapp/user/userUpdate2.zul -text

@@ -1,11 +1,11 @@
 <!-- created by Peter Horn -->
 
-<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?page title="Benutzeradministration" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
 	
 <n:div id="header">
 			
-			<include src="/layout/header_menu.zul" />
+			<include src="/layout/header_menu2.zul" />
 
 </n:div>
 <n:div id="content">

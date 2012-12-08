@@ -1,13 +1,10 @@
-<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?page title="Login" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="slides.min.jquery.js"></script>
 
 	
 <n:div id="header">
 			
-	<include src="/layout/header_menu.zul" />
+	<include src="/layout/header_menu2.zul" />
 
 </n:div>
 

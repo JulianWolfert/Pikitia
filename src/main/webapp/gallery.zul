@@ -1,10 +1,9 @@
-<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<?page title="Kaufen" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
 
-	
 <n:div id="header">
 			
-			<include src="/layout/header_menu.zul" />
+			<include src="/layout/header_menu2.zul" />
 
 </n:div>
 <n:div id="content">
@@ -16,19 +15,18 @@
 	
 		<div style="text-align:center; padding-top: 30px; padding-bottom: 30px;">
 
-        <textbox value="@bind(vm.keyword)" />
-        <button label="Search" image="/images/search.png" onClick="@command('search')" />
-	
+		<n:form class="form-search">
+		  <div class="input-append">
+		  	<textbox value="@bind(vm.keyword)" />
+		    <button type="submit" onClick="@command('search')" class="btn">Search</button>
+		  </div>
+		</n:form>
 		</div>
-		
-		<div id="gallery_images" children="@load(vm.imageList)" style="text-align:center;">
-		
-			<template name="children" var="image">
-			<div class="gallery_image" style="display: inline-block; padding: 10px;">
-	            <image src="@load(image.description)"></image>
-	         </div>
-	        </template>
-		
+
+		<div id="gallery_images" style="text-align:center;">
+
+			<div sclass="imageList"/>
+
 		</div>
 	</div>
 </n:div>			    
