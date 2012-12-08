@@ -18,6 +18,8 @@ import de.htw.fb4.bilderplattform.dao.User;
 public interface IUserService {
 
 	public User getUserByName(String username) throws UsernameNotFoundException;
+	
+	public User getUserByID(int idUser);
 
 	public List<User> getAllUser() throws UsernameNotFoundException;
 	

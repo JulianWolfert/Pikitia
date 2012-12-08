@@ -69,5 +69,12 @@ class UserServiceImpl implements IUserService {
 	public User getCurrentlyLoggedInUser() {
 		return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	}
+
+	@Override
+	public User getUserByID(int idUser) {
+		UserDAOImpl userDAO = ApplicationContextProvider
+				.getApplicationContext().getBean("userDao", UserDAOImpl.class);
+		return userDAO.getUserByID(idUser);
+	}
 	
 }
