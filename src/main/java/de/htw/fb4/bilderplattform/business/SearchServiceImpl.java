@@ -14,10 +14,10 @@ public class SearchServiceImpl implements ISearchService {
 
 	@Override
 	public List<Image> searchImages(String searchString) {
-//		IImageService imgService = BusinessCtx.getInstance().getIImageService();
-//		List<Image> allImgs = imgService.getAllImages();
-		List<Image> allImgs = dummys();
-		
+		IImageService imgService = BusinessCtx.getInstance().getIImageService();
+		List<Image> allImgs = imgService.getAllImages();
+//		List<Image> allImgs = dummys();
+//		
 		StringTokenizer tokenizer = new StringTokenizer(searchString, " ");
 		Set<Image> targetImages = new HashSet<>();
 		while(tokenizer.hasMoreElements()) {
@@ -33,8 +33,8 @@ public class SearchServiceImpl implements ISearchService {
 //			Matcher match1 = pattern.matcher(img.getFilename());
 			Matcher match2 = pattern.matcher(img.getTitle());
 			Matcher match3 = pattern.matcher(img.getDescription());
-//			if(match1.find() || match2.find() || match3.find())
-//				relevantImages.add(img);
+			if(match2.find() || match3.find())
+				relevantImages.add(img);
 		}
 		return relevantImages;
 	}
