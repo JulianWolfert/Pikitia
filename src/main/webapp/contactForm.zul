@@ -1,0 +1,87 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:c="client">
+	<n:div id="header">
+
+		<include src="/layout/header_menu.zul" />
+
+	</n:div>
+	<n:div id="content">
+		<n:div id="content_small">
+		<n:h1>Kontaktformular</n:h1>
+			<grid apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.ContactFormVM')"
+			validationMessages="@id('vmsgs')"
+			form="@id('fx') @load(vm) @save(vm, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.ContactFormValidator')">
+				<columns>
+					<column label="Typ" width="120px" />
+					<column label="Inhalt" />
+				</columns>
+				<rows>
+<!-- Receiver Name -->
+					<row>
+						<label value="Empfänger:" width="150px" />
+						<hlayout>
+							<label value="@load(fx.receiverName)"
+								width="150px" />
+							<!-- invisible hack, mangels Alternative -->
+							<textbox visible="false" value="@bind(fx.receiverId)" />
+							<label class="error"
+                            value="@load(vmsgs['receiverId'])" />
+						</hlayout>
+					</row>
+<!--  NAME  -->
+					<row>
+						<label value="Name*:" width="150px" />
+						<hlayout>
+							<textbox value="@bind(fx.nameSender)"
+								width="150px" tabindex="1" />
+							<label class="error"
+                            value="@load(vmsgs['nameSender'])" />
+						</hlayout>
+					</row>
+<!-- EMAIL -->
+					<row>
+					<label value="E-mail*:" width="150px" />
+                    <hlayout>
+                        <textbox value="@bind(fx.emailSender)" width="150px" tabindex="2" />
+                        <label class="error"
+                            value="@load(vmsgs['emailSender'])" />
+                    </hlayout>
+					</row>
+<!-- SUBJECT -->
+					<row>
+						<label value="Betreff*:" width="150px" />
+						<hlayout>
+							<textbox value="@bind(fx.subject)"
+								width="150px" tabindex="3" />
+						<label class="error"
+                            value="@load(vmsgs['subject'])" />
+						</hlayout>
+					</row>
+<!-- MESSAGE -->
+					<row>
+						<label value="Nachricht*:" width="150px" />
+						<vlayout>
+							<textbox rows="6"
+								value="@bind(fx.text)" width="370px;" tabindex="4" />
+							<label class="error"
+                            value="@load(vmsgs['text'])" />
+						</vlayout>
+					</row>
+<!-- SUBMIT -->
+					<row>
+						<cell colspan="3" style="text-align:center">
+							<vlayout>
+								<label visible="@load(empty vmsgs)"
+									value="@load(empty vmsgs ? 'Erfolgreich gesendet!' : '', before='submit')" />
+								<button label="Senden"
+									onClick="@command('submit')" width="100px" height="30px" />
+							</vlayout>
+						</cell>
+					</row>
+				</rows>
+			</grid>
+			<n:p n:style="font-size:.8em; color:gray">* Pflichtfeld</n:p>
+		</n:div>
+	</n:div>
+</zk>

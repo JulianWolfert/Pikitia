@@ -22,7 +22,7 @@
 									<groupbox
 										if="${not empty param.error}">
 										<label style="color:red"
-											value="Login fehlgeschlagen. Bitte probieren Sie es noch einmal (Sie Pfeife!)." />
+											value="Login fehlgeschlagen. Bitte probieren Sie es noch einmal." />
 									</groupbox>
 									<groupbox>
 										<caption>Login</caption>

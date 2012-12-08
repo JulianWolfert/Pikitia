@@ -59,6 +59,10 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 			<button label="Suche" onClick="@command('search')" />
 	</n:div>
 	
+	<n:div id="contactFormTest">
+			<button label="Kontakt" onClick="@command('contact')" />
+	</n:div>
+	
 	</n:div>
 
 			

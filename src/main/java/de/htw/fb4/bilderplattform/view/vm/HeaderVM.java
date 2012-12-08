@@ -1,6 +1,8 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Sessions;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.ISearchService;
@@ -49,6 +51,12 @@ public class HeaderVM {
 			System.out.println("FOUND: " + img.getFile());
 		}
 
+	}
+	
+	@Command
+	public void contact() {
+		Sessions.getCurrent().setAttribute("receiver_idUser", "2");
+		Executions.getCurrent().sendRedirect("/contactForm.zul");
 	}
 	
 	
