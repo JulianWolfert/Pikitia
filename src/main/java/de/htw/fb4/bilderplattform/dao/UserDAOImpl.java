@@ -29,9 +29,13 @@ public class UserDAOImpl extends AbstractDAO {
 
 	@Transactional
 	public User getUserByID(int idUser) {
-		User usr = (User) sessionFactory.getCurrentSession().load(User.class,
-				idUser);
-		return usr;
+//TODO: Its not working like this (org.hibernate.LazyInitializationException: could not initialize proxy - no Session)		
+//		User usr = (User) sessionFactory.getCurrentSession().load(User.class,
+//				idUser);
+//		return usr;
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"SELECT u FROM User u where u.idUser = " + idUser);
+		return (User) query.uniqueResult();
 	}
 
 	@SuppressWarnings("unchecked")
