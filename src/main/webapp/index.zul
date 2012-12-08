@@ -4,14 +4,14 @@
 		src="http://code.jquery.com/jquery-latest.min.js">
 	</script>
 	<script type="text/javascript" src="slides.min.jquery.js"></script>
-	<script type="text/javascript" src="/js/jquery-ui-1.9.2.custom.min.js" ></script>
-	<script type="text/javascript" src="/js/banner.js" ></script>	
-	<style src="/css/banner.css" />
 	<n:div id="header">
 		<include src="/layout/header_menu2.zul" />
 	</n:div>
 	<n:div id="content">
 		<n:div id="content_fullsize">
+			<script type="text/javascript" src="/js/jquery-ui-1.9.2.custom.min.js" ></script>
+			<script type="text/javascript" src="/js/banner.js" ></script>	
+			<style src="/css/banner.css" />
 			<div class="banner"
 				apply="org.zkoss.bind.BindComposer"
 				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.BannerVM')">
