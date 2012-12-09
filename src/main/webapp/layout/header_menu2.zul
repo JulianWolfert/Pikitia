@@ -40,7 +40,7 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	                  <n:li><n:a href="/bilderplattform/user/userUpdate2.zul">Meine Daten</n:a></n:li>
 	                  <n:li><n:a href="/bilderplattform/user/messages.zul">Nachrichten</n:a></n:li>
 	                  <n:li class="divider"></n:li>
-	                  <n:li><n:a href="/bilderplattform/user/addImage.zul">Bild hochladen</n:a></n:li>
+	                  <n:li><n:a href="/bilderplattform/user/addImage.zul">Neues Angebot erstellen</n:a></n:li>
 	                  <n:li class="divider"></n:li>
 	                  <n:li><n:a href="/bilderplattform/purchase.zul">Kaufprozess</n:a></n:li>
 	                </n:ul>
@@ -50,7 +50,7 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 		<n:ul class="nav pull-right" style="padding-top:25px;">
 			<image src="/images/cart.png" style="padding-right: 20px;"></image>
 			<button class="btn btn-primary" type="button" label="@bind(vm.logLabel)" style="padding: 5px;" href="@bind(vm.logPath)"></button>
-			<n:button class="btn btn-success" type="button" style="padding: 5px;" href="#regModal" role="button" data-toggle="modal">Registrieren</n:button>
+			<n:button class="btn btn-success" type="button" style="padding: 5px;" href="#regModal" role="button" data-toggle="modal" if="${vm.isAUserAuthenticated()==false}">Registrieren</n:button>
 		</n:ul>
 </n:div>       
 

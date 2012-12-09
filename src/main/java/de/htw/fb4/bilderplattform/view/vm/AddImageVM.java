@@ -1,24 +1,17 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Date;
-
 import org.zkoss.bind.BindContext;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
-import org.zkoss.zul.Image;
 import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Image;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
@@ -90,5 +83,7 @@ public class AddImageVM {
 	public String getCreateOfferLabel() {
 		return SpringPropertiesUtil.getProperty("lbl.createOffer");
 	}
+	
+	
 
 }

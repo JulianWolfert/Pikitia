@@ -1,4 +1,5 @@
 <!-- created by Peter Horn -->
+<!-- modified by Wojciech Konitzer -->
 
 <?page title="Bilerupload" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
@@ -14,7 +15,9 @@
 		<n:div id="content_small">
 			<n:h3 id="regModalLabel">Neues Angebot erstellen</n:h3>
 			<div apply="org.zkoss.bind.BindComposer"
-				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.AddImageVM')">
+				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.AddImageVM')"
+				validationMessages="@id('vmsgs')"
+				form="@id('fx')  @save(vm.image, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.AddImageValidator')">
 				<grid>
 					<columns>
 						<column hflex="3" />
@@ -30,21 +33,21 @@
 								<rows>
 
 									<row>
-										<label value="Titel" />
+										<label value="Titel:*" />
 										<textbox type="text"
-											width="100%" value="@bind(vm.image.title)"
+											width="95%" value="@bind(fx.title)"
 											constraint="no empty: Bitte Titel eingeben" />
 									</row>
 									<row>
-										<label value="Beschreibung" />
+										<label value="Beschreibung*:" />
 										<textbox
-											value="@bind(vm.image.description)" width="100%" rows="5"
+											value="@bind(fx.description)" width="95%" rows="5"
 											constraint="no empty: Bitte Beschreibung eingeben" />
 									</row>
 									<row>
-										<label value="Preis" />
+										<label value="Preis:*" />
 										<textbox
-											value="@bind(vm.image.price)" width="100%"
+											value="@bind(fx.price)" width="95%"
 											constraint="/[0-9]+\.[0-9][0-9]/: Bitte den Preis mit zwei Nachkommastellen eingeben." />
 									</row>
 								</rows>

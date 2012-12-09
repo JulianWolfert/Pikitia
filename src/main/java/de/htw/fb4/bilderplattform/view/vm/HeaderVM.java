@@ -60,7 +60,8 @@ public class HeaderVM {
 	}
 	
 	
-	
-	
-	
+	public boolean isAUserAuthenticated(){
+		return BusinessCtx.getInstance().getUserService().isAUserAuthenticated();
+	}
+		
 }
