@@ -53,21 +53,8 @@ public class ImageDAOImpl extends AbstractDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Image> getAllImages() {
-		//TODO: FUNZT NICHT!!!!!!!
-		// List<Image> images = null;
-		// Session session = sessionFactory.getCurrentSession();
-		//
-		// Transaction transaction = session.beginTransaction();
-		// try {
-		// images = session.createQuery("from Image").list();
-		// transaction.commit();
-		// } catch (DataAccessException dae) {
-		// logger.error("getAllImages throws exception: ", dae);
-		// transaction.rollback();
-		// }
-		// return images;
 		Query query = sessionFactory.getCurrentSession().createQuery(
-				"SELECT u FROM Image u");
+				"from Image");
 		return (List<Image>) query.list();
 	}
 
@@ -76,16 +63,13 @@ public class ImageDAOImpl extends AbstractDAO {
 	public List<Image> getAllImagesByUsername(String username) {
 		List<Image> images = null;
 		Session session = sessionFactory.getCurrentSession();
-
-		Transaction transaction = session.beginTransaction();
 		try {
 			Criteria criteria = session.createCriteria(Image.class).add(
 					Restrictions.eq("username", username));
 			images = criteria.list();
-			transaction.commit();
 		} catch (DataAccessException dae) {
 			logger.error("getAllImagesByUsername throws exception: ", dae);
-			transaction.rollback();
+			session.getTransaction().rollback();
 		}
 		return images;
 	}

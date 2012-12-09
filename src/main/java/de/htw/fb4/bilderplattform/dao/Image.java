@@ -73,10 +73,6 @@ public class Image implements Serializable {
 	public Integer getIdImage() {
 		return idImage;
 	}
-	
-//	public void setIdImage(Integer idImage) {
-//		this.idImage = idImage;
-//	}
 
 	public String getTitle() {
 		return title;
