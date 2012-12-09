@@ -3,57 +3,88 @@
 <?page title="Bilerupload" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
 
-<n:div id="header">
+	<n:div id="header">
 
 		<include src="/layout/header_menu2.zul" />
 
-</n:div>
+	</n:div>
 	<n:div id="content">
 
 
 		<n:div id="content_small">
-
+			<n:h3 id="regModalLabel">Neues Angebot erstellen</n:h3>
 			<div apply="org.zkoss.bind.BindComposer"
 				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.AddImageVM')">
 				<grid>
 					<columns>
-						<column hflex="min"/>
-						<column hflex="1"/>
+						<column hflex="3" />
+						<column hflex="2" />
 					</columns>
 					<rows>
-						<row spans="2" align="center">
-							<image id="uploadImg"
-								src="/images/blank.png"
-								style="max-width:300px;max-height:300px;" />
-						</row>
 						<row>
-							<label value="Titel" />
-							<textbox type="text" width="100%"
-								value="@bind(vm.image.title)"
-								constraint="no empty: Bitte Titel eingeben" />
+							<grid>
+								<columns>
+									<column width="100px" />
+									<column width="100%" />
+								</columns>
+								<rows>
+
+									<row>
+										<label value="Titel" />
+										<textbox type="text"
+											width="100%" value="@bind(vm.image.title)"
+											constraint="no empty: Bitte Titel eingeben" />
+									</row>
+									<row>
+										<label value="Beschreibung" />
+										<textbox
+											value="@bind(vm.image.description)" width="100%" rows="5"
+											constraint="no empty: Bitte Beschreibung eingeben" />
+									</row>
+									<row>
+										<label value="Preis" />
+										<textbox
+											value="@bind(vm.image.price)" width="100%"
+											constraint="/[0-9]+\.[0-9][0-9]/: Bitte den Preis mit zwei Nachkommastellen eingeben." />
+									</row>
+								</rows>
+							</grid>
+							<grid>
+								<columns>
+									<column hflex="1" />
+								</columns>
+								<rows>
+									<row align="center">
+										<image id="uploadImg"
+											src="/images/please_upload_image.png"
+											style="max-width:300px;max-height:300px;" />
+									</row>
+									<row align="right">
+										<cell>
+											<button
+												onUpload="@command('upload')"
+												label="@bind(vm.uploadImageLabel)" upload="true" />
+										</cell>
+									</row>
+								</rows>
+							</grid>
 						</row>
-						<row>
-							<label value="Beschreibung" />
-							<textbox value="@bind(vm.image.description)"
-								width="100%" rows="5"
-								constraint="no empty: Bitte Beschreibung eingeben" />
-						</row>
-						<row>
-							<label value="Preis" />
-							<textbox value="@bind(vm.image.price)"
-								width="100%"
-								constraint="/[0-9]+\.[0-9][0-9]/: Bitte den Preis mit zwei Nachkommastellen eingeben." />
+						<row spans="2">
+							<cell height="80px"/>
 						</row>
 						<row spans="2" align="right">
 							<cell>
-								<button onUpload="@command('upload')"
-									image="/images/load.png" upload="true" />
-								<button image="/images/save.png"
+								<button class="btn btn-success"
+									label="@bind(vm.createOfferLabel)" style="padding: 5px;"
 									onClick="@command('save')" />
 							</cell>
 						</row>
+
 					</rows>
 				</grid>
+
+
+
 			</div>
 
 		</n:div>

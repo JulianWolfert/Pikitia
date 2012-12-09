@@ -26,7 +26,7 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	<image src="/images/Logo2.png" style="float:left;"></image>
 		<n:ul class="nav nav-pills" style="float:left; padding-top: 24px;">
 			 <n:li><n:a href="/bilderplattform/gallery.zul">Kaufen</n:a></n:li>
-	          <n:li><n:a href="#">Verkaufen</n:a></n:li>
+	          <n:li><n:a href="/bilderplattform/user/addImage.zul">Verkaufen</n:a></n:li>
 	          <n:li class="dropdown">
 	                <n:a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<n:b class="caret"></n:b></n:a>
 	                <n:ul class="dropdown-menu">

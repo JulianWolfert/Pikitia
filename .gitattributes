@@ -122,6 +122,7 @@ src/main/webapp/images/blank.png -text
 src/main/webapp/images/cart.png -text
 src/main/webapp/images/delete_small.png -text
 src/main/webapp/images/load.png -text
+src/main/webapp/images/please_upload_image.png -text
 src/main/webapp/images/save.png -text
 src/main/webapp/images/search.png -text
 src/main/webapp/index.zul -text

@@ -21,10 +21,11 @@ import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
  * 
- * @author Peter Horn
+ * @author Peter Horn & Wojciech Konitzer
  * 
  */
 public class AddImageVM {
@@ -80,6 +81,14 @@ public class AddImageVM {
 						.getInstance()
 						.getUserService().getCurrentlyLoggedInUser());
 		Executions.sendRedirect("/user/addImage.zul");
+	}
+	
+	public String getUploadImageLabel() {
+		return SpringPropertiesUtil.getProperty("lbl.uploadImage");
+	}
+	
+	public String getCreateOfferLabel() {
+		return SpringPropertiesUtil.getProperty("lbl.createOffer");
 	}
 
 }
