@@ -1,10 +1,13 @@
 package de.htw.fb4.bilderplattform.view.validator;
 
+import java.text.DecimalFormat;
 import java.util.Map;
 
 import org.zkoss.bind.Property;
 import org.zkoss.bind.ValidationContext;
 import org.zkoss.bind.validator.AbstractValidator;
+
+import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
  * 
@@ -17,24 +20,54 @@ public class AddImageValidator extends AbstractValidator {
 		// all the bean properties
 		Map<String, Property> beanProps = ctx.getProperties(ctx.getProperty()
 				.getBase());
-		validateUploadedImage(ctx, (String) beanProps.get("uploadedImage")
-				.getValue());
+		validateTitle(ctx, (String) beanProps.get("title").getValue());
 		validateDescription(ctx, (String) beanProps.get("description")
 				.getValue());
-		validatePrice(ctx, (float) beanProps.get("price").getValue());
 
+		validatePrice(ctx, (Double) beanProps.get("price").getValue());
 	}
 
-	private void validateUploadedImage(ValidationContext ctx, String path) {
-
+	private void validateTitle(ValidationContext ctx, String title) {
+		if (title == null) {
+			this.addInvalidMessage(ctx, "title", SpringPropertiesUtil
+					.getProperty("err.enterValidImageTitle"));
+		}
 	}
 
 	private void validateDescription(ValidationContext ctx, String description) {
-
+		if (description == null) {
+			this.addInvalidMessage(ctx, "description", SpringPropertiesUtil
+					.getProperty("err.enterValidImageDescription"));
+		}
 	}
 
-	private void validatePrice(ValidationContext ctx, float price) {
+	private void validatePrice(ValidationContext ctx, Double price) {
+		if (price != null) {
+			String strPrice = String.valueOf(price);
+			strPrice = formatPrice(strPrice);
 
+			if (!strPrice.matches("^\\d{1,3}(,\\d{2})*$")) {
+				this.addInvalidMessage(ctx, "price", SpringPropertiesUtil
+						.getProperty("err.enterValidImagePrice"));
+			}
+		} else {
+			this.addInvalidMessage(ctx, "price", SpringPropertiesUtil
+					.getProperty("err.enterValidImagePrice"));
+		}
+	}
+
+	private String formatPrice(String strPrice) {
+		if (strPrice != null) {
+			String strPriceWithoutComma = strPrice.replace(',', '.');
+			String strPriceWithoutEuro = strPriceWithoutComma.replace("€", "");
+
+			DecimalFormat f = new DecimalFormat("#0.00");
+			String formatedString = f.format(new Double(strPriceWithoutEuro));
+			// System.out.println("Price = " + formatedString);
+
+			return formatedString;
+		}
+		return strPrice;
 	}
 
 }

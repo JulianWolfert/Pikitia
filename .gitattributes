@@ -42,6 +42,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/composer/ImageUploadComposer.java 
 src/main/java/de/htw/fb4/bilderplattform/view/validator/AddImageValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/RegistrationValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/UserUpdateValidator.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageSummaryVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/BannerVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/CartVM.java -text svneol=unset#text/plain
@@ -144,6 +145,7 @@ src/main/webapp/registration_modal.zul -text
 src/main/webapp/test.zul -text
 src/main/webapp/timeout.zul -text
 src/main/webapp/user/addImage.zul -text
+src/main/webapp/user/addImageSummary.zul -text
 src/main/webapp/user/imageUpload.zul -text
 src/main/webapp/user/index.zul -text
 src/main/webapp/user/userUpdate.zul -text

@@ -1,19 +1,20 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
+import java.text.DecimalFormat;
+
 import org.zkoss.bind.BindContext;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
-import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Image;
 
-import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
@@ -32,8 +33,8 @@ public class AddImageVM {
 		this.image = new de.htw.fb4.bilderplattform.dao.Image();
 		// default values
 		this.image.setPrice(0.0);
-		this.image.setTitle("Titel");
-		this.image.setDescription("Beschreibung");
+		this.image.setTitle("");
+		this.image.setDescription("");
 	}
 
 	public de.htw.fb4.bilderplattform.dao.Image getImage() {
@@ -41,7 +42,13 @@ public class AddImageVM {
 	}
 
 	public void setImage(de.htw.fb4.bilderplattform.dao.Image image) {
+		DecimalFormat f = new DecimalFormat("#0.00"); 
+		double price = this.image.getPrice();
+		this.image.setPrice(new Double(f.format(price)));
+
 		this.image = image;
+		
+		System.out.println("formatierter Preis = " + this.image.getPrice());
 	}
 
 	@AfterCompose
@@ -49,6 +56,7 @@ public class AddImageVM {
 		Selectors.wireComponents(view, this, false);
 	}
 
+	// TODO: Image size checking!!!
 	@Command
 	public void upload(@ContextParam(ContextType.BIND_CONTEXT) BindContext ctx) {
 		UploadEvent evt = null;
@@ -60,30 +68,28 @@ public class AddImageVM {
 		}
 	}
 
-	@Command
-	public void save() {
-		if (uploadImg.getContent() == null) {
-			Messagebox.show("Es wurde kein Bild hochgeladen.");
-			return;
-		}
-		BusinessCtx
-				.getInstance()
-				.getIImageService()
-				.saveOrUpdateImage(this.image,
-						this.uploadImg.getContent().getStreamData(), BusinessCtx
-						.getInstance()
-						.getUserService().getCurrentlyLoggedInUser());
-		Executions.sendRedirect("/user/addImage.zul");
-	}
-	
 	public String getUploadImageLabel() {
 		return SpringPropertiesUtil.getProperty("lbl.uploadImage");
 	}
-	
-	public String getCreateOfferLabel() {
-		return SpringPropertiesUtil.getProperty("lbl.createOffer");
+
+	public String getNextPageLabel() {
+		return SpringPropertiesUtil.getProperty("lbl.nextPage");
 	}
-	
-	
+
+	@Command
+	public void loadOfferSummary() {
+		if (this.image.getTitle() != null && this.image.getDescription() != null
+				&& this.image.getPrice() != null && uploadImg.getContent() != null) {
+
+
+			Sessions.getCurrent().setAttribute("image", this.image);
+			Sessions.getCurrent().setAttribute("uploadImg", this.uploadImg);
+			
+			System.out.println("----------->P =" + ((de.htw.fb4.bilderplattform.dao.Image)Sessions.getCurrent().getAttribute("image")).getPrice());
+			
+			
+			Executions.getCurrent().sendRedirect("/user/addImageSummary.zul");
+		}
+	}
 
 }

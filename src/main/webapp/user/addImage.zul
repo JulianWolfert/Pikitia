@@ -17,7 +17,7 @@
 			<div apply="org.zkoss.bind.BindComposer"
 				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.AddImageVM')"
 				validationMessages="@id('vmsgs')"
-				form="@id('fx')  @save(vm.image, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.AddImageValidator')">
+				form="@id('fx')  @save(vm.image, before='loadOfferSummary') @validator('de.htw.fb4.bilderplattform.view.validator.AddImageValidator')">
 				<grid>
 					<columns>
 						<column hflex="3" />
@@ -34,21 +34,34 @@
 
 									<row>
 										<label value="Titel:*" />
-										<textbox type="text"
-											width="95%" value="@bind(fx.title)"
-											constraint="no empty: Bitte Titel eingeben" />
+										<cell>
+											<textbox type="text"
+												width="95%" value="@bind(fx.title)" tabindex="1"/>
+											<label class="error"
+												value="@load(vmsgs['title'])" />
+										</cell>
 									</row>
 									<row>
 										<label value="Beschreibung*:" />
-										<textbox
-											value="@bind(fx.description)" width="95%" rows="5"
-											constraint="no empty: Bitte Beschreibung eingeben" />
+										<cell>
+											<textbox
+												value="@bind(fx.description)" width="95%" rows="5" tabindex="2"/>
+											<label class="error"
+												value="@load(vmsgs['description'])" />
+										</cell>
 									</row>
 									<row>
-										<label value="Preis:*" />
-										<textbox
-											value="@bind(fx.price)" width="95%"
-											constraint="/[0-9]+\.[0-9][0-9]/: Bitte den Preis mit zwei Nachkommastellen eingeben." />
+										<label value="Preis in Euro:*" />
+										<cell>
+										<doublebox value="@bind(fx.price)" format="###.##" maxlength="6"
+												 width="100px" tabindex="3" />
+											<label
+												value=" Beispiele: 2 oder 2,59" />
+											<box>
+												<label class="error"
+													value="@load(vmsgs['price'])" />
+											</box>
+										</cell>
 									</row>
 								</rows>
 							</grid>
@@ -66,20 +79,20 @@
 										<cell>
 											<button
 												onUpload="@command('upload')"
-												label="@bind(vm.uploadImageLabel)" upload="true" />
+												label="@bind(vm.uploadImageLabel)" upload="true" tabindex="4"/>
 										</cell>
 									</row>
 								</rows>
 							</grid>
 						</row>
 						<row spans="2">
-							<cell height="80px"/>
+							<cell height="80px" />
 						</row>
 						<row spans="2" align="right">
 							<cell>
 								<button class="btn btn-success"
-									label="@bind(vm.createOfferLabel)" style="padding: 5px;"
-									onClick="@command('save')" />
+									label="@bind(vm.nextPageLabel)" style="padding: 5px;"
+									onClick="@command('loadOfferSummary')" tabindex="5"/>
 							</cell>
 						</row>
 

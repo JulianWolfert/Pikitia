@@ -1,0 +1,83 @@
+<!-- created by Wojciech Konitzer -->
+
+<?page title="Bilerupload" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:c="client">
+
+	<n:div id="header">
+		<include src="/layout/header_menu2.zul" />
+	</n:div>
+	<n:div id="content">
+		<n:div id="content_small">
+			<n:h3 id="regModalLabel">Übersicht Ihres Angebots</n:h3>
+			<div apply="org.zkoss.bind.BindComposer"
+				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.AddImageSummaryVM')">
+				<grid>
+					<columns>
+						<column hflex="3" />
+						<column hflex="2" />
+					</columns>
+					<rows>
+						<row>
+							<grid>
+								<columns>
+									<column width="100px" />
+									<column width="100%" />
+								</columns>
+								<rows>
+									<row>
+										<label value="Titel:*" />
+										<label
+											value="@bind(vm.image.title)" />
+									</row>
+									<row>
+										<label value="Beschreibung*:" />
+										<label
+											value="@bind(vm.image.description)" />
+									</row>
+									<row>
+										<label value="Preis:*" />
+										<cell>
+											<label
+												value="@bind(vm.image.price)"/>
+											<label value=" €" />
+										</cell>
+									</row>
+								</rows>
+							</grid>
+							<grid>
+								<columns>
+									<column hflex="1" />
+								</columns>
+								<rows>
+									<row align="center">
+										<image
+											content="@bind(vm.uploadImg.content)"
+											style="max-width:300px;max-height:300px;" />
+									</row>
+								</rows>
+							</grid>
+						</row>
+						<row spans="2">
+							<cell height="80px" />
+						</row>
+						<row spans="2" align="right">
+							<cell>
+								<button class="btn btn-success"
+									label="@bind(vm.createOfferLabel)" style="padding: 5px;"
+									onClick="@command('save')" />
+							</cell>
+						</row>
+
+					</rows>
+				</grid>
+
+
+
+			</div>
+
+		</n:div>
+
+	</n:div>
+
+
+</zk>
