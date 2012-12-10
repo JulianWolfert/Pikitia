@@ -18,7 +18,7 @@
 				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.AddImageVM')"
 				validationMessages="@id('vmsgs')"
 				form="@id('fx')  @save(vm.image, before='loadOfferSummary') @validator('de.htw.fb4.bilderplattform.view.validator.AddImageValidator')">
-				<grid>
+				<grid width="100%">
 					<columns>
 						<column hflex="3" />
 						<column hflex="2" />

@@ -31,16 +31,16 @@ public class UserUpdateValidator extends AbstractValidator{
 	private void validateUsername(ValidationContext ctx, String username) {
 		if (username == null) {
 			this.addInvalidMessage(ctx, "username",
-					"Bitte geben Sie einen Benutzernamen mit mindestens 4 Zeichen ein!");
+					SpringPropertiesUtil.getProperty("err.enterValidUsername"));
 		} else {
 			username = username.trim();
 			//TODO: changing regex
 			if (!username.matches("[A-Za-z0-9]+")) {
 				this.addInvalidMessage(ctx, "username",
-						"Der Benutzername enth\u00e4lt ung\u00fcltige Zeichen!");
+						SpringPropertiesUtil.getProperty("err.usernameIsNotValid"));
 			}else if(username.length() < 4){
 				this.addInvalidMessage(ctx, "username",
-						"Der Benutzername ist zu kurz!");
+						SpringPropertiesUtil.getProperty("err.usernameIsTooShort"));
 			}
 		}
 	}
@@ -49,10 +49,10 @@ public class UserUpdateValidator extends AbstractValidator{
 			String retype) {
 		if (password == null || retype == null || (!password.equals(retype))) {
 			this.addInvalidMessage(ctx, "password",
-					"Ihre Passw\u00f6rter stimmen nicht \u00fcberein!");
+					SpringPropertiesUtil.getProperty("err.bothPasswordsAreInvalid"));
 		}else if(!password.matches("^\\S{6,}$")){
 			this.addInvalidMessage(ctx, "password",
-					"Ihr Passwort ist zu kurz!");
+					SpringPropertiesUtil.getProperty("err.passwordIsTooShort"));
 		}
 	}
 
