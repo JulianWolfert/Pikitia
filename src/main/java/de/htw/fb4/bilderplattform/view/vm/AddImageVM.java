@@ -81,13 +81,9 @@ public class AddImageVM {
 		if (this.image.getTitle() != null && this.image.getDescription() != null
 				&& this.image.getPrice() != null && uploadImg.getContent() != null) {
 
-
 			Sessions.getCurrent().setAttribute("image", this.image);
 			Sessions.getCurrent().setAttribute("uploadImg", this.uploadImg);
-			
-			System.out.println("----------->P =" + ((de.htw.fb4.bilderplattform.dao.Image)Sessions.getCurrent().getAttribute("image")).getPrice());
-			
-			
+						
 			Executions.getCurrent().sendRedirect("/user/addImageSummary.zul");
 		}
 	}
