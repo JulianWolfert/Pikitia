@@ -47,13 +47,13 @@ public class DBInitialization implements InitializingBean {
 				true, true, false));
 
 		initialMessages.add(new Message(users.get(3), "s0528397@htw-berlin.de", 1, 
-				"Titel_01", "Text_01"));
+				"Nachricht_1", "Lorem Ipsum 1"));
 		initialMessages.add(new Message(users.get(3), "s0528397@htw-berlin.de", 1, 
-				"Titel_02", "Text_02"));
+				"Nachricht_2", "Lorem Ipsum 2"));
 		initialMessages.add(new Message(users.get(2), "s0528397@htw-berlin.de", 1, 
-				"Titel_03", "Text_03"));
+				"Nachricht_3", "Lorem Ipsum 3"));
 		initialMessages.add(new Message(users.get(2), "s0528397@htw-berlin.de", 1, 
-				"Titel_04", "Text_04"));
+				"Nachricht_4", "Lorem Ipsum 4"));
 
 		// add images
 		initialPictures.add(ApplicationContextProvider.getApplicationContext()
