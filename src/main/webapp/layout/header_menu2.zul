@@ -9,6 +9,9 @@
    jq('.dropdown-toggle').dropdown();
    jq('#regModal').modal('show');
    jq('#logModal').modal('show');
+   function cart_func() {
+   		jq('#cartinfo').tooltip('show');
+   }
 </script>
 
 <n:div id="regModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -23,18 +26,18 @@
 viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 			
 <n:div id="header_content">
-	<image src="/images/Logo2.png" style="float:left;"></image>
+	<a href="/index.zul" image="/images/Logo2.png" style="float:left;"></a>
 		<n:ul class="nav nav-pills" style="float:left; padding-top: 24px;">
 			 <n:li><n:a href="/bilderplattform/gallery.zul">Kaufen</n:a></n:li>
 	          <n:li><n:a href="/bilderplattform/user/addImage.zul">Verkaufen</n:a></n:li>
-	          <n:li class="dropdown">
+	          <n:li class="dropdown" if="${vm.isAUserAuthenticated()==true}">
 	                <n:a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<n:b class="caret"></n:b></n:a>
 	                <n:ul class="dropdown-menu">
 	                  <n:li><n:a href="/bilderplattform/admin/index.zul">Admin Testpage</n:a></n:li>
 	                  <n:li><n:a href="/bilderplattform/admin/userAdministration.zul">Benutzeradministration</n:a></n:li>
 	                </n:ul>
 	           </n:li>
-	          <n:li class="dropdown">
+	          <n:li class="dropdown" if="${vm.isAUserAuthenticated()==true}">
 	                <n:a href="#" class="dropdown-toggle" data-toggle="dropdown">Mein Bereich<n:b class="caret"></n:b></n:a>
 	                <n:ul class="dropdown-menu">
 	                  <n:li><n:a href="/bilderplattform/user/userUpdate2.zul">Meine Daten</n:a></n:li>
@@ -48,7 +51,7 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	           <n:li><button class="btn btn-info" type="button"  onClick="@command('contact')">Kontakt</button></n:li>
 		</n:ul>
 		<n:ul class="nav pull-right" style="padding-top:25px;">
-			<image src="/images/cart.png" style="padding-right: 20px;"></image>
+			<a href="/cart.zul" image="/images/cart.png" style="padding-right: 25px;"></a>
 			<button class="btn btn-primary" type="button" label="@bind(vm.logLabel)" style="padding: 5px;" href="@bind(vm.logPath)"></button>
 			<n:button class="btn btn-success" type="button" style="padding: 5px;" href="#regModal" role="button" data-toggle="modal" if="${vm.isAUserAuthenticated()==false}">Registrieren</n:button>
 		</n:ul>

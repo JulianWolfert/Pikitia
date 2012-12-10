@@ -1,0 +1,48 @@
+<?page title="Warenkorb" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:c="client">
+	
+<n:div id="header">
+			
+			<include src="/layout/header_menu2.zul" />
+
+</n:div>
+<n:div id="content">
+
+
+<n:div id="content_small">
+
+<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('cart_vm') @init('de.htw.fb4.bilderplattform.view.vm.CartVM')"
+		validationMessages="@id('vmsgs')">
+
+		<n:form>
+	  	<n:fieldset>
+		    <n:legend>Warenkorb</n:legend>	  
+		    <listbox model="@bind(cart_vm.cart)" emptyMessage="No Image found in the result">
+		<listhead>
+			<listheader label="Bild" />
+			<listheader label="Beschreibung" />
+			<listheader label="Price" width="20%"/>
+		</listhead>
+		<template name="model">
+			<listitem>
+				<listcell label="@bind(each.title)"></listcell>
+				<listcell label="@bind(each.description)"></listcell>
+				<listcell>$<label value="@bind(each.price)" /></listcell>
+			</listitem>
+		</template>
+	</listbox>  
+		 </n:fieldset>
+		 <button onClick="@command('delete')" class="btn">Löschen</button>
+		</n:form>
+
+	
+</div>
+
+
+</n:div>			    
+				
+</n:div>
+
+
+</zk>

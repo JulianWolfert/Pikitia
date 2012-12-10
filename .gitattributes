@@ -44,6 +44,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/validator/RegistrationValidator.ja
 src/main/java/de/htw/fb4/bilderplattform/view/validator/UserUpdateValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/BannerVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/CartVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/ContactFormVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/GalleryVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/HeaderVM.java -text
@@ -75,6 +76,7 @@ src/main/webapp/admin/index.zul -text
 src/main/webapp/admin/userAdministration.zul -text
 src/main/webapp/bannerTest.zul -text
 src/main/webapp/bildergalerie.zul -text
+src/main/webapp/cart.zul -text
 src/main/webapp/contactForm.zul -text
 src/main/webapp/css/banner.css -text svneol=unset#text/plain
 src/main/webapp/css/bootstrap.min.css -text svneol=unset#text/plain

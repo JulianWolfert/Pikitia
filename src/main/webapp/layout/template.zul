@@ -3,14 +3,13 @@
 	
 <n:div id="header">
 			
-			<include src="/layout/header_menu.zul" />
+			<include src="/layout/header_menu2.zul" />
 
 </n:div>
 <n:div id="content">
 
 
 <n:div id="content_small">
-
 
 
 </n:div>			    
