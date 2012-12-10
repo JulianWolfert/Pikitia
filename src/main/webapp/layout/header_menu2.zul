@@ -41,7 +41,13 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	                <n:a href="#" class="dropdown-toggle" data-toggle="dropdown">Mein Bereich<n:b class="caret"></n:b></n:a>
 	                <n:ul class="dropdown-menu">
 	                  <n:li><n:a href="/bilderplattform/user/userUpdate2.zul">Meine Daten</n:a></n:li>
-	                  <n:li><n:a href="/bilderplattform/user/messages.zul">Nachrichten</n:a></n:li>
+	                  
+	                  <!--<n:li><n:a href="/bilderplattform/user/messages.zul">Nachrichten</n:a></n:li> -->	                  
+	                  <!-- <n:li onClick="@command('showMessageList')">Nachrichten</n:li>  -->
+	                  <!-- <menuitem label="Nachrichten" onClick="@command('showMessageList')" />  -->
+	                  <!-- <n:li><button onClick="@command('showMessageList')">Nachrichten</button></n:li> -->
+	                  <n:li><a onClick="@command('showMessageList')">Nachrichten</a></n:li>
+	                  
 	                  <n:li class="divider"></n:li>
 	                  <n:li><n:a href="/bilderplattform/user/addImage.zul">Neues Angebot erstellen</n:a></n:li>
 	                  <n:li class="divider"></n:li>

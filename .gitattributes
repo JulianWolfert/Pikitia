@@ -49,6 +49,8 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/CartVM.java -text svneol=unset#
 src/main/java/de/htw/fb4/bilderplattform/view/vm/ContactFormVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/GalleryVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/HeaderVM.java -text
+src/main/java/de/htw/fb4/bilderplattform/view/vm/MessageDetailVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/MessageListVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserAdministrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserUpdateVM.java -text svneol=unset#text/plain
@@ -148,5 +150,7 @@ src/main/webapp/user/addImage.zul -text
 src/main/webapp/user/addImageSummary.zul -text
 src/main/webapp/user/imageUpload.zul -text
 src/main/webapp/user/index.zul -text
+src/main/webapp/user/messageDetail.zul -text
+src/main/webapp/user/messageList.zul -text
 src/main/webapp/user/userUpdate.zul -text
 src/main/webapp/user/userUpdate2.zul -text

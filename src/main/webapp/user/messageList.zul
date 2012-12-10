@@ -1,0 +1,110 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="modalMessageList" 
+		title="Detailansicht"
+		border="normal"
+	    width="450px" 
+	    height="auto" 
+	    minimizable="false"
+	    maximizable="false"
+	    mode="modal"
+	    position="center,center" 
+	    closable="true"
+	    action="show:slideDown; hide:slideUp"
+	    onCancel="@command('closeThis')"
+	    apply="org.zkoss.bind.BindComposer"			
+		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.MessageListVM')">
+					
+		
+						
+		<borderlayout sclass="complex-layout" height="810px">
+			<north border="0" height="4%" margins="2,3,0,0">
+				<label value="Nachrichten"
+					style="font-size:20px;" />
+			</north>
+			<center border="0" margins="0,3,3,3">
+				<panel border="none" height="100%">
+					<panelchildren>
+						<hlayout spacing="0" height="100%">
+							<listbox vflex="true" hflex="1"	model="@load(vm.messageList)" selectedItem="@bind(vm.selectedMessage)"> 
+								<listhead>
+									<listheader label="Titel" />
+									<listheader label="Datum" />																						
+									<listheader width="64px" align="center" />											
+								</listhead>
+								<template name="model" var="message">
+									<listitem>
+										<listcell style="font-weight:bold" label="@load(message.subject)" onClick="@command('showMessageDetail')"/> 
+										<!-- onClick="@command('showModal',message=message)"/>	-->
+										<listcell label="@load(message.timeStamp)" />
+										<!-- 
+										<listcell label="@load(message.idSender_idUser)" />												
+										<listcell label="@load(message.idMessage)" />
+										<listcell label="@load(message.isDeleted)" />
+										 -->
+										<listcell>
+											<image src="/images/delete_small.png" onClick="@command('deleteMessage',message=message)" />
+										</listcell>
+									</listitem>
+								</template>
+							</listbox>								
+						</hlayout>
+					</panelchildren>
+				</panel>
+			</center>
+		</borderlayout>
+	</window>			
+</zk>
+
+
+<!-- <?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:c="client">
+	<n:div id="header">
+		<include src="/layout/header_menu.zul" />
+	</n:div>
+	<n:div id="content">
+		<n:div id="content_small">
+	
+			<div apply="org.zkoss.bind.BindComposer"
+				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.MessageListVM')">
+					
+				<borderlayout sclass="complex-layout" height="810px">
+					<north border="0" height="4%" margins="2,3,0,0">
+						<label value="Nachrichten"
+							style="font-size:20px;" />
+					</north>
+					<center border="0" margins="0,3,3,3">
+						<panel border="none" height="100%">
+							<panelchildren>
+								<hlayout spacing="0" height="100%">
+									<listbox vflex="true" hflex="1"	model="@load(vm.messageList)" selectedItem="@bind(vm.selectedMessage)"> 
+										<listhead>
+											<listheader label="Titel" />
+											<listheader label="Datum" />																						
+											<listheader width="64px" align="center" />											
+										</listhead>
+										<template name="model" var="message">
+											<listitem>
+												<listcell label="@load(message.subject)" onClick="@command('showMessageDetail')"/> 
+												
+												
+												<listcell label="@load(message.timeStamp)">
+																					 
+												</listcell> 
+												
+												<listcell>
+													<image src="/images/delete_small.png" onClick="@command('deleteMessage',message=message)" />
+												</listcell>
+											</listitem>
+										</template>
+									</listbox>								
+								</hlayout>
+							</panelchildren>
+						</panel>
+					</center>
+				</borderlayout>
+			</div>
+		</n:div>			    
+	</n:div>
+</zk>
+ -->

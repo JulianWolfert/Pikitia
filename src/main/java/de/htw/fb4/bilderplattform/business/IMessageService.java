@@ -23,5 +23,7 @@ public interface IMessageService {
 	
 	public void deleteMessage(Message message);
 	
+	//public Message getMessageById(int idMessage);
+	
 }
 

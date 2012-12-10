@@ -50,10 +50,10 @@ class MessageServiceImpl implements IMessageService {
 	
 	/*
 	@Override
-	public User getUserByName(String username) throws UsernameNotFoundException {
-		UserDAOImpl userDAO = ApplicationContextProvider
-				.getApplicationContext().getBean("userDao", UserDAOImpl.class);
-		List<User> allUser = userDAO.getAllUser();
+	public Message getMessageById(int idMessage) {
+		MessageDAOImpl msgDAO = ApplicationContextProvider
+				.getApplicationContext().getBean("msgDao", MessageDAOImpl.class);
+		List<Message> allUser = userDAO.getAllUser();
 		for (User usr : allUser) {
 			if (usr.getUsername().equals(username))
 				return usr;
@@ -61,6 +61,7 @@ class MessageServiceImpl implements IMessageService {
 		throw new UsernameNotFoundException(username);
 	}
 
+	
 	@Override
 	public List<User> getAllUser() throws UsernameNotFoundException {
 		UserDAOImpl userDAO = ApplicationContextProvider

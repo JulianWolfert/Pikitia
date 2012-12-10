@@ -2,7 +2,10 @@ package de.htw.fb4.bilderplattform.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -27,12 +30,18 @@ public class MessageDAOImpl extends AbstractDAO {
 	}
 	
 	
+	
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Message> getMessageList(int idUser) {
-		Query query = sessionFactory.getCurrentSession().createQuery(
-				"SELECT * FROM Message m WHERE m.idReceiver_idUser = " + idUser);
-		return (List<Message>) query.list();
+	
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Message.class)
+				.add(Restrictions.eq("receiver.idUser", idUser))
+				.add(Restrictions.eq("isDeleted", false))
+				.addOrder(Order.asc("timeStamp"));
+
+		return (List<Message>) criteria.list();
+		//return criteria.list();
 	}	
 
 	

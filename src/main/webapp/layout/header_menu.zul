@@ -30,8 +30,8 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 											href="/user/imageUpload.zul" />
 									</menupopup>
 								</menu>
-								<menuitem label="Nachrichten"
-									href="/user/messages.zul" />
+								<menuitem label="Nachrichten" 
+									onClick="@command('showMessageList')" />									
 								<menuitem label="Kaufprozess"
 									href="/purchase.zul" />
 								<menuitem label="User-Testpage"

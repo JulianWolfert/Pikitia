@@ -54,6 +54,12 @@ public class HeaderVM {
 	}
 	
 	@Command
+	public void showMessageList() {
+		Executions.createComponents("/user/messageList.zul", null, null);
+	}
+	
+	
+	@Command
 	public void contact() {
 		Sessions.getCurrent().setAttribute("receiver_idUser", "2");
 		Executions.getCurrent().sendRedirect("/contactForm.zul");
@@ -63,5 +69,9 @@ public class HeaderVM {
 	public boolean isAUserAuthenticated(){
 		return BusinessCtx.getInstance().getUserService().isAUserAuthenticated();
 	}
-		
+	
 }
+
+
+
+
