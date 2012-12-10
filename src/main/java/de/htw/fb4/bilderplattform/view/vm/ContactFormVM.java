@@ -30,11 +30,12 @@ public class ContactFormVM {
 	private IUserService userService = BusinessCtx.getInstance().getUserService();
 	
 	private Integer receiverId = -1;
-	private String receiverName;
+	private String receiverName;	
 	private String nameSender;
 	private String emailSender;
 	private String subject;
 	private String text;
+	private User receiver;
 	
 	public ContactFormVM() {
 		try {
@@ -43,12 +44,13 @@ public class ContactFormVM {
 			if(userIdFromSession != null) {
 				logger.debug("userid in session is: " + userIdFromSession);
 				this.receiverId = new Integer(userIdFromSession);
-				User usr = userService.getUserByID(receiverId);
-				this.receiverName = usr.getUsername();
+				this.receiver = userService.getUserByID(receiverId);
+				this.receiverName = receiver.getUsername();
 				logger.debug("user with id: " + userIdFromSession + " is " + receiverName);
 			}
 			else {
 				logger.debug("no user in session - contact form wont work");
+				this.receiver = null;
 				this.receiverId = -1;
 				this.receiverName = SpringPropertiesUtil.getProperty("msg.empty");
 			}
@@ -108,6 +110,14 @@ public class ContactFormVM {
 		this.text = text;
 	}
 	
+	public User getReceiver() {
+		return receiver;
+	}
+	
+	public void setReceiver(User receiver) {
+		this.receiver = receiver;
+	}
+	
 	/* more functionality */
 
 	private void resetForm() {
@@ -139,7 +149,8 @@ public class ContactFormVM {
 		
 		// create message
 		Message msg = new Message(
-				null, receiverId, emailSender, 1, subject, text);
+				receiver, emailSender, 1, subject, text);
+		
 		
 		// send email and persist message
 		try {
