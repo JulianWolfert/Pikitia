@@ -59,10 +59,11 @@ public class AddImageValidator extends AbstractValidator {
 	private String formatPrice(String strPrice) {
 		if (strPrice != null) {
 			String strPriceWithoutComma = strPrice.replace(',', '.');
-			String strPriceWithoutEuro = strPriceWithoutComma.replace("€", "");
+//			//Euro symbol
+//			String strPriceWithoutEuro = strPriceWithoutComma.replace("\u20AC", "");
 
 			DecimalFormat f = new DecimalFormat("#0.00");
-			String formatedString = f.format(new Double(strPriceWithoutEuro));
+			String formatedString = f.format(new Double(strPriceWithoutComma));
 			// System.out.println("Price = " + formatedString);
 
 			return formatedString;
