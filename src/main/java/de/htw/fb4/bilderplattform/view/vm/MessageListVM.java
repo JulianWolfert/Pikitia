@@ -38,7 +38,6 @@ public class MessageListVM extends WebsiteLayoutVM {
 	private class MessageModelList extends ListModelList<Message>{
 		private static final long serialVersionUID = 1L;
 		private Message selectedMessage = null;
-		//private String senderName="bla";
 
 		public MessageModelList(Collection<Message> messageList) {
 			super(messageList);
@@ -50,16 +49,10 @@ public class MessageListVM extends WebsiteLayoutVM {
 			list.add(selectedMessage);
 			this.setSelection(list);
 		}
-		
-		//public String getSenderName() {
-		//	return senderName;
-		//}
-
+	
 		public Message getSelectedMessage(){
 			return this.selectedMessage;
 		}
-		
-		
 	} 
 	
 
@@ -114,21 +107,14 @@ public class MessageListVM extends WebsiteLayoutVM {
 	}
 	
 	
-	//@Listen("onClick = #bt_messageList")
 	@Command
 	public void showMessageDetail() {
-    //public void showModal(@BindingParam("message") final Message message) {
-		//setSelectedMessage(message);
-		//Sessions.getCurrent().setAttribute("messageId", message.getIdMessage());
-        //Window window = (Window)Executions.createComponents(
-        //        "/user/messageDetail.zul", null, null);
-        //window.doModal();
-		
 		final HashMap<String, Object> messageMap = new HashMap<String, Object>();
 		messageMap.put("selectedMessage", this.messageList.getSelectedMessage());
 		
 		Executions.createComponents("/user/messageDetail.zul", null, messageMap);
     }
+	
 	
 	@Command
 	public void closeThis(){
