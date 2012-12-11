@@ -44,6 +44,10 @@ public class HeaderVM {
 		return search;
 	}
 	
+	public boolean isAUserAuthenticated(){
+		return BusinessCtx.getInstance().getUserService().isAUserAuthenticated();
+	}
+	
 	@Command
 	public void search() {
 		ISearchService searchService = BusinessCtx.getInstance().getSearchService();
@@ -53,23 +57,73 @@ public class HeaderVM {
 
 	}
 	
+	/* show cart*/
+	
+	@Command
+	public void showCart() {
+		Executions.getCurrent().sendRedirect("/cart.zul");
+	}
+	
+	/* Logo click */
+	
+	@Command
+	public void returnHome() {
+		Executions.getCurrent().sendRedirect("/index.zul");
+	}
+	
+	/* show gallery for buying an image*/
+	
+	@Command
+	public void showGallery() {
+		Executions.getCurrent().sendRedirect("/gallery.zul");
+	}
+	
+	/* User Menu*/
+	
+	@Command
+	public void editUser() {
+		Executions.getCurrent().sendRedirect("/user/userUpdate2.zul");
+	}
+	
+	@Command
+	public void addImage() {
+		Executions.getCurrent().sendRedirect("/user/addImage.zul");
+	}
+	
 	@Command
 	public void showMessageList() {
 		Executions.createComponents("/user/messageList.zul", null, null);
 	}
 	
+	/* Admin Menu */
+	
+	@Command
+	public void editUserAdmin() {
+		Executions.getCurrent().sendRedirect("/admin/userAdministration.zul");
+	}
+	
+	@Command
+	public void editPurchase() {
+		//Executions.getCurrent().sendRedirect("");
+	}
+	
+	@Command
+	public void editSales() {
+		//Executions.getCurrent().sendRedirect("");
+	}
+	
+	/* for testing, should be deleted when not needed anymore*/
+	
+	@Command
+	public void purchase() {
+		Executions.getCurrent().sendRedirect("/bilderplattform/purchase.zul");
+	}
 	
 	@Command
 	public void contact() {
 		Sessions.getCurrent().setAttribute("receiver_idUser", "2");
 		Executions.getCurrent().sendRedirect("/contactForm.zul");
 	}
-	
-	
-	public boolean isAUserAuthenticated(){
-		return BusinessCtx.getInstance().getUserService().isAUserAuthenticated();
-	}
-	
 }
 
 
