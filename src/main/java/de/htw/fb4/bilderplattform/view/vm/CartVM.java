@@ -55,7 +55,7 @@ public class CartVM {
 			for (int i=0; i < imageIDs.size(); i++) {
 				for (int j=0; j < imgList.size(); j++) {
 					if (imgList.get(j).getIdImage().toString() == imageIDs.get(i));
-					cart.add(imgList.get(i));
+					cart.add(imgList.get(j));
 					break;
 				}
 			}

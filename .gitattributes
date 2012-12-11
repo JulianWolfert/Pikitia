@@ -84,6 +84,7 @@ src/main/webapp/cart.zul -text
 src/main/webapp/contactForm.zul -text
 src/main/webapp/css/banner.css -text svneol=unset#text/plain
 src/main/webapp/css/bootstrap.min.css -text svneol=unset#text/plain
+src/main/webapp/css/gallery.css -text svneol=unset#text/plain
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
 src/main/webapp/divers/css/supersized.css -text
 src/main/webapp/divers/img/back.png -text
