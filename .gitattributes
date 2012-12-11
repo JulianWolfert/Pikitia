@@ -40,6 +40,7 @@ src/main/java/de/htw/fb4/bilderplattform/spring/context/ApplicationContextProvid
 src/main/java/de/htw/fb4/bilderplattform/view/TestCodebehind.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/composer/ImageUploadComposer.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/AddImageValidator.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/validator/ContactFormValidator.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/validator/RegistrationValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/UserUpdateValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageSummaryVM.java -text svneol=unset#text/plain
