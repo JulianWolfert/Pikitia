@@ -46,7 +46,7 @@ public class CartVM {
 		Session session = Sessions.getCurrent();
 		List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");
 		
-		cart = new ArrayList<>();
+		this.cart = new ArrayList<>();
 		
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
 				.getInstance().getIImageService().getAllImages();
@@ -54,9 +54,11 @@ public class CartVM {
 		if (imageIDs != null) {
 			for (int i=0; i < imageIDs.size(); i++) {
 				for (int j=0; j < imgList.size(); j++) {
-					if (imgList.get(j).getIdImage().toString() == imageIDs.get(i));
-					cart.add(imgList.get(j));
-					break;
+					
+					if (imgList.get(j).getIdImage().toString().equals(imageIDs.get(i).toString())) {
+						this.cart.add(imgList.get(j));
+						break;
+					}
 				}
 			}
 		}
