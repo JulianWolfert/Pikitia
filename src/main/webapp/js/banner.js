@@ -25,13 +25,13 @@ function init() {
 			scale = banner_width / img_width;
 			$(this).height(img_height * scale);
 			$(this).width(img_width * scale);
-			img_magin_top = "-"+(img_height*scale-banner_height)/2+"px";
+			img_magin_top = "-"+($(this).height-banner_height)/2+"px";
 			$(this).css("margin-top",img_magin_top);
 		}else{
 			scale = banner_height / img_height;
 			$(this).height(img_height * scale);
 			$(this).width(img_width * scale);
-			img_magin_left = "-"+(img_width*scale-banner_width)/2+"px";
+			img_magin_left = "-"+($(this).width-banner_width)/2+"px";
 			$(this).css("margin-left",img_magin_left);
 		}
 	});
