@@ -20,8 +20,8 @@
 					<image src="/images/banner/prev.png"
 						w:onClick="clickPrev();">
 					</image>
-					<image src="/images/banner/play.png"
-						w:onClick="clickPlay();">
+					<image class="banner_play_pause" src="/images/banner/pause.png"
+						w:onClick="clickPlayPause();">
 					</image>
 					<image src="/images/banner/next.png"
 						w:onClick="clickNext();">
