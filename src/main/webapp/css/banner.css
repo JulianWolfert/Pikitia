@@ -2,7 +2,7 @@
 	text-align: center;
 	background-color: #fff;
 	margin: 0;
-	padding: 20px;
+/* 	padding: 20px; */
 }
 
 .banner_navigation img:hover {
@@ -16,7 +16,7 @@
 	border: 1px solid #fff;
 	overflow: hidden;
 	height: 600px;
-	width: 1000px;
+	width: 900px;
 }
 
 .banner_imglist img {

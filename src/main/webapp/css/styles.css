@@ -1,23 +1,28 @@
 #header {
+	margin-left: auto;
+	margin-right: auto;
 	height:90px;
+	width: 900px;
 }
 
 #header_content {
 	margin-left: auto;
 	margin-right: auto;
-	width: 70%;
+	width: 900px;
 	height: 100%;
 	vertical-align:middle; 
 }
 
 
 #content {
+	margin-left: auto;
+	margin-right: auto;
 	padding-top: 20px;
-    width: 100%;
+    width: 900px;
 }
 
 #content_small {
-	width: 50%;
+	width: 100%;
 	height: 100%;
 	margin-left: auto;
 	margin-right: auto;
