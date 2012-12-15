@@ -78,6 +78,7 @@ src/main/webapp/WEB-INF/web.xml -text
 src/main/webapp/WEB-INF/zk.xml -text
 src/main/webapp/admin/index.zul -text
 src/main/webapp/admin/userAdministration.zul -text
+src/main/webapp/admin/userList.zul -text
 src/main/webapp/bannerTest.zul -text
 src/main/webapp/bildergalerie.zul -text
 src/main/webapp/cart.zul -text
@@ -130,6 +131,13 @@ src/main/webapp/images/banner/prev.png -text
 src/main/webapp/images/blank.png -text
 src/main/webapp/images/cart.png -text
 src/main/webapp/images/delete_small.png -text
+src/main/webapp/images/list/j_comment.png -text
+src/main/webapp/images/list/j_delete.png -text
+src/main/webapp/images/list/j_edit.png -text
+src/main/webapp/images/list/j_images.png -text
+src/main/webapp/images/list/j_messages.png -text
+src/main/webapp/images/list/j_offers.png -text
+src/main/webapp/images/list/j_sales.png -text
 src/main/webapp/images/load.png -text
 src/main/webapp/images/please_upload_image.png -text
 src/main/webapp/images/save.png -text

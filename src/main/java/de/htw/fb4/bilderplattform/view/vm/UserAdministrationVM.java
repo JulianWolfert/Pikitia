@@ -2,10 +2,12 @@ package de.htw.fb4.bilderplattform.view.vm;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.ListModelList;
@@ -22,6 +24,7 @@ import de.htw.fb4.bilderplattform.dao.User;
 public class UserAdministrationVM extends WebsiteLayoutVM{
 	private class UserModelList extends ListModelList<User>{
 		private static final long serialVersionUID = 1L;
+		
 		private User selectedUser=null;
 
 		public UserModelList(Collection<User> userList) {
@@ -80,5 +83,12 @@ public class UserAdministrationVM extends WebsiteLayoutVM{
 				}
 			}
 		});
+	}
+	
+	@Command
+	public void editUser(@BindingParam("user") final User user) {
+		final HashMap<String, Object> sessionMap = new HashMap<String, Object>();
+		sessionMap.put("idUser", user.getIdUser());
+		Executions.createComponents("<popup path>", null, sessionMap);
 	}
 }
