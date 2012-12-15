@@ -81,7 +81,6 @@ src/main/webapp/WEB-INF/web.xml -text
 src/main/webapp/WEB-INF/zk.xml -text
 src/main/webapp/admin/editUser.zul -text
 src/main/webapp/admin/index.zul -text
-src/main/webapp/admin/userAdministration.zul -text
 src/main/webapp/admin/userList.zul -text
 src/main/webapp/bannerTest.zul -text
 src/main/webapp/bildergalerie.zul -text
