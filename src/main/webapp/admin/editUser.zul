@@ -1,0 +1,39 @@
+<!-- created by Peter Horn -->
+
+<window id="modalEditUser" title="Benutzerdaten" border="normal"
+	width="600px" minimizable="false" maximizable="false" mode="modal"
+	position="center,center" closable="true"
+	action="show:slideDown; hide:slideUp" onCancel="@command('closeThis')"
+	apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.EditUserVM')">
+	<grid>
+		<rows>
+			<row>
+				<label value="Name" />
+				<label value="@load(vm.user.username)" />
+			</row>
+			<row>
+				<label value="Passwort" />
+				<textbox type="password"
+					onChange="@command('updateUser')" value="@bind(vm.user.password)"
+					constraint="no empty: Bitte Passwort eingeben" />
+			</row>
+			<row>
+				<label value="E-Mail" />
+				<textbox onChange="@command('updateUser')"
+					value="@bind(vm.user.email)"
+					constraint="/.+@.+\.[a-z]+/: Bitte E-Mail eingeben" />
+			</row>
+			<row>
+				<label value="Administrator" />
+				<checkbox onCheck="@command('updateUser')"
+					checked="@bind(vm.user.isAdmin)" />
+			</row>
+			<row>
+				<label value="Nutzer" />
+				<checkbox onCheck="@command('updateUser')"
+					checked="@bind(vm.user.isNormalUser)" />
+			</row>
+		</rows>
+	</grid>
+</window>

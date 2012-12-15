@@ -33,7 +33,7 @@ div.z-listbox-header tr.z-listhead {
 				</n:div>
 <!-- List -->
 				<listbox id="list" width="100%"
-					model="@load(vm.userList)">
+					model="@bind(vm.userList)">
 					<listhead sizable="true">
 						<listheader width="75%" value="Default" sort="auto"><n:div class="listtext">Benutzer</n:div></listheader>
 						<listheader value="Default" sort="auto"><n:div class="listtext">Aktionen</n:div></listheader>
