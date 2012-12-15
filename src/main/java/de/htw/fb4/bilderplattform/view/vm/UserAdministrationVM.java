@@ -64,6 +64,11 @@ public class UserAdministrationVM extends WebsiteLayoutVM{
 	}
 
 	@Command
+	public void redirectToStart() {
+		Executions.getCurrent().sendRedirect("/index.zul");
+	}
+	
+	@Command
 	public void updateUser() {
 		BusinessCtx.getInstance().getUserService().saveOrUpdateUser(this.getSelectedUser());
 	}

@@ -98,18 +98,8 @@ public class HeaderVM {
 	/* Admin Menu */
 	
 	@Command
-	public void editUserAdmin() {
-		Executions.getCurrent().sendRedirect("/admin/userAdministration.zul");
-	}
-	
-	@Command
-	public void editPurchase() {
-		//Executions.getCurrent().sendRedirect("");
-	}
-	
-	@Command
-	public void editSales() {
-		//Executions.getCurrent().sendRedirect("");
+	public void redirectToUserList() {
+		Executions.getCurrent().sendRedirect("/admin/userList.zul");
 	}
 	
 	/* for testing, should be deleted when not needed anymore*/

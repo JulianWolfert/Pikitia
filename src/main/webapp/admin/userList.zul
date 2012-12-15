@@ -27,7 +27,7 @@ div.z-listbox-header tr.z-listhead {
 				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.UserAdministrationVM')">
 				<n:legend>Administrative Benutzerliste</n:legend>
 				<n:div id="spath">
-					<n:a class="spathtext" href="/bilderplattform/index.zul">Start</n:a>
+					<a class="spathtext" onClick="@command('redirectToStart')">Start</a>
 					<n:span class="spathtext">></n:span>
 					<n:span class="spathtext" href="#">Benutzerliste</n:span>
 				</n:div>
