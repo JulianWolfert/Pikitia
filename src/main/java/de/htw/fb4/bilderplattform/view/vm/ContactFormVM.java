@@ -1,9 +1,11 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
 import java.util.Calendar;
+import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
 
@@ -169,11 +171,22 @@ public class ContactFormVM {
 	
 	private String preparedMailMessage() {
 		String preStatement = SpringPropertiesUtil.getProperty("msg.mailPreTemplate01") + " "
-				+ nameSender + SpringPropertiesUtil.getProperty("msg.mailPreTemplate02") 
+				+ nameSender + ",\r\n\r\n" + SpringPropertiesUtil.getProperty("msg.mailPreTemplate02") 
 				+ " " + receiverName 
-				+ " " + SpringPropertiesUtil.getProperty("msg.mailPreTemplate03") + " ";
-		String postStatement = " " + SpringPropertiesUtil.getProperty("msg.mailPostTemplate01");
+				+ " " + SpringPropertiesUtil.getProperty("msg.mailPreTemplate03") + "\r\n\r\n ";
+		String postStatement = "\r\n\r\n" + SpringPropertiesUtil.getProperty("msg.mailPostTemplate01");
 		return preStatement + text + postStatement;
 	}
+	
+	@Command
+	public void testAnswer() {
+		final HashMap<String, Object> messageMap = new HashMap<String, Object>();
+		messageMap.put("email", "s0537867@htw-berlin.de");
+		messageMap.put("subject", "test");
+		messageMap.put("userName", "josch");
+		
+		Executions.createComponents("/user/messageAnswer.zul", null, messageMap);
+	}
+	
 	
 }

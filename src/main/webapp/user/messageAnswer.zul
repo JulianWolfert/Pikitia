@@ -1,0 +1,30 @@
+<window id="modalMessageAnswer" title="Antwortnachricht"
+	border="normal" width="400px" height="300px" minimizable="false"
+	maximizable="false" mode="modal" position="center,center"
+	closable="true" action="show:slideDown; hide:slideUp"
+	onCancel="@command('closeThis')" apply="org.zkoss.bind.BindComposer"
+	xmlns:n="native">
+
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.MessageAnswerVM')"
+		validationMessages="@id('vmsgs')"
+		form="@id('fx') @load(vm) @save(vm, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.MessageAnswerValidator')">
+<!-- MESSAGE -->
+		<n:fieldset>
+			<label value="Nachricht:" width="150px" />
+			<vlayout>
+				<textbox rows="6" value="@bind(fx.text)" width="370px;"
+					tabindex="1" />
+				<label class="error" value="@load(vmsgs['text'])" />
+			</vlayout>
+<!-- SUBMIT -->
+			<vlayout>
+				<label visible="@load(empty vmsgs)"
+					value="@load(empty vmsgs ? 'Erfolgreich gesendet!' : '', before='submit')" />
+				<button label="Senden" onClick="@command('submit')"
+					width="100px" height="30px" />
+			</vlayout>
+		</n:fieldset>
+	</div>
+
+</window>

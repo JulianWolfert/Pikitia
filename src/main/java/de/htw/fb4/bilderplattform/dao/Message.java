@@ -115,6 +115,10 @@ public class Message implements java.io.Serializable {
 		this.email = email;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+	
 	public Integer getIdTopic() {
 		return this.idTopic;
 	}

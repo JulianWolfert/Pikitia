@@ -213,4 +213,7 @@ div#spath {
 	padding: 5px;
 }
 
-
+.asterisk {
+	font-size:.8em;
+	color:gray
+}

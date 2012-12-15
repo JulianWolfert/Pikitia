@@ -1,30 +1,19 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 
-import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.Sessions;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.Selectors;
-import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.ListModelList;
-import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
-import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.dao.Message;
-import de.htw.fb4.bilderplattform.dao.User;
 
 /**
  * @since 05.12.2012
@@ -56,8 +45,14 @@ public class MessageDetailVM {
 	@Command
 	public void contact() {
 		closeThis();
-		Sessions.getCurrent().setAttribute("receiver_idUser", "2");
-		Executions.getCurrent().sendRedirect("/contactForm.zul");
+		final HashMap<String, Object> messageMap = new HashMap<String, Object>();
+		messageMap.put("email", message.getEmail());
+		messageMap.put("subject", message.getSubject());
+		messageMap.put("userName", message.getReceiver().getUsername());
+		
+		Executions.createComponents("/user/messageAnswer.zul", null, messageMap);
+//		Sessions.getCurrent().setAttribute("receiver_idUser", "2");
+//		Executions.getCurrent().sendRedirect("/contactForm.zul");
 	}
 	
 	
