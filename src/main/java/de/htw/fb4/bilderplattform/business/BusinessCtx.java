@@ -22,6 +22,7 @@ public class BusinessCtx {
 	private IMailService mailService;
 	private IImageService imageService;
 	private ISearchService searchService;
+	private IPurchaseService purchaseService;
 	
 	// singleton getter
 	public static BusinessCtx getInstance() {
@@ -68,4 +69,10 @@ public class BusinessCtx {
 		return searchService;
 	}
 	
+	public IPurchaseService getPurchaseService(){
+		if(this.purchaseService==null){
+			this.purchaseService=new PurchaseServiceImpl();
+		}
+		return this.purchaseService;
+	}	
 }

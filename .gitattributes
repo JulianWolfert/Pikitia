@@ -7,12 +7,14 @@ src/main/java/de/htw/fb4/bilderplattform/business/BusinessCtx.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IImageService.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/IMailService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IMessageService.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/IPurchaseService.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/ISearchService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/ITestService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IUserService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/ImageServiceImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/MailServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/MessageServiceImpl.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/PurchaseServiceImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/SearchServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/TestServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/UserServiceImpl.java -text
@@ -27,6 +29,7 @@ src/main/java/de/htw/fb4/bilderplattform/dao/ImageDAOImpl.java -text svneol=unse
 src/main/java/de/htw/fb4/bilderplattform/dao/Message.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/MessageDAOImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Purchase.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/dao/PurchaseDAOImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Purchase_Image.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Test.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/TestDAOImpl.java -text
@@ -55,6 +58,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/HeaderVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/MessageAnswerVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/MessageDetailVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/MessageListVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseAdministrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserAdministrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserUpdateVM.java -text svneol=unset#text/plain

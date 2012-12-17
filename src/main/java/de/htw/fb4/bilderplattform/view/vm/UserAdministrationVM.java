@@ -17,10 +17,11 @@ import de.htw.fb4.bilderplattform.dao.User;
 /**
  * 
  * @author Peter Horn
- *
+ * 
  */
 public class UserAdministrationVM {
-	private ListModelList<User> userList = new ListModelList<>(BusinessCtx.getInstance().getUserService().getAllUser());
+	private ListModelList<User> userList = new ListModelList<User>(BusinessCtx
+			.getInstance().getUserService().getAllUser());
 
 	public List<User> getUserList() {
 		return this.userList;
@@ -31,25 +32,33 @@ public class UserAdministrationVM {
 		Executions.getCurrent().sendRedirect("/index.zul");
 	}
 
-
 	@Command
 	public void deleteUser(@BindingParam("user") final User user) {
-		Messagebox.show("Benutzer \"" + user.getUsername() + "\" löschen?", "Benutzer löschen", Messagebox.YES | Messagebox.NO, Messagebox.QUESTION, new EventListener<Event>() {
-			@Override
-			public void onEvent(Event event) throws Exception {
-				if (((Integer) event.getData()).intValue() == Messagebox.YES) {
-					BusinessCtx.getInstance().getUserService().deleteUser(user);
-					UserAdministrationVM.this.userList.remove(user);
-					return;
-				}
-			}
-		});
+		Messagebox.show("Benutzer \"" + user.getUsername() + "\" löschen?",
+				"Benutzer löschen", Messagebox.YES | Messagebox.NO,
+				Messagebox.QUESTION, new EventListener<Event>() {
+					@Override
+					public void onEvent(Event event) throws Exception {
+						if (((Integer) event.getData()).intValue() == Messagebox.YES) {
+							BusinessCtx.getInstance().getUserService()
+									.deleteUser(user);
+							UserAdministrationVM.this.userList.remove(user);
+							return;
+						}
+					}
+				});
 	}
-	
+
 	@Command
 	public void editUser(@BindingParam("user") final User user) {
 		final HashMap<String, Object> sessionMap = new HashMap<String, Object>();
 		sessionMap.put("idUser", user.getIdUser());
 		Executions.createComponents("/admin/editUser.zul", null, sessionMap);
+	}
+
+	@Command
+	public void showPurchases(@BindingParam("user") final User user) {
+		//TODO
+		Executions.getCurrent().sendRedirect("/admin/purchaseList.zul");
 	}
 }

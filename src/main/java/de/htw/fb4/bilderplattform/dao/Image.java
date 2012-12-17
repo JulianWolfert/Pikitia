@@ -44,8 +44,8 @@ public class Image implements Serializable {
 	@Column(name = "description")
 	private String description;
 
-	//TODO: format currency in database
-	@Column(name = "price", columnDefinition="Decimal(10,2)")
+	// TODO: format currency in database
+	@Column(name = "price", columnDefinition = "Decimal(10,2)")
 	private Double price;
 
 	@Column(name = "file")
@@ -55,22 +55,22 @@ public class Image implements Serializable {
 	@Column(name = "preview_file")
 	@Lob
 	private byte[] preview_file;
-	
+
 	@Column(name = "thumbnail_file")
 	@Lob
 	private byte[] thumbnail_file;
 
 	@Column(name = "timeStamp")
 	private Date timeStamp = new Date();
-
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idUser")
+	@JoinColumn(name = "User_idUser", referencedColumnName = "idUser")
 	private User user;
 
 	public Image() {
-		
+
 	}
-	
+
 	public Integer getIdImage() {
 		return idImage;
 	}
@@ -106,11 +106,11 @@ public class Image implements Serializable {
 	public void setFile(byte[] filename) {
 		this.file = filename;
 	}
-	
+
 	public byte[] getPreview_file() {
 		return preview_file;
 	}
-	
+
 	public void setPreview_file(byte[] preview_file) {
 		this.preview_file = preview_file;
 	}
@@ -138,5 +138,5 @@ public class Image implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 }

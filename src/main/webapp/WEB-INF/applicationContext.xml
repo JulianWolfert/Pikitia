@@ -75,6 +75,10 @@
 		<property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
 
+	<bean id="purchaseDao" class="de.htw.fb4.bilderplattform.dao.PurchaseDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+
 	<bean id="appProperties" class="de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil">
 	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
 	    <property name="locations">

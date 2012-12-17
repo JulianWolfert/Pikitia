@@ -52,7 +52,7 @@ div.z-listbox-header tr.z-listhead {
 									<image src="/images/list/j_offers.png"  />
 								</n:span>
 								<n:span title="Verkäufe" class="imgContainer">
-									<image src="/images/list/j_sales.png"  />
+									<image src="/images/list/j_sales.png"  onClick="@command('showPurchases', user=user)"/>
 								</n:span>
 								<n:span  title="Bilder" class="imgContainer">
 									<image src="/images/list/j_images.png"  />
