@@ -1,0 +1,64 @@
+<zk xmlns:n="native" xmlns:c="client">
+<style dynamic="true">
+
+div.z-listbox-header th.z-listheader {
+	background-image: none;
+	background-color: #1469AB;
+}
+
+div.z-listbox-header tr.z-listhead {
+	background-image: none;
+	background-color: #1469AB;
+	border: none;
+}
+</style>
+
+	<n:div id="header">
+
+		<include src="/layout/header_menu2.zul" />
+
+	</n:div>
+
+<!-- CONTENT -->
+	<n:div id="content">
+		<n:div id="content_small">
+		
+			<div apply="org.zkoss.bind.BindComposer"
+				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.PurchaseAdministrationVM')">
+				<n:legend>Verkäufe</n:legend>
+				<n:div id="spath">
+					<a class="spathtext" onClick="@command('redirectToStart')">Start</a>
+					<n:span class="spathtext">></n:span>
+					<a class="spathtext" onClick="@command('redirectToUserList')">Benutzerliste</a>
+					<n:span class="spathtext">></n:span>
+					<n:span class="spathtext" href="#">Verkäufe</n:span>
+				</n:div>
+<!-- List -->
+				<listbox id="list" width="100%"
+					model="@bind(vm.purchaseList)">
+					<listhead sizable="true">
+						<listheader width="75%" value="Default" sort="auto"><n:div class="listtext">Verkauf</n:div></listheader>
+						<listheader value="Default" sort="auto"><n:div class="listtext">Aktionen</n:div></listheader>
+					</listhead>
+					<template name="model" var="purchase">
+						<listitem>
+							<listcell label="test" />
+							<listcell>
+								<n:span title="Löschen" class="imgContainer">
+									<image src="/images/list/j_delete.png" onClick="@command('deleteUser',purchase=purchase)" />
+								</n:span>
+								<n:span title="Bearbeiten" class="imgContainer">
+									<image src="/images/list/j_edit.png" onClick="" />
+								</n:span>
+							</listcell>
+						</listitem>
+					</template>
+				</listbox>
+<!-- END List -->
+			</div>
+
+		</n:div>
+	</n:div>
+<!-- END CONTENT -->
+
+</zk>
