@@ -1,28 +1,19 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.imageio.ImageIO;
-
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
-import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.image.AImage;
 import org.zkoss.zhtml.Button;
-import org.zkoss.zhtml.H2;
 import org.zkoss.zhtml.I;
-import org.zkoss.zhtml.P;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Path;
@@ -180,7 +171,11 @@ public class GalleryVM {
 					public void onEvent(Event e) 
 					{ 
 						String img_id = e.getTarget().getId().substring(4);
-						Executions.sendRedirect("/contactForm.zul");
+						final HashMap<String, Object> contactFormMap = new HashMap<String, Object>();
+						contactFormMap.put("imageID", img_id);
+						Executions.createComponents("/contactForm.zul", null, contactFormMap);
+						
+//						Executions.sendRedirect("/contactForm.zul");
 					} 
 				}); 
 				I messageIcon = new I();

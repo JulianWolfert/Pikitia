@@ -5,14 +5,18 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.ExecutionArgParam;
+import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.Session;
-import org.zkoss.zk.ui.Sessions;
+import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.IImageService;
 import de.htw.fb4.bilderplattform.business.IUserService;
 import de.htw.fb4.bilderplattform.business.mail.IMail;
 import de.htw.fb4.bilderplattform.business.mail.MailImpl;
+import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.Message;
 import de.htw.fb4.bilderplattform.dao.User;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
@@ -29,7 +33,11 @@ public class ContactFormVM {
 	
 	private static final Logger logger = Logger.getLogger(ContactFormVM.class);
 	
+	@Wire("#contactForm")
+	private Window win;
+	
 	private IUserService userService = BusinessCtx.getInstance().getUserService();
+	private IImageService imageService = BusinessCtx.getInstance().getIImageService();
 	
 	private Integer receiverId = -1;
 	private String receiverName;	
@@ -39,13 +47,19 @@ public class ContactFormVM {
 	private String text;
 	private User receiver;
 	
-	public ContactFormVM() {
+	//second
+	@Init
+	public void init(@ExecutionArgParam("imageID") String imageID) {
 		try {
-			Session session = Sessions.getCurrent();
-			String userIdFromSession = (String) session.getAttribute("receiver_idUser");
-			if(userIdFromSession != null) {
+			logger.debug("imageID: " + imageID + " was sent to contactForm.zul");
+			// the old approach
+//			Session session = Sessions.getCurrent();
+//			String userIdFromSession = (String) session.getAttribute("receiver_idUser");
+			Image img = imageService.getImageByID(Integer.parseInt(imageID));
+			int userIdFromSession = img.getUser().getIdUser();
+			if(userIdFromSession != 0) {
 				logger.debug("userid in session is: " + userIdFromSession);
-				this.receiverId = new Integer(userIdFromSession);
+				this.receiverId = userIdFromSession;
 				this.receiver = userService.getUserByID(receiverId);
 				this.receiverName = receiver.getUsername();
 				logger.debug("user with id: " + userIdFromSession + " is " + receiverName);
@@ -60,6 +74,11 @@ public class ContactFormVM {
 			logger.error("exception while setting user details");
 			e.printStackTrace();
 		}
+	}
+	
+	//first
+	public ContactFormVM() {
+		
 	}
 	
 	/* getter/setter */
@@ -186,6 +205,11 @@ public class ContactFormVM {
 		messageMap.put("userName", "josch");
 		
 		Executions.createComponents("/user/messageAnswer.zul", null, messageMap);
+	}
+	
+	@Command
+	public void closeThis(){
+		win.detach();
 	}
 	
 	

@@ -1,14 +1,25 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
+
+<style src="/css/gallery_modal.css"></style>
+<style src="/bootstrap/css/bootstrap.css"></style>
+
+<window id="contactForm" 
+		title="Kontakt"
+		border="normal"
+	    width="800px"
+	    height="auto" 
+		minimizable="false"
+		maximizable="false" mode="modal" position="center,center"
+		closable="true" action="show:slideDown; hide:slideUp"
+		onCancel="@command('closeThis')" apply="org.zkoss.bind.BindComposer"
+		xmlns:n="native">
+
 	<style>
 		.receiverLabel { color: #1469AB; font-weight:bold;
 		font-size:12pt; } .receiverHLay { padding-bottom: 10px; }
 	</style>
-	<n:div id="header">
-
-		<include src="/layout/header_menu2.zul" />
-
-	</n:div>
+	
 	<n:div id="content">
 		<n:div id="content_small">
 			<n:legend>Kontaktformular</n:legend>
@@ -73,4 +84,5 @@
 			<n:p class="asterisk">* Pflichtfeld</n:p>
 		</n:div>
 	</n:div>
+</window>
 </zk>

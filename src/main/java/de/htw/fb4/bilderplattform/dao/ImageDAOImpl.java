@@ -38,10 +38,18 @@ public class ImageDAOImpl extends AbstractDAO {
 
 	@Transactional
 	public Image getImageByID(int idImage) {
-		Image image = (Image) sessionFactory.getCurrentSession().load(
-				Image.class, idImage);
-		return image;
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"SELECT i FROM Image i where i.idImage = " + idImage);
+		return (Image) query.uniqueResult();
 	}
+	
+	// didnt work in user DAO why should it work here (therefore further getImageByID)
+//	@Transactional
+//	public Image getImageByID(int idImage) {
+//		Image image = (Image) sessionFactory.getCurrentSession().load(
+//				Image.class, idImage);
+//		return image;
+//	}
 
 	@Transactional
 	public Image getImageByUsername(String username) {

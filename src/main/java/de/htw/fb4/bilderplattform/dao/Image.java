@@ -63,7 +63,8 @@ public class Image implements Serializable {
 	@Column(name = "timeStamp")
 	private Date timeStamp = new Date();
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+//	@ManyToOne(fetch = FetchType.LAZY) - caused an exception
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "User_idUser", referencedColumnName = "idUser")
 	private User user;
 

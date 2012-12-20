@@ -130,4 +130,12 @@ public class ImageServiceImpl implements IImageService {
 
 		return os.toByteArray();
 	}
+
+	@Override
+	public Image getImageByID(int idImage) {
+		ImageDAOImpl imageDAO = ApplicationContextProvider
+				.getApplicationContext()
+				.getBean("imageDao", ImageDAOImpl.class);
+		return imageDAO.getImageByID(idImage);
+	}
 }

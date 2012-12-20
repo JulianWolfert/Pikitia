@@ -3,6 +3,7 @@ package de.htw.fb4.bilderplattform.view.vm;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.zkoss.bind.annotation.AfterCompose;
@@ -10,10 +11,8 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
-import org.zkoss.bind.annotation.Init;
 import org.zkoss.image.AImage;
 import org.zkoss.zhtml.Button;
-import org.zkoss.zhtml.H2;
 import org.zkoss.zhtml.I;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
@@ -26,7 +25,6 @@ import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.Clients;
-import org.zkoss.zul.A;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
@@ -114,7 +112,9 @@ public class ModalGalleryVM {
 		messageButton.addEventListener(Events.ON_CLICK, new EventListener() { 
 			public void onEvent(Event e) 
 			{ 
-				Executions.sendRedirect("/contactForm.zul");
+				final HashMap<String, Object> contactFormMap = new HashMap<String, Object>();
+				contactFormMap.put("imageID", image_obj.getIdImage().toString());
+				Executions.createComponents("/contactForm.zul", null, contactFormMap);
 			} 
 		}); 
 		I messageIcon = new I();
