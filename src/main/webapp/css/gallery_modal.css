@@ -1,0 +1,119 @@
+.imageBig {
+	width:70%;
+	float: left;
+}
+
+
+.imageInfo {
+	width:30%;
+	float:right;
+}
+
+
+.imageInfo .title {
+	padding-left: 10px;
+	padding-bottom: 5px;
+	padding-top: 10px;
+	z-index:1;
+}
+
+.imageInfo .title .z-label {
+  	font-family: inherit;
+  	font-weight: bold;
+  	line-height: 20px;
+  	color: inherit;
+  	text-rendering: optimizelegibility;
+  	font-size: 31.5px;
+}
+
+.imageInfo .uploader {
+	padding-left: 10px;
+}
+
+.imageInfo .uploader .z-label {
+	font-family: inherit;
+  	line-height: 20px;
+  	color: inherit;
+  	text-rendering: optimizelegibility;
+  	text-color: grey;
+  	font-size: 10px;
+}
+
+.imageInfo .closeButton {
+	padding: 5px;
+	z-index: 2;
+}
+
+
+.imageInfo .rating {
+	padding-left: 10px;
+  	padding-top: 10px;
+}
+
+.imageInfo .rating .rating_bar {
+  width: 55px;
+  background: url(../images/star_x_grey.gif) 0 0 repeat-x;
+}
+
+.imageInfo .rating .rating_bar .rating_orange {
+  height: 12px;
+  background: url(../images/star_x_orange.gif) 0 0 repeat-x;
+}
+
+.imageInfo .buttons {
+	padding-left: 10px;
+  	padding-top: 5px;
+  	padding-bottom: 5px;
+}
+
+
+.imageInfo .desc {
+	padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 50px;
+}
+
+.imageInfo .desc .z-label {
+  	font-family: inherit;
+  	line-height: 20px;
+  	color: inherit;
+  	text-rendering: optimizelegibility;
+  	font-size: 12px;
+}
+
+.imageInfo .price {
+		text-align: right;
+    padding: 10px;
+}
+
+.imageInfo .price .price_label .z-label {
+		font-size:12px;
+}
+
+.imageInfo .price .price_value .z-label {
+		font-family: inherit;
+  	font-weight: bold;
+  	line-height: 20px;
+  	color: inherit;
+  	text-rendering: optimizelegibility;
+  	font-size: 18px;
+}
+
+.imageInfo .cartButton {
+	padding-left: 10px;
+  padding-right: 10px;
+}
+
+.imageInfo .cartButton .btn {
+ 	padding: 10px; 
+  	width:100%;
+  	font-family: inherit;
+  	line-height: 20px;
+  	color: white;
+  	text-rendering: optimizelegibility;
+  	font-size: 18px;
+}
+
+
+
+

@@ -1,0 +1,69 @@
+<?page title="Bild" contentType="text/html;charset=UTF-8"?>
+
+<zk xmlns:n="native" xmlns:c="client">
+
+<style src="/css/gallery_modal.css"></style>
+<style src="/bootstrap/css/bootstrap.css"></style>
+
+	<window id="modalGalleryImage" 
+		border="none"
+	    width="1024px"
+	    height="auto" 
+	    minimizable="false"
+	    maximizable="false"
+	    mode="modal"
+	    position="center,center" 
+	    closable="true"
+	    onCancel="@command('closeThis')"
+	    action="show:slideDown; hide:slideUp"
+	    apply="org.zkoss.bind.BindComposer"			
+		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.ModalGalleryVM')">
+					
+						
+		<div sclass="imageBig">
+		</div>
+		<div sclass="imageInfo">
+			<div sclass="closeButton">
+				<button onClick="@command('closeModalWindow')" class="close">&#215;</button>
+			</div>
+		
+			<div sclass="title">
+				<label id="title_id"></label>
+			</div>
+			
+			<div sclass="uploader">
+				<label id="uploader_id"></label>
+			</div>
+			
+			<div sclass="rating">
+				<div sclass="rating_bar">
+					<div sclass="rating_orange"></div>
+				</div>
+			</div>
+			
+			<div sclass="buttons">
+			
+			</div>
+			
+			<div sclass="desc">
+				<label id="desc_id"></label>
+			</div>
+			
+			<div sclass="price">
+				<div sclass="price_label">
+					<label>Price</label>
+				</div>
+				<div sclass="price_value">			
+					<label id="price_id"></label>
+				</div>
+			</div>
+			
+			<div sclass="cartButton">
+				<button id="cartButton" sclass="btn btn-info">+ Add to cart</button>
+			</div>
+			
+			
+			
+		</div>
+	</window>
+</zk>

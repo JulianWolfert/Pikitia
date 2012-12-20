@@ -20,12 +20,12 @@
 		<n:form class="form-search">
 		  <div class="input-append">
 		  	<textbox value="@bind(vm.keyword)" />
-		    <button onClick="@command('search')" class="btn">Search</button>
+		    <button onClick="@command('search')" class="btn">Search</button> 
 		  </div>
 		</n:form>
 		</div>
 
-		<div id="gallery_images" style="text-align:center;">
+		<div class="gallery_images" style="text-align:center;">
 
 			<div sclass="imageList"/>
 

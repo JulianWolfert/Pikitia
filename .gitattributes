@@ -58,6 +58,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/HeaderVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/MessageAnswerVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/MessageDetailVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/MessageListVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/ModalGalleryVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseAdministrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserAdministrationVM.java -text svneol=unset#text/plain
@@ -89,11 +90,20 @@ src/main/webapp/admin/purchaseList.zul -text
 src/main/webapp/admin/userList.zul -text
 src/main/webapp/bannerTest.zul -text
 src/main/webapp/bildergalerie.zul -text
+src/main/webapp/bootstrap/css/bootstrap-responsive.css -text svneol=unset#text/plain
+src/main/webapp/bootstrap/css/bootstrap-responsive.min.css -text svneol=unset#text/plain
+src/main/webapp/bootstrap/css/bootstrap.css -text svneol=unset#text/plain
+src/main/webapp/bootstrap/css/bootstrap.min.css -text svneol=unset#text/plain
+src/main/webapp/bootstrap/img/glyphicons-halflings-white.png -text
+src/main/webapp/bootstrap/img/glyphicons-halflings.png -text
+src/main/webapp/bootstrap/js/bootstrap.js -text svneol=unset#text/plain
+src/main/webapp/bootstrap/js/bootstrap.min.js -text svneol=unset#text/plain
 src/main/webapp/cart.zul -text
 src/main/webapp/contactForm.zul -text
 src/main/webapp/css/banner.css -text svneol=unset#text/plain
 src/main/webapp/css/bootstrap.min.css -text svneol=unset#text/plain
 src/main/webapp/css/gallery.css -text svneol=unset#text/plain
+src/main/webapp/css/gallery_modal.css -text svneol=unset#text/plain
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
 src/main/webapp/divers/css/supersized.css -text
 src/main/webapp/divers/img/back.png -text
@@ -119,6 +129,7 @@ src/main/webapp/divers/theme/supersized.shutter.css -text
 src/main/webapp/divers/theme/supersized.shutter.js -text
 src/main/webapp/divers/theme/supersized.shutter.min.js -text
 src/main/webapp/gallery.zul -text
+src/main/webapp/gallery_modal.zul -text
 src/main/webapp/images/1_s.jpg -text
 src/main/webapp/images/2_s.jpg -text
 src/main/webapp/images/3_s.jpg -text
@@ -139,6 +150,7 @@ src/main/webapp/images/banner/prev.png -text
 src/main/webapp/images/blank.png -text
 src/main/webapp/images/cart.png -text
 src/main/webapp/images/delete_small.png -text
+src/main/webapp/images/glyphicons-halflings.png -text
 src/main/webapp/images/list/j_comment.png -text
 src/main/webapp/images/list/j_delete.png -text
 src/main/webapp/images/list/j_edit.png -text
@@ -150,6 +162,8 @@ src/main/webapp/images/load.png -text
 src/main/webapp/images/please_upload_image.png -text
 src/main/webapp/images/save.png -text
 src/main/webapp/images/search.png -text
+src/main/webapp/images/star_x_grey.gif -text
+src/main/webapp/images/star_x_orange.gif -text
 src/main/webapp/index.zul -text
 src/main/webapp/js/banner.js -text svneol=unset#text/plain
 src/main/webapp/js/bootstrap.js -text svneol=unset#text/plain

@@ -1,16 +1,16 @@
 <zk xmlns:n="native" xmlns:c="client">
-<style src="/css/bootstrap.min.css"></style>
+<style src="/bootstrap/css/bootstrap.css"></style>
 <style src="/css/styles.css"></style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
 
 <script type="text/javascript">
    jq('.dropdown-toggle').dropdown();
    jq('#regModal').modal('show');
    jq('#logModal').modal('show');
-   function cart_func() {
-   		jq('#cartinfo').tooltip('show');
+   function setMask() {
+   		alert("Test: Bild zum Warenkorb hinzugefügt!");
    }
 </script>
 
@@ -67,7 +67,7 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	      	</n:li>
 		</n:ul>
 		<n:ul class="nav pull-right" style="padding-top:25px;">
-			<a onClick="@command('showCart')" image="/images/cart.png" style="padding-right: 25px;"></a>
+			<a id="cartLogo" href="#"><a onClick="@command('showCart')" image="/images/cart.png" style="padding-right: 25px;"></a></a>
 			
 			<button class="btn btn-primary" type="button" label="@bind(vm.logLabel)" style="padding: 5px;" href="@bind(vm.logPath)"></button>
 			
@@ -76,7 +76,6 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 </n:div>       
 
 </div>
-
 
 </zk>
 

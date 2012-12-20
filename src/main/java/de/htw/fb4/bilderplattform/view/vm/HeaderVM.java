@@ -1,8 +1,26 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.ContextParam;
+import org.zkoss.bind.annotation.ContextType;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Path;
+import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
+import org.zkoss.zk.ui.event.DropEvent;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.select.Selectors;
+import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.util.Clients;
+import org.zkoss.zul.A;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.ISearchService;
@@ -19,6 +37,9 @@ import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
  * </p>
  ************************************************/
 public class HeaderVM {
+	
+	@Wire("#cartLogo")
+	A cartLogo;
 	
 	private String search;
 	
@@ -55,6 +76,21 @@ public class HeaderVM {
 			System.out.println("FOUND: " + img.getFile());
 		}
 
+	}
+	
+	@AfterCompose
+	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
+		Selectors.wireComponents(view, this, false);
+		this.cartLogo.setDroppable("true");
+		this.cartLogo.addEventListener(Events.ON_DROP, new EventListener() {
+			public void onEvent(Event e)
+			{
+				DropEvent dropEvent = (DropEvent) e;
+				String img_id = dropEvent.getDragged().getId().substring(4);
+				addToCart(img_id);
+				Clients.showNotification("Bild mit ID " + (img_id) + " hinzugefügt", "info", cartLogo, "top_right",2000);
+			}
+		});
 	}
 	
 	/* show cart*/
@@ -113,6 +149,22 @@ public class HeaderVM {
 	public void contact() {
 		Sessions.getCurrent().setAttribute("receiver_idUser", "2");
 		Executions.getCurrent().sendRedirect("/contactForm.zul");
+	}
+	
+	
+	private void addToCart(String id) {
+		Session session = Sessions.getCurrent();
+		List<String> imageIDsSession = (List<String>) session.getAttribute("imageIDs");
+		
+		if (imageIDsSession == null) {
+			List<String> imageIDs = new ArrayList<String>();
+			imageIDs.add(id);
+			session.setAttribute("imageIDs", imageIDs);
+		}
+		else {
+			imageIDsSession.add(id);
+			session.setAttribute("imageIDs", imageIDsSession);
+		}
 	}
 }
 

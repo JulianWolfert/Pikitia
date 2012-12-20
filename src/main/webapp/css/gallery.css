@@ -1,37 +1,89 @@
-.boxgrid{  
-    width: 325px;  
-    height: 260px;  
-    margin:10px;  
-    float:left;  
-    background:#161613;  
-    border: solid 2px #8399AF;  
-    overflow: hidden;  
-    position: relative;  
-}  
-.boxgrid img{  
-    position: absolute;  
-    top: 0;  
-    left: 0;  
-    border: 0;  
+.thumb {
+	display: inline-block;
+    position: relative;
+    width: 300px;
+    height: 170px;
+    overflow: hidden;
 }
 
-.boxcaption{  
-    float: left;  
-    position: absolute;  
-    background: #000;  
-    height: 100px;  
-    width: 100%;  
-    opacity: .8;  
-    /* For IE 5-7 */  
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);  
-    /* For IE 8 */  
-    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";  
-    }
- .captionfull .boxcaption {  
-    top: 260;  
-    left: 0;  
-}  
-.caption .boxcaption {  
-    top: 220;  
-    left: 0;  
-}  
+.thumb a:hover {
+	text-decoration: none;
+	
+}
+.thumb img {
+    width: 100%;
+    padding: 0;
+}
+.thumb .thumb_content {
+    background-color: rgba(0,0,0,0.5);
+    text-align:center;
+    vertical-align:middle;
+    display:table-cell;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.thumb:hover > div {
+    display: block;
+    opacity: 1.0;
+}
+
+.thumb .thumb_content .caption{
+	padding-top: 25%;
+	height: 100%;
+    
+}
+.thumb .thumb_content .caption .title {
+    margin: 10px 0;
+  	font-family: inherit;
+ 	font-weight: bold;
+  	line-height: 20px;
+  	color: white;
+  	font-size: 31.5px;
+  	color:#fff;
+	text-shadow: 1px 1px 0px #000;
+}
+.thumb .thumb_content .caption .price {
+    margin: 10px 0;
+  	font-family: inherit;
+  	line-height: 20px;
+  	color: white;
+  	font-size: 12px;   
+}
+
+.thumb .thumb_content .info {
+    background-color: rgba(0,0,0,0.0);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 15%;
+}
+
+.thumb .thumb_content .info .buttons-left {
+    float:left;
+    width:50%; 
+    height:100%;
+    text-align: left;
+}
+
+.thumb .thumb_content .info .buttons-right {
+    float:left;
+    width:50%; 
+    height:100%;
+    text-align: right;
+}
+
+.thumb .thumb_content .info .buttons-left .btn {
+ margin-left:5px;
+ margin-righ:3px;
+ margin-bottom:2px;
+
+}
+.thumb .thumb_content .info .buttons-right .btn {
+ margin-right:5px;
+ margin-righ:3px;
+ margin-bottom:2px;
+}
