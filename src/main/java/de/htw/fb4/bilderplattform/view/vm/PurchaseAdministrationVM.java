@@ -1,5 +1,8 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
+import java.util.HashMap;
+
+import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Executions;
@@ -8,13 +11,18 @@ import org.zkoss.zul.ListModelList;
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.dao.Purchase_Image;
 
+/**
+ * 
+ * @author Peter Horn
+ *
+ */
 public class PurchaseAdministrationVM {
 	private ListModelList<Purchase_Image> purchaseList = new ListModelList<Purchase_Image>();
 
 	@Init
 	public void init() {
-		//TODO
-		int idUser= 1;
+		int idUser = Integer.parseInt(Executions.getCurrent().getParameter("idUser"));
+		
 		this.purchaseList = new ListModelList<Purchase_Image>(BusinessCtx
 				.getInstance().getPurchaseService().getUserPurchase(idUser));
 	}
@@ -32,4 +40,14 @@ public class PurchaseAdministrationVM {
 	public void redirectToUserList() {
 		Executions.getCurrent().sendRedirect("/admin/userList.zul");
 	}
+	
+	@Command
+	public void showPurchaseDetails(@BindingParam("purchase") final Purchase_Image purchase) {
+		final HashMap<String, Object> sessionMap = new HashMap<String, Object>();
+		sessionMap.put("idImage", purchase.getImage().getIdImage());
+		sessionMap.put("idPurchase", purchase.getPurchase().getIdPurchase());
+		Executions.createComponents("/admin/purchaseDetails.zul", null, sessionMap);
+	}
+
+
 }

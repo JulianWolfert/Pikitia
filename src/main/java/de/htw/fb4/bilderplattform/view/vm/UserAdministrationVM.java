@@ -58,7 +58,6 @@ public class UserAdministrationVM {
 
 	@Command
 	public void showPurchases(@BindingParam("user") final User user) {
-		//TODO
-		Executions.getCurrent().sendRedirect("/admin/purchaseList.zul");
+		Executions.sendRedirect("/admin/purchaseList.zul?idUser="+user.getIdUser()); 
 	}
 }

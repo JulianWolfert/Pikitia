@@ -60,6 +60,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/MessageDetailVM.java -text svne
 src/main/java/de/htw/fb4/bilderplattform/view/vm/MessageListVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/ModalGalleryVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseAdministrationVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseDetailsVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserAdministrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserUpdateVM.java -text svneol=unset#text/plain
@@ -86,6 +87,7 @@ src/main/webapp/WEB-INF/web.xml -text
 src/main/webapp/WEB-INF/zk.xml -text
 src/main/webapp/admin/editUser.zul -text
 src/main/webapp/admin/index.zul -text
+src/main/webapp/admin/purchaseDetails.zul -text
 src/main/webapp/admin/purchaseList.zul -text
 src/main/webapp/admin/userList.zul -text
 src/main/webapp/bannerTest.zul -text
@@ -158,6 +160,7 @@ src/main/webapp/images/list/j_images.png -text
 src/main/webapp/images/list/j_messages.png -text
 src/main/webapp/images/list/j_offers.png -text
 src/main/webapp/images/list/j_sales.png -text
+src/main/webapp/images/list/p_details.png -text
 src/main/webapp/images/load.png -text
 src/main/webapp/images/please_upload_image.png -text
 src/main/webapp/images/save.png -text

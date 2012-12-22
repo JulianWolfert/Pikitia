@@ -37,18 +37,17 @@ div.z-listbox-header tr.z-listhead {
 				<listbox id="list" width="100%"
 					model="@bind(vm.purchaseList)">
 					<listhead sizable="true">
-						<listheader width="75%" value="Default" sort="auto"><n:div class="listtext">Verkauf</n:div></listheader>
+						<listheader width="45%" value="Default" sort="auto"><n:div class="listtext">Bild</n:div></listheader>
+						<listheader value="Default" sort="auto"><n:div class="listtext">Verkaufsdatum</n:div></listheader>
 						<listheader value="Default" sort="auto"><n:div class="listtext">Aktionen</n:div></listheader>
 					</listhead>
 					<template name="model" var="purchase">
 						<listitem>
-							<listcell label="test" />
+							<listcell label="TODO..." />
+							<listcell label="@load(purchase.purchase.date)" />
 							<listcell>
-								<n:span title="Löschen" class="imgContainer">
-									<image src="/images/list/j_delete.png" onClick="@command('deleteUser',purchase=purchase)" />
-								</n:span>
-								<n:span title="Bearbeiten" class="imgContainer">
-									<image src="/images/list/j_edit.png" onClick="" />
+								<n:span title="Details" class="imgContainer">
+									<image src="/images/list/p_details.png" onClick="@command('showPurchaseDetails', purchase=purchase)" />
 								</n:span>
 							</listcell>
 						</listitem>
