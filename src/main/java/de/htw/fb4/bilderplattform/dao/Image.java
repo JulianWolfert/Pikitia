@@ -1,6 +1,9 @@
 package de.htw.fb4.bilderplattform.dao;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import de.htw.fb4.bilderplattform.business.util.FileUtil;
 
 /************************************************
  * <p>
@@ -49,16 +54,13 @@ public class Image implements Serializable {
 	private Double price;
 
 	@Column(name = "file")
-	@Lob
-	private byte[] file;
+	private String file;
 
 	@Column(name = "preview_file")
-	@Lob
-	private byte[] preview_file;
-
+	private String preview_file;
+	
 	@Column(name = "thumbnail_file")
-	@Lob
-	private byte[] thumbnail_file;
+	private String thumbnail_file;
 
 	@Column(name = "timeStamp")
 	private Date timeStamp = new Date();
@@ -100,27 +102,41 @@ public class Image implements Serializable {
 		this.price = price;
 	}
 
-	public byte[] getFile() {
+	public String getFile() {
 		return file;
 	}
+	
+	public byte[] getFileAsBytes() throws UnsupportedEncodingException, IOException, Exception{
+		if(this.file == null){
+			return null;
+		}
+		return FileUtil.fileNameToBytes(this.file);
+	}
 
-	public void setFile(byte[] filename) {
+	public void setFile(String filename) {
 		this.file = filename;
 	}
-
-	public byte[] getPreview_file() {
+	
+	public String getPreview_file() {
 		return preview_file;
 	}
-
-	public void setPreview_file(byte[] preview_file) {
+	
+	public byte[] getPreviewFileAsBytes(String path) throws UnsupportedEncodingException, IOException, Exception{
+		if(this.preview_file == null){
+			return null;
+		}
+		return FileUtil.fileNameToBytes(path + this.preview_file);
+	}
+	
+	public void setPreview_file(String preview_file) {
 		this.preview_file = preview_file;
 	}
 
-	public byte[] getThumbnail_file() {
+	public String getThumbnail_file() {
 		return thumbnail_file;
 	}
 
-	public void setThumbnail_file(byte[] thumbnail_file) {
+	public void setThumbnail_file(String thumbnail_file) {
 		this.thumbnail_file = thumbnail_file;
 	}
 

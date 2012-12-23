@@ -1,6 +1,8 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.List;
 
 import org.zkoss.bind.annotation.AfterCompose;
@@ -16,6 +18,8 @@ import org.zkoss.zul.Div;
 import org.zkoss.zul.Image;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.IImageService;
+import de.htw.fb4.bilderplattform.business.util.FileUtil;
 
 /**
  * 
@@ -33,13 +37,16 @@ public class BannerVM {
 	}
 
 	public void test() {
+		String imagePath = BusinessCtx.getInstance().getIImageService().getImagePath() + File.separator;
+		
 		//TODO: get the best only -> ImageService
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
 				.getInstance().getIImageService().getAllImages();
 		int i=0;
 		try {
 			for (de.htw.fb4.bilderplattform.dao.Image item : imgList) {
-				byte[] img_data = item.getPreview_file();
+				File file = new File(imagePath + item.getFile());			
+				byte[] img_data = FileUtil.fileToByte(file);
 				Image img_gui = new Image();
 				org.zkoss.image.AImage img_preview = new AImage("img"+i,
 						new ByteArrayInputStream(img_data));

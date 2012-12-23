@@ -1,6 +1,7 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -92,7 +93,7 @@ public class GalleryVM {
 	
 	
 	private void generateImages (List<de.htw.fb4.bilderplattform.dao.Image> imgList) {
-		
+		String path = BusinessCtx.getInstance().getIImageService().getImagePath() + File.separator;
 		//For evey image in List
 		try {
 			for (int i=0; i < imgList.size(); i++) {
@@ -103,7 +104,13 @@ public class GalleryVM {
 				thumb.setSclass("thumb");
 				
 				//Image
-				byte[] img_data = imgList.get(i).getPreview_file();
+				byte[] img_data = null;
+				try {
+					img_data = imgList.get(i).getPreviewFileAsBytes(path);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				Image img_gui = new Image();
 				AImage img_preview = new AImage("test", new ByteArrayInputStream(img_data));
 				img_gui.setContent(img_preview);

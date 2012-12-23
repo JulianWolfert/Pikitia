@@ -20,6 +20,8 @@ src/main/java/de/htw/fb4/bilderplattform/business/TestServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/UserServiceImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/mail/IMail.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/mail/MailImpl.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/util/FileUtil.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/business/util/StringUtil.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/AbstractDAO.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Bankaccount.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Comment.java -text svneol=unset#text/plain
@@ -40,8 +42,8 @@ src/main/java/de/htw/fb4/bilderplattform/spring/DBInitialization.java -text svne
 src/main/java/de/htw/fb4/bilderplattform/spring/SpringPropertiesUtil.java -text
 src/main/java/de/htw/fb4/bilderplattform/spring/SpringUserProviderService.java -text
 src/main/java/de/htw/fb4/bilderplattform/spring/context/ApplicationContextProvider.java -text
+src/main/java/de/htw/fb4/bilderplattform/spring/context/ServletContextProvider.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/TestCodebehind.java -text
-src/main/java/de/htw/fb4/bilderplattform/view/composer/ImageUploadComposer.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/AddImageValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/ContactFormValidator.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/validator/MessageAnswerValidator.java -text
@@ -69,15 +71,6 @@ src/main/resources/config/database/DataSource.xml -text svneol=unset#text/plain
 src/main/resources/config/database/db.properties -text svneol=unset#text/plain
 src/main/resources/divers.properties -text
 src/main/resources/errors.properties -text
-src/main/resources/initimages/1.jpg -text
-src/main/resources/initimages/1_preview.jpg -text
-src/main/resources/initimages/1_thumbnail.jpg -text
-src/main/resources/initimages/2.jpg -text
-src/main/resources/initimages/2_preview.jpg -text
-src/main/resources/initimages/2_thumbnail.jpg -text
-src/main/resources/initimages/3.jpg -text
-src/main/resources/initimages/3_preview.jpg -text
-src/main/resources/initimages/3_thumbnail.jpg -text
 src/main/resources/log4j.properties -text svneol=unset#text/plain
 src/main/resources/mail.properties -text
 src/main/webapp/META-INF/MANIFEST.MF -text
@@ -132,8 +125,11 @@ src/main/webapp/divers/theme/supersized.shutter.js -text
 src/main/webapp/divers/theme/supersized.shutter.min.js -text
 src/main/webapp/gallery.zul -text
 src/main/webapp/gallery_modal.zul -text
+src/main/webapp/images/1.jpg -text
 src/main/webapp/images/1_s.jpg -text
+src/main/webapp/images/2.jpg -text
 src/main/webapp/images/2_s.jpg -text
+src/main/webapp/images/3.jpg -text
 src/main/webapp/images/3_s.jpg -text
 src/main/webapp/images/Logo.png -text
 src/main/webapp/images/Logo2.png -text

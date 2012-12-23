@@ -84,12 +84,15 @@ public class ModalGalleryVM {
 		
 		try {		
 			//Image
-			byte[] img_data = image_obj.getFile();
+			byte[] img_data = image_obj.getFileAsBytes();
 			Image img_gui = new Image();	
 			AImage img_preview = new AImage("test", new ByteArrayInputStream(img_data));
 			img_gui.setContent(img_preview);
 			this.imageDIV.appendChild(img_gui);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

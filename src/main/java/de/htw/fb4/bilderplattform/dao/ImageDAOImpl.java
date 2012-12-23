@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,14 +43,15 @@ public class ImageDAOImpl extends AbstractDAO {
 				"SELECT i FROM Image i where i.idImage = " + idImage);
 		return (Image) query.uniqueResult();
 	}
-	
-	// didnt work in user DAO why should it work here (therefore further getImageByID)
-//	@Transactional
-//	public Image getImageByID(int idImage) {
-//		Image image = (Image) sessionFactory.getCurrentSession().load(
-//				Image.class, idImage);
-//		return image;
-//	}
+
+	// didnt work in user DAO why should it work here (therefore further
+	// getImageByID)
+	// @Transactional
+	// public Image getImageByID(int idImage) {
+	// Image image = (Image) sessionFactory.getCurrentSession().load(
+	// Image.class, idImage);
+	// return image;
+	// }
 
 	@Transactional
 	public Image getImageByUsername(String username) {
@@ -92,4 +94,16 @@ public class ImageDAOImpl extends AbstractDAO {
 	public void deleteImage(Image image) {
 		this.saveImage(image);
 	}
+
+	@Transactional
+	public Integer getLastInsertedImageID() {
+		List<Integer> results = sessionFactory.getCurrentSession()
+				.createCriteria(Image.class)
+				.setProjection(Projections.max("idImage")).list();
+		if (results.size() > 0) {
+			return results.get(0);
+		}
+		return null;
+	}
+	
 }

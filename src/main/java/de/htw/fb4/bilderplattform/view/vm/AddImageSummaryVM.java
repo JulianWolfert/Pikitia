@@ -52,7 +52,7 @@ public class AddImageSummaryVM {
 				.getIImageService()
 				.saveOrUpdateImage(
 						this.image,
-						this.uploadImg.getContent().getStreamData(),
+						this.uploadImg,
 						BusinessCtx.getInstance().getUserService()
 								.getCurrentlyLoggedInUser());
 		

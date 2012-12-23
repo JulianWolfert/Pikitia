@@ -33,8 +33,14 @@ public interface IImageService {
 	
 	public void saveOrUpdateImage(Image image, User user);
 	
-	public void saveOrUpdateImage(Image image, InputStream imageData, User user);
+	public void saveOrUpdateImage(Image image, org.zkoss.zul.Image zkImage, User user);
 	
 	public void deleteImage(Image image);
+	
+	public Integer getLastInsertedImageID();
+	
+	public String getImagePath();
+	
+	public String getImagePath(String filename);
 }
 
