@@ -128,6 +128,8 @@ public class ImageServiceImpl implements IImageService {
 		Integer lastInsertedID = BusinessCtx.getInstance().getIImageService().getLastInsertedImageID();
 		if(lastInsertedID == null){
 			lastInsertedID = 1;
+		}else{
+			lastInsertedID += 1;
 		}
 		String generatedFilename = String.valueOf(lastInsertedID);
 		String imagesPath = BusinessCtx.getInstance().getIImageService()
@@ -150,6 +152,7 @@ public class ImageServiceImpl implements IImageService {
 				+ File.separator + "preview_" + image.getFile();
 		FileUtil.saveFile(previewFilePath, data_preview);
 		image.setPreview_file("preview_" + image.getFile());
+		//TODO: set and save thumbnail
 	}
 
 	private byte[] scaleImg(byte[] data) throws IOException {

@@ -70,8 +70,6 @@ public class DBInitialization implements InitializingBean {
 		User user = BusinessCtx.getInstance().getUserService()
 				.getUserByName("jonathan");
 		
-		
-		
 		for (String filename : initialPictures) {			
 			System.out.println("Initialisiere Image: " + imageService.getImagePath(filename));
 			File file = new File(imageService.getImagePath(filename));
