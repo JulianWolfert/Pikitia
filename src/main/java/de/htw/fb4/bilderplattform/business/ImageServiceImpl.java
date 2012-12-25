@@ -37,6 +37,7 @@ public class ImageServiceImpl implements IImageService {
 	// the size of the preview image in pixels
 	private final int preview_size_px = 800;
 
+	//BUGFIX: method is not working
 	@Override
 	public List<Image> getImagesByUsername(String username) {
 		ImageDAOImpl imageDAO = ApplicationContextProvider

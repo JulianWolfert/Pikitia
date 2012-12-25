@@ -24,38 +24,31 @@ div.z-listbox-header tr.z-listhead {
 		<n:div id="content_small">
 		
 			<div apply="org.zkoss.bind.BindComposer"
-				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.UserAdministrationVM')">
-				<n:legend>Administrative Benutzerliste</n:legend>
+				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.UserImageAdministrationVM')">
+				<n:legend>Administrative Bilderliste</n:legend>
 				<n:div id="spath">
 					<a class="spathtext" onClick="@command('redirectToStart')">Start</a>
 					<n:span class="spathtext">></n:span>
-					<n:span class="spathtext" href="#">Benutzerliste</n:span>
+					<a class="spathtext" onClick="@command('redirectToUserList')">Benutzerliste</a>
+					<n:span class="spathtext">></n:span>
+					<n:span class="spathtext" href="#">Bilderliste</n:span>
 				</n:div>
 <!-- List -->
 				<listbox id="list" width="100%"
-					model="@bind(vm.userList)">
+					model="@bind(vm.imageList)">
 					<listhead sizable="true">
-						<listheader width="75%" value="Default" sort="auto"><n:div class="listtext">Benutzer</n:div></listheader>
+						<listheader width="75%" value="Default" sort="auto"><n:div class="listtext">Bild</n:div></listheader>
 						<listheader value="Default" sort="auto"><n:div class="listtext">Aktionen</n:div></listheader>
 					</listhead>
-					<template name="model" var="user">
+					<template name="model" var="image">
 						<listitem>
-							<listcell label="@load(user.username)" />
+							<listcell label="@load(image.title)" />
 							<listcell>
 								<n:span title="Löschen" class="imgContainer">
-									<image src="/images/list/j_delete.png" onClick="@command('deleteUser',user=user)" />
+									<image src="/images/list/j_delete.png" onClick="@command('deleteImage', image=image)" />
 								</n:span>
 								<n:span title="Bearbeiten" class="imgContainer">
-									<image src="/images/list/j_edit.png" onClick="@command('editUser', user=user)" />
-								</n:span>
-								<n:span title="Angebote" class="imgContainer">
-									<image src="/images/list/j_offers.png"  />
-								</n:span>
-								<n:span title="Verkäufe" class="imgContainer">
-									<image src="/images/list/j_sales.png"  onClick="@command('showPurchases', user=user)"/>
-								</n:span>
-								<n:span  title="Bilder" class="imgContainer">
-									<image src="/images/list/j_images.png" onClick="@command('showImages', user=user)" />
+									<image src="/images/list/j_edit.png" onClick="@command('editImage', image=image)" />
 								</n:span>
 							</listcell>
 						</listitem>

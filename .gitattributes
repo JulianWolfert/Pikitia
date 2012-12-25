@@ -65,6 +65,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseAdministrationVM.java -
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseDetailsVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserAdministrationVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/UserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserUpdateVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/WebsiteLayoutVM.java -text svneol=unset#text/plain
 src/main/resources/config/database/DataSource.xml -text svneol=unset#text/plain
@@ -82,6 +83,7 @@ src/main/webapp/admin/editUser.zul -text
 src/main/webapp/admin/index.zul -text
 src/main/webapp/admin/purchaseDetails.zul -text
 src/main/webapp/admin/purchaseList.zul -text
+src/main/webapp/admin/userImageList.zul -text
 src/main/webapp/admin/userList.zul -text
 src/main/webapp/bannerTest.zul -text
 src/main/webapp/bildergalerie.zul -text

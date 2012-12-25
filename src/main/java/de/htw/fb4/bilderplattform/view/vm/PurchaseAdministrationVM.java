@@ -17,6 +17,8 @@ import de.htw.fb4.bilderplattform.dao.Purchase_Image;
  *
  */
 public class PurchaseAdministrationVM {
+	
+	// BUGFIX: double initialization
 	private ListModelList<Purchase_Image> purchaseList = new ListModelList<Purchase_Image>();
 
 	@Init

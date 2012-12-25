@@ -60,4 +60,10 @@ public class UserAdministrationVM {
 	public void showPurchases(@BindingParam("user") final User user) {
 		Executions.sendRedirect("/admin/purchaseList.zul?idUser="+user.getIdUser()); 
 	}
+	
+	@Command
+	public void showImages(@BindingParam("user") final User user) {
+		Executions.sendRedirect("/admin/userImageList.zul?idUser="+user.getIdUser()); 
+	}
+	
 }
