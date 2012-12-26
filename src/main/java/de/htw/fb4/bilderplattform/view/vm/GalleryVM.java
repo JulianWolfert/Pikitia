@@ -143,7 +143,7 @@ public class GalleryVM {
 				caption_label.setSclass("title");
 				
 				Div price_div = new Div();
-				Label price_label = new Label("$" + imgList.get(i).getPrice().toString());
+				Label price_label = new Label("\u20AC " + imgList.get(i).getPrice().toString().replace(".",","));
 				price_label.setSclass("price");
 
 				

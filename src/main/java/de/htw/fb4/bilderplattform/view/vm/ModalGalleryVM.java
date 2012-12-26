@@ -143,7 +143,7 @@ public class ModalGalleryVM {
 		uploader_id.setValue("Uploaded by: " + BusinessCtx
 				.getInstance().getImageService().getUsername(this.image_obj.getIdImage()));
 		desc_id.setValue(this.image_obj.getDescription());
-		price_id.setValue("\u20AC " + this.image_obj.getPrice().toString());
+		price_id.setValue("\u20AC " + this.image_obj.getPrice().toString().replace(".",","));
 		rating_id.setValue("\u00D8 " + String.valueOf(BusinessCtx
 				.getInstance().getCommentService().getAverageImageRating(this.image_obj.getIdImage())));
 		cartButton.addEventListener(Events.ON_CLICK, new EventListener() {

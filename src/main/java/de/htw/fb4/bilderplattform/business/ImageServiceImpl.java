@@ -57,11 +57,9 @@ public class ImageServiceImpl implements IImageService {
 		ImageDAOImpl imageDAO = ApplicationContextProvider
 				.getApplicationContext()
 				.getBean("imageDao", ImageDAOImpl.class);
-		List<Image> images = imageDAO.getUsername(idImage);
-		if(images != null){
-			if(images.size() == 1){
-				return images.get(0).getUser().getUsername();
-			}
+		Image image = imageDAO.getImageByID(idImage);
+		if(image != null){
+			return image.getUser().getUsername();
 		}
 		return null;
 	}

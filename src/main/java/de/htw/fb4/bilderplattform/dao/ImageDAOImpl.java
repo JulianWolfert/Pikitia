@@ -39,26 +39,26 @@ public class ImageDAOImpl extends AbstractDAO {
 
 	@Transactional
 	public Image getImageByID(int idImage) {
-		Query query = sessionFactory.getCurrentSession().createQuery(
-				"SELECT i FROM Image i where i.idImage = " + idImage);
-		return (Image) query.uniqueResult();
-	}
-
-	// didnt work in user DAO why should it work here (therefore further
-	// getImageByID)
-	// @Transactional
-	// public Image getImageByID(int idImage) {
-	// Image image = (Image) sessionFactory.getCurrentSession().load(
-	// Image.class, idImage);
-	// return image;
-	// }
-
-	@Transactional
-	public Image getImageByUsername(String username) {
-		Image image = (Image) sessionFactory.getCurrentSession().load(
-				Image.class, username);
+		Image image = null;
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			Criteria criteria = session.createCriteria(Image.class).add(
+					Restrictions.eq("idImage", idImage));
+			image = (Image) criteria.uniqueResult();
+		} catch (DataAccessException dae) {
+			logger.error("getImageByID throws exception: ", dae);
+			session.getTransaction().rollback();
+		}
 		return image;
 	}
+	
+//	@Transactional
+//	public Image getImageByID(int idImage) {
+//		Query query = sessionFactory.getCurrentSession().createQuery(
+//				"SELECT i FROM Image i where i.idImage = " + idImage);
+//		return (Image) query.uniqueResult();
+//	}
+
 
 	@SuppressWarnings("unchecked")
 	@Transactional
@@ -85,21 +85,6 @@ public class ImageDAOImpl extends AbstractDAO {
 			images = query.list();
 		} catch (DataAccessException dae) {
 			logger.error("getAllImagesByUsername throws exception: ", dae);
-			session.getTransaction().rollback();
-		}
-		return images;
-	}
-	
-	@Transactional
-	public List<Image> getUsername(int idImage) {
-		List<Image> images = null;
-		Session session = sessionFactory.getCurrentSession();
-		try {
-			Criteria criteria = session.createCriteria(Image.class).add(
-					Restrictions.eq("idImage", idImage));
-			images = criteria.list();
-		} catch (DataAccessException dae) {
-			logger.error("getUsername throws exception: ", dae);
 			session.getTransaction().rollback();
 		}
 		return images;
