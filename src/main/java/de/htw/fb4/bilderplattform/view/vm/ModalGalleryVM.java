@@ -1,6 +1,7 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,7 +85,9 @@ public class ModalGalleryVM {
 		
 		try {		
 			//Image
-			byte[] img_data = image_obj.getFileAsBytes();
+//			byte[] img_data = image_obj.getFileAsBytes();
+			String path = BusinessCtx.getInstance().getIImageService().getImagePath() + File.separator;
+			byte[] img_data = image_obj.getPreviewFileAsBytes(path);
 			Image img_gui = new Image();	
 			AImage img_preview = new AImage("test", new ByteArrayInputStream(img_data));
 			img_gui.setContent(img_preview);
