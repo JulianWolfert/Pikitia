@@ -39,6 +39,7 @@
 				<div sclass="rating_bar">
 					<div sclass="rating_orange"></div>
 				</div>
+				<label id="rating_id"></label>
 			</div>
 			
 			<div sclass="buttons">

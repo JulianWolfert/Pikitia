@@ -37,11 +37,11 @@ public class BannerVM {
 	}
 
 	public void test() {
-		String imagePath = BusinessCtx.getInstance().getIImageService().getImagePath() + File.separator;
+		String imagePath = BusinessCtx.getInstance().getImageService().getImagePath() + File.separator;
 		
 		//TODO: get the best only -> ImageService
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
-				.getInstance().getIImageService().getAllImages();
+				.getInstance().getImageService().getAllImages();
 		int i=0;
 		try {
 			for (de.htw.fb4.bilderplattform.dao.Image item : imgList) {

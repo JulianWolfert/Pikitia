@@ -14,7 +14,7 @@ public class SearchServiceImpl implements ISearchService {
 
 	@Override
 	public List<Image> searchImages(String searchString) {
-		IImageService imgService = BusinessCtx.getInstance().getIImageService();
+		IImageService imgService = BusinessCtx.getInstance().getImageService();
 		List<Image> allImgs = imgService.getAllImages();
 //		List<Image> allImgs = dummys();
 //		

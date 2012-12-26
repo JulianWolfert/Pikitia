@@ -1,6 +1,7 @@
 package de.htw.fb4.bilderplattform.dao;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 /**
  * 
  * @author Peter Horn
+ * @author Wojciech Konitzer
  *
  */
 @Entity
@@ -31,6 +33,9 @@ public class Comment implements Serializable {
 
 	@Column(name = "Image_idImage", nullable=false)
 	private Integer Image_idImage;
+	
+	@Column(name = "timeStamp")
+	private Date timeStamp = new Date();
 
 	public String getComment() {
 		return comment;
@@ -52,10 +57,6 @@ public class Comment implements Serializable {
 		this.comment = comment;
 	}
 
-	public void setIdComment(Integer idComment) {
-		this.idComment = idComment;
-	}
-
 	public void setImage_idImage(Integer image_idImage) {
 		Image_idImage = image_idImage;
 	}
@@ -63,4 +64,9 @@ public class Comment implements Serializable {
 	public void setStars(Integer stars) {
 		this.stars = stars;
 	}
+
+	public Date getTimeStamp() {
+		return timeStamp;
+	}
+	
 }

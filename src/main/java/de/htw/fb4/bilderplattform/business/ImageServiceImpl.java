@@ -6,9 +6,6 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -17,7 +14,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.FileImageInputStream;
 
 import de.htw.fb4.bilderplattform.business.util.FileUtil;
 import de.htw.fb4.bilderplattform.dao.Image;
@@ -54,6 +50,20 @@ public class ImageServiceImpl implements IImageService {
 				.getApplicationContext()
 				.getBean("imageDao", ImageDAOImpl.class);
 		return imageDAO.getAllImages();
+	}
+	
+	@Override
+	public String getUsername(int idImage) {
+		ImageDAOImpl imageDAO = ApplicationContextProvider
+				.getApplicationContext()
+				.getBean("imageDao", ImageDAOImpl.class);
+		List<Image> images = imageDAO.getUsername(idImage);
+		if(images != null){
+			if(images.size() == 1){
+				return images.get(0).getUser().getUsername();
+			}
+		}
+		return null;
 	}
 
 	@Override
@@ -126,14 +136,14 @@ public class ImageServiceImpl implements IImageService {
 			}
 		}
 
-		Integer lastInsertedID = BusinessCtx.getInstance().getIImageService().getLastInsertedImageID();
+		Integer lastInsertedID = BusinessCtx.getInstance().getImageService().getLastInsertedImageID();
 		if(lastInsertedID == null){
 			lastInsertedID = 1;
 		}else{
 			lastInsertedID += 1;
 		}
 		String generatedFilename = String.valueOf(lastInsertedID);
-		String imagesPath = BusinessCtx.getInstance().getIImageService()
+		String imagesPath = BusinessCtx.getInstance().getImageService()
 				.getImagePath();
 		String filePath = imagesPath
 				+ File.separator;

@@ -1,0 +1,49 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:c="client">
+
+<style src="/css/gallery_modal.css"></style>
+<style src="/bootstrap/css/bootstrap.css"></style>
+
+<window id="commentForm" 
+		title="Bewerten"
+		border="normal"
+	    width="800px"
+	    height="auto" 
+		minimizable="false"
+		maximizable="false" mode="modal" position="center,center"
+		closable="true" action="show:slideDown; hide:slideUp"
+		onCancel="@command('closeThis')" apply="org.zkoss.bind.BindComposer"
+		xmlns:n="native">
+
+	<style>
+		.receiverLabel { color: #1469AB; font-weight:bold;
+		font-size:12pt; } .receiverHLay { padding-bottom: 10px; }
+	</style>
+	
+	<n:div id="content">
+		<n:div id="content_small">
+			<n:legend>Bewertungsformular</n:legend>
+			<div apply="org.zkoss.bind.BindComposer"
+				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.CommentFormVM')"
+				validationMessages="@id('vmsgs')"
+				form="@id('fx') @load(vm) @save(vm, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.CommentFormValidator')">
+
+				<label value="Kommentar*:" width="150px" />
+				<vlayout>
+					<textbox rows="6" value="@bind(fx.text)"
+						width="370px;" tabindex="4" />
+					<label class="error" value="@load(vmsgs['text'])" />
+				</vlayout>
+
+				<vlayout>
+					<label visible="@load(empty vmsgs)"
+						value="@load(empty vmsgs ? 'Erfolgreich gespeichert!' : '', before='submit')" />
+					<button label="Speichern" onClick="@command('submit')"
+						width="100px" height="30px" />
+				</vlayout>
+			</div>
+			<n:p class="asterisk">* Pflichtfeld</n:p>
+		</n:div>
+	</n:div>
+</window>
+</zk>

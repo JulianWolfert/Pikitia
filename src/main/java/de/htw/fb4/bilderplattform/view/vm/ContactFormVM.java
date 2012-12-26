@@ -37,7 +37,7 @@ public class ContactFormVM {
 	private Window win;
 	
 	private IUserService userService = BusinessCtx.getInstance().getUserService();
-	private IImageService imageService = BusinessCtx.getInstance().getIImageService();
+	private IImageService imageService = BusinessCtx.getInstance().getImageService();
 	
 	private Integer receiverId = -1;
 	private String receiverName;	

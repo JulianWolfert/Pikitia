@@ -66,7 +66,7 @@ public class DBInitialization implements InitializingBean {
 
 	private void createInitialPictures() throws IOException {
 		Integer imgId = 0;
-		IImageService imageService = BusinessCtx.getInstance().getIImageService();
+		IImageService imageService = BusinessCtx.getInstance().getImageService();
 		User user = BusinessCtx.getInstance().getUserService()
 				.getUserByName("jonathan");
 		

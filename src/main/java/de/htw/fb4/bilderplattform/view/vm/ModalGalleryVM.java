@@ -59,6 +59,9 @@ public class ModalGalleryVM {
 	private Label price_id;
 	
 	@Wire
+	private Label rating_id;
+	
+	@Wire
 	private Label uploader_id;
 	
 	@Wire
@@ -72,7 +75,7 @@ public class ModalGalleryVM {
 		Selectors.wireComponents(view, this, false);
       
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
-				.getInstance().getIImageService().getAllImages();
+				.getInstance().getImageService().getAllImages();
 		if (imageID != null) {
 				for (int j=0; j < imgList.size(); j++) {
 					if (imgList.get(j).getIdImage().toString().equals(imageID)) {
@@ -86,7 +89,7 @@ public class ModalGalleryVM {
 		try {		
 			//Image
 //			byte[] img_data = image_obj.getFileAsBytes();
-			String path = BusinessCtx.getInstance().getIImageService().getImagePath() + File.separator;
+			String path = BusinessCtx.getInstance().getImageService().getImagePath() + File.separator;
 			byte[] img_data = image_obj.getPreviewFileAsBytes(path);
 			Image img_gui = new Image();	
 			AImage img_preview = new AImage("test", new ByteArrayInputStream(img_data));
@@ -106,7 +109,9 @@ public class ModalGalleryVM {
 		starButton.addEventListener(Events.ON_CLICK, new EventListener() { 
 			public void onEvent(Event e) 
 			{ 
-				//ToDO
+				final HashMap<String, Object> commentFormMap = new HashMap<String, Object>();
+				commentFormMap.put("imageID", image_obj.getIdImage().toString());
+				Executions.createComponents("/commentForm.zul", null, commentFormMap);
 			} 
 		}); 
 		I starIcon = new I();
@@ -135,9 +140,12 @@ public class ModalGalleryVM {
 		rating_orange.setStyle("padding:10px;");
 		
 		title_id.setValue(this.image_obj.getTitle());
-		uploader_id.setValue("Uploaded by: ");
+		uploader_id.setValue("Uploaded by: " + BusinessCtx
+				.getInstance().getImageService().getUsername(this.image_obj.getIdImage()));
 		desc_id.setValue(this.image_obj.getDescription());
-		price_id.setValue("$" + this.image_obj.getPrice().toString());
+		price_id.setValue("\u20AC " + this.image_obj.getPrice().toString());
+		rating_id.setValue("\u00D8 " + String.valueOf(BusinessCtx
+				.getInstance().getCommentService().getAverageImageRating(this.image_obj.getIdImage())));
 		cartButton.addEventListener(Events.ON_CLICK, new EventListener() {
 			public void onEvent(Event e) {
 				addToCart(image_obj.getIdImage().toString());

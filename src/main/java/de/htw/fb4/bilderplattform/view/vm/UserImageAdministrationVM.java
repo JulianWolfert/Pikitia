@@ -41,7 +41,7 @@ public class UserImageAdministrationVM {
 		
 		// alternative solution 
 		List<Image> userImgs = new ArrayList<Image>();
-		List<Image> allImgs = BusinessCtx.getInstance().getIImageService().getAllImages();
+		List<Image> allImgs = BusinessCtx.getInstance().getImageService().getAllImages();
 		for(Image img : allImgs) {
 			if(img.getUser().getUsername().equals(userName))
 				userImgs.add(img);
@@ -62,7 +62,7 @@ public class UserImageAdministrationVM {
 					@Override
 					public void onEvent(Event event) throws Exception {
 						if (((Integer) event.getData()).intValue() == Messagebox.YES) {
-							BusinessCtx.getInstance().getIImageService().deleteImage(image);
+							BusinessCtx.getInstance().getImageService().deleteImage(image);
 							UserImageAdministrationVM.this.imageList.remove(image);
 							return;
 						}

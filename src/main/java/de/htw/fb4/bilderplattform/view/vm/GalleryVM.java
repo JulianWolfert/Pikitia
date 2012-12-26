@@ -86,14 +86,14 @@ public class GalleryVM {
 	
 	private void createGallery() {
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
-				.getInstance().getIImageService().getAllImages();
+				.getInstance().getImageService().getAllImages();
 
 		generateImages(imgList);
 	}
 	
 	
 	private void generateImages (List<de.htw.fb4.bilderplattform.dao.Image> imgList) {
-		String path = BusinessCtx.getInstance().getIImageService().getImagePath() + File.separator;
+		String path = BusinessCtx.getInstance().getImageService().getImagePath() + File.separator;
 		//For evey image in List
 		try {
 			for (int i=0; i < imgList.size(); i++) {
@@ -163,7 +163,10 @@ public class GalleryVM {
 				starButton.addEventListener(Events.ON_CLICK, new EventListener() { 
 					public void onEvent(Event e) 
 					{ 
-						//ToDO
+						String img_id = e.getTarget().getId().substring(4);
+						final HashMap<String, Object> commentFormMap = new HashMap<String, Object>();
+						commentFormMap.put("imageID", img_id);
+						Executions.createComponents("/commentForm.zul", null, commentFormMap);
 					} 
 				}); 
 				I starIcon = new I();

@@ -1,16 +1,7 @@
 package de.htw.fb4.bilderplattform.business;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
-
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-import de.htw.fb4.bilderplattform.business.mail.IMail;
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.User;
 
@@ -31,6 +22,8 @@ public interface IImageService {
 	
 	public Image getImageByID(int idImage);
 	
+	public String getUsername(int idImage);
+	
 	public void saveOrUpdateImage(Image image, User user);
 	
 	public void saveOrUpdateImage(Image image, org.zkoss.zul.Image zkImage, User user);
@@ -42,5 +35,6 @@ public interface IImageService {
 	public String getImagePath();
 	
 	public String getImagePath(String filename);
+
 }
 

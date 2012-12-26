@@ -4,7 +4,7 @@ package de.htw.fb4.bilderplattform.business;
  * <p>gives access to all business services</p>
  * <p>
  * @author Josch Rossa,
- * 		   ben, konitzer
+ * 		   Benjamin Schock, Wojciech Konitzer
  * </p>
  * <p>
  * 24.10.2012
@@ -23,6 +23,7 @@ public class BusinessCtx {
 	private IImageService imageService;
 	private ISearchService searchService;
 	private IPurchaseService purchaseService;
+	private ICommentService commentService;
 	
 	// singleton getter
 	public static BusinessCtx getInstance() {
@@ -57,7 +58,7 @@ public class BusinessCtx {
 		return mailService;
 	}
 	
-	public IImageService getIImageService() {
+	public IImageService getImageService() {
 		if(imageService == null)
 			this.imageService = new ImageServiceImpl();
 		return imageService;
@@ -74,5 +75,12 @@ public class BusinessCtx {
 			this.purchaseService=new PurchaseServiceImpl();
 		}
 		return this.purchaseService;
+	}	
+	
+	public ICommentService getCommentService(){
+		if(this.commentService==null){
+			this.commentService=new CommentServiceImpl();
+		}
+		return this.commentService;
 	}	
 }

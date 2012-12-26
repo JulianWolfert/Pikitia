@@ -4,6 +4,8 @@
 .settings/org.eclipse.m2e.core.prefs -text
 /pom.xml -text
 src/main/java/de/htw/fb4/bilderplattform/business/BusinessCtx.java -text
+src/main/java/de/htw/fb4/bilderplattform/business/CommentServiceImpl.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/business/ICommentService.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/IImageService.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/IMailService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IMessageService.java -text
@@ -25,6 +27,7 @@ src/main/java/de/htw/fb4/bilderplattform/business/util/StringUtil.java -text svn
 src/main/java/de/htw/fb4/bilderplattform/dao/AbstractDAO.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Bankaccount.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Comment.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/dao/CommentDAOImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/GuestPurchase.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Image.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/ImageDAOImpl.java -text svneol=unset#text/plain
@@ -45,6 +48,7 @@ src/main/java/de/htw/fb4/bilderplattform/spring/context/ApplicationContextProvid
 src/main/java/de/htw/fb4/bilderplattform/spring/context/ServletContextProvider.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/TestCodebehind.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/validator/AddImageValidator.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/validator/CommentFormValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/ContactFormValidator.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/validator/MessageAnswerValidator.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/validator/RegistrationValidator.java -text svneol=unset#text/plain
@@ -53,6 +57,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageSummaryVM.java -text sv
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/BannerVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/CartVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/CommentFormVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/ContactFormVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/EditUserVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/GalleryVM.java -text svneol=unset#text/plain
@@ -96,6 +101,7 @@ src/main/webapp/bootstrap/img/glyphicons-halflings.png -text
 src/main/webapp/bootstrap/js/bootstrap.js -text svneol=unset#text/plain
 src/main/webapp/bootstrap/js/bootstrap.min.js -text svneol=unset#text/plain
 src/main/webapp/cart.zul -text
+src/main/webapp/commentForm.zul -text
 src/main/webapp/contactForm.zul -text
 src/main/webapp/css/banner.css -text svneol=unset#text/plain
 src/main/webapp/css/bootstrap.min.css -text svneol=unset#text/plain

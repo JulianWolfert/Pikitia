@@ -43,7 +43,7 @@ public class CartVM {
 		this.cart = new ArrayList<>();
 		
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
-				.getInstance().getIImageService().getAllImages();
+				.getInstance().getImageService().getAllImages();
 		
 		if (imageIDs != null) {
 			for (int i=0; i < imageIDs.size(); i++) {

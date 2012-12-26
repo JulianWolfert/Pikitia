@@ -49,7 +49,7 @@ public class AddImageSummaryVM {
 		}
 		BusinessCtx
 				.getInstance()
-				.getIImageService()
+				.getImageService()
 				.saveOrUpdateImage(
 						this.image,
 						this.uploadImg,

@@ -83,7 +83,22 @@ public class ImageDAOImpl extends AbstractDAO {
 		}
 		return images;
 	}
-
+	
+	@Transactional
+	public List<Image> getUsername(int idImage) {
+		List<Image> images = null;
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			Criteria criteria = session.createCriteria(Image.class).add(
+					Restrictions.eq("idImage", idImage));
+			images = criteria.list();
+		} catch (DataAccessException dae) {
+			logger.error("getUsername throws exception: ", dae);
+			session.getTransaction().rollback();
+		}
+		return images;
+	}
+	
 	@Transactional
 	public void deleteImage(int idImage) {
 		Image image = getImageByID(idImage);
@@ -105,5 +120,7 @@ public class ImageDAOImpl extends AbstractDAO {
 		}
 		return null;
 	}
+	
+	
 	
 }
