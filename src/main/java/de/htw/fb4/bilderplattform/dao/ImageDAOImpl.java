@@ -74,9 +74,15 @@ public class ImageDAOImpl extends AbstractDAO {
 		List<Image> images = null;
 		Session session = sessionFactory.getCurrentSession();
 		try {
-			Criteria criteria = session.createCriteria(Image.class).add(
-					Restrictions.eq("username", username));
-			images = criteria.list();
+			StringBuilder hqlBuilder = new StringBuilder(); 
+        	hqlBuilder.append("SELECT DISTINCT image ");
+        	hqlBuilder.append("FROM Image image ");
+        	hqlBuilder.append("INNER JOIN image.user as user "); 
+        	hqlBuilder.append("WHERE user.username = '" + username + "'");   
+			
+        	Query query = session.createQuery(hqlBuilder.toString());
+			
+			images = query.list();
 		} catch (DataAccessException dae) {
 			logger.error("getAllImagesByUsername throws exception: ", dae);
 			session.getTransaction().rollback();
