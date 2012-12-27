@@ -140,8 +140,11 @@ public class ModalGalleryVM {
 		rating_orange.setStyle("padding:10px;");
 		
 		title_id.setValue(this.image_obj.getTitle());
-		uploader_id.setValue("Uploaded by: " + BusinessCtx
-				.getInstance().getImageService().getUsername(this.image_obj.getIdImage()));
+		String username = "-";
+		if(this.image_obj.getUser() != null){
+			username = this.image_obj.getUser().getUsername();
+		}
+		uploader_id.setValue("Uploaded by: " + username);
 		desc_id.setValue(this.image_obj.getDescription());
 		price_id.setValue("\u20AC " + this.image_obj.getPrice().toString().replace(".",","));
 		rating_id.setValue("\u00D8 " + String.valueOf(BusinessCtx
