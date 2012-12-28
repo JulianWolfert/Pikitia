@@ -59,8 +59,8 @@ public class Image implements Serializable {
 	@Column(name = "preview_file")
 	private String preview_file;
 	
-	@Column(name = "thumbnail_file")
-	private String thumbnail_file;
+	@Column(name = "thumb_file")
+	private String thumb_file;
 
 	@Column(name = "timeStamp")
 	private Date timeStamp = new Date();
@@ -132,12 +132,19 @@ public class Image implements Serializable {
 		this.preview_file = preview_file;
 	}
 
-	public String getThumbnail_file() {
-		return thumbnail_file;
+	public String getThumb_file() {
+		return thumb_file;
+	}
+	
+	public byte[] getThumbFileAsBytes(String path) throws UnsupportedEncodingException, IOException, Exception{
+		if(this.thumb_file == null){
+			return null;
+		}
+		return FileUtil.fileNameToBytes(path + this.thumb_file);
 	}
 
-	public void setThumbnail_file(String thumbnail_file) {
-		this.thumbnail_file = thumbnail_file;
+	public void setThumb_file(String thumb_file) {
+		this.thumb_file = thumb_file;
 	}
 
 	public Date getTimeStamp() {

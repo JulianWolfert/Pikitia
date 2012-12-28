@@ -106,7 +106,7 @@ public class GalleryVM {
 				//Image
 				byte[] img_data = null;
 				try {
-					img_data = imgList.get(i).getPreviewFileAsBytes(path);
+					img_data = imgList.get(i).getThumbFileAsBytes(path);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

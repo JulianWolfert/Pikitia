@@ -30,8 +30,9 @@ import de.htw.fb4.bilderplattform.spring.context.ServletContextProvider;
  * 
  */
 public class ImageServiceImpl implements IImageService {
-	// the size of the preview image in pixels
-	private final int preview_size_px = 800;
+	// the size of the preview and thumb images in pixels
+	private static final int PREVIEW_SIZE_PX = 800;
+	private static final int THUMB_SIZE_PX = 170;
 
 	//gefixt: wk, 26.12.2012 :-)
 	@Override
@@ -108,6 +109,7 @@ public class ImageServiceImpl implements IImageService {
 		int b = -1;
 		byte[] data = null;
 		byte[] data_preview = null;
+		byte[] data_thumb = null;
 		InputStream in = zkImage.getContent().getStreamData();
 		ArrayList<Integer> bytes = new ArrayList<Integer>();
 		try {
@@ -120,7 +122,8 @@ public class ImageServiceImpl implements IImageService {
 				for (int i = 0; i < data.length; i++) {
 					data[i] = bytes.get(i).byteValue();
 				}
-				data_preview = this.scaleImg(data);
+				data_preview = this.scaleImg(data, PREVIEW_SIZE_PX);
+				data_thumb = this.scaleImg(data_preview, THUMB_SIZE_PX);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -161,14 +164,18 @@ public class ImageServiceImpl implements IImageService {
 				+ File.separator + "preview_" + image.getFile();
 		FileUtil.saveFile(previewFilePath, data_preview);
 		image.setPreview_file("preview_" + image.getFile());
-		//TODO: set and save thumbnail
+		
+		String thumbFilePath = imagesPath
+				+ File.separator + "thumb_" + image.getFile();
+		FileUtil.saveFile(thumbFilePath, data_thumb);
+		image.setThumb_file("thumb_" + image.getFile());
 	}
-
-	private byte[] scaleImg(byte[] data) throws IOException {
+	
+	private byte[] scaleImg(byte[] data, int pixel) throws IOException {
 		BufferedImage img = ImageIO.read(new ByteArrayInputStream(data));
-		int preview_size = img.getHeight() > img.getWidth() ? img.getHeight()
+		int size = img.getHeight() > img.getWidth() ? img.getHeight()
 				: img.getHeight();
-		double scale = (double) this.preview_size_px / (double) preview_size;
+		double scale = (double) pixel / (double) size;
 
 		AffineTransform tx = new AffineTransform();
 		tx.scale(scale, scale);
