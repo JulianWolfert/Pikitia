@@ -2,10 +2,12 @@ package de.htw.fb4.bilderplattform.view.validator;
 
 import java.util.Map;
 
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.zkoss.bind.Property;
 import org.zkoss.bind.ValidationContext;
 import org.zkoss.bind.validator.AbstractValidator;
 
+import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
@@ -22,9 +24,37 @@ public class CommentFormValidator extends AbstractValidator {
 		// all the bean properties
 		Map<String, Property> beanProps = ctx.getProperties(ctx.getProperty()
 				.getBase());
+		validateUsername(ctx, (String) beanProps.get("username").getValue());
 		validateText(ctx, (String) beanProps.get("text").getValue());
 	}
 
+	private void validateUsername(ValidationContext ctx, String username) {
+		if(!BusinessCtx.getInstance().getUserService().isAUserAuthenticated()){
+			if (username == null) {
+				this.addInvalidMessage(ctx, "username", SpringPropertiesUtil
+						.getProperty("err.enterValidRatingUsername"));
+			} else {
+				username = username.trim();
+				if (!username.matches("[A-Za-z0-9]+")) {
+					this.addInvalidMessage(ctx, "username",
+							SpringPropertiesUtil.getProperty("err.usernameIsNotValid"));
+				}else if(username.length() < 4){
+					this.addInvalidMessage(ctx, "username",
+							SpringPropertiesUtil.getProperty("err.usernameIsTooShort"));
+				}else{
+					try {
+						BusinessCtx.getInstance().getUserService()
+								.getUserByName(username);
+						this.addInvalidMessage(ctx, "username",
+								SpringPropertiesUtil.getProperty("err.usernameAlreadyExits"));
+					} catch (UsernameNotFoundException unfe) {
+		
+					}
+				}
+			}
+		}
+	}
+	
 	private void validateText(ValidationContext ctx, String text) {
 		if (text == null) {
 			this.addInvalidMessage(ctx, "text", SpringPropertiesUtil

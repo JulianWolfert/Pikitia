@@ -1,7 +1,8 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
 
-
+<style src="/css/gallery_modal.css"></style>
+<style src="/bootstrap/css/bootstrap.css"></style>
 
 	<window id="commentForm" title="Bewerten" border="normal"
 		width="800px" height="auto" minimizable="false" maximizable="false"
@@ -17,9 +18,16 @@
 					validationMessages="@id('vmsgs')"
 					form="@id('fx') @load(vm) @save(vm, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.CommentFormValidator')">
 					<vlayout>
+					
+						<label value="Benutzername:" />
+						<textbox value="@bind(fx.username)" if="${vm.isAUserAuthenticated()==false}" />
+						<textbox value="@bind(fx.username)" readonly="true" if="${vm.isAUserAuthenticated()==true}" />
+						<label class="error"
+							value="@load(vmsgs['username'])" />
 						<label value="Bewertung:" />
 						<combobox id="cmbColor" width="150px"
-							model="@load(vm.stars)" selectedItem="@bind(vm.selectedStarValue)">
+							model="@load(vm.stars)"
+							selectedItem="@bind(vm.selectedStarValue)">
 						</combobox>
 						<separator spacing="20px" />
 						<label value="Kommentar*:" width="150px" />

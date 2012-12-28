@@ -29,6 +29,7 @@ import de.htw.fb4.bilderplattform.business.IImageService;
 import de.htw.fb4.bilderplattform.business.IUserService;
 import de.htw.fb4.bilderplattform.dao.Comment;
 import de.htw.fb4.bilderplattform.dao.Image;
+import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /************************************************
  * <p>
@@ -50,6 +51,7 @@ public class CommentFormVM {
 	private Window win;
 
 	private ICommentService commentService = BusinessCtx.getInstance().getCommentService();
+	private IUserService userService = BusinessCtx.getInstance().getUserService();
 
 	private static List<Integer> stars = new ArrayList<Integer>();
 	
@@ -64,6 +66,7 @@ public class CommentFormVM {
 	private Integer selectedStarValue;
 	private String text;
 	private Integer idImage;
+	private String username;
 
 	public CommentFormVM() {
 
@@ -77,8 +80,19 @@ public class CommentFormVM {
 		this.selectedStarValue = stars.get(0);
 	}
 
+	public boolean isAUserAuthenticated(){
+		return userService.isAUserAuthenticated();
+	}
+	
 	public String getText() {
 		return text;
+	}
+
+	public String getUsername() {
+		if(userService.isAUserAuthenticated()){
+			return userService.getCurrentlyLoggedInUser().getUsername();
+		}
+		return username;
 	}
 
 	public List<Integer> getStars() {
@@ -96,10 +110,18 @@ public class CommentFormVM {
 	public void setText(String text) {
 		this.text = text;
 	}
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	@Command
 	public void submit() {
-		Comment comment = new Comment(this.getSelectedStarValue(), this.getText(), this.idImage);
+		String usrname = this.username;
+		if(!userService.isAUserAuthenticated()){
+			usrname = this.username + " " + SpringPropertiesUtil.getProperty("lbl.anonymousUser");
+		}
+		Comment comment = new Comment(this.getSelectedStarValue(), this.getText(), this.idImage, usrname);
 		commentService.saveOrUpdateComment(comment);
 		closeThis();
 	}
