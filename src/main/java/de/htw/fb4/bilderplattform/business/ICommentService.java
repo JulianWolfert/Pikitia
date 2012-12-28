@@ -13,7 +13,7 @@ import de.htw.fb4.bilderplattform.dao.Comment;
  ************************************************/
 public interface ICommentService {
 	
-	public void saveOrUpdateComment(Comment comment, int imageID, int userID);
+	public void saveOrUpdateComment(Comment comment);
 	
 	public double getAverageImageRating(int idImage);
 	

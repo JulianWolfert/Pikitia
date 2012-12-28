@@ -14,6 +14,8 @@ import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
  * 
  * @author Wojciech Konitzer
  * 
+ * 17.11.2012
+ * 
  */
 public class RegistrationValidator extends AbstractValidator {
 

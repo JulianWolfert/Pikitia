@@ -16,7 +16,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "Comment")
+@Table(name = "Comment") //TODO: w.k. Wieso heisst die Klasse Comment und nicht Rating?!
 public class Comment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -37,6 +37,17 @@ public class Comment implements Serializable {
 	@Column(name = "timeStamp")
 	private Date timeStamp = new Date();
 
+	public Comment(){
+		
+	}
+	
+	public Comment(Integer stars, String comment, Integer idImage) {
+		super();
+		this.stars = stars;
+		this.comment = comment;
+		Image_idImage = idImage;
+	}
+
 	public String getComment() {
 		return comment;
 	}
@@ -51,18 +62,6 @@ public class Comment implements Serializable {
 
 	public Integer getStars() {
 		return stars;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	public void setImage_idImage(Integer image_idImage) {
-		Image_idImage = image_idImage;
-	}
-
-	public void setStars(Integer stars) {
-		this.stars = stars;
 	}
 
 	public Date getTimeStamp() {
