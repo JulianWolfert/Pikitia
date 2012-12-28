@@ -1,7 +1,6 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,25 +9,15 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
-import org.zkoss.bind.annotation.Init;
-import org.zkoss.rating.Rating;
-import org.zkoss.rating.event.RatingEvent;
-import org.zkoss.zhtml.Button;
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.event.Event;
-import org.zkoss.zk.ui.event.EventListener;
-import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.ICommentService;
-import de.htw.fb4.bilderplattform.business.IImageService;
 import de.htw.fb4.bilderplattform.business.IUserService;
 import de.htw.fb4.bilderplattform.dao.Comment;
-import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /************************************************
