@@ -2,18 +2,14 @@ package de.htw.fb4.bilderplattform.dao;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
 import org.springframework.transaction.annotation.Transactional;
-
-import org.apache.log4j.Logger;
-
-import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
 
 /************************************************
  * <p>
