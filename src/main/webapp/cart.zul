@@ -1,6 +1,8 @@
 <?page title="Warenkorb" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
 	
+<style src="/css/cart.css"></style>	
+	
 <n:div id="header">
 			
 			<include src="/layout/header_menu2.zul" />
@@ -18,22 +20,22 @@
 		<n:form>
 	  	<n:fieldset>
 		    <n:legend>Warenkorb</n:legend>	  
-		    <listbox model="@bind(cart_vm.cart)" emptyMessage="No Image found in the result">
-		<listhead>
-			<listheader label="Bild" />
-			<listheader label="Beschreibung" />
-			<listheader label="Price" width="20%"/>
-		</listhead>
-		<template name="model">
-			<listitem>
-				<listcell label="@bind(each.title)"></listcell>
-				<listcell label="@bind(each.description)"></listcell>
-				<listcell>$<label value="@bind(each.price)" /></listcell>
-			</listitem>
-		</template>
-	</listbox>  
+		 
+		 <div id="cart_table">
+		 
+		 </div>
 		 </n:fieldset>
-		 <button onClick="@command('delete')" class="btn">Löschen</button>
+		 
+		 <div sclass="total_price">
+		 	<label id="total_price_id"></label>
+		 </div>
+		 
+		 <div sclass="checkout">
+		 	<button onClick="@command('delete')" class="btn">Warenkorb löschen</button>
+		 	<button id="checkout_button" sclass="btn btn-success">Checkout</button>
+		 </div>
+		 
+		 
 		</n:form>
 
 	

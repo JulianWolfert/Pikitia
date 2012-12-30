@@ -93,160 +93,147 @@ public class GalleryVM {
 	
 	
 	private void generateImages (List<de.htw.fb4.bilderplattform.dao.Image> imgList) {
-		String path = BusinessCtx.getInstance().getImageService().getImagePath() + File.separator;
-		//For evey image in List
-		try {
-			for (int i=0; i < imgList.size(); i++) {
-						
-				
-				//Thumb
-				Div thumb = new Div();
-				thumb.setSclass("thumb");
-				
-				//Image
-				byte[] img_data = null;
-				try {
-					img_data = imgList.get(i).getThumbFileAsBytes(path);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+		
+		
+		for (int i=0; i < imgList.size(); i++) {				
+			
+			//Thumb
+			Div thumb = new Div();
+			thumb.setSclass("thumb");
+			
+			//Image
+			Image img_gui = new Image();
+			img_gui.setSrc("/images/" + imgList.get(i).getFile());
+			
+			//ThumbContent
+			Div thumb_content = new Div();
+			thumb_content.setSclass("thumb_content");
+			
+			A linkCaption = new A();
+			linkCaption.setId("img_" + imgList.get(i).getIdImage().toString());
+			linkCaption.setDraggable("true");
+			linkCaption.addEventListener(Events.ON_CLICK, new EventListener() {
+				@Override
+				public void onEvent(Event e) throws Exception {
+					
+					String img_id = e.getTarget().getId().substring(4);
+					final HashMap<String, String> ImageIDMap = new HashMap<String, String>();
+					ImageIDMap.put("imageID", img_id);
+					ImageIDMap.put("buyButton", "true");
+					Executions.createComponents("/gallery_modal.zul", null, ImageIDMap);
+					
 				}
-				Image img_gui = new Image();
-				AImage img_preview = new AImage("test", new ByteArrayInputStream(img_data));
-				img_gui.setContent(img_preview);
-				
-				//ThumbContent
-				Div thumb_content = new Div();
-				thumb_content.setSclass("thumb_content");
-				
-				A linkCaption = new A();
-				linkCaption.setId("img_" + imgList.get(i).getIdImage().toString());
-				linkCaption.setDraggable("true");
-				linkCaption.addEventListener(Events.ON_CLICK, new EventListener() {
-					@Override
-					public void onEvent(Event e) throws Exception {
-						
-						String img_id = e.getTarget().getId().substring(4);
-						final HashMap<String, String> ImageIDMap = new HashMap<String, String>();
-						ImageIDMap.put("imageID", img_id);
-						Executions.createComponents("/gallery_modal.zul", null, ImageIDMap);
-						
-					}
-				});
-				
-				//Caption
-				Div caption = new Div();
-				caption.setSclass("caption");
-				
-				Div caption_div = new Div();
-				Label caption_label = new Label(imgList.get(i).getTitle());
-				caption_label.setSclass("title");
-				
-				Div price_div = new Div();
-				Label price_label = new Label("\u20AC " + imgList.get(i).getPrice().toString().replace(".",","));
-				price_label.setSclass("price");
+			});
+			
+			//Caption
+			Div caption = new Div();
+			caption.setSclass("caption");
+			
+			Div caption_div = new Div();
+			Label caption_label = new Label(imgList.get(i).getTitle());
+			caption_label.setSclass("title");
+			
+			Div price_div = new Div();
+			Label price_label = new Label("\u20AC " + imgList.get(i).getPrice().toString().replace(".",","));
+			price_label.setSclass("price");
 
-				
-				
-				//Info
-				Div info = new Div();
-				info.setSclass("info");				
-				
-				//Message & Star (Left)
-				Div left_buttons = new Div();
-				left_buttons.setSclass("buttons-left");
-				
-				//StarIcon
-				Button starButton = new Button();
-				starButton.setSclass("btn btn-mini");
-				starButton.setId("sta_" + imgList.get(i).getIdImage().toString());
-				starButton.addEventListener(Events.ON_CLICK, new EventListener() { 
-					public void onEvent(Event e) 
-					{ 
-						String img_id = e.getTarget().getId().substring(4);
-						final HashMap<String, Object> commentFormMap = new HashMap<String, Object>();
-						commentFormMap.put("imageID", img_id);
-						Executions.createComponents("/commentForm.zul", null, commentFormMap);
-					} 
-				}); 
-				I starIcon = new I();
-				starIcon.setSclass("icon-star");
+			
+			
+			//Info
+			Div info = new Div();
+			info.setSclass("info");				
+			
+			//Message & Star (Left)
+			Div left_buttons = new Div();
+			left_buttons.setSclass("buttons-left");
+			
+			//StarIcon
+			Button starButton = new Button();
+			starButton.setSclass("btn btn-mini");
+			starButton.setId("sta_" + imgList.get(i).getIdImage().toString());
+			starButton.addEventListener(Events.ON_CLICK, new EventListener() { 
+				public void onEvent(Event e) 
+				{ 
+					String img_id = e.getTarget().getId().substring(4);
+					final HashMap<String, Object> commentFormMap = new HashMap<String, Object>();
+					commentFormMap.put("imageID", img_id);
+					Executions.createComponents("/commentForm.zul", null, commentFormMap);
+				} 
+			}); 
+			I starIcon = new I();
+			starIcon.setSclass("icon-star");
 
-				//MessageIcon
-				Button messageButton = new Button();
-				messageButton.setSclass("btn btn-mini");
-				messageButton.setId("mes_" + imgList.get(i).getIdImage().toString());
-				messageButton.addEventListener(Events.ON_CLICK, new EventListener() { 
-					@Override
-					public void onEvent(Event e) 
-					{ 
-						String img_id = e.getTarget().getId().substring(4);
-						final HashMap<String, Object> contactFormMap = new HashMap<String, Object>();
-						contactFormMap.put("imageID", img_id);
-						Executions.createComponents("/contactForm.zul", null, contactFormMap);
-						
+			//MessageIcon
+			Button messageButton = new Button();
+			messageButton.setSclass("btn btn-mini");
+			messageButton.setId("mes_" + imgList.get(i).getIdImage().toString());
+			messageButton.addEventListener(Events.ON_CLICK, new EventListener() { 
+				@Override
+				public void onEvent(Event e) 
+				{ 
+					String img_id = e.getTarget().getId().substring(4);
+					final HashMap<String, Object> contactFormMap = new HashMap<String, Object>();
+					contactFormMap.put("imageID", img_id);
+					Executions.createComponents("/contactForm.zul", null, contactFormMap);
+					
 //						Executions.sendRedirect("/contactForm.zul");
-					} 
-				}); 
-				I messageIcon = new I();
-				messageIcon.setSclass("icon-envelope");
+				} 
+			}); 
+			I messageIcon = new I();
+			messageIcon.setSclass("icon-envelope");
 
-				
-				//Cart (Right)
-				Div right_buttons = new Div();
-				right_buttons.setSclass("buttons-right");
-				
-				//CartIcon
-				Button cartButton = new Button();
-				cartButton.setSclass("btn btn-mini");
-				cartButton.setId("car_" + imgList.get(i).getIdImage().toString());
-				cartButton.addEventListener(Events.ON_CLICK, new EventListener() {
-					public void onEvent(Event e)
-					{
-						String img_id = e.getTarget().getId().substring(4);
-						addToCart(img_id);
-						Component cartLogo = Path.getComponent("/cartLogo");
-						Clients.showNotification("Bild mit ID " + img_id + " hinzugefügt", "info", cartLogo, "top_right",2000);
-					}
-				});
-				I cartIcon = new I();
-				cartIcon.setSclass("icon-shopping-cart");
+			
+			//Cart (Right)
+			Div right_buttons = new Div();
+			right_buttons.setSclass("buttons-right");
+			
+			//CartIcon
+			Button cartButton = new Button();
+			cartButton.setSclass("btn btn-mini");
+			cartButton.setId("car_" + imgList.get(i).getIdImage().toString());
+			cartButton.addEventListener(Events.ON_CLICK, new EventListener() {
+				public void onEvent(Event e)
+				{
+					String img_id = e.getTarget().getId().substring(4);
+					addToCart(img_id);
+					Component cartLogo = Path.getComponent("/cartLogo");
+					Clients.showNotification("Bild mit ID " + img_id + " hinzugefügt", "info", cartLogo, "top_right",2000);
+				}
+			});
+			I cartIcon = new I();
+			cartIcon.setSclass("icon-shopping-cart");
 
 
-				//Append Children & create structure		
-				starButton.appendChild(starIcon);
-				left_buttons.appendChild(starButton);
+			//Append Children & create structure		
+			starButton.appendChild(starIcon);
+			left_buttons.appendChild(starButton);
 
-				messageButton.appendChild(messageIcon);
-				left_buttons.appendChild(messageButton);
-				
-				cartButton.appendChild(cartIcon);
-				right_buttons.appendChild(cartButton);
-				
-				info.appendChild(left_buttons);
-				info.appendChild(right_buttons);
-				
-				caption_div.appendChild(caption_label);
-				price_div.appendChild(price_label);
-				
-				caption.appendChild(caption_div);
-				caption.appendChild(price_div);
-				
-				linkCaption.appendChild(caption);
-				
-				thumb_content.appendChild(linkCaption);
-				thumb_content.appendChild(info);
-				
-				
-				thumb.appendChild(img_gui);
-				thumb.appendChild(thumb_content);	
-				
-				
-				this.imageList.appendChild(thumb);
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			messageButton.appendChild(messageIcon);
+			left_buttons.appendChild(messageButton);
+			
+			cartButton.appendChild(cartIcon);
+			right_buttons.appendChild(cartButton);
+			
+			info.appendChild(left_buttons);
+			info.appendChild(right_buttons);
+			
+			caption_div.appendChild(caption_label);
+			price_div.appendChild(price_label);
+			
+			caption.appendChild(caption_div);
+			caption.appendChild(price_div);
+			
+			linkCaption.appendChild(caption);
+			
+			thumb_content.appendChild(linkCaption);
+			thumb_content.appendChild(info);
+			
+			
+			thumb.appendChild(img_gui);
+			thumb.appendChild(thumb_content);	
+			
+			
+			this.imageList.appendChild(thumb);
 		}
 		
 	}
@@ -261,7 +248,8 @@ public class GalleryVM {
 			session.setAttribute("imageIDs", imageIDs);
 		}
 		else {
-			imageIDsSession.add(id);
+			if(!imageIDsSession.contains(id))
+				imageIDsSession.add(id);
 			session.setAttribute("imageIDs", imageIDsSession);
 		}
 	}

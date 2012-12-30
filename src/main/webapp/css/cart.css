@@ -1,0 +1,64 @@
+td.vorschau {
+	width:30%;
+}
+
+td.title {
+	width:40%;
+}
+
+td.title .z-label {
+  	font-family: inherit;
+  	font-weight: bold;
+  	line-height: 20px;
+  	color: inherit;
+  	text-rendering: optimizelegibility;
+  	font-size: 18px;
+}
+td.title .z-label.desc {
+  	font-family: inherit;
+  	line-height: 20px;
+  	color: grey;
+  	text-rendering: optimizelegibility;
+  	font-size: 12px;
+}
+
+td.price {
+	 text-align: right;
+}
+
+td.price .z-label {
+  	font-family: inherit;
+  	font-weight: bold;
+  	line-height: 20px;
+  	color: inherit;
+  	text-rendering: optimizelegibility;
+  	font-size: 18px;
+}
+
+.total_price {
+	text-align: right;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.total_price .z-label{
+	  	font-family: inherit;
+  	font-weight: bold;
+  	line-height: 20px;
+  	color: inherit;
+  	text-rendering: optimizelegibility;
+  	font-size: 30.5px;
+}
+
+.checkout {
+	text-align:right;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.div_price {
+	text-align:right;
+}
+
+

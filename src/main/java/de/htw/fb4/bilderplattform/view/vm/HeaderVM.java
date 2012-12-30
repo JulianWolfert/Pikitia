@@ -162,7 +162,8 @@ public class HeaderVM {
 			session.setAttribute("imageIDs", imageIDs);
 		}
 		else {
-			imageIDsSession.add(id);
+			if(!imageIDsSession.contains(id))
+				imageIDsSession.add(id);
 			session.setAttribute("imageIDs", imageIDsSession);
 		}
 	}

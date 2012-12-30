@@ -71,7 +71,9 @@ public class ModalGalleryVM {
 	private de.htw.fb4.bilderplattform.dao.Image image_obj;
 	
 	@AfterCompose
-	public void afterCompose(@ContextParam(ContextType.VIEW) Component view, @ExecutionArgParam("imageID") String imageID) {
+	public void afterCompose(@ContextParam(ContextType.VIEW) Component view, 
+			@ExecutionArgParam("imageID") String imageID,
+			@ExecutionArgParam("buyButton") Boolean buyButton) {
 		Selectors.wireComponents(view, this, false);
       
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
@@ -88,16 +90,9 @@ public class ModalGalleryVM {
 		
 		try {		
 			//Image
-//			byte[] img_data = image_obj.getFileAsBytes();
-			String path = BusinessCtx.getInstance().getImageService().getImagePath() + File.separator;
-			byte[] img_data = image_obj.getPreviewFileAsBytes(path);
 			Image img_gui = new Image();	
-			AImage img_preview = new AImage("test", new ByteArrayInputStream(img_data));
-			img_gui.setContent(img_preview);
+			img_gui.setSrc("images/" + image_obj.getPreview_file());
 			this.imageDIV.appendChild(img_gui);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -157,6 +152,8 @@ public class ModalGalleryVM {
 				closeModalWindow();
 			}
 		});
+		if (!buyButton)
+			cartButton.setDisabled(true);
 	}
 
 	@Command("closeModalWindow") 
@@ -175,7 +172,8 @@ public class ModalGalleryVM {
 			session.setAttribute("imageIDs", imageIDs);
 		}
 		else {
-			imageIDsSession.add(id);
+			if(!imageIDsSession.contains(id))
+				imageIDsSession.add(id);
 			session.setAttribute("imageIDs", imageIDsSession);
 		}
 	}

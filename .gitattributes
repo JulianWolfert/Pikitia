@@ -105,6 +105,7 @@ src/main/webapp/commentForm.zul -text
 src/main/webapp/contactForm.zul -text
 src/main/webapp/css/banner.css -text svneol=unset#text/plain
 src/main/webapp/css/bootstrap.min.css -text svneol=unset#text/plain
+src/main/webapp/css/cart.css -text svneol=unset#text/plain
 src/main/webapp/css/gallery.css -text svneol=unset#text/plain
 src/main/webapp/css/gallery_modal.css -text svneol=unset#text/plain
 src/main/webapp/css/styles.css -text svneol=unset#text/plain

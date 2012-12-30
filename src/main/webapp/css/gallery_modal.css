@@ -76,7 +76,7 @@
 .imageInfo .desc .z-label {
   	font-family: inherit;
   	line-height: 20px;
-  	color: inherit;
+  	color: grey;
   	text-rendering: optimizelegibility;
   	font-size: 12px;
 }
@@ -91,7 +91,7 @@
 }
 
 .imageInfo .price .price_value .z-label {
-		font-family: inherit;
+	font-family: inherit;
   	font-weight: bold;
   	line-height: 20px;
   	color: inherit;
