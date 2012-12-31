@@ -32,6 +32,7 @@ import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.util.ResourcesUtil;
 
 
 /************************************************
@@ -197,7 +198,8 @@ public class GalleryVM {
 					String img_id = e.getTarget().getId().substring(4);
 					addToCart(img_id);
 					Component cartLogo = Path.getComponent("/cartLogo");
-					Clients.showNotification("Bild mit ID " + img_id + " hinzugefügt", "info", cartLogo, "top_right",2000);
+					Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", img_id), "info", cartLogo, "top_right",2000);
+//					Clients.showNotification("Bild mit ID " + img_id + " hinzugefügt", "info", cartLogo, "top_right",2000);
 				}
 			});
 			I cartIcon = new I();

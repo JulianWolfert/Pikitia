@@ -1,8 +1,5 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +9,6 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
-import org.zkoss.image.AImage;
 import org.zkoss.zhtml.Button;
 import org.zkoss.zhtml.I;
 import org.zkoss.zk.ui.Component;
@@ -32,6 +28,7 @@ import org.zkoss.zul.Label;
 import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.util.ResourcesUtil;
 
 public class ModalGalleryVM {
 
@@ -148,7 +145,8 @@ public class ModalGalleryVM {
 			public void onEvent(Event e) {
 				addToCart(image_obj.getIdImage().toString());
 				Component cartLogo = Path.getComponent("/cartLogo");
-				Clients.showNotification("Bild mit ID " + image_obj.getIdImage().toString() + " hinzugefügt", "info", cartLogo, "top_right",2000);
+				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", image_obj.getIdImage().toString()), "info", cartLogo, "top_right",2000);
+//				Clients.showNotification("Bild mit ID " +  + " hinzugefügt", "info", cartLogo, "top_right",2000);
 				closeModalWindow();
 			}
 		});

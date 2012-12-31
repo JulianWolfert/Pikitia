@@ -15,7 +15,6 @@ import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
  */
 public class CommentServiceImpl implements ICommentService {
 
-	//TODO: Using userID
 	@Override
 	public void saveOrUpdateComment(Comment comment) {
 		if (comment == null) {
