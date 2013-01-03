@@ -30,6 +30,7 @@ import org.zkoss.zul.Window;
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.util.ResourcesUtil;
 import de.htw.fb4.bilderplattform.dao.Comment;
+import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 public class ModalGalleryVM {
 
@@ -133,8 +134,15 @@ public class ModalGalleryVM {
 		uploader_id.setValue("Uploaded by: " + username);
 		desc_id.setValue(this.image_obj.getDescription());
 		price_id.setValue("\u20AC " + this.image_obj.getPrice().toString().replace(".",","));
-		rating_id.setValue("\u00D8 " + String.valueOf(BusinessCtx
-				.getInstance().getCommentService().getAverageImageRating(this.image_obj.getIdImage())));
+		
+		Double avgRatingValue = BusinessCtx
+				.getInstance().getCommentService().getAverageImageRating(this.image_obj.getIdImage());
+		String avgRatingStr = "\u00D8 " + String.valueOf(avgRatingValue);
+		if(avgRatingValue == 0){
+			avgRatingStr = SpringPropertiesUtil.getProperty("lbl.noCommentAvailable");	
+		}
+		rating_id.setValue(avgRatingStr);
+		
 		cartButton.addEventListener(Events.ON_CLICK, new EventListener() {
 			public void onEvent(Event e) {
 				addToCart(image_obj.getIdImage().toString());

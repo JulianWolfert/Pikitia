@@ -15,6 +15,7 @@ import org.zkoss.image.AImage;
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.IImageService;
 import de.htw.fb4.bilderplattform.business.util.FileUtil;
+import de.htw.fb4.bilderplattform.dao.Comment;
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.Message;
 import de.htw.fb4.bilderplattform.dao.User;
@@ -31,6 +32,7 @@ public class DBInitialization implements InitializingBean {
 	private final static List<User> users = new ArrayList<User>();
 	private final static List<Message> initialMessages = new ArrayList<Message>();
 	private final static List<String> initialPictures = new ArrayList<String>();
+	private final static List<Comment> initialPictureComments = new ArrayList<Comment>();
 
 	public DBInitialization() {
 		// add normal users
@@ -61,6 +63,10 @@ public class DBInitialization implements InitializingBean {
 		 initialPictures.add("1.jpg");
 		 initialPictures.add("2.jpg");
 		 initialPictures.add("3.jpg");
+		 
+		 initialPictureComments.add(new Comment(5, "Ein sehr cooles Bild", 1, "jonathan"));
+		 initialPictureComments.add(new Comment(2, "Geht so!", 1, "julian"));
+		 initialPictureComments.add(new Comment(4, "Prima!", 2, "wojtek"));
 
 	}
 
@@ -109,12 +115,19 @@ public class DBInitialization implements InitializingBean {
 			BusinessCtx.getInstance().getMessageService().saveMessage(message);
 		}
 	}
+	
+	private void createInitialPictureComments() {
+		for (Comment comment : initialPictureComments) {
+			BusinessCtx.getInstance().getCommentService().saveOrUpdateComment(comment);
+		}
+	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		createUsers();
 		createInitialMessages();
 		createInitialPictures();
+		createInitialPictureComments();
 	}
 
 	
