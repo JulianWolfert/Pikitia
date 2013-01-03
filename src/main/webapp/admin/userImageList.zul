@@ -42,13 +42,16 @@ div.z-listbox-header tr.z-listhead {
 					</listhead>
 					<template name="model" var="image">
 						<listitem>
-							<listcell label="@load(image.title)" />
+							<listcell label="@bind(image.title)" />
 							<listcell>
 								<n:span title="Löschen" class="imgContainer">
 									<image src="/images/list/j_delete.png" onClick="@command('deleteImage', image=image)" />
 								</n:span>
 								<n:span title="Bearbeiten" class="imgContainer">
 									<image src="/images/list/j_edit.png" onClick="@command('editImage', image=image)" />
+								</n:span>
+								<n:span title="Kommentare" class="imgContainer">
+									<image src="/images/list/j_comment.png" onClick="@command('imageComments', image=image)" />
 								</n:span>
 							</listcell>
 						</listitem>

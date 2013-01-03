@@ -59,6 +59,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/BannerVM.java -text svneol=unse
 src/main/java/de/htw/fb4/bilderplattform/view/vm/CartVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/CommentFormVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/ContactFormVM.java -text
+src/main/java/de/htw/fb4/bilderplattform/view/vm/EditImageVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/EditUserVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/GalleryVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/HeaderVM.java -text
@@ -84,6 +85,7 @@ src/main/webapp/WEB-INF/applicationContext-security.xml -text
 src/main/webapp/WEB-INF/applicationContext.xml -text
 src/main/webapp/WEB-INF/web.xml -text
 src/main/webapp/WEB-INF/zk.xml -text
+src/main/webapp/admin/editImage.zul -text
 src/main/webapp/admin/editUser.zul -text
 src/main/webapp/admin/index.zul -text
 src/main/webapp/admin/purchaseDetails.zul -text

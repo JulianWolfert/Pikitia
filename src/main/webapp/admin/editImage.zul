@@ -1,0 +1,29 @@
+<window id="modalEditImage" title="Bilddaten" border="normal"
+	width="600px" minimizable="false" maximizable="false" mode="modal"
+	position="center,center" closable="true"
+	action="show:slideDown; hide:slideUp" onCancel="@command('closeThis')"
+	apply="org.zkoss.bind.BindComposer"
+	viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.EditImageVM')">
+	<grid>
+		<rows>
+			<row>
+				<label value="Titel" />
+				<textbox
+					onChange="@command('updateImage')" value="@bind(vm.image.title)"
+					constraint="no empty: Bitte einen Titel eingeben" />
+			</row>
+			<row>
+				<label value="Beschreibung" />
+				<textbox
+					onChange="@command('updateImage')" value="@bind(vm.image.description)"
+					constraint="no empty: Bitte eine Beschreibung eingeben" />
+			</row>
+			<row>
+				<label value="Preis" />
+				<textbox
+					onChange="@command('updateImage')" value="@bind(vm.image.price)"
+					constraint="no empty: Bitte einen Preis eingeben" />
+			</row>
+		</rows>
+	</grid>
+</window>

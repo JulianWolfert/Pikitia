@@ -1,8 +1,6 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -35,18 +33,17 @@ public class UserImageAdministrationVM {
 		
 		String userName = BusinessCtx.getInstance().getUserService().getUserByID(idUser).getUsername();
 		
-		//TODO: getImagesByUsername is not working therefore alternative solution
-//		this.imageList = new ListModelList<Image>(BusinessCtx
-//				.getInstance().getIImageService().getImagesByUsername(userName));
+		this.imageList = new ListModelList<Image>(BusinessCtx
+				.getInstance().getImageService().getImagesByUsername(userName));
 		
-		// alternative solution 
-		List<Image> userImgs = new ArrayList<Image>();
-		List<Image> allImgs = BusinessCtx.getInstance().getImageService().getAllImages();
-		for(Image img : allImgs) {
-			if(img.getUser().getUsername().equals(userName))
-				userImgs.add(img);
-		}
-		this.imageList = new ListModelList<Image>(userImgs);
+		// alternative solution - not necessary anymore, due to getImagesByUsername is working now :-)
+//		List<Image> userImgs = new ArrayList<Image>();
+//		List<Image> allImgs = BusinessCtx.getInstance().getImageService().getAllImages();
+//		for(Image img : allImgs) {
+//			if(img.getUser().getUsername().equals(userName))
+//				userImgs.add(img);
+//		}
+//		this.imageList = new ListModelList<Image>(userImgs);
 		// alternative solution end
 	}
 
@@ -73,9 +70,16 @@ public class UserImageAdministrationVM {
 	@Command
 	public void editImage(@BindingParam("image") final Image image) {
 		final HashMap<String, Object> sessionMap = new HashMap<String, Object>();
+		sessionMap.put("image", image);
+		Executions.createComponents("/admin/editImage.zul", null, sessionMap);
+	}
+	
+	@Command
+	public void imageComments(@BindingParam("image") final Image image) {
+		final HashMap<String, Object> sessionMap = new HashMap<String, Object>();
 		sessionMap.put("idImage", image.getIdImage());
-		//TODO: realize edit image
-//		Executions.createComponents("/admin/editImage.zul", null, sessionMap);
+		//TODO: realize edit comments
+//		Executions.createComponents("/admin/comments.zul", null, sessionMap);
 	}
 	
 	@Command
