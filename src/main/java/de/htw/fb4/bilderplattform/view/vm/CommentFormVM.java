@@ -1,9 +1,12 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
@@ -117,6 +120,8 @@ public class CommentFormVM {
 
 	@Command
 	public void closeThis() {
+		Map args = new HashMap();
+		BindUtils.postGlobalCommand(null, null, "refresh", args);
 		win.detach();
 	}
 

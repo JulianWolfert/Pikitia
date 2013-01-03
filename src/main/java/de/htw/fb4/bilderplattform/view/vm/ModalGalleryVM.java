@@ -5,10 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.zkoss.bind.annotation.AfterCompose;
+import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
+import org.zkoss.bind.annotation.GlobalCommand;
+import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zhtml.Button;
 import org.zkoss.zhtml.I;
 import org.zkoss.zk.ui.Component;
@@ -160,6 +163,21 @@ public class ModalGalleryVM {
 	public void closeModalWindow ()
 	{
 		modalGalleryImage.detach();		
+	}
+	
+	@GlobalCommand
+	@NotifyChange("comments")
+	public void refresh() {
+		//System.out.println("test");
+		
+		Double avgRatingValue = BusinessCtx
+				.getInstance().getCommentService().getAverageImageRating(this.image_obj.getIdImage());
+		String avgRatingStr = "\u00D8 " + String.valueOf(avgRatingValue);
+		if(avgRatingValue == 0){
+			avgRatingStr = SpringPropertiesUtil.getProperty("lbl.noCommentAvailable");	
+		}
+		this.rating_id.setValue(avgRatingStr);
+		this.setComments(BusinessCtx.getInstance().getCommentService().getAllCommentsByImageID(image_obj.getIdImage()));
 	}
 	
 	private void addToCart(String id) {
