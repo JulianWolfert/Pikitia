@@ -29,6 +29,7 @@ import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.util.ResourcesUtil;
+import de.htw.fb4.bilderplattform.dao.Comment;
 
 public class ModalGalleryVM {
 
@@ -67,11 +68,15 @@ public class ModalGalleryVM {
 	//Just class members
 	private de.htw.fb4.bilderplattform.dao.Image image_obj;
 	
+	private List<Comment> comments;
+	
 	@AfterCompose
 	public void afterCompose(@ContextParam(ContextType.VIEW) Component view, 
 			@ExecutionArgParam("imageID") String imageID,
 			@ExecutionArgParam("buyButton") Boolean buyButton) {
 		Selectors.wireComponents(view, this, false);
+		
+		
       
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
 				.getInstance().getImageService().getAllImages();
@@ -84,6 +89,9 @@ public class ModalGalleryVM {
 					}
 				}
 			}
+		
+		this.setComments(BusinessCtx.getInstance().getCommentService().getAllCommentsByImageID(this.image_obj.getIdImage()));
+		
 		
 		try {		
 			//Image
@@ -174,6 +182,14 @@ public class ModalGalleryVM {
 				imageIDsSession.add(id);
 			session.setAttribute("imageIDs", imageIDsSession);
 		}
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 }

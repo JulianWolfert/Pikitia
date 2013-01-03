@@ -38,7 +38,7 @@ public class Comment implements Serializable {
 	private Date timeStamp = new Date();
 	
 	@Column(name = "Image_username", nullable=false)
-	private String Image_username;
+	private String image_username;
 
 	//required for hibernate queries
 	public Comment(){
@@ -50,7 +50,7 @@ public class Comment implements Serializable {
 		this.stars = stars;
 		this.comment = comment;
 		Image_idImage = idImage;
-		Image_username = username;
+		image_username = username;
 	}
 
 	public String getComment() {
@@ -74,7 +74,7 @@ public class Comment implements Serializable {
 	}
 
 	public String getImage_username() {
-		return Image_username;
+		return image_username;
 	}
 	
 }

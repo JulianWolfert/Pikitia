@@ -32,7 +32,7 @@ public class CommentServiceImpl implements ICommentService {
 				.getApplicationContext()
 				.getBean("commentDao", CommentDAOImpl.class);
 		
-		List<Comment> comments = commentDAO.getAllRatingsByImageID(idImage);
+		List<Comment> comments = commentDAO.getAllCommentsByImageID(idImage);
 		
 		double averageRating = 0f;
 		int sumAllRatings = 0;
@@ -44,6 +44,17 @@ public class CommentServiceImpl implements ICommentService {
 			averageRating = Math.rint(averageRating*100)/100;
 		}
 		return averageRating;
+	}
+
+	@Override
+	public List<Comment> getAllCommentsByImageID(int idImage) {
+		CommentDAOImpl commentDAO = ApplicationContextProvider
+				.getApplicationContext()
+				.getBean("commentDao", CommentDAOImpl.class);
+		
+		List<Comment> comments = commentDAO.getAllCommentsByImageID(idImage);
+		
+		return comments;
 	}
 
 }

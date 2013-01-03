@@ -7,7 +7,7 @@
 
 	<window id="modalGalleryImage" 
 		border="none"
-	    width="1024px"
+	    width="1280px"
 	    height="auto" 
 	    minimizable="false"
 	    maximizable="false"
@@ -22,47 +22,71 @@
 						
 		<div sclass="imageBig">
 		</div>
-		<div sclass="imageInfo">
-			<div sclass="closeButton">
-				<button onClick="@command('closeModalWindow')" class="close">&#215;</button>
-			</div>
+		<div sclass="infoPanel">
 		
-			<div sclass="title">
-				<label id="title_id"></label>
-			</div>
-			
-			<div sclass="uploader">
-				<label id="uploader_id"></label>
-			</div>
-			
-			<div sclass="rating">
-				<div sclass="rating_bar">
-					<div sclass="rating_orange"></div>
+			<div sclass="imageInfo">
+				<div sclass="closeButton">
+					<button onClick="@command('closeModalWindow')" class="close">&#215;</button>
 				</div>
-				<label id="rating_id"></label>
-			</div>
 			
-			<div sclass="buttons">
-			
-			</div>
-			
-			<div sclass="desc">
-				<label id="desc_id"></label>
-			</div>
-			
-			<div sclass="price">
-				<div sclass="price_label">
-					<label>Price</label>
+				<div sclass="title">
+					<label id="title_id"></label>
 				</div>
-				<div sclass="price_value">			
-					<label id="price_id"></label>
+				
+				<div sclass="uploader">
+					<label id="uploader_id"></label>
+				</div>
+				
+				<div sclass="rating">
+					<div sclass="rating_bar">
+						<div sclass="rating_blank">
+							<div sclass="rating_orange"></div>
+						</div>
+					</div>
+					<div sclass="rating_value">
+						<label id="rating_id"></label>
+					</div>
+				</div>
+				
+				<div sclass="buttons">
+				
+				</div>
+				
+				<div sclass="desc">
+					<label id="desc_id"></label>
 				</div>
 			</div>
 			
-			<div sclass="cartButton">
-				<button id="cartButton" sclass="btn btn-info">+ Add to cart</button>
+			<div sclass="comments">
+				<listbox model="@bind(vm.comments)" rows="3" emptyMessage="No Comments">
+				<template name="model">
+						<listitem>
+						<listcell>
+							<label sclass="comment_username" value="@bind(each.image_username)"></label>
+							<label sclass="comment_stars" value=" @bind(each.stars)"></label>
+							<label sclass="comment_stars" value=" Stern(e)"></label>
+							<n:br></n:br>
+							<label value="@bind(each.comment)" pre="true" multiline="true"></label>
+						</listcell>
+						</listitem>
+				</template>
+				</listbox>
 			</div>
 			
+			<div sclass="price_cart_button">
+				<div sclass="price">
+					<div sclass="price_label">
+						<label>Price</label>
+					</div>
+					<div sclass="price_value">			
+						<label id="price_id"></label>
+					</div>
+				</div>
+				
+				<div sclass="cartButton">
+					<button id="cartButton" sclass="btn btn-info">+ Add to cart</button>
+				</div>
+			</div>
 			
 			
 		</div>

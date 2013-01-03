@@ -4,20 +4,23 @@
 }
 
 
-.imageInfo {
+.infoPanel {
 	width:30%;
 	float:right;
 }
 
+.infoPanel .imageInfo {
+	height:30%;
+}
 
-.imageInfo .title {
+.infoPanel .imageInfo .title {
 	padding-left: 10px;
 	padding-bottom: 5px;
 	padding-top: 10px;
 	z-index:1;
 }
 
-.imageInfo .title .z-label {
+.infoPanel .imageInfo .title .z-label {
   	font-family: inherit;
   	font-weight: bold;
   	line-height: 20px;
@@ -26,11 +29,11 @@
   	font-size: 31.5px;
 }
 
-.imageInfo .uploader {
+.infoPanel .imageInfo .uploader {
 	padding-left: 10px;
 }
 
-.imageInfo .uploader .z-label {
+.infoPanel .imageInfo .uploader .z-label {
 	font-family: inherit;
   	line-height: 20px;
   	color: inherit;
@@ -39,41 +42,51 @@
   	font-size: 10px;
 }
 
-.imageInfo .closeButton {
+.infoPanel .imageInfo .closeButton {
 	padding: 5px;
 	z-index: 2;
 }
 
 
-.imageInfo .rating {
+.infoPanel .imageInfo .rating {
 	padding-left: 10px;
   	padding-top: 10px;
+  padding-bottom: 10px;
+  	
 }
 
-.imageInfo .rating .rating_bar {
+.infoPanel .imageInfo .rating .rating_bar {
+
+}
+
+.infoPanel .imageInfo .rating .rating_bar .rating_blank {
   width: 55px;
   background: url(../images/star_x_grey.gif) 0 0 repeat-x;
 }
 
-.imageInfo .rating .rating_bar .rating_orange {
-  height: 12px;
+.infoPanel .imageInfo .rating .rating_bar .rating_blank .rating_orange {
+  height: 0px;
   background: url(../images/star_x_orange.gif) 0 0 repeat-x;
 }
 
-.imageInfo .buttons {
+.infoPanel .imageInfo .rating .rating_value {
+
+}
+
+.infoPanel .imageInfo .buttons {
 	padding-left: 10px;
-  	padding-top: 5px;
-  	padding-bottom: 5px;
+  	padding-top: 15px;
+  	padding-bottom: 15px;
 }
 
 
-.imageInfo .desc {
+.infoPanel .imageInfo .desc {
 	padding-left: 10px;
   padding-top: 5px;
   padding-bottom: 50px;
 }
 
-.imageInfo .desc .z-label {
+.infoPanel .imageInfo .desc .z-label {
   	font-family: inherit;
   	line-height: 20px;
   	color: grey;
@@ -81,16 +94,34 @@
   	font-size: 12px;
 }
 
-.imageInfo .price {
+.infoPanel .comments {
+  	height:145px;
+ 	margin-left:10px;
+  	margin-right:10px;
+}
+
+.infoPanel .comments .comment_username {
+	font-size:10px;
+}
+
+.infoPanel .comments .comment_stars {
+	font-weight: bold;
+}
+
+.infoPanel .price_cart_button {
+	height:100px;
+}
+
+.infoPanel .price_cart_button .price {
 		text-align: right;
     padding: 10px;
 }
 
-.imageInfo .price .price_label .z-label {
+.infoPanel .price_cart_button .price .price_label .z-label {
 		font-size:12px;
 }
 
-.imageInfo .price .price_value .z-label {
+.infoPanel .price_cart_button .price .price_value .z-label {
 	font-family: inherit;
   	font-weight: bold;
   	line-height: 20px;
@@ -99,12 +130,12 @@
   	font-size: 18px;
 }
 
-.imageInfo .cartButton {
+.infoPanel .price_cart_button .cartButton {
 	padding-left: 10px;
   padding-right: 10px;
 }
 
-.imageInfo .cartButton .btn {
+.infoPanel .price_cart_button .cartButton .btn {
  	padding: 10px; 
   	width:100%;
   	font-family: inherit;
@@ -113,6 +144,9 @@
   	text-rendering: optimizelegibility;
   	font-size: 18px;
 }
+
+
+
 
 
 

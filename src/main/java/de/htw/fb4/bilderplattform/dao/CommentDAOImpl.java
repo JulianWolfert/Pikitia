@@ -32,7 +32,7 @@ public class CommentDAOImpl extends AbstractDAO {
 	}
 	
 	@Transactional
-	public List<Comment> getAllRatingsByImageID(int idImage) {
+	public List<Comment> getAllCommentsByImageID(int idImage) {
 		List<Comment> comments = null;
 		Session session = sessionFactory.getCurrentSession();
 		try {
