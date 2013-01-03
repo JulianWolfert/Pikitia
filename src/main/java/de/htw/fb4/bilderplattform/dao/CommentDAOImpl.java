@@ -40,7 +40,7 @@ public class CommentDAOImpl extends AbstractDAO {
 					Restrictions.eq("Image_idImage", idImage));
 			comments = criteria.list();
 		} catch (DataAccessException dae) {
-			logger.error("getAllRatingByImageID throws exception: ", dae);
+			logger.error("getAllCommentsByImageID throws exception: ", dae);
 			session.getTransaction().rollback();
 		}
 		return comments;
