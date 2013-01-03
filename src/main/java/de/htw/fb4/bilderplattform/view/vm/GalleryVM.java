@@ -1,8 +1,5 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +9,6 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.NotifyChange;
-import org.zkoss.image.AImage;
 import org.zkoss.zhtml.Button;
 import org.zkoss.zhtml.I;
 import org.zkoss.zk.ui.Component;
@@ -96,7 +92,7 @@ public class GalleryVM {
 	private void generateImages (List<de.htw.fb4.bilderplattform.dao.Image> imgList) {
 		
 		
-		for (int i=0; i < imgList.size(); i++) {				
+		for (final de.htw.fb4.bilderplattform.dao.Image image : imgList) {				
 			
 			//Thumb
 			Div thumb = new Div();
@@ -104,22 +100,22 @@ public class GalleryVM {
 			
 			//Image
 			Image img_gui = new Image();
-			img_gui.setSrc("/images/" + imgList.get(i).getFile());
+			img_gui.setSrc("/images/" + image.getFile());
 			
 			//ThumbContent
 			Div thumb_content = new Div();
 			thumb_content.setSclass("thumb_content");
 			
 			A linkCaption = new A();
-			linkCaption.setId("img_" + imgList.get(i).getIdImage().toString());
+			linkCaption.setId("img_" + image.getIdImage().toString());
 			linkCaption.setDraggable("true");
 			linkCaption.addEventListener(Events.ON_CLICK, new EventListener() {
 				@Override
 				public void onEvent(Event e) throws Exception {
 					
 					String img_id = e.getTarget().getId().substring(4);
-					final HashMap<String, String> ImageIDMap = new HashMap<String, String>();
-					ImageIDMap.put("imageID", img_id);
+					final HashMap<String, Object> ImageIDMap = new HashMap<String, Object>();
+					ImageIDMap.put("image", image);
 					ImageIDMap.put("buyButton", "true");
 					Executions.createComponents("/gallery_modal.zul", null, ImageIDMap);
 					
@@ -131,11 +127,11 @@ public class GalleryVM {
 			caption.setSclass("caption");
 			
 			Div caption_div = new Div();
-			Label caption_label = new Label(imgList.get(i).getTitle());
+			Label caption_label = new Label(image.getTitle());
 			caption_label.setSclass("title");
 			
 			Div price_div = new Div();
-			Label price_label = new Label("\u20AC " + imgList.get(i).getPrice().toString().replace(".",","));
+			Label price_label = new Label("\u20AC " + image.getPrice().toString().replace(".",","));
 			price_label.setSclass("price");
 
 			
@@ -151,7 +147,7 @@ public class GalleryVM {
 			//StarIcon
 			Button starButton = new Button();
 			starButton.setSclass("btn btn-mini");
-			starButton.setId("sta_" + imgList.get(i).getIdImage().toString());
+			starButton.setId("sta_" + image.getIdImage().toString());
 			starButton.addEventListener(Events.ON_CLICK, new EventListener() { 
 				public void onEvent(Event e) 
 				{ 
@@ -167,7 +163,7 @@ public class GalleryVM {
 			//MessageIcon
 			Button messageButton = new Button();
 			messageButton.setSclass("btn btn-mini");
-			messageButton.setId("mes_" + imgList.get(i).getIdImage().toString());
+			messageButton.setId("mes_" + image.getIdImage().toString());
 			messageButton.addEventListener(Events.ON_CLICK, new EventListener() { 
 				@Override
 				public void onEvent(Event e) 
@@ -191,7 +187,7 @@ public class GalleryVM {
 			//CartIcon
 			Button cartButton = new Button();
 			cartButton.setSclass("btn btn-mini");
-			cartButton.setId("car_" + imgList.get(i).getIdImage().toString());
+			cartButton.setId("car_" + image.getIdImage().toString());
 			cartButton.addEventListener(Events.ON_CLICK, new EventListener() {
 				public void onEvent(Event e)
 				{

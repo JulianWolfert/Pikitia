@@ -2,12 +2,10 @@ package de.htw.fb4.bilderplattform.view.validator;
 
 import java.util.Map;
 
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.zkoss.bind.Property;
 import org.zkoss.bind.ValidationContext;
 import org.zkoss.bind.validator.AbstractValidator;
 
-import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 

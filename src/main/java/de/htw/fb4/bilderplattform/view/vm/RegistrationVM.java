@@ -1,10 +1,7 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
 import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.ContextParam;
-import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.NotifyChange;
-import org.zkoss.zk.ui.event.InputEvent;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.dao.User;

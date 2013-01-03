@@ -2,23 +2,19 @@ package de.htw.fb4.bilderplattform.view.vm;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.List;
 
 import org.zkoss.bind.annotation.AfterCompose;
-import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.image.AImage;
-import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.Selectors;
-import org.zkoss.zk.ui.select.annotation.*;
+import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Image;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
-import de.htw.fb4.bilderplattform.business.IImageService;
 import de.htw.fb4.bilderplattform.business.util.FileUtil;
 
 /**

@@ -72,26 +72,12 @@ public class ModalGalleryVM {
 	
 	@AfterCompose
 	public void afterCompose(@ContextParam(ContextType.VIEW) Component view, 
-			@ExecutionArgParam("imageID") String imageID,
+			@ExecutionArgParam("image") de.htw.fb4.bilderplattform.dao.Image image,
 			@ExecutionArgParam("buyButton") Boolean buyButton) {
 		Selectors.wireComponents(view, this, false);
-		
-		
-      
-		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
-				.getInstance().getImageService().getAllImages();
-		if (imageID != null) {
-				for (int j=0; j < imgList.size(); j++) {
-					if (imgList.get(j).getIdImage().toString().equals(imageID)) {
-						
-						this.image_obj = imgList.get(j);
-						break;
-					}
-				}
-			}
-		
+	
+		this.image_obj = image;
 		this.setComments(BusinessCtx.getInstance().getCommentService().getAllCommentsByImageID(this.image_obj.getIdImage()));
-		
 		
 		try {		
 			//Image
