@@ -100,7 +100,7 @@ public class GalleryVM {
 			
 			//Image
 			Image img_gui = new Image();
-			img_gui.setSrc("/images/" + image.getFile());
+			img_gui.setSrc("/images/" + image.getThumb_file());
 			
 			//ThumbContent
 			Div thumb_content = new Div();
@@ -115,7 +115,7 @@ public class GalleryVM {
 					
 					String img_id = e.getTarget().getId().substring(4);
 					final HashMap<String, Object> ImageIDMap = new HashMap<String, Object>();
-					ImageIDMap.put("image", image);
+					ImageIDMap.put("imageID", img_id);
 					ImageIDMap.put("buyButton", "true");
 					Executions.createComponents("/gallery_modal.zul", null, ImageIDMap);
 					
