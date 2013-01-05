@@ -24,12 +24,10 @@ div.z-listbox-header tr.z-listhead {
 		<n:div id="content_small">
 		
 			<div apply="org.zkoss.bind.BindComposer"
-				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.AdminUserImageAdministrationVM')">
+				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.UserUserImageAdministrationVM')">
 				<n:legend>Administrative Bilderliste</n:legend>
 				<n:div id="spath">
 					<a class="spathtext" onClick="@command('redirectToStart')">Start</a>
-					<n:span class="spathtext">></n:span>
-					<a class="spathtext" onClick="@command('redirectToUserList')">Benutzerliste</a>
 					<n:span class="spathtext">></n:span>
 					<n:span class="spathtext" href="#">Bilderliste</n:span>
 				</n:div>

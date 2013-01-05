@@ -53,8 +53,10 @@ src/main/java/de/htw/fb4/bilderplattform/view/validator/ContactFormValidator.jav
 src/main/java/de/htw/fb4/bilderplattform/view/validator/MessageAnswerValidator.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/validator/RegistrationValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/UserUpdateValidator.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/AbstractUserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageSummaryVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/AdminUserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/BannerVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/CartVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/CommentFormVM.java -text svneol=unset#text/plain
@@ -73,6 +75,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneo
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserAdministrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserUpdateVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/UserUserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/WebsiteLayoutVM.java -text svneol=unset#text/plain
 src/main/resources/config/database/DataSource.xml -text svneol=unset#text/plain
 src/main/resources/config/database/db.properties -text svneol=unset#text/plain
@@ -191,9 +194,11 @@ src/main/webapp/test.zul -text
 src/main/webapp/timeout.zul -text
 src/main/webapp/user/addImage.zul -text
 src/main/webapp/user/addImageSummary.zul -text
+src/main/webapp/user/editImage.zul -text
 src/main/webapp/user/index.zul -text
 src/main/webapp/user/messageAnswer.zul -text
 src/main/webapp/user/messageDetail.zul -text
 src/main/webapp/user/messageList.zul -text
+src/main/webapp/user/userImageList.zul -text
 src/main/webapp/user/userUpdate.zul -text
 src/main/webapp/user/userUpdate2.zul -text

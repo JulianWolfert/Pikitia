@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.zkoss.bind.annotation.AfterCompose;
+import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
@@ -24,6 +25,7 @@ import org.zkoss.zul.A;
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.ISearchService;
 import de.htw.fb4.bilderplattform.dao.Image;
+import de.htw.fb4.bilderplattform.dao.User;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /************************************************
@@ -123,6 +125,13 @@ public class HeaderVM {
 	@Command
 	public void addImage() {
 		Executions.getCurrent().sendRedirect("/user/addImage.zul");
+	}
+	
+	/** leads to a list of the users images */	
+	@Command
+	public void showImages() {
+		User user = BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser();
+		Executions.sendRedirect("/user/userImageList.zul?idUser="+user.getIdUser()); 
 	}
 	
 	@Command

@@ -51,7 +51,10 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	                <n:li>
 	                	<a onClick="@command('showMessageList')">Nachrichten</a>
 	                </n:li>
-	                  
+	                <n:li class="divider"></n:li>
+	                <n:li>
+	                	<a onClick="@command('showImages')">Meine Bilder</a>
+	                </n:li>	
 	                <n:li class="divider"></n:li>
 	                <n:li>
 	                	<a onClick="@command('addImage')">Neues Angebot erstellen</a>
