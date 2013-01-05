@@ -56,7 +56,6 @@ src/main/java/de/htw/fb4/bilderplattform/view/validator/ContactFormValidator.jav
 src/main/java/de/htw/fb4/bilderplattform/view/validator/MessageAnswerValidator.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/validator/RegistrationValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/UserUpdateValidator.java -text svneol=unset#text/plain
-src/main/java/de/htw/fb4/bilderplattform/view/vm/AbstractUserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageSummaryVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AdminCommentAdministrationVM.java -text
@@ -77,7 +76,6 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseAdministrationVM.java -
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseDetailsVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserAdministrationVM.java -text svneol=unset#text/plain
-src/main/java/de/htw/fb4/bilderplattform/view/vm/UserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserUpdateVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserUserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/WebsiteLayoutVM.java -text svneol=unset#text/plain
