@@ -1,6 +1,5 @@
 <zk xmlns:n="native" xmlns:c="client">
 <style dynamic="true">
-
 div.z-listbox-header th.z-listheader {
 	background-image: none;
 	background-color: #1469AB;
@@ -12,52 +11,47 @@ div.z-listbox-header tr.z-listhead {
 	border: none;
 }
 </style>
-
 	<n:div id="header">
-
 		<include src="/layout/header_menu2.zul" />
-
 	</n:div>
-
-<!-- CONTENT -->
 	<n:div id="content">
 		<n:div id="content_small">
 		
 			<div apply="org.zkoss.bind.BindComposer"
 				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.PurchaseAdministrationVM')">
-				<n:legend>Verkäufe</n:legend>
+				<n:legend>Verkäufe von <label style="font-size:inherit;" value="@load(vm.user.username)"/></n:legend>
 				<n:div id="spath">
 					<a class="spathtext" onClick="@command('redirectToStart')">Start</a>
 					<n:span class="spathtext">></n:span>
 					<a class="spathtext" onClick="@command('redirectToUserList')">Benutzerliste</a>
 					<n:span class="spathtext">></n:span>
-					<n:span class="spathtext" href="#">Verkäufe</n:span>
+					<n:span class="spathtext" href="#">Verkäufe von <label value="@load(vm.user.username)"/></n:span>
 				</n:div>
-<!-- List -->
 				<listbox id="list" width="100%"
 					model="@bind(vm.purchaseList)">
 					<listhead sizable="true">
 						<listheader width="45%" value="Default" sort="auto"><n:div class="listtext">Bild</n:div></listheader>
-						<listheader value="Default" sort="auto"><n:div class="listtext">Verkaufsdatum</n:div></listheader>
-						<listheader value="Default" sort="auto"><n:div class="listtext">Aktionen</n:div></listheader>
+						<listheader value="Default" sort="auto"><n:div class="listtext">Details</n:div></listheader>
 					</listhead>
-					<template name="model" var="purchase">
+					<template name="model" var="purchaseImg">
 						<listitem>
-							<listcell label="TODO..." />
-							<listcell label="@load(purchase.purchase.date)" />
 							<listcell>
-								<n:span title="Details" class="imgContainer">
-									<image src="/images/list/p_details.png" onClick="@command('showPurchaseDetails', purchase=purchase)" />
-								</n:span>
+								<image src="@load(vm.getAbsoluteImgPath(purchaseImg.image.thumb_file))" />
+							</listcell>
+							<listcell>
+								<n:p>
+									Datum: <label value="@load(purchaseImg.purchase.date)"/><n:br/>
+									Käufer: <label value="@load(vm.getCustomer(purchaseImg.purchase.idPurchase))"/>
+								</n:p>
+								<n:p>	
+									<n:img src="../images/list/p_details.png"/><a onClick="@command('showPurchaseDetails', idPurchase=purchaseImg.purchase.idPurchase)">Bankdaten anzeigen</a>
+								</n:p>				
 							</listcell>
 						</listitem>
 					</template>
 				</listbox>
-<!-- END List -->
 			</div>
 
 		</n:div>
 	</n:div>
-<!-- END CONTENT -->
-
 </zk>
