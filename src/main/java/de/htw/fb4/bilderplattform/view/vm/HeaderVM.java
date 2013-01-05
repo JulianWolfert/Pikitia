@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.zkoss.bind.annotation.AfterCompose;
-import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
@@ -56,12 +55,16 @@ public class HeaderVM {
 		return SpringPropertiesUtil.getProperty("lbl.login");
 	}
 	
-	public String getLogPath() {
+	@Command
+	public void logButtonClicked() {
 		if(BusinessCtx.getInstance().getUserService().isAUserAuthenticated()) {
-			return "/j_spring_security_logout";
+			Executions.getCurrent().sendRedirect("/j_spring_security_logout");
 		}
-		return "./login.zul";
+		else {
+			Executions.createComponents("/login.zul", null, null);
+		}
 	}
+	
 	
 	public String getSearch() {
 		return search;
@@ -151,14 +154,7 @@ public class HeaderVM {
 	@Command
 	public void purchase() {
 		Executions.getCurrent().sendRedirect("/bilderplattform/purchase.zul");
-	}
-	
-	@Command
-	public void contact() {
-		Sessions.getCurrent().setAttribute("receiver_idUser", "2");
-		Executions.getCurrent().sendRedirect("/contactForm.zul");
-	}
-	
+	}	
 	
 	private void addToCart(String id) {
 		Session session = Sessions.getCurrent();
