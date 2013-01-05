@@ -13,9 +13,9 @@ import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
  */
 public class ResourcesUtil {
 
-	public static String loadPropertyWithWildcardValues(String property, String ...wildcards) {
+	public static String loadPropertyWithWildcardValues(String property, Object ...wildcards) {
 		String propertyText = SpringPropertiesUtil.getProperty(property);	
-		propertyText = MessageFormat.format(propertyText, (Object[])wildcards);	
+		propertyText = MessageFormat.format(propertyText, wildcards);	
 		return propertyText;
 	}
 }
