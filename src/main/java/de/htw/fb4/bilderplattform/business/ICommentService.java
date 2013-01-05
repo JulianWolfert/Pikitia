@@ -21,4 +21,6 @@ public interface ICommentService {
 	
 	public List<Comment> getAllCommentsByImageID(int idImage);
 	
+	public void deleteComment(int idComment);
+	
 }

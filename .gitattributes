@@ -47,6 +47,9 @@ src/main/java/de/htw/fb4/bilderplattform/spring/SpringUserProviderService.java -
 src/main/java/de/htw/fb4/bilderplattform/spring/context/ApplicationContextProvider.java -text
 src/main/java/de/htw/fb4/bilderplattform/spring/context/ServletContextProvider.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/TestCodebehind.java -text
+src/main/java/de/htw/fb4/bilderplattform/view/abstraction/AbstractCommentAdministrationVM.java -text
+src/main/java/de/htw/fb4/bilderplattform/view/abstraction/AbstractRedirection.java -text
+src/main/java/de/htw/fb4/bilderplattform/view/abstraction/AbstractUserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/validator/AddImageValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/CommentFormValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/ContactFormValidator.java -text
@@ -56,6 +59,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/validator/UserUpdateValidator.java
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AbstractUserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageSummaryVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/AdminCommentAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AdminUserImageAdministrationVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/BannerVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/CartVM.java -text svneol=unset#text/plain
@@ -88,6 +92,7 @@ src/main/webapp/WEB-INF/applicationContext-security.xml -text
 src/main/webapp/WEB-INF/applicationContext.xml -text
 src/main/webapp/WEB-INF/web.xml -text
 src/main/webapp/WEB-INF/zk.xml -text
+src/main/webapp/admin/commentList.zul -text
 src/main/webapp/admin/editImage.zul -text
 src/main/webapp/admin/editUser.zul -text
 src/main/webapp/admin/index.zul -text

@@ -8,6 +8,7 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Executions;
 
 import de.htw.fb4.bilderplattform.dao.Image;
+import de.htw.fb4.bilderplattform.view.abstraction.AbstractUserImageAdministrationVM;
 
 /************************************************
  * <p>VM to the userImageList.zul in folder admin</p>
@@ -35,10 +36,10 @@ public class AdminUserImageAdministrationVM extends AbstractUserImageAdministrat
 	
 	@Command
 	public void imageComments(@BindingParam("image") final Image image) {
-		final HashMap<String, Object> sessionMap = new HashMap<String, Object>();
-		sessionMap.put("idImage", image.getIdImage());
-		//TODO: realize edit comments
-//		Executions.createComponents("/admin/comments.zul", null, sessionMap);
+//		final HashMap<String, Object> sessionMap = new HashMap<String, Object>();
+//		sessionMap.put("idImage", image.getIdImage());
+//		sessionMap.put("idUser2", image.getUser().getIdUser());
+		Executions.sendRedirect("/admin/commentList.zul?idUser="+ image.getUser().getIdUser() + "&idImage=" + image.getIdImage());
 	}
 	
 	@Command

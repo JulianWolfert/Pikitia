@@ -8,6 +8,7 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Executions;
 
 import de.htw.fb4.bilderplattform.dao.Image;
+import de.htw.fb4.bilderplattform.view.abstraction.AbstractUserImageAdministrationVM;
 
 /************************************************
  * <p>VM to the userImageList.zul in folder user</p>
