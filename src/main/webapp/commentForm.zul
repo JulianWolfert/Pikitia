@@ -25,14 +25,14 @@
 						<label class="error"
 							value="@load(vmsgs['username'])" />
 						<label value="Bewertung:" />
-						<combobox id="cmbColor" width="150px"
+						<combobox id="cmbColor" width="50px"
 							model="@load(vm.stars)"
-							selectedItem="@bind(vm.selectedStarValue)">
+							selectedItem="@bind(vm.selectedStarValue)" readonly="true">
 						</combobox>
 						<separator spacing="20px" />
 						<label value="Kommentar*:" width="150px" />
 						<textbox rows="6" value="@bind(fx.text)"
-							width="370px;" tabindex="4" />
+							width="370px;" />
 						<label class="error"
 							value="@load(vmsgs['text'])" />
 					</vlayout>

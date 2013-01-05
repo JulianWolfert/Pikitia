@@ -79,19 +79,19 @@ public class ModalGalleryVM {
 			@ExecutionArgParam("imageID") String imageID,
 			@ExecutionArgParam("buyButton") Boolean buyButton) {
 		Selectors.wireComponents(view, this, false);
-	
-		
-		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
-				.getInstance().getImageService().getAllImages();
-		
 
-		for (int j=0; j < imgList.size(); j++) {
-					
-					if (imgList.get(j).getIdImage().toString().equals(imageID.toString())) {
-						this.image_obj = (imgList.get(j));
-						break;
-					}
-		}
+		this.image_obj = BusinessCtx.getInstance().getImageService().getImageByID(Integer.parseInt(imageID));
+		
+//		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
+//				.getInstance().getImageService().getAllImages();
+			
+//		for (int j=0; j < imgList.size(); j++) {
+//					
+//					if (imgList.get(j).getIdImage().toString().equals(imageID.toString())) {
+//						this.image_obj = (imgList.get(j));
+//						break;
+//					}
+//		}
 
 		this.setComments(BusinessCtx.getInstance().getCommentService().getAllCommentsByImageID(this.image_obj.getIdImage()));
 		
