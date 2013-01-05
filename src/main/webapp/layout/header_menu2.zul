@@ -61,9 +61,6 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	                </n:li>	              
 	                <n:li class="divider"></n:li>
 	                <n:li>
-	                	<a onClick="@command('contact')">Kontakt (testzweck)</a>
-	                </n:li>
-	                <n:li>
 	                	<a onClick="@command('purchase')">Kaufprozess (testzweck)</a>
 	                </n:li>
 				</n:ul>
@@ -72,7 +69,7 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 		<n:ul class="nav pull-right" style="padding-top:25px;">
 			<a id="cartLogo" href="#"><a onClick="@command('showCart')" image="/images/cart.png" style="padding-right: 25px;"></a></a>
 			
-			<button class="btn btn-primary" type="button" label="@bind(vm.logLabel)" style="padding: 5px;" href="@bind(vm.logPath)"></button>
+			<button id="logButton" class="btn btn-primary" type="button" label="@bind(vm.logLabel)" style="padding: 5px;" onClick="@command('logButtonClicked')"></button>
 			
 			<n:button class="btn btn-success" type="button" style="padding: 5px;" href="#regModal" role="button" data-toggle="modal" if="${vm.isAUserAuthenticated()==false}">Registrieren</n:button>
 		</n:ul>

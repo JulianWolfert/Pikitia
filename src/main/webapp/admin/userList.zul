@@ -48,9 +48,9 @@ div.z-listbox-header tr.z-listhead {
 								<n:span title="Bearbeiten" class="imgContainer">
 									<image src="/images/list/j_edit.png" onClick="@command('editUser', user=user)" />
 								</n:span>
-								<n:span title="Angebote" class="imgContainer">
-									<image src="/images/list/j_offers.png"  />
-								</n:span>
+<!-- 							<n:span title="Angebote" class="imgContainer"> -->
+<!-- 									<image src="/images/list/j_offers.png"  /> -->
+<!-- 							</n:span> -->
 								<n:span title="Verkäufe" class="imgContainer">
 									<image src="/images/list/j_sales.png"  onClick="@command('showPurchases', user=user)"/>
 								</n:span>

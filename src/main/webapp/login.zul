@@ -1,64 +1,49 @@
-<?page title="Login" contentType="text/html;charset=UTF-8"?>
+<?page title="Bild" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
-
 	
-<n:div id="header">
-			
-	<include src="/layout/header_menu2.zul" />
-
-</n:div>
-
-<n:div id="content">
- 
- 	<n:div id="content_small">
-    	<borderlayout sclass="complex-layout" height="810px">
-						<center border="0" margins="0,3,3,3">
-							<panel title="Login Seite" border="normal"
-								height="100%">
-								<panelchildren>
-									<groupbox
-										if="${not empty param.error}">
-										<label style="color:red"
-											value="Login fehlgeschlagen. Bitte probieren Sie es noch einmal." />
-									</groupbox>
-									<groupbox>
-										<caption>Login</caption>
-										<h:form id="f" name="f"
-											action="j_spring_security_check" method="POST"
-											xmlns:h="http://www.w3.org/1999/xhtml">
-											<grid>
-												<rows>
-													<row>
-														User:
-														<textbox id="u"
-															name="j_username" />
-													</row>
-													<row>
-														Password:
-														<textbox id="p"
-															type="password" name="j_password" />
-													</row>
-													<row spans="2">
-														<hbox>
-															<h:input
-																type="submit" value="Login" />
-															<h:input
-																type="reset" value="Reset" />
-														</hbox>
-													</row>
-												</rows>
-											</grid>
-										</h:form>
-									</groupbox>
-								</panelchildren>
-							</panel>
-						</center>
-					</borderlayout>
-    </n:div>
-    
-</n:div>    
-				
+	<window id="modalLogin"
+		style="padding: 10px;"
+		title="Login"
+		border="normal"
+	    width="auto"
+	    height="auto" 
+		minimizable="false"
+		maximizable="false" 
+		mode="modal" 
+		position="center,center"
+		closable="true" 
+		action="show:slideDown; hide:slideUp"
+		onCancel="@command('closeThis')" 
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.LoginVM')">
 
 
+		<n:form id="f" name="f" action="j_spring_security_check"
+			method="POST">
+			<n:fieldset>
+				<groupbox if="${not empty param.error}">
+					<label style="color:red"
+						value="Login fehlgeschlagen. Bitte probieren Sie es noch einmal." />
+				</groupbox>
+				<label value="Benutzer:" width="150px" />
+				<vlayout>
+					<textbox id="u" name="j_username" />
+				</vlayout>
+				<vlayout>
+					<label value="Passwort:" width="150px" />
+					<vlayout>
+						<textbox id="p" type="password"
+							name="j_password" />
+					</vlayout>
+				</vlayout>
+				<hlayout style="padding-top: 10px">
+					<n:input style="height: 30px; font-size: 12px;" type="submit" value="Login" />
+					<n:input style="height: 30px; font-size: 12px;" type="reset" value="Zurücksetzen" />
+					<button  style="height: 30px; font-size: 12px;" label="Passwort vergessen"  onClick="@command('resetPassword')" />
+				</hlayout>
+			</n:fieldset>
+		</n:form>
+
+	</window>
 
 </zk>

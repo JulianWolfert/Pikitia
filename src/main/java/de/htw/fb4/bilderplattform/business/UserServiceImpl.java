@@ -76,5 +76,6 @@ class UserServiceImpl implements IUserService {
 				.getApplicationContext().getBean("userDao", UserDAOImpl.class);
 		return userDAO.getUserByID(idUser);
 	}
+
 	
 }

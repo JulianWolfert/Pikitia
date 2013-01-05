@@ -9,8 +9,8 @@
   <http auto-config='true'>
     <intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
     <intercept-url pattern="/user/**" access="ROLE_USER" />
-    <form-login login-page="/login.zul"
-    		authentication-failure-url="/login.zul?error=true"               
+    <form-login login-page="/loginAsPage.zul"
+    		authentication-failure-url="/loginAsPage.zul?error=true"              
             default-target-url="/index.zul" />
     <logout logout-success-url="/index.zul"/>
   </http>
