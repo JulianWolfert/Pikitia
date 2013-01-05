@@ -48,16 +48,12 @@ div.z-listbox-header tr.z-listhead {
 								<n:span title="Bearbeiten" class="imgContainer">
 									<image src="/images/list/j_edit.png" onClick="@command('editImage', image=image)" />
 								</n:span>
-								<n:span title="Kommentare" class="imgContainer">
-									<image src="/images/list/j_comment.png" onClick="@command('imageComments', image=image)" />
-								</n:span>
 							</listcell>
 						</listitem>
 					</template>
 				</listbox>
 <!-- END List -->
 			</div>
-
 		</n:div>
 	</n:div>
 <!-- END CONTENT -->

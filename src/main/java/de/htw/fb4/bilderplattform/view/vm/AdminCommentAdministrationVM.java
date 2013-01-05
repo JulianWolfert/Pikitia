@@ -7,7 +7,7 @@ import org.zkoss.zk.ui.Executions;
 import de.htw.fb4.bilderplattform.view.abstraction.AbstractCommentAdministrationVM;
 
 /************************************************
- * <p></p>
+ * <p>VM to the commentList.zul in folder admin</p>
  * <p>
  * @author Josch Rossa
  * </p>

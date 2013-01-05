@@ -36,10 +36,9 @@ public class AdminUserImageAdministrationVM extends AbstractUserImageAdministrat
 	
 	@Command
 	public void imageComments(@BindingParam("image") final Image image) {
-//		final HashMap<String, Object> sessionMap = new HashMap<String, Object>();
-//		sessionMap.put("idImage", image.getIdImage());
-//		sessionMap.put("idUser2", image.getUser().getIdUser());
-		Executions.sendRedirect("/admin/commentList.zul?idUser="+ image.getUser().getIdUser() + "&idImage=" + image.getIdImage());
+		Executions.sendRedirect("/admin/commentList.zul?idUser=" +
+						image.getUser().getIdUser() +
+						"&idImage=" + image.getIdImage());
 	}
 	
 	@Command

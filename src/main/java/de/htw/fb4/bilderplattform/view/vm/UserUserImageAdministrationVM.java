@@ -33,13 +33,7 @@ public class UserUserImageAdministrationVM extends AbstractUserImageAdministrati
 		Executions.createComponents("/user/editImage.zul", null, sessionMap);
 	}
 	
-	@Command
-	public void imageComments(@BindingParam("image") final Image image) {
-		final HashMap<String, Object> sessionMap = new HashMap<String, Object>();
-		sessionMap.put("idImage", image.getIdImage());
-		//TODO: realize edit comments
-//		Executions.createComponents("/user/comments.zul", null, sessionMap);
-	}
+	// User should not be able to modify User comments (only possible for Administrators)
 	
 	
 }
