@@ -24,6 +24,7 @@ import org.zkoss.zul.A;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.ISearchService;
+import de.htw.fb4.bilderplattform.business.util.ResourcesUtil;
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.User;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
@@ -89,7 +90,6 @@ public class HeaderVM {
 				DropEvent dropEvent = (DropEvent) e;
 				String img_id = dropEvent.getDragged().getId().substring(4);
 				addToCart(img_id);
-				Clients.showNotification("Bild mit ID " + (img_id) + " hinzugefügt", "info", cartLogo, "top_right",2000);
 			}
 		});
 	}
@@ -166,12 +166,18 @@ public class HeaderVM {
 		
 		if (imageIDsSession == null) {
 			List<String> imageIDs = new ArrayList<String>();
+			Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", id), "info", null, "top_right",2000);
 			imageIDs.add(id);
 			session.setAttribute("imageIDs", imageIDs);
 		}
 		else {
-			if(!imageIDsSession.contains(id))
+			if(!imageIDsSession.contains(id)) {
+				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", id), "info", null, "top_right",2000);
 				imageIDsSession.add(id);
+			}
+			else
+				Clients.showNotification("Bereits vorhanden", "info", null, "top_right",2000);
+				
 			session.setAttribute("imageIDs", imageIDsSession);
 		}
 	}

@@ -49,7 +49,8 @@ public class GalleryVM {
 	@Wire(".imageList")
 	private Div imageList;
 	
-
+	@Wire
+	private Label search_result_id;
 
 	public String getKeyword() {
 		return keyword;
@@ -68,14 +69,21 @@ public class GalleryVM {
 	@NotifyChange("imageList")
 	public void search() {
 		
-		if (keyword != "") {
+		if (keyword != null) {
 		
 			this.imageList.getChildren().clear();
 			
 			List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
 					.getInstance().getSearchService().searchImages(keyword);
-	
-			generateImages(imgList);
+			
+			if (imgList.isEmpty())
+				this.search_result_id.setValue("No images found!");
+			else {
+				this.search_result_id.setValue("We found " + imgList.size() + " images for you!");
+				generateImages(imgList);
+			}
+			
+			
 		
 		}
 		
@@ -85,6 +93,8 @@ public class GalleryVM {
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
 				.getInstance().getImageService().getAllImages();
 
+		this.search_result_id.setValue("We found " + imgList.size() + " images for you!");
+		
 		generateImages(imgList);
 	}
 	
@@ -193,8 +203,6 @@ public class GalleryVM {
 				{
 					String img_id = e.getTarget().getId().substring(4);
 					addToCart(img_id);
-					Component cartLogo = Path.getComponent("/cartLogo");
-					Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", img_id), "info", cartLogo, "top_right",2000);
 //					Clients.showNotification("Bild mit ID " + img_id + " hinzugefügt", "info", cartLogo, "top_right",2000);
 				}
 			});
@@ -242,12 +250,18 @@ public class GalleryVM {
 		
 		if (imageIDsSession == null) {
 			List<String> imageIDs = new ArrayList<String>();
+			Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", id), "info", null, "top_right",2000);
 			imageIDs.add(id);
 			session.setAttribute("imageIDs", imageIDs);
 		}
 		else {
-			if(!imageIDsSession.contains(id))
+			if(!imageIDsSession.contains(id)) {
+				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", id), "info", null, "top_right",2000);
 				imageIDsSession.add(id);
+			}
+			else
+				Clients.showNotification("Bereits vorhanden", "info", null, "top_right",2000);
+				
 			session.setAttribute("imageIDs", imageIDsSession);
 		}
 	}

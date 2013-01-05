@@ -85,7 +85,7 @@ public class CartVM {
 		List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");
 		
 		this.cart = new ArrayList<>();
-		
+
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
 				.getInstance().getImageService().getAllImages();
 		
@@ -222,6 +222,8 @@ public class CartVM {
 	@Command
 	@NotifyChange("cart")
 	public void delete() {
+		total_price = 0.00;
+		total_price_id.setValue("Summe: " + "\u20AC " + this.total_price.toString().replace(".",","));		
 		cart_table.getChildren().clear();
 		Session session = Sessions.getCurrent();
 		List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");

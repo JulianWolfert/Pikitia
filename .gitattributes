@@ -2,6 +2,7 @@
 /.project -text
 .settings/org.eclipse.jdt.core.prefs -text
 .settings/org.eclipse.m2e.core.prefs -text
+.settings/org.zkoss.eclipse.preferences.prefs -text svneol=unset#text/plain
 /pom.xml -text
 src/main/java/de/htw/fb4/bilderplattform/business/BusinessCtx.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/CommentServiceImpl.java -text svneol=unset#text/plain

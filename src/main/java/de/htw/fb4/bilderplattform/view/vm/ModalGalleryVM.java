@@ -160,9 +160,7 @@ public class ModalGalleryVM {
 		
 		cartButton.addEventListener(Events.ON_CLICK, new EventListener() {
 			public void onEvent(Event e) {
-				addToCart(image_obj.getIdImage().toString());
-				Component cartLogo = Path.getComponent("/cartLogo");
-				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", image_obj.getIdImage().toString()), "info", cartLogo, "top_right",2000);
+				addToCart(image_obj.getIdImage().toString());				
 //				Clients.showNotification("Bild mit ID " +  + " hinzugefügt", "info", cartLogo, "top_right",2000);
 				closeModalWindow();
 			}
@@ -198,12 +196,18 @@ public class ModalGalleryVM {
 		
 		if (imageIDsSession == null) {
 			List<String> imageIDs = new ArrayList<String>();
+			Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", image_obj.getIdImage().toString()), "info", null, "top_right",2000);
 			imageIDs.add(id);
 			session.setAttribute("imageIDs", imageIDs);
 		}
 		else {
-			if(!imageIDsSession.contains(id))
+			if(!imageIDsSession.contains(id)) {
+				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", image_obj.getIdImage().toString()), "info", null, "top_right",2000);
 				imageIDsSession.add(id);
+			}
+			else
+				Clients.showNotification("Bereits vorhanden", "info", null, "top_right",2000);
+				
 			session.setAttribute("imageIDs", imageIDsSession);
 		}
 	}

@@ -24,6 +24,10 @@
 		  </div>
 		</n:form>
 		</div>
+		
+		<div sclass="search_result">
+			<label id="search_result_id"></label>
+		</div>
 
 		<div class="gallery_images" style="text-align:center;">
 
