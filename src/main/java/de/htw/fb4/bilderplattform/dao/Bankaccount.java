@@ -24,19 +24,19 @@ public class Bankaccount implements Serializable {
 	private Integer idBankaccount;
 
 	@Column(name = "account_nr", nullable = false)
-	private Integer account_nr;
+	private String account_nr;
 
 	@Column(name = "bank", nullable = false)
-	private Integer bank;
+	private String bank;
 
 	@Column(name = "User_idUser", nullable = false)
 	private Integer User_idUser;
 
-	public Integer getAccount_nr() {
+	public String getAccount_nr() {
 		return account_nr;
 	}
 
-	public Integer getBank() {
+	public String getBank() {
 		return bank;
 	}
 
@@ -48,11 +48,11 @@ public class Bankaccount implements Serializable {
 		return User_idUser;
 	}
 
-	public void setAccount_nr(Integer account_nr) {
+	public void setAccount_nr(String account_nr) {
 		this.account_nr = account_nr;
 	}
 
-	public void setBank(Integer bank) {
+	public void setBank(String bank) {
 		this.bank = bank;
 	}
 

@@ -1,6 +1,6 @@
 <!-- created by Peter Horn -->
 
-<window id="modalShowPurchaseDetails" title="Verkaufsdetails" border="normal"
+<window id="modalShowPurchaseDetails" title="Käuferdetails" border="normal"
 	width="600px" minimizable="false" maximizable="false" mode="modal"
 	position="center,center" closable="true"
 	action="show:slideDown; hide:slideUp" onCancel="@command('closeThis')"
@@ -9,8 +9,16 @@
 	<grid>
 		<rows>
 			<row>
-				<label value="Name" />
-				<label value="TODO..." />
+				<label value="Name:" /><label value="@load(vm.customer.name)" />
+			</row>
+			<row>
+				<label value="Email:" /><label value="@load(vm.customer.email)" />
+			</row>
+			<row>
+				<label value="Bank" /><label value="@load(vm.customer.bank)" />
+			</row>
+			<row>
+				<label value="Konto" /><label value="@load(vm.customer.account)" />
 			</row>
 		</rows>
 	</grid>
