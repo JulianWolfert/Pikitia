@@ -8,7 +8,7 @@
 	<style src="/bootstrap/css/bootstrap.css"></style>
 	<style src="/css/star_rating.css"></style>
 
-	<window id="commentForm" title="Bewertunsformular" border="normal"
+	<window id="commentForm" title="Bewertungsformular" border="normal"
 		width="800px" height="auto" minimizable="false" maximizable="false"
 		mode="modal" position="center,center" closable="true"
 		action="show:slideDown; hide:slideUp" onCancel="@command('closeThis')"
