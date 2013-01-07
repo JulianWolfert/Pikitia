@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +38,7 @@ public class CommentDAOImpl extends AbstractDAO {
 		Session session = sessionFactory.getCurrentSession();
 		try {
 			Criteria criteria = session.createCriteria(Comment.class).add(
-					Restrictions.eq("Image_idImage", idImage));
+					Restrictions.eq("Image_idImage", idImage)).addOrder(Order.desc("timeStamp") );
 			comments = criteria.list();
 		} catch (DataAccessException dae) {
 			logger.error("getAllCommentsByImageID throws exception: ", dae);
