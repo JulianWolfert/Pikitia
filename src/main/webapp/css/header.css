@@ -1,0 +1,36 @@
+.logo {
+  float:left;
+}
+
+.main_nav {
+  float: left;
+  padding-top: 24px;
+}
+
+.cartLogo {
+	padding-top:25px;
+	float: left;
+}
+
+.right_elements {
+	float: right;
+}
+
+.user_dropdown {
+  float: left;;
+  padding-top: 23px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+
+.registration {
+  padding-top: 30px;
+  padding-right: 10px;
+  float: left;
+}
+
+.login {
+  padding-top: 25px;
+  float: left;
+}

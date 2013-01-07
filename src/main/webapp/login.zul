@@ -2,48 +2,52 @@
 <zk xmlns:n="native" xmlns:c="client">
 	
 	<window id="modalLogin"
-		style="padding: 10px;"
-		title="Login"
-		border="normal"
+		border="none"
 	    width="auto"
 	    height="auto" 
-		minimizable="false"
-		maximizable="false" 
-		mode="modal" 
-		position="center,center"
-		closable="true" 
+	    minimizable="false"
+	    maximizable="false"
+	    mode="modal"
+	    position="center,center" 
+	    closable="true"
 		action="show:slideDown; hide:slideUp"
 		onCancel="@command('closeThis')" 
 		apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.LoginVM')">
 
+		<n:form id="f" name="f" action="j_spring_security_check" method="POST">
 
-		<n:form id="f" name="f" action="j_spring_security_check"
-			method="POST">
-			<n:fieldset>
+		<div class="modal-header">
+			<n:h3 id="regModalLabel">Login</n:h3>
+		</div>
+		
+		<div class="modal-body">
 				<groupbox if="${not empty param.error}">
 					<label style="color:red"
 						value="Login fehlgeschlagen. Bitte probieren Sie es noch einmal." />
 				</groupbox>
-				<label value="Benutzer:" width="150px" />
-				<vlayout>
-					<textbox id="u" name="j_username" />
-				</vlayout>
-				<vlayout>
-					<label value="Passwort:" width="150px" />
-					<vlayout>
-						<textbox id="p" type="password"
-							name="j_password" />
-					</vlayout>
-				</vlayout>
-				<hlayout style="padding-top: 10px">
-					<n:input style="height: 30px; font-size: 12px;" type="submit" value="Login" />
-					<n:input style="height: 30px; font-size: 12px;" type="reset" value="Zurücksetzen" />
-					<button  style="height: 30px; font-size: 12px;" label="Passwort vergessen"  onClick="@command('resetPassword')" />
-				</hlayout>
-			</n:fieldset>
+				<div class="control-group">
+					<n:label class="control-label" for="inputEmail">Benutzer</n:label>
+					<div class="controls">
+					<textbox type="text" id="u" name="j_username" placeholder="Benutzername" ></textbox>	
+					</div>
+				</div>
+				<div class="control-group">
+					<n:label class="control-label" for="inputEmail">Passwort</n:label>
+					<div class="controls">
+					<textbox type="password" id="p" name="j_password" placeholder="Passwort"></textbox>
+					</div>
+					<div style="text-align:right;">
+						<a onClick="@command('resetPassword')">Passwort vergessen</a>
+					</div>
+				</div>
+				
+		</div>
+		<div class="modal-footer">
+			<button onClick="@command('closeThis')" class="btn">Abbrechen</button>
+			<n:input class="btn btn-primary" type="submit" value="Login"></n:input>
+		</div>
 		</n:form>
-
 	</window>
 
 </zk>

@@ -1,6 +1,7 @@
 <zk xmlns:n="native" xmlns:c="client">
 <style src="/bootstrap/css/bootstrap.css"></style>
 <style src="/css/styles.css"></style>
+<style src="/css/header.css"></style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
 
@@ -14,22 +15,18 @@
    }
 </script>
 
-<n:div id="regModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<include src="/registration_modal.zul" />
-</n:div>
-<n:div id="logModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<include src="/login_modal.zul" />
-</n:div>
-
 
 <div apply="org.zkoss.bind.BindComposer" 
 viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 			
 <n:div id="header_content">
 
-	<a onClick="@command('returnHome')" image="/images/Logo2.png" style="float:left;"></a>
+	<div class="logo">
+		<a onClick="@command('returnHome')" image="/images/Logo2.png"></a>
+	</div>
 
-		<n:ul class="nav nav-pills" style="float:left; padding-top: 24px;">
+	<div class ="main_nav">
+		<n:ul class="nav nav-pills">
 			<n:li>
 				<a onClick="@command('showGallery')">Kaufen</a>
 			</n:li>
@@ -41,7 +38,20 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	        	<a onClick="@command('redirectToUserList')">Admin</a>
 	        </n:li>
 	        
-			<n:li class="dropdown" if="${vm.isAUserAuthenticated()==true}">
+		</n:ul>
+	</div>
+	
+	<div class="right_elements">
+	
+	<div class="cartLogo">
+		<a id="cartLogo" href="#"><a onClick="@command('showCart')" image="/images/cart.png"></a></a>
+	</div>
+	
+	<div class="user_dropdown">
+	
+		<n:ul class="nav nav-pills">
+		
+		<n:li class="dropdown" if="${vm.isAUserAuthenticated()==true}">
 	        	<n:a href="#" class="dropdown-toggle" data-toggle="dropdown">Mein Bereich<n:b class="caret"></n:b></n:a>
 	            
 	            <n:ul class="dropdown-menu">
@@ -65,14 +75,19 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	                </n:li>
 				</n:ul>
 	      	</n:li>
-		</n:ul>
-		<n:ul class="nav pull-right" style="padding-top:25px;">
-			<a id="cartLogo" href="#"><a onClick="@command('showCart')" image="/images/cart.png" style="padding-right: 25px;"></a></a>
-			
-			<button id="logButton" class="btn btn-primary" type="button" label="@bind(vm.logLabel)" style="padding: 5px;" onClick="@command('logButtonClicked')"></button>
-			
-			<n:button class="btn btn-success" type="button" style="padding: 5px;" href="#regModal" role="button" data-toggle="modal" if="${vm.isAUserAuthenticated()==false}">Registrieren</n:button>
-		</n:ul>
+			<div></div>
+			</n:ul>
+			</div>
+		
+		<div class="registration">
+			<a id="regLabel" onClick="@command('showRegistrationModal')">Registrieren</a>	
+		</div>
+		
+		<div class="login">
+			<button id="logButton" class="btn btn-primary" type="button" label="@bind(vm.logLabel)" onClick="@command('logButtonClicked')"></button>
+		</div>
+		
+		</div>
 </n:div>       
 
 </div>

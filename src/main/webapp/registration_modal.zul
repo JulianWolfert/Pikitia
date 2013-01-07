@@ -1,15 +1,23 @@
 <zk xmlns:n="native" xmlns:c="client">
 
+<window id="modalRegistration" 
+		border="none"
+	    width="auto"
+	    height="auto" 
+	    minimizable="false"
+	    maximizable="false"
+	    mode="modal"
+	    position="center,center" 
+	    closable="true"
+	    onCancel="@command('closeThis')"
+	    action="show:slideDown; hide:slideUp">
+
 <div apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('registration_vm') @init('de.htw.fb4.bilderplattform.view.vm.RegistrationVM')"
 		validationMessages="@id('vmsgs')"
 		form="@id('fx')  @save(registration_vm.user, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.RegistrationValidator', retypedPassword=registration_vm.retypedPassword)">
 
 		<div class="modal-header">
-			<n:button type="button" class="close" data-dismiss="modal"
-				aria-hidden="true">
-				×
-			</n:button>
 			<n:h3 id="regModalLabel">Registrierung</n:h3>
 		</div>
 		<div class="modal-body">
@@ -17,7 +25,10 @@
 				<div class="control-group">
 					<n:label class="control-label" for="inputEmail">Benutzername</n:label>
 					<div class="controls">
-					<textbox type="text" value="@bind(fx.username)" placeholder="Benutzername" id="inputEmail"></textbox>
+					<textbox type="text" value="@bind(fx.username)" placeholder="Benutzername" id="inputEmail"></textbox>	
+					</div>
+					<div style="text-align:right;">
+					<label class="error" value="@load(vmsgs['username'])" />
 					</div>
 				</div>
 				<div class="control-group">
@@ -31,21 +42,28 @@
 					<div class="controls">
 					<textbox type="password" value="@bind(registration_vm.retypedPassword)" placeholder="Passwortwiederholung"></textbox>
 					</div>
+					<div style="text-align:right;">
+					<label class="error" value="@load(vmsgs['password'])" />
+					</div>
 				</div>
 				<div class="control-group">
 					<n:label class="control-label" for="inputEmail">E-Mail-Adresse</n:label>
 					<div class="controls">
 					<textbox type="text" value="@bind(fx.email)" placeholder="E-Mail"></textbox>
 					</div>
+					<div style="text-align:right;">
+					<label class="error" value="@load(vmsgs['email'])" />
+					</div>
 				</div>
 			</n:form>	
 		</div>
 		<div class="modal-footer">
-			<n:button class="btn" data-dismiss="modal" aria-hidden="true">
-				Abbrechen
-			</n:button>
+			<button onClick="@command('closeThis')" class="btn">Abbrechen</button>
 			<button class="btn btn-success" onClick="@command('submit')">Registrieren</button>
 		</div>
 
 </div>
+
+</window>
+
 </zk>

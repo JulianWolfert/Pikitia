@@ -1,8 +1,5 @@
 #header {
-	margin-left: auto;
-	margin-right: auto;
 	height:90px;
-	min-width:900px;
 }
 
 #header_content {
@@ -10,14 +7,11 @@
 	margin-right: auto;
 	width: 900px;
 	height: 100%;
-	vertical-align:middle; 
 }
 
 
 #content {
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 20px;
+	padding-top: 30px;
 }
 
 #content_small {
@@ -114,4 +108,5 @@ div#spath {
 	font-size:.8em;
 	color:gray
 }
+
 

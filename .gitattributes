@@ -118,6 +118,7 @@ src/main/webapp/css/bootstrap.min.css -text svneol=unset#text/plain
 src/main/webapp/css/cart.css -text svneol=unset#text/plain
 src/main/webapp/css/gallery.css -text svneol=unset#text/plain
 src/main/webapp/css/gallery_modal.css -text svneol=unset#text/plain
+src/main/webapp/css/header.css -text svneol=unset#text/plain
 src/main/webapp/css/star_rating.css -text svneol=unset#text/plain
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
 src/main/webapp/divers/css/supersized.css -text

@@ -20,6 +20,7 @@ import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.A;
+import org.zkoss.zul.Button;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.ISearchService;
@@ -42,6 +43,9 @@ public class HeaderVM {
 	@Wire("#cartLogo")
 	A cartLogo;
 	
+	@Wire
+	A regLabel;
+	
 	private String search;
 	
 	public void setSearch(String search) {
@@ -63,6 +67,11 @@ public class HeaderVM {
 		else {
 			Executions.createComponents("/login.zul", null, null);
 		}
+	}
+	
+	@Command
+	public void showRegistrationModal() {
+		Executions.createComponents("/registration_modal.zul", null, null);
 	}
 	
 	
@@ -95,6 +104,10 @@ public class HeaderVM {
 				addToCart(img_id);
 			}
 		});
+		
+		if (isAUserAuthenticated() == true) {
+			this.regLabel.setVisible(false);
+		}
 	}
 	
 	/* show cart*/
