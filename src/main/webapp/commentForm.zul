@@ -1,10 +1,14 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
-<zk xmlns:n="native" xmlns:c="client">
+<zk xmlns:n="native" xmlns:c="client"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:zk="http://www.zkoss.org/2005/zk"
+	xmlns:w='client'>
 
-<style src="/css/gallery_modal.css"></style>
-<style src="/bootstrap/css/bootstrap.css"></style>
+	<style src="/css/gallery_modal.css"></style>
+	<style src="/bootstrap/css/bootstrap.css"></style>
+	<style src="/css/star_rating.css"></style>
 
-	<window id="commentForm" title="Bewerten" border="normal"
+	<window id="commentForm" title="Bewertunsformular" border="normal"
 		width="800px" height="auto" minimizable="false" maximizable="false"
 		mode="modal" position="center,center" closable="true"
 		action="show:slideDown; hide:slideUp" onCancel="@command('closeThis')"
@@ -12,23 +16,55 @@
 
 		<n:div id="content">
 			<n:div id="content_small">
-				<n:legend>Bewertungsformular</n:legend>
+				<n:legend>Bitte geben Sie Ihre Bewertung ab!</n:legend>
 				<div apply="org.zkoss.bind.BindComposer"
 					viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.CommentFormVM')"
 					validationMessages="@id('vmsgs')"
 					form="@id('fx') @load(vm) @save(vm, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.CommentFormValidator')">
 					<vlayout>
-					
 						<label value="Benutzername:" />
-						<textbox value="@bind(fx.username)" if="${vm.isAUserAuthenticated()==false}" />
-						<textbox value="@bind(fx.username)" readonly="true" if="${vm.isAUserAuthenticated()==true}" />
+						<textbox value="@bind(fx.username)"
+							if="${vm.isAUserAuthenticated()==false}" />
+						<textbox value="@bind(fx.username)"
+							readonly="true" if="${vm.isAUserAuthenticated()==true}" />
 						<label class="error"
 							value="@load(vmsgs['username'])" />
 						<label value="Bewertung:" />
-						<combobox id="cmbColor" width="50px"
-							model="@load(vm.stars)"
-							selectedItem="@bind(vm.selectedStarValue)" readonly="true">
-						</combobox>
+						<h:ul class="star-rating">
+							<h:li id="starCssStyle" class="current-rating"
+								style="width:20%;">
+							</h:li>
+							<h:li>
+								<h:a href="#" title="1 von 5"
+									class="one-star" onClick="@command('setStarValue', currentStarValue=1, cssStyle='width:20%;')">
+									
+								</h:a>
+							</h:li>
+							<h:li>
+								<h:a href="#" title="2 von 5"
+									class="two-stars" onClick="@command('setStarValue', currentStarValue=2, cssStyle='width:40%;')">
+									
+								</h:a>
+							</h:li>
+							<h:li>
+								<h:a href="#" title="3 von 5"
+									class="three-stars" onClick="@command('setStarValue', currentStarValue=3, cssStyle='width:60%;')">
+									
+								</h:a>
+							</h:li>
+							<h:li>
+								<h:a href="#" title="4 von 5"
+									class="four-stars" onClick="@command('setStarValue', currentStarValue=4, cssStyle='width:80%;')">
+									
+								</h:a>
+							</h:li>
+							<h:li>
+								<h:a href="#" title="5 von 5"
+									class="five-stars" onClick="@command('setStarValue', currentStarValue=5, cssStyle='width:100%;')">
+									
+								</h:a>
+							</h:li>
+						</h:ul>
 						<separator spacing="20px" />
 						<label value="Kommentar*:" width="150px" />
 						<textbox rows="6" value="@bind(fx.text)"
@@ -37,10 +73,8 @@
 							value="@load(vmsgs['text'])" />
 					</vlayout>
 					<vlayout>
-						<label visible="@load(empty vmsgs)"
-							value="@load(empty vmsgs ? 'Erfolgreich gespeichert!' : '', before='submit')" />
 						<button label="Speichern"
-							onClick="@command('submit')" width="100px" height="30px" />
+							onClick="@command('submit')" width="100px" height="30px" />			
 					</vlayout>
 				</div>
 				<n:p class="asterisk">* Pflichtfeld</n:p>

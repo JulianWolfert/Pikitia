@@ -118,6 +118,7 @@ src/main/webapp/css/bootstrap.min.css -text svneol=unset#text/plain
 src/main/webapp/css/cart.css -text svneol=unset#text/plain
 src/main/webapp/css/gallery.css -text svneol=unset#text/plain
 src/main/webapp/css/gallery_modal.css -text svneol=unset#text/plain
+src/main/webapp/css/star_rating.css -text svneol=unset#text/plain
 src/main/webapp/css/styles.css -text svneol=unset#text/plain
 src/main/webapp/divers/css/supersized.css -text
 src/main/webapp/divers/img/back.png -text
@@ -178,6 +179,8 @@ src/main/webapp/images/list/j_sales.png -text
 src/main/webapp/images/list/p_details.png -text
 src/main/webapp/images/load.png -text
 src/main/webapp/images/please_upload_image.png -text
+src/main/webapp/images/rating/star.gif -text
+src/main/webapp/images/rating/star_small.gif -text
 src/main/webapp/images/save.png -text
 src/main/webapp/images/search.png -text
 src/main/webapp/images/star_x_grey.gif -text
