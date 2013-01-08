@@ -53,7 +53,7 @@
 									<row>
 										<label value="Preis in Euro:*" />
 										<cell>
-										<doublebox value="@bind(fx.price)" format="###.##" maxlength="6"
+										<doublebox value="@bind(fx.price)" format="##0.00" maxlength="8"
 												 width="100px" tabindex="3" />
 											<label
 												value=" Beispiele: 2 oder 2,59" />
