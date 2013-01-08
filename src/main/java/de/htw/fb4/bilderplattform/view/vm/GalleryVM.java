@@ -81,14 +81,33 @@ public class GalleryVM {
 			else {
 				this.search_result_id.setValue("We found " + imgList.size() + " images for you!");
 				generateImages(imgList);
-			}
-			
-			
-		
+			}		
 		}
 		
 	}
 	
+	@NotifyChange("imageList")
+	public void onOK() {
+		if (keyword != null) {
+			
+			this.imageList.getChildren().clear();
+			
+			List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
+					.getInstance().getSearchService().searchImages(keyword);
+			
+			if (imgList.isEmpty())
+				this.search_result_id.setValue("No images found!");
+			else {
+				this.search_result_id.setValue("We found " + imgList.size() + " images for you!");
+				generateImages(imgList);
+			}		
+		}
+	}
+	
+	private void searchhandler() {
+		// TODO Auto-generated method stub
+		
+	}
 	private void createGallery() {
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
 				.getInstance().getImageService().getAllImages();

@@ -44,7 +44,7 @@
 }
 
 .thumb .thumb_content .caption{
-	padding-top: 25%;
+	padding-top: 20%;
 	height: 100%;
     
 }
@@ -52,11 +52,12 @@
     margin: 10px 0;
   	font-family: inherit;
  	font-weight: bold;
-  	line-height: 20px;
+  	line-height: 1;
   	color: white;
   	font-size: 31.5px;
   	color:#fff;
 	text-shadow: 1px 1px 0px #000;
+	word-wrap: break-word;
 }
 .thumb .thumb_content .caption .price {
     margin: 10px 0;

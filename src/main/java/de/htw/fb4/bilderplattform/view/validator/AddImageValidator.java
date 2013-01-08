@@ -46,6 +46,12 @@ public class AddImageValidator extends AbstractValidator {
 			this.addInvalidMessage(ctx, "description", SpringPropertiesUtil
 					.getProperty("err.enterValidImageDescription"));
 		}
+		else
+			if (description.length() > 180) {
+				this.addInvalidMessage(ctx, "description", SpringPropertiesUtil
+						.getProperty("err.enterValidImageDescriptionLength"));
+			}
+		
 	}
 
 	private void validatePrice(ValidationContext ctx, Double price) {

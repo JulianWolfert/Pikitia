@@ -157,7 +157,7 @@ public class CartVM {
 					
 				}
 			});
-			org.zkoss.zul.Image img_vorschau = new org.zkoss.zul.Image("images/" + this.cart.get(i).getFile());
+			org.zkoss.zul.Image img_vorschau = new org.zkoss.zul.Image("images/" + this.cart.get(i).getThumb_file());
 			img_vorschau.setStyle("width:300px; height:170px;");
 			aImage.appendChild(img_vorschau);
 			td_vorschau.setSclass("vorschau");

@@ -19,6 +19,7 @@ td.title .z-label.desc {
   	line-height: 20px;
   	color: grey;
   	text-rendering: optimizelegibility;
+  	word-wrap:break-word;
   	font-size: 12px;
 }
 

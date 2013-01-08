@@ -17,12 +17,12 @@
 	
 		<div style="text-align:center; padding-top: 30px; padding-bottom: 30px;">
 
-		<n:form class="form-search">
-		  <div class="input-append">
+		
+		  <div class="input-append" forward="onOK=btn.onClick">
 		  	<textbox value="@bind(vm.keyword)" />
-		    <button onClick="@command('search')" class="btn">Search</button> 
+		    <button id="btn" onClick="@command('search')" class="btn">Search</button> 
 		  </div>
-		</n:form>
+		
 		</div>
 		
 		<div sclass="search_result">

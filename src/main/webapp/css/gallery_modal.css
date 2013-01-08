@@ -10,7 +10,7 @@
 }
 
 .infoPanel .imageInfo {
-	height:30%;
+	height:300px;
 }
 
 .infoPanel .imageInfo .title {
@@ -23,9 +23,9 @@
 .infoPanel .imageInfo .title .z-label {
   	font-family: inherit;
   	font-weight: bold;
-  	line-height: 20px;
+  	line-height: 1;
   	color: inherit;
-  	text-rendering: optimizelegibility;
+	word-wrap:break-word;
   	font-size: 31.5px;
 }
 
@@ -50,13 +50,15 @@
 
 .infoPanel .imageInfo .rating {
 	padding-left: 10px;
-  	padding-top: 10px;
+  padding-top: 5px;
   padding-bottom: 10px;
   	
 }
 
 .infoPanel .imageInfo .rating .rating_bar {
-
+	  padding-top: 3px;
+  margin-right: 10px;
+  float:left;
 }
 
 .infoPanel .imageInfo .rating .rating_bar .rating_blank {
@@ -65,6 +67,8 @@
 }
 
 .infoPanel .imageInfo .rating .rating_bar .rating_blank .rating_orange {
+  padding-top:10px;
+  padding-bottom:10px;
   height: 0px;
   background: url(../images/star_x_orange.gif) 0 0 repeat-x;
 }
@@ -75,8 +79,7 @@
 
 .infoPanel .imageInfo .buttons {
 	padding-left: 10px;
-  	padding-top: 15px;
-  	padding-bottom: 15px;
+  	padding-bottom: 10px;
 }
 
 
@@ -91,11 +94,12 @@
   	line-height: 20px;
   	color: grey;
   	text-rendering: optimizelegibility;
+  	word-wrap:break-word;
   	font-size: 12px;
 }
 
 .infoPanel .comments {
-  	height:145px;
+  	height:90px;
  	margin-left:10px;
   	margin-right:10px;
 }
@@ -144,6 +148,11 @@
   	text-rendering: optimizelegibility;
   	font-size: 18px;
 }
+
+
+
+
+
 
 
 

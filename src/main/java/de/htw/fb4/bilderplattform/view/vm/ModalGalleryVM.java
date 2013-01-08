@@ -44,8 +44,8 @@ public class ModalGalleryVM {
 	@Wire(".imageBig")
 	private Div imageDIV;
 	
-	@Wire(".rating_orange")
-	private Div rating_orange;
+	@Wire
+	private Div rating_orange_id;
 	
 	@Wire(".buttons")
 	private Div buttons;
@@ -139,7 +139,6 @@ public class ModalGalleryVM {
 		this.buttons.appendChild(starButton);
 		this.buttons.appendChild(messageButton);
 		
-		rating_orange.setStyle("padding:10px;");
 		
 		title_id.setValue(this.image_obj.getTitle());
 		String username = "-";
@@ -157,6 +156,9 @@ public class ModalGalleryVM {
 			avgRatingStr = SpringPropertiesUtil.getProperty("lbl.noCommentAvailable");	
 		}
 		rating_id.setValue(avgRatingStr);
+		
+		
+		rating_orange_id.setWidth((avgRatingValue/5)*100 +"%");
 		
 		cartButton.addEventListener(Events.ON_CLICK, new EventListener() {
 			public void onEvent(Event e) {
@@ -187,6 +189,7 @@ public class ModalGalleryVM {
 			avgRatingStr = SpringPropertiesUtil.getProperty("lbl.noCommentAvailable");	
 		}
 		this.rating_id.setValue(avgRatingStr);
+		rating_orange_id.setWidth((avgRatingValue/5)*100 +"%");
 		this.setComments(BusinessCtx.getInstance().getCommentService().getAllCommentsByImageID(image_obj.getIdImage()));
 	}
 	

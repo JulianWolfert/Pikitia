@@ -40,7 +40,7 @@
 				<div sclass="rating">
 					<div sclass="rating_bar">
 						<div sclass="rating_blank">
-							<div sclass="rating_orange"></div>
+							<div id="rating_orange_id" sclass="rating_orange"></div>
 						</div>
 					</div>
 					<div sclass="rating_value">
@@ -58,13 +58,13 @@
 			</div>
 			
 			<div sclass="comments">
-				<listbox model="@bind(vm.comments)" rows="3" emptyMessage="No Comments">
+				<listbox model="@bind(vm.comments)" rows="2" emptyMessage="No Comments">
 				<template name="model">
 						<listitem>
 						<listcell>
-							<label sclass="comment_username" value="@bind(each.image_username)"></label>
 							<label sclass="comment_stars" value=" @bind(each.stars)"></label>
 							<label sclass="comment_stars" value=" Stern(e)"></label>
+							<label sclass="comment_username" value="@bind(each.image_username)"></label>
 							<n:br></n:br>
 							<label value="@bind(each.comment)" pre="true" multiline="true"></label>
 						</listcell>
