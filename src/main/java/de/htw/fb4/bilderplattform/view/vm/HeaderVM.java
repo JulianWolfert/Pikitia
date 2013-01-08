@@ -20,7 +20,6 @@ import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.A;
-import org.zkoss.zul.Button;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.ISearchService;
@@ -79,8 +78,19 @@ public class HeaderVM {
 		return search;
 	}
 	
+	public boolean showAdminMenu() {
+		if(isAUserAuthenticated() && isUserAdmin())
+			return true;
+		return false;
+	}
+	
 	public boolean isAUserAuthenticated(){
 		return BusinessCtx.getInstance().getUserService().isAUserAuthenticated();
+	}
+	
+	public boolean isUserAdmin() {
+		User usr = BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser();
+		return usr.getIsAdmin();
 	}
 	
 	@Command

@@ -34,7 +34,7 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	        	<a onClick="@command('addImage')">Verkaufen</a>
 	        </n:li>
 	        
-	        <n:li class="dropdown" if="${vm.isAUserAuthenticated()==true}">
+	        <n:li class="dropdown" if="${vm.showAdminMenu()}">
 	        	<a onClick="@command('redirectToUserList')">Admin</a>
 	        </n:li>
 	        
