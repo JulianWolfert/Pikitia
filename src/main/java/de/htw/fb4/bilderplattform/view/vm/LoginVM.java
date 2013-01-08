@@ -5,10 +5,19 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Window;
-
+/************************************************
+ * <p>VM to the login.zul and loginAsPage.zul</p>
+ * <p>
+ * @author Josch Rossa
+ * </p>
+ * <p>
+ * 05.01.2013
+ * </p>
+ ************************************************/
 public class LoginVM {
 
 	@Wire("#modalLogin")
@@ -17,7 +26,7 @@ public class LoginVM {
 
 	@Command
 	public void resetPassword() {
-		
+		Executions.getCurrent().sendRedirect("/password_reset.zul");
 	}
 	
 	@Command

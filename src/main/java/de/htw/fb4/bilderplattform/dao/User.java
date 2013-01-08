@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -66,7 +67,7 @@ public class User implements Serializable, UserDetails {
 	@Column(name = "isDeleted", nullable = false, columnDefinition = "tinyint(1) default 0")
 	private boolean isDeleted = false;
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", cascade = {CascadeType.REMOVE})
 	private List<Image> images = new ArrayList<Image>();
 
 	public User() {

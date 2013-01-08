@@ -1,53 +1,62 @@
 <?page title="Bild" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
-	
-	<window id="modalLogin"
-		border="none"
-	    width="auto"
-	    height="auto" 
-	    minimizable="false"
-	    maximizable="false"
-	    mode="modal"
-	    position="center,center" 
-	    closable="true"
-		action="show:slideDown; hide:slideUp"
-		onCancel="@command('closeThis')" 
+
+	<window id="modalLogin" border="none" width="auto" height="auto"
+		minimizable="false" maximizable="false" mode="modal"
+		position="center,center" closable="true"
+		action="show:slideDown; hide:slideUp" onCancel="@command('closeThis')"
 		apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.LoginVM')">
 
-		<n:form id="f" name="f" action="j_spring_security_check" method="POST">
+		<n:form id="f" name="f" action="j_spring_security_check"
+			method="POST">
 
-		<div class="modal-header">
-			<n:h3 id="regModalLabel">Login</n:h3>
-		</div>
-		
-		<div class="modal-body">
+			<div class="modal-header">
+				<n:h3 id="regModalLabel">Login</n:h3>
+			</div>
+
+			<div class="modal-body">
 				<groupbox if="${not empty param.error}">
 					<label style="color:red"
 						value="Login fehlgeschlagen. Bitte probieren Sie es noch einmal." />
 				</groupbox>
 				<div class="control-group">
-					<n:label class="control-label" for="inputEmail">Benutzer</n:label>
+					<n:label class="control-label" for="inputEmail">
+						Benutzer
+					</n:label>
 					<div class="controls">
-					<textbox type="text" id="u" name="j_username" placeholder="Benutzername" ></textbox>	
+						<textbox type="text" id="u" name="j_username"
+							placeholder="Benutzername">
+						</textbox>
 					</div>
 				</div>
 				<div class="control-group">
-					<n:label class="control-label" for="inputEmail">Passwort</n:label>
+					<n:label class="control-label" for="inputEmail">
+						Passwort
+					</n:label>
 					<div class="controls">
-					<textbox type="password" id="p" name="j_password" placeholder="Passwort"></textbox>
+						<textbox type="password" id="p"
+							name="j_password" placeholder="Passwort">
+						</textbox>
 					</div>
 					<div style="text-align:right;">
-						<a onClick="@command('resetPassword')">Passwort vergessen</a>
+						<a onClick="@command('resetPassword')">
+							Passwort vergessen
+						</a>
 					</div>
 				</div>
-				
-		</div>
-		<div class="modal-footer">
-			<button onClick="@command('closeThis')" class="btn">Abbrechen</button>
-			<n:input class="btn btn-primary" type="submit" value="Login"></n:input>
-		</div>
+
+			</div>
+			<div class="modal-footer">
+				<button onClick="@command('closeThis')" class="btn">
+					Abbrechen
+				</button>
+				<n:input class="btn btn-primary" type="submit"
+					value="Login">
+				</n:input>
+			</div>
 		</n:form>
+
 	</window>
 
 </zk>
