@@ -42,7 +42,7 @@
 						
 				</div>
 				<div class="modal-footer">
-					<button onClick="@command('closeThis')" class="btn">Abbrechen</button>
+<!-- 					<button onClick="@command('closeThis')" class="btn">Abbrechen</button> -->
 					<n:input class="btn btn-primary" type="submit" value="Login"></n:input>
 				</div>
 				</n:form>
