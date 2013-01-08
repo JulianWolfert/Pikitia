@@ -28,10 +28,17 @@ public class AddImageValidator extends AbstractValidator {
 	}
 
 	private void validateTitle(ValidationContext ctx, String title) {
+
+		
 		if (title == null) {
 			this.addInvalidMessage(ctx, "title", SpringPropertiesUtil
 					.getProperty("err.enterValidImageTitle"));
 		}
+		else
+			if (title.length() > 20) {
+				this.addInvalidMessage(ctx, "title", SpringPropertiesUtil
+						.getProperty("err.enterValidImageTitleLength"));
+			}
 	}
 
 	private void validateDescription(ValidationContext ctx, String description) {
