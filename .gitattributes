@@ -25,6 +25,7 @@ src/main/java/de/htw/fb4/bilderplattform/business/mail/IMail.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/mail/MailImpl.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/util/FileUtil.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/util/ResourcesUtil.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/business/util/Util.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/AbstractDAO.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/Bankaccount.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Comment.java -text svneol=unset#text/plain
