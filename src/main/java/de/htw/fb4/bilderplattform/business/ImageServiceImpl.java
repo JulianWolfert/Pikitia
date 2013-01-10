@@ -122,7 +122,7 @@ public class ImageServiceImpl implements IImageService {
 				for (int i = 0; i < data.length; i++) {
 					data[i] = bytes.get(i).byteValue();
 				}
-				data_preview = this.scaleImg(data, PREVIEW_SIZE_PX);
+				data_preview = this.scaleImg(data, PREVIEW_SIZE_PX);			
 				data_thumb = this.scaleImg(data_preview, THUMB_SIZE_PX);
 			}
 		} catch (Exception e) {
@@ -148,13 +148,10 @@ public class ImageServiceImpl implements IImageService {
 				.getImagePath();
 		String filePath = imagesPath
 				+ File.separator;
-		String contentType = zkImage.getContent().getContentType();
-		if(contentType.equals("image/jpeg")){
-			generatedFilename += ".jpg";
-		}else if(contentType.equals("image/gif")){
-			generatedFilename += ".gif";
-		}else if(contentType.equals("image/png")){
-			generatedFilename += ".png";
+
+		String fileType = zkImage.getContent().getFormat();
+		if(fileType != null) {
+			generatedFilename += "." + fileType;
 		}
 		image.setFile(generatedFilename);
 		
@@ -172,7 +169,9 @@ public class ImageServiceImpl implements IImageService {
 	}
 	
 	private byte[] scaleImg(byte[] data, int pixel) throws IOException {
-		BufferedImage img = ImageIO.read(new ByteArrayInputStream(data));
+		ByteArrayInputStream in = new ByteArrayInputStream(data);
+		BufferedImage img = ImageIO.read(in);
+		in.close();
 		int size = img.getHeight() > img.getWidth() ? img.getHeight()
 				: img.getHeight();
 		double scale = (double) pixel / (double) size;
@@ -183,8 +182,10 @@ public class ImageServiceImpl implements IImageService {
 				AffineTransformOp.TYPE_BILINEAR);
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		ImageIO.write(op.filter(img, null), "png", os);
-
-		return os.toByteArray();
+		byte[] bytes = os.toByteArray();
+		//close will automatically flush the stream
+		os.close();
+		return bytes;
 	}
 
 	@Override
