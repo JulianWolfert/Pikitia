@@ -55,7 +55,6 @@
 					<label class="error" value="@load(vmsgs['email'])" />
 					</div>
 				</div>
-			</n:form>	
 		</div>
 		<div class="modal-footer">
 			<button onClick="@command('closeThis')" class="btn">Abbrechen</button>
