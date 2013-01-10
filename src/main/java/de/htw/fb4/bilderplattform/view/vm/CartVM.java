@@ -32,6 +32,7 @@ import org.zkoss.zul.Label;
 import org.zkoss.zul.Messagebox;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.util.Util;
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
@@ -165,7 +166,6 @@ public class CartVM {
 				}
 			});
 			org.zkoss.zul.Image img_vorschau = new org.zkoss.zul.Image("images/" + this.cart.get(i).getThumb_file());
-			img_vorschau.setStyle("width:300px; height:170px;");
 			aImage.appendChild(img_vorschau);
 			td_vorschau.setSclass("vorschau");
 			td_vorschau.appendChild(aImage);
@@ -206,7 +206,7 @@ public class CartVM {
 			
 			Div div_price = new Div();
 			div_price.setSclass("div_price");
-			div_price.appendChild(new Label("\u20AC " + this.cart.get(i).getPrice().toString().replace(".",",")));
+			div_price.appendChild(new Label("\u20AC " + Util.formatDouble(this.cart.get(i).getPrice())));
 			
 			td_price.appendChild(div_price);
 			
@@ -223,20 +223,21 @@ public class CartVM {
 		table.appendChild(table_body);
 		this.cart_table.appendChild(table);
 		
-		total_price_id.setValue("Summe: " + "\u20AC " + this.total_price.toString().replace(".",","));	
+		total_price_id.setValue("Summe: " + "\u20AC " + Util.formatDouble(this.total_price));	
 	}
 
 	@Command
 	@NotifyChange("cart")
 	public void delete() {
 		if(!(this.getCart().isEmpty())){
+			cart.clear();
 			total_price = 0.00;
-			total_price_id.setValue("Summe: " + "\u20AC " + this.total_price.toString().replace(".",","));		
+			total_price_id.setValue("Summe: " + "\u20AC " + Util.formatDouble(this.total_price));	
 			cart_table.getChildren().clear();
 			Session session = Sessions.getCurrent();
 			List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");
 			imageIDs.clear();
-			session.setAttribute("imageIDs", imageIDs);	
+			session.setAttribute("imageIDs", imageIDs);
 		} else {
 			Messagebox.show(SpringPropertiesUtil.getProperty("err.emptyCart"), "Error", Messagebox.OK, Messagebox.ERROR);
 		}

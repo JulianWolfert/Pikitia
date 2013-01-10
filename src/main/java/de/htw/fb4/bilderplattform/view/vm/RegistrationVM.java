@@ -61,7 +61,7 @@ public class RegistrationVM {
 	public void submit() {
 		user.setIsNormalUser(true);
 		BusinessCtx.getInstance().getUserService().saveOrUpdateUser(user);
-		Messagebox.show(SpringPropertiesUtil.getProperty("msg.registrationSuccess"), "Info", Messagebox.OK, Messagebox.INFORMATION,new EventListener<Event>() {
+		Messagebox.show(SpringPropertiesUtil.getProperty("reg.registrationSuccess"), "Info", Messagebox.OK, Messagebox.INFORMATION,new EventListener<Event>() {
 			
 			@Override
 			public void onEvent(Event e) throws Exception {

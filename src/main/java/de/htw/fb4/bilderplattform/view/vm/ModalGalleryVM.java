@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.poi.hpsf.Util;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -147,7 +148,7 @@ public class ModalGalleryVM {
 		}
 		uploader_id.setValue("Uploaded by: " + username);
 		desc_id.setValue(this.image_obj.getDescription());
-		price_id.setValue("\u20AC " + this.image_obj.getPrice().toString().replace(".",","));
+		price_id.setValue("\u20AC " + de.htw.fb4.bilderplattform.business.util.Util.formatDouble(this.image_obj.getPrice()));
 		
 		Double avgRatingValue = BusinessCtx
 				.getInstance().getCommentService().getAverageImageRating(this.image_obj.getIdImage());

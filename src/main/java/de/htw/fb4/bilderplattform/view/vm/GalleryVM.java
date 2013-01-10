@@ -29,6 +29,7 @@ import org.zkoss.zul.Label;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.util.ResourcesUtil;
+import de.htw.fb4.bilderplattform.business.util.Util;
 
 
 /************************************************
@@ -86,28 +87,6 @@ public class GalleryVM {
 		
 	}
 	
-	@NotifyChange("imageList")
-	public void onOK() {
-		if (keyword != null) {
-			
-			this.imageList.getChildren().clear();
-			
-			List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
-					.getInstance().getSearchService().searchImages(keyword);
-			
-			if (imgList.isEmpty())
-				this.search_result_id.setValue("No images found!");
-			else {
-				this.search_result_id.setValue("We found " + imgList.size() + " images for you!");
-				generateImages(imgList);
-			}		
-		}
-	}
-	
-	private void searchhandler() {
-		// TODO Auto-generated method stub
-		
-	}
 	private void createGallery() {
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
 				.getInstance().getImageService().getAllImages();
@@ -160,7 +139,8 @@ public class GalleryVM {
 			caption_label.setSclass("title");
 			
 			Div price_div = new Div();
-			Label price_label = new Label("\u20AC " + image.getPrice().toString().replace(".",","));
+			String price_format = Util.formatDouble(image.getPrice());
+			Label price_label = new Label("\u20AC " + price_format);
 			price_label.setSclass("price");
 
 			
