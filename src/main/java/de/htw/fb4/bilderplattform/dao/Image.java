@@ -47,7 +47,6 @@ public class Image implements Serializable {
 	@Column(name = "description")
 	private String description;
 
-	// TODO: format currency in database
 	@Column(name = "price", columnDefinition = "Decimal(10,2)")
 	private Double price;
 

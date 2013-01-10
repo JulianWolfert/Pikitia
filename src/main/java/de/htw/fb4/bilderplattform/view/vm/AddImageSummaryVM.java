@@ -18,6 +18,7 @@ public class AddImageSummaryVM {
 
 	private de.htw.fb4.bilderplattform.dao.Image image;
 	private Image uploadImg;
+	private String imgPrice;
 
 	public AddImageSummaryVM() {
 		if (Sessions.getCurrent().getAttribute("image") != null) {
@@ -36,6 +37,10 @@ public class AddImageSummaryVM {
 
 	public Image getUploadImg() {
 		return uploadImg;
+	}
+	
+	public String getImgPrice() {
+		return de.htw.fb4.bilderplattform.business.util.Util.formatDouble(this.image.getPrice());
 	}
 
 	public String getCreateOfferLabel() {

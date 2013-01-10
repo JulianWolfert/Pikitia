@@ -38,7 +38,7 @@
 										<label value="Preis:*" />
 										<cell>
 											<label
-												value="@bind(vm.image.price)"/>
+												value="@bind(vm.imgPrice)"/>
 											<label value=" €" />
 										</cell>
 									</row>
