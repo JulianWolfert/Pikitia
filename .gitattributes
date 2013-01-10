@@ -56,6 +56,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/validator/AddImageValidator.java -
 src/main/java/de/htw/fb4/bilderplattform/view/validator/CommentFormValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/ContactFormValidator.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/validator/MessageAnswerValidator.java -text
+src/main/java/de/htw/fb4/bilderplattform/view/validator/PurchaseValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/RegistrationValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/validator/UserUpdateValidator.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/AddImageSummaryVM.java -text svneol=unset#text/plain
@@ -78,6 +79,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/ModalGalleryVM.java -text svneo
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PasswordResetVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseAdministrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseDetailsVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseInputVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserAdministrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/UserUpdateVM.java -text svneol=unset#text/plain
@@ -201,6 +203,7 @@ src/main/webapp/login.zul -text
 src/main/webapp/loginAsPage.zul -text
 src/main/webapp/login_modal.zul -text
 src/main/webapp/password_reset.zul -text
+src/main/webapp/purchaseInput_modal.zul -text
 src/main/webapp/registration.zul -text
 src/main/webapp/registration_modal.zul -text
 src/main/webapp/test.zul -text

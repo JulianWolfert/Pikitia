@@ -29,9 +29,11 @@ import org.zkoss.zul.A;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Label;
+import org.zkoss.zul.Messagebox;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.dao.Image;
+import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 
 /************************************************
@@ -56,10 +58,15 @@ public class CartVM {
 	private Button checkout_button;
 	
 	//Image list in cart
-	private List<Image> cart;
-	
+	private List<Image> cart;	
 	private Double total_price;
-		
+	
+	
+
+	public Double getTotal_price() {
+		return total_price;
+	}
+
 	public List<Image> getCart() {
 		return cart;
 	}
@@ -222,14 +229,29 @@ public class CartVM {
 	@Command
 	@NotifyChange("cart")
 	public void delete() {
-		total_price = 0.00;
-		total_price_id.setValue("Summe: " + "\u20AC " + this.total_price.toString().replace(".",","));		
-		cart_table.getChildren().clear();
-		Session session = Sessions.getCurrent();
-		List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");
-		imageIDs.clear();
-		session.setAttribute("imageIDs", imageIDs);	
+		if(!(this.getCart().isEmpty())){
+			total_price = 0.00;
+			total_price_id.setValue("Summe: " + "\u20AC " + this.total_price.toString().replace(".",","));		
+			cart_table.getChildren().clear();
+			Session session = Sessions.getCurrent();
+			List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");
+			imageIDs.clear();
+			session.setAttribute("imageIDs", imageIDs);	
+		} else {
+			Messagebox.show(SpringPropertiesUtil.getProperty("err.emptyCart"), "Error", Messagebox.OK, Messagebox.ERROR);
+		}
 	}
 	
+	@Command
+	public void checkout(){
+		if(!(this.getCart().isEmpty())){	
+			final HashMap<String, Object> cartMap = new HashMap<String, Object>();
+			cartMap.put("cartImages", this.getCart());
+			cartMap.put("totalCartPrice", this.getTotal_price());
+			Executions.createComponents("/purchaseInput_modal.zul", null, cartMap);
+		} else {
+			Messagebox.show(SpringPropertiesUtil.getProperty("err.emptyCart"), "Error", Messagebox.OK, Messagebox.ERROR);
+		}
+	}
 	
 }

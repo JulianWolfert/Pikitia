@@ -1,0 +1,139 @@
+<zk xmlns:n="native" xmlns:c="client">
+
+<window id="modalPurchaseInput" 
+		border="none"
+	    width="auto"
+	    height="auto" 
+	    minimizable="false"
+	    maximizable="false"
+	    mode="modal"
+	    position="center,center" 
+	    closable="true"
+	    onCancel="@command('closeThis')"
+	    action="show:slideDown; hide:slideUp">
+
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('purchaseInput_vm') @init('de.htw.fb4.bilderplattform.view.vm.PurchaseInputVM')"		
+		validationMessages="@id('vmsgs')"		 
+		form="@id('fx') @load(purchaseInput_vm)	@save(purchaseInput_vm, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.PurchaseValidator')">
+			  
+
+			  
+			  
+		<div class="modal-header">
+			<n:h3 id="regModalLabel">Kaufvorgang</n:h3>
+		</div>
+		<div class="modal-body">
+			<n:form class="form-horizontal">
+				<hbox>
+					<div class="control-group">
+						<n:label class="control-label" for="inputEmail">Email</n:label>
+						<div class="controls">
+							<textbox type="text" value="@bind(fx.email)" placeholder="Email" id="inputEmail"></textbox>	
+						</div> 
+						<div style="text-align:right;">
+							<label class="error" value="@load(vmsgs['email'])" />
+						</div>
+					</div>
+				</hbox>
+				<separator spacing="15px" />
+				<hbox>
+					<div class="control-group">
+						<n:label class="control-label" for="inputFirstname">Vorname</n:label>
+						<div class="controls">
+							<textbox value="@bind(fx.firstname)" placeholder="Vorname" id="inputFirstname"></textbox>
+						</div>
+						<div style="text-align:right;">
+							<label class="error" value="@load(vmsgs['firstname'])" />
+						</div>
+					</div>
+					<div class="control-group">
+						<n:label class="control-label" for="inputSurname">Nachname</n:label>
+						<div class="controls">
+							<textbox value="@bind(fx.surname)" placeholder="Nachname" id="inputSurname"></textbox>
+						</div>
+						<div style="text-align:right;">
+							<label class="error" value="@load(vmsgs['surname'])" />
+						</div>
+					</div>
+				</hbox>
+				<hbox>
+					<div class="control-group">
+						<n:label class="control-label" for="inputStreet">Strasse</n:label>
+						<div class="controls">
+							<textbox value="@bind(fx.street)" placeholder="Strasse" id="inputStreet"></textbox>
+						</div>
+						<div style="text-align:right;">
+							<label class="error" value="@load(vmsgs['street'])" />
+						</div>
+					</div>
+					<div class="control-group">
+						<n:label class="control-label" for="inputStreetNumber">Hausnummer</n:label>
+						<div class="controls">
+							<textbox value="@bind(fx.streetnumber)" placeholder="Nachname" id="inputStreetNumber"></textbox>
+						</div>
+						<div style="text-align:right;">
+							<label class="error" value="@load(vmsgs['streetnumber'])" />
+						</div>
+					</div>
+				</hbox>
+				<hbox>					
+					<div class="control-group">
+						<n:label class="control-label" for="inputZipCode">Postleitzahl</n:label>
+						<div class="controls">
+							<textbox value="@bind(fx.zipcode)" placeholder="Postleitzahl" id="inputZipCode"></textbox>
+						</div>
+						<div style="text-align:right;">
+							<label class="error" value="@load(vmsgs['zipcode'])" />
+						</div>
+					</div>
+					<div class="control-group">
+						<n:label class="control-label" for="inputCity">Ort</n:label>
+						<div class="controls">
+							<textbox value="@bind(fx.city)" placeholder="Ort" id="inputCity"></textbox>
+						</div>
+						<div style="text-align:right;">
+							<label class="error" value="@load(vmsgs['city'])" />
+						</div>
+					</div>
+				</hbox>
+				<separator spacing="15px" />
+				<hbox>					
+					<div class="control-group">
+						<n:label class="control-label" for="inputBankAccountNumber">Kontonummer</n:label>
+						<div class="controls">
+							<textbox value="@bind(fx.bankaccountnumber)" placeholder="Kontonummer" id="inputBankAccountNumber"></textbox>
+						</div>
+						<div style="text-align:right;">
+							<label class="error" value="@load(vmsgs['bankaccountnumber'])" />
+						</div>
+					</div>
+					<div class="control-group">
+						<n:label class="control-label" for="inputBankNumber">Bankleitzahl</n:label>
+						<div class="controls">
+							<textbox value="@bind(fx.banknumber)" placeholder="Bankleitzahl" id="inputBankNumber"></textbox>
+						</div>
+						<div style="text-align:right;">
+							<label class="error" value="@load(vmsgs['banknumber'])" />
+						</div>
+					</div>
+				</hbox>
+				<separator spacing="15px" />
+				<hbox>
+					<div class="control-group">
+						<n:label class="control-label" for="checkTOS" onClick="@command('closeThis')">AGB</n:label>
+						<div class="controls">
+							<checkbox id="checkTOS"></checkbox>
+						</div>
+						<!-- TODO: validate --> 
+					</div>
+				</hbox>
+			</n:form>	
+		</div>
+		<div class="modal-footer">
+			<button onClick="@command('closeThis')" class="btn">Abbrechen</button>
+			<button class="btn btn-success" onClick="@command('submit')">Absenden</button>
+		</div>
+	</div>
+</window>
+</zk>
