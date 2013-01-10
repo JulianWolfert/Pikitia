@@ -7,14 +7,19 @@ import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.dao.User;
+import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
  * 
@@ -56,6 +61,17 @@ public class RegistrationVM {
 	public void submit() {
 		user.setIsNormalUser(true);
 		BusinessCtx.getInstance().getUserService().saveOrUpdateUser(user);
+		Messagebox.show(SpringPropertiesUtil.getProperty("msg.registrationSuccess"), "Info", Messagebox.OK, Messagebox.INFORMATION,new EventListener<Event>() {
+			
+			@Override
+			public void onEvent(Event e) throws Exception {
+				 if(Messagebox.ON_OK.equals(e.getName()))
+					 Executions.sendRedirect("/loginAsPage.zul");
+				
+			}
+		});
+
+		
 	}
 	
 	
