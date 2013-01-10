@@ -55,18 +55,19 @@ public class AddImageValidator extends AbstractValidator {
 	}
 
 	private void validatePrice(ValidationContext ctx, Double price) {
-		if (price != null) {
-			String strPrice = String.valueOf(price);
-			strPrice = formatPrice(strPrice);
-
-			if (!strPrice.matches("^\\d{1,3}(,\\d{2})*$")) {
+		if (price == null) {
+//			String strPrice = String.valueOf(price);
+//			strPrice = formatPrice(strPrice);
+//
+//			if (!strPrice.matches("^\\d{1,3}(,\\d{2})*$")) {
 				this.addInvalidMessage(ctx, "price", SpringPropertiesUtil
 						.getProperty("err.enterValidImagePrice"));
-			}
-		} else {
-			this.addInvalidMessage(ctx, "price", SpringPropertiesUtil
-					.getProperty("err.enterValidImagePrice"));
+//			}
 		}
+//		else {
+//			this.addInvalidMessage(ctx, "price", SpringPropertiesUtil
+//					.getProperty("err.enterValidImagePrice"));
+//		}
 	}
 
 	private String formatPrice(String strPrice) {
