@@ -28,7 +28,7 @@ public class AddImageValidator extends AbstractValidator {
 	}
 
 	private void validateTitle(ValidationContext ctx, String title) {
-		if (title == null || title.replace(" ", "").length() == 0) {
+		if (title == null || title.trim().length() == 0) {
 			this.addInvalidMessage(ctx, "title", SpringPropertiesUtil
 					.getProperty("err.enterValidImageTitle"));
 		}
@@ -40,7 +40,7 @@ public class AddImageValidator extends AbstractValidator {
 	}
 
 	private void validateDescription(ValidationContext ctx, String description) {
-		if (description == null || description.replace(" ", "").length() == 0) {
+		if (description == null || description.trim().length() == 0) {
 			this.addInvalidMessage(ctx, "description", SpringPropertiesUtil
 					.getProperty("err.enterValidImageDescription"));
 		}
