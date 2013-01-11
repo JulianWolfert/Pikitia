@@ -72,6 +72,9 @@ public class User implements Serializable, UserDetails {
 	@OneToMany(mappedBy="user", cascade = {CascadeType.REMOVE})
 	private List<Image> images = new ArrayList<Image>();
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="user", cascade = {CascadeType.REMOVE})
+	private List<UserPurchase> userPurchase = new ArrayList<UserPurchase>();
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="receiver", cascade = {CascadeType.REMOVE})
 	private List<Message> messages = new ArrayList<Message>();
 	
@@ -179,6 +182,14 @@ public class User implements Serializable, UserDetails {
 	
 	public List<Message> getMessages() {
 		return messages;
+	}
+	
+	public List<UserPurchase> getUserPurchase() {
+		return userPurchase;
+	}
+	
+	public void setUserPurchase(List<UserPurchase> userPurchase) {
+		this.userPurchase = userPurchase;
 	}
 
 	@Override

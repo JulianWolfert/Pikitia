@@ -9,8 +9,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
 import org.springframework.transaction.annotation.Transactional;
 
-import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
-
 /**
  * 
  * @author Peter Horn
@@ -55,19 +53,23 @@ public class PurchaseDAOImpl extends AbstractDAO {
 	
 	@Transactional
 	public User getUserByIdUserPurchase(int idUserPurchase) {
-		User user = new User();
-		Session session = sessionFactory.getCurrentSession();
-		try {
-			Criteria criteria = session.createCriteria(UserPurchase.class)
-					.add(Restrictions.eq("idUserPurchase", idUserPurchase));
-			int idUser = ((UserPurchase) criteria.uniqueResult()).getUser_idUser();
-			criteria = session.createCriteria(User.class)
-					.add(Restrictions.eq("idUser", idUser));
-			user= (User) criteria.uniqueResult();
-		} catch (DataAccessException dae) {
-			session.getTransaction().rollback();
-		}
-		return user;
+		// that should be it
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UserPurchase.class)
+				.add(Restrictions.eq("idUserPurchase", idUserPurchase));
+		return ((UserPurchase) criteria.uniqueResult()).getUser();
+//		User user = new User();
+//		Session session = sessionFactory.getCurrentSession();
+//		try {
+//			Criteria criteria = session.createCriteria(UserPurchase.class)
+//					.add(Restrictions.eq("idUserPurchase", idUserPurchase));
+//			int idUser = ((UserPurchase) criteria.uniqueResult()).getUser_idUser();
+//			criteria = session.createCriteria(User.class)
+//					.add(Restrictions.eq("idUser", idUser));
+//			user= (User) criteria.uniqueResult();
+//		} catch (DataAccessException dae) {
+//			session.getTransaction().rollback();
+//		}
+//		return user;
 	}
 	
 	@Transactional

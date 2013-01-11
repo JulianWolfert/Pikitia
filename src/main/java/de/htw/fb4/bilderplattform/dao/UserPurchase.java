@@ -16,22 +16,22 @@ public class UserPurchase {
 	@Column(name = "idUserPurchase")
 	private Integer idUserPurchase;
 
-	@Column(name = "User_idUser", nullable = false)
-	private Integer User_idUser;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private User user;
 
 	public Integer getIdUserPurchase() {
 		return idUserPurchase;
 	}
 
-	public Integer getUser_idUser() {
-		return User_idUser;
+	public User getUser() {
+		return user;
 	}
 
 	public void setIdUserPurchase(Integer idUserPurchase) {
 		this.idUserPurchase = idUserPurchase;
 	}
 
-	public void setUser_idUser(Integer user_idUser) {
-		User_idUser = user_idUser;
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
