@@ -16,8 +16,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -75,6 +75,8 @@ public class User implements Serializable, UserDetails {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="receiver", cascade = {CascadeType.REMOVE})
 	private List<Message> messages = new ArrayList<Message>();
 	
+	@OneToOne(cascade = {CascadeType.REMOVE})
+	private Bankaccount bankaccount;
 	
 	public User() {
 		super();
