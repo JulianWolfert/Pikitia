@@ -41,7 +41,7 @@ public class BannerVM {
 		int i=0;
 		try {
 			for (de.htw.fb4.bilderplattform.dao.Image item : imgList) {
-				File file = new File(imagePath + item.getFile());			
+				File file = new File(imagePath + item.getPreview_file());			
 				byte[] img_data = FileUtil.fileToByte(file);
 				Image img_gui = new Image();
 				org.zkoss.image.AImage img_preview = new AImage("img"+i,
