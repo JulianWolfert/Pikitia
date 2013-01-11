@@ -128,7 +128,7 @@ public class ImageServiceImpl implements IImageService {
 				}
 				data_preview = this.scaleImg(data, PREVIEW_SIZE_PX);	
 				data_preview = this.setWatermark(data_preview);
-				data_thumb = this.scaleImg(data_preview, THUMB_SIZE_PX);
+				data_thumb = this.scaleImg(data, THUMB_SIZE_PX);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
