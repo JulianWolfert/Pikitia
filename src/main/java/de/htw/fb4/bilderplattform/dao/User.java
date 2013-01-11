@@ -12,9 +12,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -70,6 +72,10 @@ public class User implements Serializable, UserDetails {
 	@OneToMany(mappedBy="user", cascade = {CascadeType.REMOVE})
 	private List<Image> images = new ArrayList<Image>();
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="receiver", cascade = {CascadeType.REMOVE})
+	private List<Message> messages = new ArrayList<Message>();
+	
+	
 	public User() {
 		super();
 	}
@@ -163,6 +169,14 @@ public class User implements Serializable, UserDetails {
 
 	public void setImages(List<Image> images) {
 		this.images = images;
+	}
+	
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+	
+	public List<Message> getMessages() {
+		return messages;
 	}
 
 	@Override
