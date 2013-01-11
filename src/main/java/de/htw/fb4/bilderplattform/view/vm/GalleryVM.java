@@ -70,20 +70,25 @@ public class GalleryVM {
 	@NotifyChange("imageList")
 	public void search() {
 		
-		if (keyword != null) {
+		List<de.htw.fb4.bilderplattform.dao.Image> imgList;
 		
-			this.imageList.getChildren().clear();
-			
-			List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
-					.getInstance().getSearchService().searchImages(keyword);
-			
-			if (imgList.isEmpty())
-				this.search_result_id.setValue("No images found!");
-			else {
-				this.search_result_id.setValue("We found " + imgList.size() + " images for you!");
-				generateImages(imgList);
-			}		
+		this.imageList.getChildren().clear();
+		
+		if (keyword == null || keyword.equals("")) {
+			imgList = BusinessCtx.getInstance().getImageService().getAllImages();
 		}
+		else
+		{
+			imgList = BusinessCtx.getInstance().getSearchService().searchImages(keyword);
+		}
+		
+		if (imgList.isEmpty()) {
+			this.search_result_id.setValue("No images found!");
+		}
+		else {
+			this.search_result_id.setValue("We found " + imgList.size() + " images for you!");
+			generateImages(imgList);
+		}	
 		
 	}
 	
