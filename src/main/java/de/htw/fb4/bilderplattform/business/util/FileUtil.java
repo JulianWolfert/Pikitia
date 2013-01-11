@@ -28,14 +28,21 @@ public class FileUtil {
 				file.createNewFile();
 			}
 			fos.write(bytes);
-			fos.flush();
-			fos.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				if (fos != null) {
+					fos.flush();
+					fos.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
