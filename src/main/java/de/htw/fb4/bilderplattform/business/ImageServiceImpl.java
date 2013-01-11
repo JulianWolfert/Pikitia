@@ -25,7 +25,7 @@ import de.htw.fb4.bilderplattform.spring.context.ServletContextProvider;
 
 /**
  * 
- * @author Wojciech Konitzer
+ * @author Wojciech Konitzer & Peter Horn
  * 
  *         17.11.2012
  * 
@@ -33,7 +33,7 @@ import de.htw.fb4.bilderplattform.spring.context.ServletContextProvider;
 public class ImageServiceImpl implements IImageService {
 	// the size of the preview and thumb images in pixels
 	private static final int PREVIEW_SIZE_PX = 800;
-	private static final int THUMB_SIZE_PX = 170;
+	private static final int THUMB_SIZE_PX = 300;
 	
 	private static String WATERMARK_FILE_NAME="watermark.png";
 	private static int WATERMARK_PADDING_PX = 50;
