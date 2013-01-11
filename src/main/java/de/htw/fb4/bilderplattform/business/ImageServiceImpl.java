@@ -172,7 +172,7 @@ public class ImageServiceImpl implements IImageService {
 		ByteArrayInputStream in = new ByteArrayInputStream(data);
 		BufferedImage img = ImageIO.read(in);
 		in.close();
-		int size = img.getHeight() > img.getWidth() ? img.getHeight()
+		int size = img.getHeight() > img.getWidth() ? img.getWidth()
 				: img.getHeight();
 		double scale = (double) pixel / (double) size;
 
