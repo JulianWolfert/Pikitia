@@ -62,8 +62,9 @@
 						</row>
 						<row spans="2" align="right">
 							<cell>
+								<button class="btn" label="@bind(vm.createCancelLabel)" style="padding: 5px;" onClick="@command('cancel')" />
 								<button class="btn btn-success"
-									label="@bind(vm.createOfferLabel)" style="padding: 5px;"
+									label="@bind(vm.createOfferLabel)" style="padding: 5px;margin-left: 10px;"
 									onClick="@command('save')" />
 							</cell>
 						</row>

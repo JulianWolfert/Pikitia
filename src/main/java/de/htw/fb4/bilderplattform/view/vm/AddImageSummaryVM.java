@@ -46,6 +46,15 @@ public class AddImageSummaryVM {
 	public String getCreateOfferLabel() {
 		return SpringPropertiesUtil.getProperty("lbl.createOffer");
 	}
+	
+	public String getCreateCancelLabel() {
+		return SpringPropertiesUtil.getProperty("lbl.cancelOffer");
+	}
+	
+	@Command
+	public void cancel() {
+		Executions.sendRedirect("/index.zul");
+	}
 
 	@Command
 	public void save() {

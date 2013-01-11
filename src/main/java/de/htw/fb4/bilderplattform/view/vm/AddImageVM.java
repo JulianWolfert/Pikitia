@@ -7,6 +7,7 @@ import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
+import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
@@ -15,6 +16,7 @@ import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Image;
 
+import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
@@ -48,7 +50,7 @@ public class AddImageVM {
 
 		this.image = image;
 		
-		System.out.println("formatierter Preis = " + this.image.getPrice());
+//		System.out.println("formatierter Preis = " + this.image.getPrice());
 	}
 
 	@AfterCompose
@@ -67,6 +69,11 @@ public class AddImageVM {
 			}
 		}
 	}
+	
+	@Command
+	public void cancel() {
+		Executions.sendRedirect("/index.zul");
+	}
 
 	public String getUploadImageLabel() {
 		return SpringPropertiesUtil.getProperty("lbl.uploadImage");
@@ -76,6 +83,10 @@ public class AddImageVM {
 		return SpringPropertiesUtil.getProperty("lbl.nextPage");
 	}
 
+	public String getCreateCancelLabel() {
+		return SpringPropertiesUtil.getProperty("lbl.cancelOffer");
+	}
+	
 	@Command
 	public void loadOfferSummary() {
 		if (this.image.getTitle() != null && this.image.getDescription() != null

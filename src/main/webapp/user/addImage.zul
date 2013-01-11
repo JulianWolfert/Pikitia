@@ -90,8 +90,9 @@
 						</row>
 						<row spans="2" align="right">
 							<cell>
+								<button class="btn" label="@bind(vm.createCancelLabel)" onClick="@command('cancel')" />
 								<button class="btn btn-success"
-									label="@bind(vm.nextPageLabel)" style="padding: 5px;"
+									label="@bind(vm.nextPageLabel)" style="padding: 5px;margin-left: 10px"
 									onClick="@command('loadOfferSummary')" tabindex="5"/>
 							</cell>
 						</row>
