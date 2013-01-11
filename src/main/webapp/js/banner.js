@@ -18,21 +18,17 @@ function init() {
 	$('.banner_imglist img').each(function() {
 		img_height = $(this).height();
 		img_width = $(this).width();
-		img_quotient = img_width / img_height;
-		banner_quotient = banner_width / banner_height;
 
-		if (img_quotient < banner_quotient) {
-			scale = banner_width / img_width;
-			$(this).height(img_height * scale);
-			$(this).width(img_width * scale);
-			img_magin_top = "-" + ($(this).height - banner_height) / 2 + "px";
+		scale = banner_width / img_width;
+		$(this).height(img_height * scale);
+		$(this).width(banner_width);
+
+		if($(this).height() >= banner_height){
+			img_magin_top = "-" + ($(this).height() - banner_height) / 2 + "px";
 			$(this).css("margin-top", img_magin_top);
-		} else {
-			scale = banner_height / img_height;
-			$(this).height(img_height * scale);
-			$(this).width(img_width * scale);
-			img_magin_left = "-" + ($(this).width - banner_width) / 2 + "px";
-			$(this).css("margin-left", img_magin_left);
+		}else if($(this).height() < banner_height){
+			img_magin_top = (banner_height - $(this).height()) / 2 + "px";
+			$(this).css("margin-top", img_magin_top);
 		}
 	});
 
