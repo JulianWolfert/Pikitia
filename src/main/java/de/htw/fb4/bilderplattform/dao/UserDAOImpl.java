@@ -5,8 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
-
 /************************************************
  * <p>
  * The User DAO
@@ -46,18 +44,18 @@ public class UserDAOImpl extends AbstractDAO {
 		return (List<User>) query.list();
 	}
 
-	@Transactional
-	public void deleteUser(int idUser) {
-		User usr = getUserByID(idUser);
-		usr.setIsDeleted(true);
-		sessionFactory.getCurrentSession().delete(usr);
-		//sessionFactory.getCurrentSession().saveOrUpdate(usr);
-	}
+	// new approach: User will be hard deleted
+//	@Transactional
+//	public void deleteUser(int idUser) {
+//		User usr = getUserByID(idUser);
+//		usr.setIsDeleted(true);
+//		sessionFactory.getCurrentSession().delete(usr);
+//		//sessionFactory.getCurrentSession().saveOrUpdate(usr);
+//	}
 
+	// new approach: User will be hard deleted
 	@Transactional
 	public void deleteUser(User user) {
-//		user.setIsDeleted(true);
-//		this.saveUser(user);
 		sessionFactory.getCurrentSession().delete(user);
 	}
 }

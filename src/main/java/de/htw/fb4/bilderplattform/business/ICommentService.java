@@ -23,4 +23,6 @@ public interface ICommentService {
 	
 	public void deleteComment(int idComment);
 	
+	public void deleteComment(Comment comment);
+	
 }

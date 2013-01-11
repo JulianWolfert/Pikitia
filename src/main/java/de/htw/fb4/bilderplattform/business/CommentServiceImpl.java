@@ -20,17 +20,13 @@ public class CommentServiceImpl implements ICommentService {
 		if (comment == null) {
 			return;
 		}
-		CommentDAOImpl commentDAO = ApplicationContextProvider
-				.getApplicationContext()
-				.getBean("commentDao", CommentDAOImpl.class);
+		CommentDAOImpl commentDAO = getDAO();
 		commentDAO.saveComment(comment);	
 	}
 
 	@Override
 	public double getAverageImageRating(int idImage) {
-		CommentDAOImpl commentDAO = ApplicationContextProvider
-				.getApplicationContext()
-				.getBean("commentDao", CommentDAOImpl.class);
+		CommentDAOImpl commentDAO = getDAO();
 		
 		List<Comment> comments = commentDAO.getAllCommentsByImageID(idImage);
 		
@@ -48,10 +44,7 @@ public class CommentServiceImpl implements ICommentService {
 
 	@Override
 	public List<Comment> getAllCommentsByImageID(int idImage) {
-		CommentDAOImpl commentDAO = ApplicationContextProvider
-				.getApplicationContext()
-				.getBean("commentDao", CommentDAOImpl.class);
-		
+		CommentDAOImpl commentDAO = getDAO();
 		List<Comment> comments = commentDAO.getAllCommentsByImageID(idImage);
 		
 		return comments;
@@ -59,7 +52,20 @@ public class CommentServiceImpl implements ICommentService {
 
 	@Override
 	public void deleteComment(int idComment) {
-		// TODO realize delete comment
+		deleteComment(getDAO().getCommentyID(idComment));
+	}
+
+	@Override
+	public void deleteComment(Comment comment) {
+		getDAO().deleteComment(comment);
+	}
+	
+	// jro: to avoid redundancy
+	private CommentDAOImpl getDAO() {
+		CommentDAOImpl commentDAO = ApplicationContextProvider
+				.getApplicationContext()
+				.getBean("commentDao", CommentDAOImpl.class);
+		return commentDAO;
 	}
 
 }

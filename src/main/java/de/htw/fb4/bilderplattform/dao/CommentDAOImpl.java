@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -33,6 +34,11 @@ public class CommentDAOImpl extends AbstractDAO {
 	}
 	
 	@Transactional
+	public void deleteComment(Comment comment) {
+		sessionFactory.getCurrentSession().delete(comment);
+	}
+	
+	@Transactional
 	public List<Comment> getAllCommentsByImageID(int idImage) {
 		List<Comment> comments = null;
 		Session session = sessionFactory.getCurrentSession();
@@ -45,6 +51,13 @@ public class CommentDAOImpl extends AbstractDAO {
 			session.getTransaction().rollback();
 		}
 		return comments;
+	}
+	
+	@Transactional
+	public Comment getCommentyID(int idComment) {
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"SELECT c FROM Comment c where c.idComment = " + idComment);
+		return (Comment) query.uniqueResult();
 	}
 
 }

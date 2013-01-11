@@ -2,6 +2,7 @@ package de.htw.fb4.bilderplattform.dao;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,7 +33,7 @@ public class Message implements java.io.Serializable {
 	private Date timeStamp;
 	
 	//@Column(name = "receiver")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
 	@JoinColumn(name = "idReceiver_idUser", referencedColumnName = "idUser")
 	private User receiver;
 	

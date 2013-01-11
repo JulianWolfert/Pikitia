@@ -11,6 +11,9 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
 import org.springframework.transaction.annotation.Transactional;
 
+import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.ICommentService;
+
 /************************************************
  * <p>
  * The Image DAO
@@ -85,16 +88,24 @@ public class ImageDAOImpl extends AbstractDAO {
 		}
 		return images;
 	}
-	
-	@Transactional
-	public void deleteImage(int idImage) {
-		Image image = getImageByID(idImage);
-		sessionFactory.getCurrentSession().saveOrUpdate(image);
-	}
 
 	@Transactional
 	public void deleteImage(Image image) {
-		this.saveImage(image);
+//		ICommentService commentServ = BusinessCtx.getInstance().getCommentService();
+//		List<Comment> commentsToImage = commentServ.getAllCommentsByImageID(image.getIdImage());
+//		try {
+//			for(Comment c : commentsToImage) {
+//				commentServ.deleteComment(c);
+//			}
+//			sessionFactory.getCurrentSession().delete(image);
+//		}
+//		catch (Exception e) {
+//			logger.error("delete image failed due to dependencies.");
+//			sessionFactory.getCurrentSession().getTransaction().rollback();
+//		}
+		
+		// if entities are defined correctly thats all we have to do to delete comments as well
+		sessionFactory.getCurrentSession().delete(image);
 	}
 
 	@Transactional
