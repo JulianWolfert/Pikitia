@@ -187,6 +187,7 @@ src/main/webapp/images/save.png -text
 src/main/webapp/images/search.png -text
 src/main/webapp/images/star_x_grey.gif -text
 src/main/webapp/images/star_x_orange.gif -text
+src/main/webapp/images/watermark.png -text
 src/main/webapp/index.zul -text
 src/main/webapp/js/banner.js -text svneol=unset#text/plain
 src/main/webapp/js/bootstrap.js -text svneol=unset#text/plain

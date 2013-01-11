@@ -1,5 +1,6 @@
 package de.htw.fb4.bilderplattform.business;
 
+import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -33,6 +34,9 @@ public class ImageServiceImpl implements IImageService {
 	// the size of the preview and thumb images in pixels
 	private static final int PREVIEW_SIZE_PX = 800;
 	private static final int THUMB_SIZE_PX = 170;
+	
+	private static String WATERMARK_FILE_NAME="watermark.png";
+	private static int WATERMARK_PADDING_PX = 50;
 
 	//gefixt: wk, 26.12.2012 :-)
 	@Override
@@ -122,7 +126,8 @@ public class ImageServiceImpl implements IImageService {
 				for (int i = 0; i < data.length; i++) {
 					data[i] = bytes.get(i).byteValue();
 				}
-				data_preview = this.scaleImg(data, PREVIEW_SIZE_PX);			
+				data_preview = this.scaleImg(data, PREVIEW_SIZE_PX);	
+				data_preview = this.setWatermark(data_preview);
 				data_thumb = this.scaleImg(data_preview, THUMB_SIZE_PX);
 			}
 		} catch (Exception e) {
@@ -192,6 +197,45 @@ public class ImageServiceImpl implements IImageService {
 		return bytes;
 	}
 
+	private byte[] setWatermark(byte[] img_data) {
+		ByteArrayInputStream in = new ByteArrayInputStream(img_data);
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		byte[] resultImg= null;
+		try {
+			BufferedImage watermark_img = ImageIO.read(new File(this.getImagePath(WATERMARK_FILE_NAME)));
+			BufferedImage img = ImageIO.read(in);			
+			int watermark_size= (img.getWidth()>img.getHeight()?img.getHeight():img.getWidth())-WATERMARK_PADDING_PX*2;
+			int pos_x = (img.getWidth()-watermark_size)/2;
+			int pos_y = (img.getHeight()-watermark_size)/2;
+			
+			BufferedImage watermark_img_new = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+			Graphics2D g2d_watermark = (Graphics2D) watermark_img_new.getGraphics();			
+			g2d_watermark.drawImage(watermark_img, pos_x, pos_y, watermark_size, watermark_size, null);
+			g2d_watermark.dispose();
+			
+			Graphics2D g2d_result = (Graphics2D) img.getGraphics();
+			g2d_result.drawImage(watermark_img_new, 0, 0, null);
+			g2d_result.dispose();
+			
+			ImageIO.write(img, "png", os);
+			resultImg=os.toByteArray();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			try{
+				os.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return resultImg;
+	}	
+	
 	@Override
 	public Image getImageByID(int idImage) {
 		ImageDAOImpl imageDAO = ApplicationContextProvider
