@@ -182,6 +182,10 @@ public class ImageServiceImpl implements IImageService {
 				AffineTransformOp.TYPE_BILINEAR);
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		ImageIO.write(op.filter(img, null), "png", os);
+		if(img != null){
+			img.flush();
+			img = null;
+		}
 		byte[] bytes = os.toByteArray();
 		//close will automatically flush the stream
 		os.close();
