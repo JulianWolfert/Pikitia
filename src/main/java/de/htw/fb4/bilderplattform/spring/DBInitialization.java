@@ -19,7 +19,6 @@ import de.htw.fb4.bilderplattform.dao.Comment;
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.Message;
 import de.htw.fb4.bilderplattform.dao.User;
-import de.htw.fb4.bilderplattform.spring.context.ServletContextProvider;
 
 /**
  * 
@@ -60,9 +59,9 @@ public class DBInitialization implements InitializingBean {
 		initialMessages.add(new Message(users.get(2), "s0528397@htw-berlin.de",
 				1, "Nachricht_4", "Lorem Ipsum 4"));
 
-		 initialPictures.add("1.jpg");
-		 initialPictures.add("2.jpg");
-		 initialPictures.add("3.jpg");
+		 initialPictures.add("init1.jpg");
+		 initialPictures.add("init2.jpg");
+		 initialPictures.add("init3.jpg");
 		 
 		 initialPictureComments.add(new Comment(5, "Ein sehr cooles Bild", 1, "jonathan"));
 		 initialPictureComments.add(new Comment(2, "Geht so!", 1, "julian"));

@@ -150,12 +150,6 @@ src/main/webapp/divers/theme/supersized.shutter.js -text
 src/main/webapp/divers/theme/supersized.shutter.min.js -text
 src/main/webapp/gallery.zul -text
 src/main/webapp/gallery_modal.zul -text
-src/main/webapp/images/1.jpg -text
-src/main/webapp/images/1_s.jpg -text
-src/main/webapp/images/2.jpg -text
-src/main/webapp/images/2_s.jpg -text
-src/main/webapp/images/3.jpg -text
-src/main/webapp/images/3_s.jpg -text
 src/main/webapp/images/Logo.png -text
 src/main/webapp/images/Logo2.png -text
 src/main/webapp/images/add_small.png -text
@@ -174,6 +168,9 @@ src/main/webapp/images/blank.png -text
 src/main/webapp/images/cart.png -text
 src/main/webapp/images/delete_small.png -text
 src/main/webapp/images/glyphicons-halflings.png -text
+src/main/webapp/images/init1.jpg -text
+src/main/webapp/images/init2.jpg -text
+src/main/webapp/images/init3.jpg -text
 src/main/webapp/images/list/j_comment.png -text
 src/main/webapp/images/list/j_delete.png -text
 src/main/webapp/images/list/j_edit.png -text
