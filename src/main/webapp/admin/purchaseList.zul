@@ -44,7 +44,7 @@ div.z-listbox-header tr.z-listhead {
 									Käufer: <label value="@load(vm.getCustomer(purchaseImg.purchase.idPurchase))"/>
 								</n:p>
 								<n:p>	
-									<n:img src="../images/list/p_details.png"/><a onClick="@command('showPurchaseDetails', idPurchase=purchaseImg.purchase.idPurchase)">Bankdaten anzeigen</a>
+									<n:img src="../images/list/p_details.png"/><a onClick="@command('showPurchaseDetails', idPurchase=purchaseImg.purchase.idPurchase)">Käuferdetails anzeigen</a>
 								</n:p>				
 							</listcell>
 						</listitem>
