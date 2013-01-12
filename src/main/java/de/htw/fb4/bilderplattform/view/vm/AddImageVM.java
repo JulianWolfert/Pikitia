@@ -17,6 +17,7 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Image;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.util.ResourcesUtil;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
@@ -31,6 +32,11 @@ public class AddImageVM {
 
 	private de.htw.fb4.bilderplattform.dao.Image image;
 
+	// 10 MB = 10485760
+	//  5 MB =  5242880
+	// Setting is required here and in addImage.zul file!
+	private static final Integer MAX_ALLOWED_IMAGE_BYTE_SIZE = 5242880;
+
 	public AddImageVM() {
 		this.image = new de.htw.fb4.bilderplattform.dao.Image();
 		// default values
@@ -44,13 +50,13 @@ public class AddImageVM {
 	}
 
 	public void setImage(de.htw.fb4.bilderplattform.dao.Image image) {
-		DecimalFormat f = new DecimalFormat("#0.00"); 
+		DecimalFormat f = new DecimalFormat("#0.00");
 		double price = this.image.getPrice();
 		this.image.setPrice(new Double(f.format(price)));
 
 		this.image = image;
-		
-//		System.out.println("formatierter Preis = " + this.image.getPrice());
+
+		// System.out.println("formatierter Preis = " + this.image.getPrice());
 	}
 
 	@AfterCompose
@@ -58,18 +64,28 @@ public class AddImageVM {
 		Selectors.wireComponents(view, this, false);
 	}
 
-	// TODO: Image size checking!!!
 	@Command
 	public void upload(@ContextParam(ContextType.BIND_CONTEXT) BindContext ctx) {
 		UploadEvent evt = null;
 		if (ctx.getTriggerEvent() instanceof UploadEvent) {
 			evt = (UploadEvent) ctx.getTriggerEvent();
 			if (evt.getMedia() instanceof org.zkoss.image.Image) {
-				uploadImg.setContent((org.zkoss.image.Image) evt.getMedia());
+				if (evt.getMedia().getByteData().length <= MAX_ALLOWED_IMAGE_BYTE_SIZE) {
+					uploadImg
+							.setContent((org.zkoss.image.Image) evt.getMedia());
+				} else {
+					Messagebox
+							.show(ResourcesUtil.loadPropertyWithWildcardValues(
+									"err.selectedImageIsTooLargeText",
+									(MAX_ALLOWED_IMAGE_BYTE_SIZE / 1024) / 1024),
+									SpringPropertiesUtil
+											.getProperty("err.selectedImageIsTooLargeTitle"),
+									Messagebox.OK, Messagebox.ERROR);
+				}
 			}
 		}
 	}
-	
+
 	@Command
 	public void cancel() {
 		Executions.sendRedirect("/index.zul");
@@ -86,15 +102,17 @@ public class AddImageVM {
 	public String getCreateCancelLabel() {
 		return SpringPropertiesUtil.getProperty("lbl.cancelOffer");
 	}
-	
+
 	@Command
 	public void loadOfferSummary() {
-		if (this.image.getTitle() != null && this.image.getDescription() != null
-				&& this.image.getPrice() != null && uploadImg.getContent() != null) {
+		if (this.image.getTitle() != null
+				&& this.image.getDescription() != null
+				&& this.image.getPrice() != null
+				&& uploadImg.getContent() != null) {
 
 			Sessions.getCurrent().setAttribute("image", this.image);
 			Sessions.getCurrent().setAttribute("uploadImg", this.uploadImg);
-						
+
 			Executions.getCurrent().sendRedirect("/user/addImageSummary.zul");
 		}
 	}

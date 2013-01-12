@@ -79,7 +79,7 @@
 										<cell>
 											<button
 												onUpload="@command('upload')"
-												label="@bind(vm.uploadImageLabel)" upload="true" tabindex="4"/>
+												label="@bind(vm.uploadImageLabel)" upload="true,maxsize=5242880" tabindex="4"/>
 										</cell>
 									</row>
 								</rows>
