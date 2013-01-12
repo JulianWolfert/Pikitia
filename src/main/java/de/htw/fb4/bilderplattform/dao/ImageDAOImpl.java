@@ -129,10 +129,12 @@ public class ImageDAOImpl extends AbstractDAO {
 							.add( Projections.alias(Projections.avg("stars"), "stars_avg")))
 					.addOrder(Order.desc("stars_avg"));
 			List list= criteria.list();
-			for(int i=0; i<count && i<list.size(); i++){
-				Object[] row=(Object[])list.get(i);
-				Image img= (Image)row[0];
-				img_list.add(img);
+			if(list.size()>0){
+				for(int i=0; i<count && i<list.size(); i++){
+					Object[] row=(Object[])list.get(i);
+					Image img= (Image)row[0];
+					img_list.add(img);
+				}
 			}
 		} catch (DataAccessException dae) {
 			logger.error("getBest throws exception: ", dae);
