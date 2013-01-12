@@ -8,15 +8,10 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projection;
-import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
 import org.springframework.transaction.annotation.Transactional;
-
-import de.htw.fb4.bilderplattform.business.BusinessCtx;
-import de.htw.fb4.bilderplattform.business.ICommentService;
 
 /************************************************
  * <p>
@@ -130,13 +125,13 @@ public class ImageDAOImpl extends AbstractDAO {
 		try {
 			Criteria criteria = session.createCriteria(Comment.class)
 					.setProjection( Projections.projectionList()
-							.add( Projections.groupProperty("Image_idImage"))
+							.add( Projections.groupProperty("image"))
 							.add( Projections.alias(Projections.avg("stars"), "stars_avg")))
 					.addOrder(Order.desc("stars_avg"));
 			List list= criteria.list();
 			for(int i=0; i<count && i<list.size(); i++){
 				Object[] row=(Object[])list.get(i);
-				Image img= this.getImageByID((Integer)row[0]);
+				Image img= (Image)row[0];
 				img_list.add(img);
 			}
 		} catch (DataAccessException dae) {
