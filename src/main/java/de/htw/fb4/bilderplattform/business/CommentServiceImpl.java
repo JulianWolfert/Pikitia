@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.htw.fb4.bilderplattform.dao.Comment;
 import de.htw.fb4.bilderplattform.dao.CommentDAOImpl;
+import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.spring.context.ApplicationContextProvider;
 
 /**
@@ -25,10 +26,10 @@ public class CommentServiceImpl implements ICommentService {
 	}
 
 	@Override
-	public double getAverageImageRating(int idImage) {
+	public double getAverageImageRating(Image image) {
 		CommentDAOImpl commentDAO = getDAO();
 		
-		List<Comment> comments = commentDAO.getAllCommentsByImageID(idImage);
+		List<Comment> comments = commentDAO.getAllCommentsByImage(image);
 		
 		double averageRating = 0f;
 		int sumAllRatings = 0;
@@ -43,9 +44,9 @@ public class CommentServiceImpl implements ICommentService {
 	}
 
 	@Override
-	public List<Comment> getAllCommentsByImageID(int idImage) {
+	public List<Comment> getAllCommentsByImage(Image image) {
 		CommentDAOImpl commentDAO = getDAO();
-		List<Comment> comments = commentDAO.getAllCommentsByImageID(idImage);
+		List<Comment> comments = commentDAO.getAllCommentsByImage(image);
 		
 		return comments;
 	}

@@ -3,6 +3,7 @@ package de.htw.fb4.bilderplattform.business;
 import java.util.List;
 
 import de.htw.fb4.bilderplattform.dao.Comment;
+import de.htw.fb4.bilderplattform.dao.Image;
 
 /************************************************
  * <p>Defines comment and rating functionality</p>
@@ -17,9 +18,9 @@ public interface ICommentService {
 	
 	public void saveOrUpdateComment(Comment comment);
 	
-	public double getAverageImageRating(int idImage);
+	public double getAverageImageRating(Image image);
 	
-	public List<Comment> getAllCommentsByImageID(int idImage);
+	public List<Comment> getAllCommentsByImage(Image image);
 	
 	public void deleteComment(int idComment);
 	

@@ -39,15 +39,15 @@ public class CommentDAOImpl extends AbstractDAO {
 	}
 	
 	@Transactional
-	public List<Comment> getAllCommentsByImageID(int idImage) {
+	public List<Comment> getAllCommentsByImage(Image image) {
 		List<Comment> comments = null;
 		Session session = sessionFactory.getCurrentSession();
 		try {
 			Criteria criteria = session.createCriteria(Comment.class).add(
-					Restrictions.eq("Image_idImage", idImage)).addOrder(Order.desc("timeStamp") );
+					Restrictions.eq("image", image)).addOrder(Order.desc("timeStamp") );
 			comments = criteria.list();
 		} catch (DataAccessException dae) {
-			logger.error("getAllCommentsByImageID throws exception: ", dae);
+			logger.error("getAllCommentsByImage throws exception: ", dae);
 			session.getTransaction().rollback();
 		}
 		return comments;

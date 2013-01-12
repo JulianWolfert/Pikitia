@@ -9,6 +9,7 @@ import org.zkoss.zul.Messagebox;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.dao.Comment;
+import de.htw.fb4.bilderplattform.dao.Image;
 
 /************************************************
  * <p>abstract class to comment administration view models</p>
@@ -26,8 +27,9 @@ public class AbstractCommentAdministrationVM extends AbstractRedirection {
 
 	public void init(int idImage, int idUser) {
 		this.idUser = idUser;
+		Image image = BusinessCtx.getInstance().getImageService().getImageByID(idImage);
 		this.commentList = new ListModelList<Comment>(
-				BusinessCtx.getInstance().getCommentService().getAllCommentsByImageID(idImage));
+				BusinessCtx.getInstance().getCommentService().getAllCommentsByImage(image));
 	}
 	
 	public int getIdUser() {

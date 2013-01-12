@@ -5,8 +5,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -31,8 +33,9 @@ public class Comment implements Serializable {
 	@Column(name = "comment")
 	private String comment;
 
-	@Column(name = "Image_idImage", nullable=false)
-	private Integer Image_idImage;
+//	@Column(name = "Image_idImage", nullable=false)
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Image image;
 	
 	@Column(name = "timeStamp")
 	private Date timeStamp = new Date();
@@ -45,12 +48,12 @@ public class Comment implements Serializable {
 		
 	}
 	
-	public Comment(Integer stars, String comment, Integer idImage, String username) {
+	public Comment(Integer stars, String comment, Image image, String username) {
 		super();
 		this.stars = stars;
 		this.comment = comment;
-		Image_idImage = idImage;
-		image_username = username;
+		this.image = image;
+		this.image_username = username;
 	}
 
 	public String getComment() {
@@ -61,8 +64,8 @@ public class Comment implements Serializable {
 		return idComment;
 	}
 
-	public Integer getImage_idImage() {
-		return Image_idImage;
+	public Image getImage() {
+		return image;
 	}
 
 	public Integer getStars() {

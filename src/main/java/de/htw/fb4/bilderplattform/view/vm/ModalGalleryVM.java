@@ -94,7 +94,7 @@ public class ModalGalleryVM {
 //					}
 //		}
 
-		this.setComments(BusinessCtx.getInstance().getCommentService().getAllCommentsByImageID(this.image_obj.getIdImage()));
+		this.setComments(BusinessCtx.getInstance().getCommentService().getAllCommentsByImage(this.image_obj));
 		
 		try {		
 			//Image
@@ -113,7 +113,7 @@ public class ModalGalleryVM {
 			public void onEvent(Event e) 
 			{ 
 				final HashMap<String, Object> commentFormMap = new HashMap<String, Object>();
-				commentFormMap.put("imageID", image_obj.getIdImage().toString());
+				commentFormMap.put("image", image_obj);
 				Executions.createComponents("/commentForm.zul", null, commentFormMap);
 			} 
 		}); 
@@ -151,7 +151,7 @@ public class ModalGalleryVM {
 		price_id.setValue("\u20AC " + de.htw.fb4.bilderplattform.business.util.Util.formatDouble(this.image_obj.getPrice()));
 		
 		Double avgRatingValue = BusinessCtx
-				.getInstance().getCommentService().getAverageImageRating(this.image_obj.getIdImage());
+				.getInstance().getCommentService().getAverageImageRating(this.image_obj);
 		String avgRatingStr = "\u00D8 " + String.valueOf(avgRatingValue);
 		if(avgRatingValue == 0){
 			avgRatingStr = SpringPropertiesUtil.getProperty("lbl.noCommentAvailable");	
@@ -184,14 +184,14 @@ public class ModalGalleryVM {
 		//System.out.println("test");
 		
 		Double avgRatingValue = BusinessCtx
-				.getInstance().getCommentService().getAverageImageRating(this.image_obj.getIdImage());
+				.getInstance().getCommentService().getAverageImageRating(this.image_obj);
 		String avgRatingStr = "\u00D8 " + String.valueOf(avgRatingValue);
 		if(avgRatingValue == 0){
 			avgRatingStr = SpringPropertiesUtil.getProperty("lbl.noCommentAvailable");	
 		}
 		this.rating_id.setValue(avgRatingStr);
 		rating_orange_id.setWidth((avgRatingValue/5)*100 +"%");
-		this.setComments(BusinessCtx.getInstance().getCommentService().getAllCommentsByImageID(image_obj.getIdImage()));
+		this.setComments(BusinessCtx.getInstance().getCommentService().getAllCommentsByImage(image_obj));
 	}
 	
 	private void addToCart(String id) {

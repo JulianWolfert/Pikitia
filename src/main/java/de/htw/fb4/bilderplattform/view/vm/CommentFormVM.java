@@ -21,6 +21,7 @@ import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.ICommentService;
 import de.htw.fb4.bilderplattform.business.IUserService;
 import de.htw.fb4.bilderplattform.dao.Comment;
+import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /************************************************
@@ -52,7 +53,7 @@ public class CommentFormVM {
 	
 	private Integer currentStarValue;
 	private String text;
-	private Integer idImage;
+	private Image image;
 	private String username;
 
 	public CommentFormVM() {
@@ -61,10 +62,10 @@ public class CommentFormVM {
 
 	@AfterCompose
 	public void afterCompose(@ContextParam(ContextType.VIEW) Component view,
-			@ExecutionArgParam("imageID") String imageID) {
+			@ExecutionArgParam("image") Image image) {
 		Selectors.wireComponents(view, this, false);
-		logger.debug("imageID: " + imageID + " was sent to commentForm.zul");
-		this.idImage = Integer.parseInt(imageID);
+		logger.debug("imageID: " + image.getIdImage() + " was sent to commentForm.zul");
+		this.image = image;
 		this.currentStarValue = 1;
 	}
 
@@ -108,7 +109,7 @@ public class CommentFormVM {
 			usrname = this.username + " "
 					+ SpringPropertiesUtil.getProperty("lbl.anonymousUser");
 		}
-		Comment comment = new Comment(this.getCurrentStarValue(), this.getText(), this.idImage, usrname);
+		Comment comment = new Comment(this.getCurrentStarValue(), this.getText(), this.image, usrname);
 		commentService.saveOrUpdateComment(comment);
 		closeThis();
 	}

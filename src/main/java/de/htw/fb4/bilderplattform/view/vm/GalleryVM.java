@@ -167,7 +167,7 @@ public class GalleryVM {
 				{ 
 					String img_id = e.getTarget().getId().substring(4);
 					final HashMap<String, Object> commentFormMap = new HashMap<String, Object>();
-					commentFormMap.put("imageID", img_id);
+					commentFormMap.put("image", image);
 					Executions.createComponents("/commentForm.zul", null, commentFormMap);
 				} 
 			}); 

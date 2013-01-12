@@ -59,38 +59,35 @@ public class DBInitialization implements InitializingBean {
 		initialMessages.add(new Message(users.get(2), "s0528397@htw-berlin.de",
 				1, "Nachricht_4", "Lorem Ipsum 4"));
 
-		 initialPictures.add("init1.jpg");
-		 initialPictures.add("init2.jpg");
-		 initialPictures.add("init3.jpg");
-		 
-		 initialPictureComments.add(new Comment(5, "Ein sehr cooles Bild", 1, "jonathan"));
-		 initialPictureComments.add(new Comment(2, "Geht so!", 1, "julian"));
-		 initialPictureComments.add(new Comment(4, "Prima!", 2, "wojtek"));
+		initialPictures.add("init1.jpg");
+		initialPictures.add("init2.jpg");
+		initialPictures.add("init3.jpg");
 
 	}
 
 	private void createInitialPictures() throws IOException {
 		Integer imgId = 0;
-		IImageService imageService = BusinessCtx.getInstance().getImageService();
+		IImageService imageService = BusinessCtx.getInstance()
+				.getImageService();
 		User user = BusinessCtx.getInstance().getUserService()
 				.getUserByName("jonathan");
-		
-		for (String filename : initialPictures) {			
-			System.out.println("Initialisiere Image: " + imageService.getImagePath(filename));
+
+		for (String filename : initialPictures) {
+			System.out.println("Initialisiere Image: "
+					+ imageService.getImagePath(filename));
 			File file = new File(imageService.getImagePath(filename));
-			InputStream input = new FileInputStream(file);
 			Image image = new Image();
 			image.setDescription("description" + imgId);
 			image.setPrice(23.42);
 			image.setTimeStamp(new Date());
 			image.setTitle("title" + imgId);
 			imgId++;
-			
+
 			byte[] img_data;
 			try {
 				img_data = FileUtil.fileToByte(file);
 				org.zkoss.zul.Image img_gui = new org.zkoss.zul.Image();
-				org.zkoss.image.AImage img_preview = new AImage("img"+imgId,
+				org.zkoss.image.AImage img_preview = new AImage("img" + imgId,
 						new ByteArrayInputStream(img_data));
 				img_gui.setContent(img_preview);
 				imageService.saveOrUpdateImage(image, img_gui, user);
@@ -98,7 +95,7 @@ public class DBInitialization implements InitializingBean {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
 
 	}
@@ -114,10 +111,29 @@ public class DBInitialization implements InitializingBean {
 			BusinessCtx.getInstance().getMessageService().saveMessage(message);
 		}
 	}
-	
+
 	private void createInitialPictureComments() {
+
+		User user = BusinessCtx.getInstance().getUserService().getUserByName("jonathan");
+		if(user!=null){
+			initialPictureComments.add(new Comment(5, "Ein sehr cooles Bild",
+					BusinessCtx.getInstance().getImageService().getImageByID(1), user.getUsername()));
+		}
+		
+		user = BusinessCtx.getInstance().getUserService().getUserByName("julian");
+		if(user!=null){
+			initialPictureComments.add(new Comment(2, "Geht so!", BusinessCtx
+					.getInstance().getImageService().getImageByID(1), user.getUsername()));
+		}
+		
+		user = BusinessCtx.getInstance().getUserService().getUserByName("wojtek");
+		if(user!=null){
+			initialPictureComments.add(new Comment(4, "Prima!", BusinessCtx
+					.getInstance().getImageService().getImageByID(2),user.getUsername()));
+		}
 		for (Comment comment : initialPictureComments) {
-			BusinessCtx.getInstance().getCommentService().saveOrUpdateComment(comment);
+			BusinessCtx.getInstance().getCommentService()
+					.saveOrUpdateComment(comment);
 		}
 	}
 
@@ -129,5 +145,4 @@ public class DBInitialization implements InitializingBean {
 		createInitialPictureComments();
 	}
 
-	
 }

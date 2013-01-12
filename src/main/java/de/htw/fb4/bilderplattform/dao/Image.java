@@ -3,8 +3,11 @@ package de.htw.fb4.bilderplattform.dao;
 import java.io.IOException;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import de.htw.fb4.bilderplattform.business.util.FileUtil;
@@ -66,6 +70,9 @@ public class Image implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "User_idUser", referencedColumnName = "idUser")
 	private User user;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="image", cascade = {CascadeType.ALL})
+	private List<Comment> comments = new ArrayList<Comment>();
 
 	public Image() {
 
@@ -158,6 +165,14 @@ public class Image implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void addComment(Comment comment){
+		this.comments.add(comment);
 	}
 
 }
