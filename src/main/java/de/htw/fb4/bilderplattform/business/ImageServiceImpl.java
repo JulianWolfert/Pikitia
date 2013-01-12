@@ -105,6 +105,12 @@ public class ImageServiceImpl implements IImageService {
 		ImageDAOImpl imageDAO = ApplicationContextProvider.getApplicationContext().getBean("imageDao", ImageDAOImpl.class);
 		return imageDAO.getLastInsertedImageID();
 	}
+	
+	@Override
+	public List<Image> getBest(int count) {
+		ImageDAOImpl imageDAO = ApplicationContextProvider.getApplicationContext().getBean("imageDao", ImageDAOImpl.class);
+		return imageDAO.getBest(count);
+	}
 
 	private void setImageData(Image image, org.zkoss.zul.Image zkImage) {
 		if (zkImage == null || image == null) {

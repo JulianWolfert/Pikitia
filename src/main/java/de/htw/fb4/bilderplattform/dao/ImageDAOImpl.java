@@ -1,11 +1,15 @@
 package de.htw.fb4.bilderplattform.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
@@ -119,6 +123,26 @@ public class ImageDAOImpl extends AbstractDAO {
 		return null;
 	}
 	
-	
-	
+	@Transactional
+	public List<Image> getBest(int count){
+		List<Image> img_list = new ArrayList<Image>();
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			Criteria criteria = session.createCriteria(Comment.class)
+					.setProjection( Projections.projectionList()
+							.add( Projections.groupProperty("Image_idImage"))
+							.add( Projections.alias(Projections.avg("stars"), "stars_avg")))
+					.addOrder(Order.desc("stars_avg"));
+			List list= criteria.list();
+			for(int i=0; i<count && i<list.size(); i++){
+				Object[] row=(Object[])list.get(i);
+				Image img= this.getImageByID((Integer)row[0]);
+				img_list.add(img);
+			}
+		} catch (DataAccessException dae) {
+			logger.error("getBest throws exception: ", dae);
+			session.getTransaction().rollback();
+		}
+		return img_list;
+	}
 }

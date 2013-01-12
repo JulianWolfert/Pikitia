@@ -35,6 +35,8 @@ public interface IImageService {
 	public String getImagePath();
 	
 	public String getImagePath(String filename);
+	
+	public List<Image> getBest(int count);
 
 }
 
