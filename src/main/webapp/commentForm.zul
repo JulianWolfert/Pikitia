@@ -1,4 +1,4 @@
-<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+ <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client"
 	xmlns:h="http://www.w3.org/1999/xhtml"
 	xmlns:zk="http://www.zkoss.org/2005/zk"
@@ -8,19 +8,23 @@
 	<style src="/bootstrap/css/bootstrap.css"></style>
 	<style src="/css/star_rating.css"></style>
 
-	<window id="commentForm" title="Bewertungsformular" border="normal"
-		width="800px" height="auto" minimizable="false" maximizable="false"
-		mode="modal" position="center,center" closable="true"
+	<window id="commentForm"
+		width="auto" height="auto" minimizable="false" maximizable="false"
+		mode="modal" position="center,center"
 		action="show:slideDown; hide:slideUp" onCancel="@command('closeThis')"
 		apply="org.zkoss.bind.BindComposer">
 
-		<n:div id="content">
-			<n:div id="content_small">
-				<n:legend>Bitte geben Sie Ihre Bewertung ab!</n:legend>
+			
+			<div class="modal-header">
+						<n:h3 id="regModalLabel">Bewertung</n:h3>
+			</div>
+			
 				<div apply="org.zkoss.bind.BindComposer"
 					viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.CommentFormVM')"
 					validationMessages="@id('vmsgs')"
 					form="@id('fx') @load(vm) @save(vm, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.CommentFormValidator')">
+					<div class="modal-body">
+					
 					<vlayout>
 						<label value="Benutzername:" />
 						<textbox value="@bind(fx.username)"
@@ -67,18 +71,18 @@
 						</h:ul>
 						<separator spacing="20px" />
 						<label value="Kommentar*:" width="150px" />
-						<textbox rows="6" value="@bind(fx.text)"
+						<textbox style="resize:none;" rows="6" value="@bind(fx.text)"
 							width="370px;" />
 						<label class="error"
 							value="@load(vmsgs['text'])" />
 					</vlayout>
-					<vlayout>
-						<button label="Speichern"
-							onClick="@command('submit')" width="100px" height="30px" />			
-					</vlayout>
 				</div>
-				<n:p class="asterisk">* Pflichtfeld</n:p>
-			</n:div>
-		</n:div>
+				<n:p class="asterisk" style="padding-left:10px;">* Pflichtfeld</n:p>
+			<div class="modal-footer">
+			<button onClick="@command('closeThis')" class="btn">Abbrechen</button>
+			<button label="Speichern" sclass="btn btn-success"
+							onClick="@command('submit')"/>		
+			</div>
+			</div>
 	</window>
 </zk>

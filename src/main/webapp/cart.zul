@@ -32,7 +32,7 @@
 		 
 		 <div sclass="checkout">
 		 	<button onClick="@command('delete')" class="btn">Warenkorb löschen</button>
-		 	<button onClick="@command('checkout')" id="checkout_button" sclass="btn btn-success">Checkout</button>
+		 	<button onClick="@command('checkout')" id="checkout_button" sclass="btn btn-success">Zur Kasse</button>
 		 </div>
 		 
 		 

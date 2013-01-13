@@ -69,10 +69,6 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 	                <n:li>
 	                	<a onClick="@command('addImage')">Neues Angebot erstellen</a>
 	                </n:li>	              
-	                <n:li class="divider"></n:li>
-	                <n:li>
-	                	<a onClick="@command('purchase')">Kaufprozess (testzweck)</a>
-	                </n:li>
 				</n:ul>
 	      	</n:li>
 			<div></div>

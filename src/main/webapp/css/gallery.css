@@ -1,21 +1,21 @@
 .search_result {
-	text-align:center;
-  padding-bottom: 40px;
+  padding-bottom: 10px;
 }
 
 .search_result .z-label {
- 	font-size: 21px;
+ 	font-size: 12px;
   line-height: 40px;
-  color: #333333;
-  font-style: italic;
+  color: grey;
 }
 
 .thumb {
-	display: inline-block;
+	float:left;
     position: relative;
     width: 300px;
     height: 170px;
     overflow: hidden;
+  	background:black;
+  	text-align:center;
 }
 
 .thumb a:hover {
@@ -23,7 +23,7 @@
 	
 }
 .thumb img {
-    width: 100%;
+    height:100%;
     padding: 0;
 }
 .thumb .thumb_content {
@@ -100,4 +100,6 @@
  margin-righ:3px;
  margin-bottom:2px;
 }
+
+
 

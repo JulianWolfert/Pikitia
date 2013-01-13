@@ -65,6 +65,16 @@ public class GalleryVM {
 		Selectors.wireComponents(view, this, false);
 		this.createGallery();
 	}
+	
+	@Command
+	public void getInfo() {
+		System.out.println("Info");
+		
+	}
+	
+	public void onClientInfo(Event e) {
+		System.out.println("info");
+	}
 		
 	@Command
 	@NotifyChange("imageList")
@@ -83,10 +93,10 @@ public class GalleryVM {
 		}
 		
 		if (imgList.isEmpty()) {
-			this.search_result_id.setValue("No images found!");
+			this.search_result_id.setValue("Keine Bilder gefunden!");
 		}
 		else {
-			this.search_result_id.setValue("We found " + imgList.size() + " images for you!");
+			this.search_result_id.setValue("Ergebnisse: " + imgList.size());
 			generateImages(imgList);
 		}	
 		
@@ -96,7 +106,7 @@ public class GalleryVM {
 		List<de.htw.fb4.bilderplattform.dao.Image> imgList = BusinessCtx
 				.getInstance().getImageService().getAllImages();
 
-		this.search_result_id.setValue("We found " + imgList.size() + " images for you!");
+		this.search_result_id.setValue("Ergebnisse: " + imgList.size());
 		
 		generateImages(imgList);
 	}
@@ -242,9 +252,12 @@ public class GalleryVM {
 			thumb.appendChild(img_gui);
 			thumb.appendChild(thumb_content);	
 			
+			Div aGalleryElement = new Div();
+			aGalleryElement.setSclass("aGalleryElement");
+			aGalleryElement.appendChild(thumb);
 			
-			this.imageList.appendChild(thumb);
-		}
+			this.imageList.appendChild(aGalleryElement);
+}
 		
 	}
 
@@ -254,17 +267,17 @@ public class GalleryVM {
 		
 		if (imageIDsSession == null) {
 			List<String> imageIDs = new ArrayList<String>();
-			Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", id), "info", null, "top_right",2000);
+			Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", BusinessCtx.getInstance().getImageService().getImageByID(Integer.parseInt(id)).getTitle()), "info", null, "top_right",2000);
 			imageIDs.add(id);
 			session.setAttribute("imageIDs", imageIDs);
 		}
 		else {
 			if(!imageIDsSession.contains(id)) {
-				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", id), "info", null, "top_right",2000);
+				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", BusinessCtx.getInstance().getImageService().getImageByID(Integer.parseInt(id)).getTitle()), "info", null, "top_right",2000);
 				imageIDsSession.add(id);
 			}
 			else
-				Clients.showNotification("Bereits vorhanden", "info", null, "top_right",2000);
+				Clients.showNotification("Das Bild liegt bereits im Warenkorb", "info", null, "top_right",2000);
 				
 			session.setAttribute("imageIDs", imageIDsSession);
 		}

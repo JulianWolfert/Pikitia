@@ -1,8 +1,15 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 
 import org.apache.poi.hpsf.Util;
 import org.zkoss.bind.annotation.AfterCompose;
@@ -100,6 +107,21 @@ public class ModalGalleryVM {
 			//Image
 			Image img_gui = new Image();	
 			img_gui.setSrc("images/" + image_obj.getPreview_file());
+			
+			InputStream input = new FileInputStream(BusinessCtx.getInstance().getImageService().getImagePath("/" + image_obj.getPreview_file()));
+			ImageInputStream imageInput = ImageIO.createImageInputStream(input);
+			
+			BufferedImage imgFile = ImageIO.read(imageInput);
+			if (imgFile.getWidth() < imgFile.getHeight())
+				img_gui.setStyle("height:100%");
+			else {
+				int paddingVal = (int) ((500-(imgFile.getHeight()*0.83))/2);
+				imageDIV.setStyle("padding-top:" + paddingVal +"px");
+			}
+
+			
+			input.close();
+				
 			this.imageDIV.appendChild(img_gui);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -146,7 +168,7 @@ public class ModalGalleryVM {
 		if(this.image_obj.getUser() != null){
 			username = this.image_obj.getUser().getUsername();
 		}
-		uploader_id.setValue("Uploaded by: " + username);
+		uploader_id.setValue("Hochgeladen von: " + username);
 		desc_id.setValue(this.image_obj.getDescription());
 		price_id.setValue("\u20AC " + de.htw.fb4.bilderplattform.business.util.Util.formatDouble(this.image_obj.getPrice()));
 		
@@ -200,17 +222,17 @@ public class ModalGalleryVM {
 		
 		if (imageIDsSession == null) {
 			List<String> imageIDs = new ArrayList<String>();
-			Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", image_obj.getIdImage().toString()), "info", null, "top_right",2000);
+			Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", BusinessCtx.getInstance().getImageService().getImageByID(Integer.parseInt(id)).getTitle()), "info", null, "top_right",2000);
 			imageIDs.add(id);
 			session.setAttribute("imageIDs", imageIDs);
 		}
 		else {
 			if(!imageIDsSession.contains(id)) {
-				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", image_obj.getIdImage().toString()), "info", null, "top_right",2000);
+				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", BusinessCtx.getInstance().getImageService().getImageByID(Integer.parseInt(id)).getTitle()), "info", null, "top_right",2000);
 				imageIDsSession.add(id);
 			}
 			else
-				Clients.showNotification("Bereits vorhanden", "info", null, "top_right",2000);
+				Clients.showNotification("Das Bild liegt bereits im Warenkorb", "info", null, "top_right",2000);
 				
 			session.setAttribute("imageIDs", imageIDsSession);
 		}

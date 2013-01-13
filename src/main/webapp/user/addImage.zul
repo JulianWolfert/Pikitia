@@ -13,12 +13,13 @@
 
 
 		<n:div id="content_small">
-			<n:h3 id="regModalLabel">Neues Angebot erstellen</n:h3>
-			<div apply="org.zkoss.bind.BindComposer"
+		<n:fieldset>
+			<n:legend>Neues Angebot erstellen</n:legend>
+				<div apply="org.zkoss.bind.BindComposer"
 				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.AddImageVM')"
 				validationMessages="@id('vmsgs')"
 				form="@id('fx')  @save(vm.image, before='loadOfferSummary') @validator('de.htw.fb4.bilderplattform.view.validator.AddImageValidator')">
-				<grid width="100%">
+				<grid width="900px;">
 					<columns>
 						<column hflex="3" />
 						<column hflex="2" />
@@ -45,7 +46,7 @@
 										<label value="Beschreibung*:" />
 										<cell>
 											<textbox
-												value="@bind(fx.description)" width="95%" rows="5" tabindex="2"/>
+												value="@bind(fx.description)" style="resize:none;" width="97%" rows="5" tabindex="2"/>
 											<label class="error"
 												value="@load(vmsgs['description'])" />
 										</cell>
@@ -67,7 +68,7 @@
 							</grid>
 							<grid>
 								<columns>
-									<column hflex="1" />
+									<column hflex="1" height="100%"/>
 								</columns>
 								<rows>
 									<row align="center">
@@ -85,24 +86,17 @@
 								</rows>
 							</grid>
 						</row>
-						<row spans="2">
-							<cell height="80px" />
-						</row>
-						<row spans="2" align="right">
-							<cell>
-								<button class="btn" label="@bind(vm.createCancelLabel)" onClick="@command('cancel')" />
-								<button class="btn btn-success"
-									label="@bind(vm.nextPageLabel)" style="padding: 5px;margin-left: 10px"
-									onClick="@command('loadOfferSummary')" tabindex="5"/>
-							</cell>
-						</row>
-
 					</rows>
 				</grid>
-
-
+				<div style="text-align:right; padding-top: 20px;">
+				<button class="btn" label="@bind(vm.createCancelLabel)" onClick="@command('cancel')" />
+				<button class="btn btn-success"
+									label="@bind(vm.nextPageLabel)"
+									onClick="@command('loadOfferSummary')" tabindex="5"/>
+				</div>
 
 			</div>
+		</n:fieldset>
 
 		</n:div>
 

@@ -3,6 +3,7 @@
 
 <style src="/css/gallery.css"></style>
 
+
 <n:div id="header">
 			
 			<include src="/layout/header_menu2.zul" />
@@ -11,33 +12,34 @@
 <n:div id="content">
 
 
-<n:div id="content_fullsize">
+
+<n:div id="content_small">
 
 	<div id="gallery" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.GalleryVM')">
 	
-		<div style="text-align:center; padding-top: 30px; padding-bottom: 30px;">
+		<div style="text-align:center; padding-top: 20px; padding-bottom: 30px;">
 
 		
 		  <div class="input-append" forward="onOK=btn.onClick">
 		  	<textbox value="@bind(vm.keyword)" />
-		    <button id="btn" onClick="@command('search')" class="btn">Search</button> 
+		    <button id="btn" onClick="@command('search')" class="btn">Suche</button> 
+			    <div sclass="search_result">
+					<label id="search_result_id"></label>
+				</div>
 		  </div>
 		
 		</div>
 		
-		<div sclass="search_result">
-			<label id="search_result_id"></label>
-		</div>
 
-		<div class="gallery_images" style="text-align:center;">
+
+		<n:div id="gallery_images_id">
 
 			<div sclass="imageList"/>
 
-		</div>
+		</n:div>
 	</div>
 </n:div>			    
 				
 </n:div>
-
 
 </zk>

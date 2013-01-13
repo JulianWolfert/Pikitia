@@ -172,12 +172,6 @@ public class HeaderVM {
 		Executions.getCurrent().sendRedirect("/admin/userList.zul");
 	}
 	
-	/* for testing, should be deleted when not needed anymore*/
-	
-	@Command
-	public void purchase() {
-		Executions.getCurrent().sendRedirect("/bilderplattform/purchase.zul");
-	}	
 	
 	private void addToCart(String id) {
 		Session session = Sessions.getCurrent();
@@ -185,17 +179,17 @@ public class HeaderVM {
 		
 		if (imageIDsSession == null) {
 			List<String> imageIDs = new ArrayList<String>();
-			Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", id), "info", null, "top_right",2000);
+			Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", BusinessCtx.getInstance().getImageService().getImageByID(Integer.parseInt(id)).getTitle()), "info", null, "top_right",2000);
 			imageIDs.add(id);
 			session.setAttribute("imageIDs", imageIDs);
 		}
 		else {
 			if(!imageIDsSession.contains(id)) {
-				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", id), "info", null, "top_right",2000);
+				Clients.showNotification(ResourcesUtil.loadPropertyWithWildcardValues("notification.loadImage", BusinessCtx.getInstance().getImageService().getImageByID(Integer.parseInt(id)).getTitle()), "info", null, "top_right",2000);
 				imageIDsSession.add(id);
 			}
 			else
-				Clients.showNotification("Bereits vorhanden", "info", null, "top_right",2000);
+				Clients.showNotification("Das Bild liegt bereits im Warenkorb", "info", null, "top_right",2000);
 				
 			session.setAttribute("imageIDs", imageIDsSession);
 		}

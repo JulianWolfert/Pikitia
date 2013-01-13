@@ -7,8 +7,8 @@
 
 	<window id="modalGalleryImage" 
 		border="none"
-	    width="1280px"
-	    height="auto" 
+	    width="1024px;"
+	    height="500px;" 
 	    minimizable="false"
 	    maximizable="false"
 	    mode="modal"
@@ -58,7 +58,7 @@
 			</div>
 			
 			<div sclass="comments">
-				<listbox model="@bind(vm.comments)" rows="2" emptyMessage="No Comments">
+				<listbox model="@bind(vm.comments)" rows="2" emptyMessage="Keine Kommentare">
 				<template name="model">
 						<listitem>
 						<listcell>
@@ -76,7 +76,7 @@
 			<div sclass="price_cart_button">
 				<div sclass="price">
 					<div sclass="price_label">
-						<label>Price</label>
+						<label>Preis</label>
 					</div>
 					<div sclass="price_value">			
 						<label id="price_id"></label>
@@ -84,7 +84,7 @@
 				</div>
 				
 				<div sclass="cartButton">
-					<button id="cartButton" sclass="btn btn-info">+ Add to cart</button>
+					<button id="cartButton" sclass="btn btn-info">+ Zum Warenkorb</button>
 				</div>
 			</div>
 			

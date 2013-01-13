@@ -5,13 +5,10 @@
 <style src="/bootstrap/css/bootstrap.css"></style>
 
 <window id="contactForm" 
-		title="Kontakt"
-		border="normal"
-	    width="800px"
+	    width="auto"
 	    height="auto" 
 		minimizable="false"
-		maximizable="false" mode="modal" position="center,center"
-		closable="true" action="show:slideDown; hide:slideUp"
+		maximizable="false" mode="modal" position="center,center" action="show:slideDown; hide:slideUp"
 		onCancel="@command('closeThis')" apply="org.zkoss.bind.BindComposer"
 		xmlns:n="native">
 
@@ -20,14 +17,17 @@
 		font-size:12pt; } .receiverHLay { padding-bottom: 10px; }
 	</style>
 	
-	<n:div id="content">
-		<n:div id="content_small">
-			<n:legend>Kontaktformular</n:legend>
+			<div class="modal-header">
+						<n:h3 id="regModalLabel">Kontakt</n:h3>
+			</div>
+			
 			<div apply="org.zkoss.bind.BindComposer"
 				viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.ContactFormVM')"
 				validationMessages="@id('vmsgs')"
 				form="@id('fx') @load(vm) @save(vm, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.ContactFormValidator')">
 <!-- Receiver Name -->
+				<div class="modal-body">
+
 				<hlayout sclass="receiverHLay">
 					<label sclass="receiverLabel" value="Empfänger:"
 						width="150px" />
@@ -42,48 +42,50 @@
 <!--  NAME  -->
 				<label value="Name*:" width="150px" />
 				<hlayout>
-					<textbox id="tboxName" value="@bind(fx.nameSender)" width="150px"
+					<textbox id="tboxName" value="@bind(fx.nameSender)" width="200px"
 						tabindex="1" />
 					<label class="error"
 						value="@load(vmsgs['nameSender'])" />
 				</hlayout>
 <!-- EMAIL -->
-				<label value="E-mail*:" width="150px" />
+				<label value="E-mail*:" width="200px" />
 				<hlayout>
-					<textbox id="tboxEmail" value="@bind(fx.emailSender)" width="150px"
+					<textbox id="tboxEmail" value="@bind(fx.emailSender)" width="200px"
 						tabindex="2" />
 					<label class="error"
 						value="@load(vmsgs['emailSender'])" />
 				</hlayout>
 <!-- SUBJECT -->
-				<label value="Betreff*:" width="150px" />
+				<label value="Betreff*:" width="200px" />
 				<hlayout>
-					<textbox id="tboxSubject" value="@bind(fx.subject)" width="150px"
+					<textbox id="tboxSubject" value="@bind(fx.subject)" width="200px"
 						tabindex="3" />
 					<label class="error"
 						value="@load(vmsgs['subject'])" />
 				</hlayout>
 <!-- MESSAGE -->
-				<label value="Nachricht*:" width="150px" />
+				<label value="Nachricht*:" width="200px" />
 				<vlayout>
 					<textbox id="tboxMessage" rows="6" value="@bind(fx.text)"
-						width="370px;" tabindex="4" />
+						width="370px;" style="resize:none;" tabindex="4" />
 					<label class="error" value="@load(vmsgs['text'])" />
 				</vlayout>
 <!-- SUBMIT -->
 				<vlayout>
 					<label visible="@load(empty vmsgs)"
 						value="@load(empty vmsgs ? 'Erfolgreich gesendet!' : '', before='submit')" />
-					<button label="Senden" onClick="@command('submit')"
-						width="100px" height="30px" />
 <!-- test message answer functionality -->
 <!-- 					<button label="test" -->
 <!-- 						onClick="@command('testAnswer')"> -->
 <!-- 					</button> -->
 				</vlayout>
+				</div>
+				<n:p class="asterisk" style="padding-left:20px;">* Pflichtfeld</n:p>
+				<div class="modal-footer">
+			<button onClick="@command('closeThis')" class="btn">Abbrechen</button>
+			<button label="Senden" onClick="@command('submit')" sclass="btn btn-success"/>	
 			</div>
-			<n:p class="asterisk">* Pflichtfeld</n:p>
-		</n:div>
-	</n:div>
+			</div>
+			
 </window>
 </zk>

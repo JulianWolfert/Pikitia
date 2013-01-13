@@ -1,13 +1,16 @@
 .imageBig {
-	width:70%;
-	float: left;
+	float:left;
+	width:670px;
+  height:500px;
 	text-align:center;
 	background-color:black;
 }
 
+.imageBig img {
+}
 
 .infoPanel {
-	width:30%;
+	width:350px;
 	float:right;
 }
 
@@ -87,6 +90,7 @@
 
 .infoPanel .imageInfo .desc {
 	padding-left: 10px;
+	padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 50px;
 }
@@ -150,6 +154,8 @@
   	text-rendering: optimizelegibility;
   	font-size: 18px;
 }
+
+
 
 
 
