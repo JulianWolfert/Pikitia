@@ -54,7 +54,7 @@ public class CommentDAOImpl extends AbstractDAO {
 	}
 	
 	@Transactional
-	public Comment getCommentyID(int idComment) {
+	public Comment getCommentByID(int idComment) {
 		Query query = sessionFactory.getCurrentSession().createQuery(
 				"SELECT c FROM Comment c where c.idComment = " + idComment);
 		return (Comment) query.uniqueResult();

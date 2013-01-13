@@ -28,7 +28,7 @@
 					<vlayout>
 						<label value="Benutzername:" />
 						<textbox value="@bind(fx.username)"
-							if="${vm.isAUserAuthenticated()==false}" />
+							if="${vm.isAUserAuthenticated()==false}" maxlength="20"/>
 						<textbox value="@bind(fx.username)"
 							readonly="true" if="${vm.isAUserAuthenticated()==true}" />
 						<label class="error"
@@ -70,8 +70,8 @@
 							</h:li>
 						</h:ul>
 						<separator spacing="20px" />
-						<label value="Kommentar*:" width="150px" />
-						<textbox style="resize:none;" rows="6" value="@bind(fx.text)"
+						<label value="Kommentar*:" width="150px" maxlength="300" />
+						<textbox style="resize:none;" rows="4" value="@bind(fx.text)"
 							width="370px;" />
 						<label class="error"
 							value="@load(vmsgs['text'])" />

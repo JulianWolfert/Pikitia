@@ -53,7 +53,7 @@ public class CommentServiceImpl implements ICommentService {
 
 	@Override
 	public void deleteComment(int idComment) {
-		deleteComment(getDAO().getCommentyID(idComment));
+		deleteComment(getDAO().getCommentByID(idComment));
 	}
 
 	@Override

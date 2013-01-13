@@ -8,6 +8,7 @@ import org.zkoss.bind.ValidationContext;
 import org.zkoss.bind.validator.AbstractValidator;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.util.ResourcesUtil;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
@@ -56,9 +57,12 @@ public class CommentFormValidator extends AbstractValidator {
 	}
 	
 	private void validateText(ValidationContext ctx, String text) {
-		if (text == null) {
+		if (text == null || text.trim().length() == 0) {
 			this.addInvalidMessage(ctx, "text", SpringPropertiesUtil
 					.getProperty("err.enterValidRatingText"));
+		}else if(text.trim().length() > 300){
+			this.addInvalidMessage(ctx, "text", ResourcesUtil.loadPropertyWithWildcardValues(
+					"err.enterNotTooLongRatingText", 300));
 		}
 	}
 
