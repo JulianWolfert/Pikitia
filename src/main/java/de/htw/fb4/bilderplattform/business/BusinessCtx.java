@@ -24,6 +24,7 @@ public class BusinessCtx {
 	private ISearchService searchService;
 	private IPurchaseService purchaseService;
 	private ICommentService commentService;
+	private IBankaccountService bankaccountService;
 	
 	// singleton getter
 	public static BusinessCtx getInstance() {
@@ -82,5 +83,12 @@ public class BusinessCtx {
 			this.commentService=new CommentServiceImpl();
 		}
 		return this.commentService;
+	}	
+	
+	public IBankaccountService getBankaccountService(){
+		if(this.bankaccountService==null){
+			this.bankaccountService=new BankaccountServiceImpl();
+		}
+		return this.bankaccountService;
 	}	
 }

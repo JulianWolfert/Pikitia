@@ -15,6 +15,7 @@ import org.zkoss.image.AImage;
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.IImageService;
 import de.htw.fb4.bilderplattform.business.util.FileUtil;
+import de.htw.fb4.bilderplattform.dao.Bankaccount;
 import de.htw.fb4.bilderplattform.dao.Comment;
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.Message;
@@ -32,6 +33,7 @@ public class DBInitialization implements InitializingBean {
 	private final static List<Message> initialMessages = new ArrayList<Message>();
 	private final static List<String> initialPictures = new ArrayList<String>();
 	private final static List<Comment> initialPictureComments = new ArrayList<Comment>();
+	private final static List<Bankaccount> initialBankaccounts = new ArrayList<Bankaccount>();
 
 	public DBInitialization() {
 		// add normal users
@@ -62,6 +64,13 @@ public class DBInitialization implements InitializingBean {
 		initialPictures.add("init1.jpg");
 		initialPictures.add("init2.jpg");
 		initialPictures.add("init3.jpg");
+		
+		initialBankaccounts.add(new Bankaccount(users.get(0), "11111", "44444444"));
+		initialBankaccounts.add(new Bankaccount(users.get(1), "22222", "33333333"));
+		initialBankaccounts.add(new Bankaccount(users.get(2), "33333", "22222222"));
+		initialBankaccounts.add(new Bankaccount(users.get(3), "44444", "00000000"));
+		initialBankaccounts.add(new Bankaccount(users.get(4), "55555", "99999999"));
+		initialBankaccounts.add(new Bankaccount(users.get(5), "66666", "12345678"));
 
 	}
 
@@ -111,6 +120,12 @@ public class DBInitialization implements InitializingBean {
 			BusinessCtx.getInstance().getMessageService().saveMessage(message);
 		}
 	}
+	
+	private void createInitialBankaccounts() {
+		for (Bankaccount bankaccount : initialBankaccounts) {
+			BusinessCtx.getInstance().getBankaccountService().saveOrUpdateUser(bankaccount);
+		}
+	}
 
 	private void createInitialPictureComments() {
 
@@ -143,6 +158,7 @@ public class DBInitialization implements InitializingBean {
 		createInitialMessages();
 		createInitialPictures();
 		createInitialPictureComments();
+		createInitialBankaccounts();
 	}
 
 }

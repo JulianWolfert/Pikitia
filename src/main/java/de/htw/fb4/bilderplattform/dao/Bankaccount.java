@@ -2,10 +2,14 @@ package de.htw.fb4.bilderplattform.dao;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,8 +35,21 @@ public class Bankaccount implements Serializable {
 	@Column(name = "bank", nullable = false)
 	private String bank;
 
-	@OneToOne
-	private User user;
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
+	@JoinColumn(name = "idBankaccountOwner_idUser", referencedColumnName = "idUser")
+	private User bankaccountOwner;
+	
+	public Bankaccount(){
+		super();
+	}
+
+	public Bankaccount(User bankaccountOwner, String account_nr, String bank) {
+		super();
+		this.bankaccountOwner = bankaccountOwner;
+		this.account_nr = account_nr;
+		this.bank = bank;
+		
+	}
 
 	public String getAccount_nr() {
 		return account_nr;
@@ -58,12 +75,12 @@ public class Bankaccount implements Serializable {
 		this.idBankaccount = idBankaccount;
 	}
 	
-	public User getUser() {
-		return user;
+	public User getBankaccountOwner() {
+		return bankaccountOwner;
 	}
 	
-	public void setUser(User user) {
-		this.user = user;
+	public void setBankaccountOwner(User bankaccountOwner) {
+		this.bankaccountOwner = bankaccountOwner;
 	}
 
 }

@@ -3,7 +3,6 @@ package de.htw.fb4.bilderplattform.view.vm;
 import java.util.HashMap;
 import java.util.List;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
@@ -21,23 +20,20 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
-import de.htw.fb4.bilderplattform.dao.BankaccountDAOImpl;
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.Message;
 import de.htw.fb4.bilderplattform.dao.User;
-import de.htw.fb4.bilderplattform.dao.Bankaccount;
-import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
  * 
  * @author Benjamin Schock
  * 
  */
-public class PurchaseInputVM {
+public class PurchaseOverviewVM {
 
 	//Wired Elements with sClasses
-	@Wire("#modalPurchaseInput")
-	private Window modalPurchaseInput;
+	@Wire("#modalPurchaseOverview")
+	private Window modalPurchaseOverview;
 	
 	@Wire
 	Button closeButton;
@@ -59,46 +55,9 @@ public class PurchaseInputVM {
 	public void init(@ContextParam(ContextType.VIEW) Component view,
 			@ExecutionArgParam("cartImages") List<Image> cartImages,
 			@ExecutionArgParam("totalCartPrice") Double totalCartPrice){
-		
 		Selectors.wireComponents(view, this, false);
 		this.cartImages = cartImages;
 		this.totalCartPrice = totalCartPrice;
-		
-	    if(SecurityContextHolder.getContext().getAuthentication() != null){
-	    	
-	    	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	    	// TODO Bankaccount
-	    	Bankaccount bankaccount = BusinessCtx.getInstance().getBankaccountService().getBankaccountByUserId(user.getIdUser());
-	    	
-	    	setEmail(user.getEmail());
-	    	setFirstname(user.getUsername());
-	    	
-	    	setSurname("TestNachname");
-	        setZipcode("12345");
-	        setCity("TestStadt");
-	        setStreet("TestStrasse");
-	        setStreetnumber("123");
-	        setBankaccountnumber(bankaccount.getAccount_nr());
-	        setBanknumber(bankaccount.getBank());
-	         
-	        
-	    	/*
-	        setFirstname(user.getFirstname());
-	        setSurname(user.getSurname());
-	        setZipcode(user.getZipcode());
-	        setCity(user.getCity());
-	        setStreet(user.getStreet());
-	        setStreetnumber(user.getStreetnumber());
-			*/
-	        
-	        
-	    	
-	        
-	    }
-		
-		
-		
-		
 	}
 
 	//je nach dem erstellen eines purchase...
@@ -212,19 +171,13 @@ public class PurchaseInputVM {
 	//@NotifyChange("newUser")
 	@Command
 	public void submit() {
-		final HashMap<String, Object> purchaseMap = new HashMap<String, Object>();
+		/*final HashMap<String, Object> purchaseMap = new HashMap<String, Object>();
 		purchaseMap.put("cartImages", this.getCartImages());
 		purchaseMap.put("totalCartPrice", this.getTotalCartPrice());
 		
-		
-		
-		// TODO hier das urchase Object ubergeben, entweder UserPurchase oder eben nur Purchase
-		// Purchase Objekt hier erstellen
-		// im naechsten Schritt in die DB schreiben, also beim finalen Bestaetigen
-		
-		
-		
-		Executions.createComponents("/purchaseOverview_modal.zul", null, purchaseMap);
+		Executions.createComponents("/purchaseOverview_modal.zul", null, purchaseMap);*/
+		Messagebox.show("blubblu");
+		// TODO dieses Fenster beim Absenden druecken schliessen
 		this.closeThis();
 	}
 	
@@ -236,7 +189,7 @@ public class PurchaseInputVM {
 	
 	@Command
 	public void closeThis() {
-		this.modalPurchaseInput.detach();
+		this.modalPurchaseOverview.detach();
 	}
 	
 	@AfterCompose

@@ -3,6 +3,8 @@ package de.htw.fb4.bilderplattform.business;
 import java.util.List;
 
 import de.htw.fb4.bilderplattform.dao.Bankaccount;
+import de.htw.fb4.bilderplattform.dao.GuestPurchase;
+import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.Purchase;
 import de.htw.fb4.bilderplattform.dao.PurchaseDAOImpl;
 import de.htw.fb4.bilderplattform.dao.Purchase_Image;
@@ -50,5 +52,19 @@ public class PurchaseServiceImpl implements IPurchaseService {
 				.getApplicationContext().getBean("purchaseDao",
 						PurchaseDAOImpl.class);
 		return purchaseDAO.getBankaccountByIdUser(idUser);
+	}
+	
+	@Override
+	public void saveUserPurchase (List<Image> imageList){
+		
+		// Purchase, UserPurchase, Purchase_Image speichern
+		
+		
+	}
+	
+	@Override
+	public void saveGuestPurchase(List<Image> imageList, GuestPurchase guestPurchase){
+	
+		// Purchase, Purchase_Image, GuestPurchase speichern
 	}
 }

@@ -1,6 +1,6 @@
 <zk xmlns:n="native" xmlns:c="client">
 
-<window id="modalPurchaseInput" 
+<window id="modalPurchaseOverview" 
 		border="none"
 	    width="auto"
 	    height="auto" 
@@ -13,15 +13,15 @@
 	    action="show:slideDown; hide:slideUp">
 
 	<div apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('purchaseInput_vm') @init('de.htw.fb4.bilderplattform.view.vm.PurchaseInputVM')"		
+		viewModel="@id('purchaseOverview_vm') @init('de.htw.fb4.bilderplattform.view.vm.PurchaseOverviewVM')"		
 		validationMessages="@id('vmsgs')"		 
-		form="@id('fx') @load(purchaseInput_vm)	@save(purchaseInput_vm, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.PurchaseValidator')">
+		form="@id('fx') @load(purchaseOverview_vm)	@save(purchaseOverview_vm, before='submit')">
 			  
 
 			  
 			  
 		<div class="modal-header">
-			<n:h3 id="regModalLabel">Kaufvorgang</n:h3>
+			<n:h3 id="regModalLabel">Zusammenfassung</n:h3>
 		</div>
 		<div class="modal-body">
 			<n:form class="form-horizontal">
@@ -123,25 +123,19 @@
 					<div class="control-group">
 						<n:label class="control-label" for="checkTOS" onClick="@command('closeThis')">AGB</n:label>
 						<div class="controls">
-							<checkbox checked="false" onCheck="submitCart.setDisabled(false)" id="checkTOS"></checkbox>
+							<checkbox checked="false" id="checkTOS"></checkbox>
 						</div>
 						<div style="text-align:right;">
 							<label class="error" value="@load(vmsgs['termsofservice'])" />
-						</div>						
+						</div>
 					</div>
 				</hbox>
 			</n:form>	
 		</div>
 		<div class="modal-footer">
 			<button onClick="@command('closeThis')" class="btn">Abbrechen</button>
-			<button class="btn btn-success" id="submitCart" onClick="@command('submit')" disabled="true" >Absenden</button> 
+			<button class="btn btn-success" id="submitCart" onClick="@command('submit')">Absenden</button> 
 		</div>
 	</div>
-	<zscript>
-		void enableSubmit(){
-			//submitCart.setDisabled(false);
-			//checkTOS.setDisabled(true);
-		}
-	</zscript>
 </window>
 </zk>
