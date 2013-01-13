@@ -30,7 +30,7 @@ public class Comment implements Serializable {
 	@Column(name = "stars", nullable=false)
 	private Integer stars;
 
-	@Column(name = "comment")
+	@Column(name = "comment", length=300)
 	private String comment;
 
 //	@Column(name = "Image_idImage", nullable=false)

@@ -40,8 +40,10 @@ public class CommentFormValidator extends AbstractValidator {
 					this.addInvalidMessage(ctx, "username",
 							SpringPropertiesUtil.getProperty("err.usernameIsNotValid"));
 				}else if(username.length() < 4){
+					this.addInvalidMessage(ctx, "username", ResourcesUtil.loadPropertyWithWildcardValues("err.usernameIsTooShort", 4));
+				}else if(username.length() > 20){
 					this.addInvalidMessage(ctx, "username",
-							SpringPropertiesUtil.getProperty("err.usernameIsTooShort"));
+							ResourcesUtil.loadPropertyWithWildcardValues("err.usernameIsTooLong", 20));
 				}else{
 					try {
 						BusinessCtx.getInstance().getUserService()
