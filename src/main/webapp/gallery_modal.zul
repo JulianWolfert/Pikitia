@@ -58,7 +58,7 @@
 			</div>
 			
 			<div sclass="comments">
-				<listbox model="@bind(vm.comments)" rows="2" emptyMessage="Keine Kommentare">
+				<listbox model="@bind(vm.comments)" height="100px;" emptyMessage="Keine Kommentare" width="330px;">
 				<template name="model">
 						<listitem>
 						<listcell>

@@ -110,6 +110,10 @@
   	margin-right:10px;
 }
 
+.infoPanel .comments .z-label {
+	word-wrap:break-word;
+}
+
 .infoPanel .comments .comment_username {
 	font-size:10px;
 }
@@ -154,6 +158,7 @@
   	text-rendering: optimizelegibility;
   	font-size: 18px;
 }
+
 
 
 
