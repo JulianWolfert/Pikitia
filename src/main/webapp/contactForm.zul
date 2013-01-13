@@ -42,7 +42,7 @@
 <!--  NAME  -->
 				<label value="Name*:" width="150px" />
 				<hlayout>
-					<textbox value="@bind(fx.nameSender)" width="150px"
+					<textbox id="tboxName" value="@bind(fx.nameSender)" width="150px"
 						tabindex="1" />
 					<label class="error"
 						value="@load(vmsgs['nameSender'])" />
@@ -50,7 +50,7 @@
 <!-- EMAIL -->
 				<label value="E-mail*:" width="150px" />
 				<hlayout>
-					<textbox value="@bind(fx.emailSender)" width="150px"
+					<textbox id="tboxEmail" value="@bind(fx.emailSender)" width="150px"
 						tabindex="2" />
 					<label class="error"
 						value="@load(vmsgs['emailSender'])" />
@@ -58,7 +58,7 @@
 <!-- SUBJECT -->
 				<label value="Betreff*:" width="150px" />
 				<hlayout>
-					<textbox value="@bind(fx.subject)" width="150px"
+					<textbox id="tboxSubject" value="@bind(fx.subject)" width="150px"
 						tabindex="3" />
 					<label class="error"
 						value="@load(vmsgs['subject'])" />
@@ -66,7 +66,7 @@
 <!-- MESSAGE -->
 				<label value="Nachricht*:" width="150px" />
 				<vlayout>
-					<textbox rows="6" value="@bind(fx.text)"
+					<textbox id="tboxMessage" rows="6" value="@bind(fx.text)"
 						width="370px;" tabindex="4" />
 					<label class="error" value="@load(vmsgs['text'])" />
 				</vlayout>

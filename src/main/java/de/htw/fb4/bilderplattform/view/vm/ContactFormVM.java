@@ -4,11 +4,20 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 import org.apache.log4j.Logger;
+import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.ContextParam;
+import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
@@ -36,6 +45,19 @@ public class ContactFormVM {
 	@Wire("#contactForm")
 	private Window win;
 	
+	@Wire("#tboxName")
+	private Textbox tboxName;
+	
+	@Wire("#tboxEmail")
+	private Textbox tboxEmail;
+	
+	@Wire("#tboxSubject")
+	private Textbox tboxSubject;
+	
+	@Wire("#tboxMessage")
+	private Textbox tboxMessage;
+	
+	
 	private IUserService userService = BusinessCtx.getInstance().getUserService();
 	private IImageService imageService = BusinessCtx.getInstance().getImageService();
 	
@@ -46,6 +68,11 @@ public class ContactFormVM {
 	private String subject;
 	private String text;
 	private User receiver;
+	
+	@AfterCompose
+	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
+		Selectors.wireComponents(view, this, false);
+	}
 	
 	//second
 	@Init
@@ -142,10 +169,10 @@ public class ContactFormVM {
 	/* more functionality */
 
 	private void resetForm() {
-		nameSender = "";
-		emailSender = "";
-		subject = "";
-		text = "";
+		tboxName.setText("");
+		tboxEmail.setText("");
+		tboxSubject.setText("");
+		tboxMessage.setText("");
 	}
 	
 	/* commands */
@@ -161,10 +188,11 @@ public class ContactFormVM {
 		
 		String companyName = SpringPropertiesUtil.getProperty("lbl.companyName");		
 		// create email
+		subject = subjectFilter(subject);
 		IMail mail = new MailImpl();
 		mail.setSender(companyName)
 			.setReceiver(emailSender)
-			.setSubject("[" + companyName +"]" + subject)
+			.setSubject("[" + companyName +"] " + subject)
 			.setMessage(preparedMailMessage())
 			.setTimeStamp(Calendar.getInstance().getTime());
 		
@@ -185,6 +213,19 @@ public class ContactFormVM {
 		
 		// reset form
 	    resetForm();
+	    
+	    // show message box and close window on OK Event
+		Messagebox.show(SpringPropertiesUtil.getProperty("msg.messageSuccess"),
+				SpringPropertiesUtil.getProperty("msg.messageSuccessHead"), Messagebox.OK,
+				Messagebox.INFORMATION, new EventListener<Event>() {
+					@Override
+					public void onEvent(Event event) throws Exception {
+						if (((Integer) event.getData()).intValue() == Messagebox.OK) {
+							closeThis();
+							return;
+						}
+					}
+				});
     }
 	
 	
@@ -212,5 +253,12 @@ public class ContactFormVM {
 		win.detach();
 	}
 	
+	private String subjectFilter(String subject) {
+		subject = subject.replaceAll("ß", "ss");
+		subject = subject.replaceAll("ü", "ue");
+		subject = subject.replaceAll("ä", "ae");
+		subject = subject.replaceAll("ö", "oe");
+		return subject;
+	}
 	
 }
