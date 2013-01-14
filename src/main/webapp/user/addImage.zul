@@ -37,7 +37,7 @@
 										<label value="Titel:*" />
 										<cell>
 											<textbox type="text"
-												width="95%" value="@bind(fx.title)" tabindex="1"/>
+												width="95%" value="@bind(fx.title)" tabindex="1" maxlength="20"/>
 											<label class="error"
 												value="@load(vmsgs['title'])" />
 										</cell>

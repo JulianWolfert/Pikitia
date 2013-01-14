@@ -8,20 +8,20 @@
 		<rows>
 			<row>
 				<label value="Titel" />
-				<textbox
-					onChange="@command('updateImage')" value="@bind(vm.image.title)"
-					constraint="no empty: Bitte einen Titel eingeben" />
+				<textbox onChange="@command('updateImage')"
+					value="@bind(vm.image.title)"
+					constraint="no empty: Bitte einen Titel eingeben" maxlength="20" width="95%" />
 			</row>
 			<row>
 				<label value="Beschreibung" />
-				<textbox
-					onChange="@command('updateImage')" value="@bind(vm.image.description)"
-					constraint="no empty: Bitte eine Beschreibung eingeben" />
+				<textbox onChange="@command('updateImage')"
+					value="@bind(vm.image.description)"
+					constraint="no empty: Bitte eine Beschreibung eingeben" maxlength="180" rows="5" style="resize:none;" width="97%" />
 			</row>
 			<row>
 				<label value="Preis" />
-				<textbox
-					onChange="@command('updateImage')" value="@bind(vm.image.price)"
+				<textbox onChange="@command('updateImage')"
+					value="@bind(vm.image.price)"
 					constraint="no empty: Bitte einen Preis eingeben" />
 			</row>
 		</rows>

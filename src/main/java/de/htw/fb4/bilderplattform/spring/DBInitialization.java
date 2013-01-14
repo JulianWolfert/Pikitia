@@ -2,9 +2,7 @@ package de.htw.fb4.bilderplattform.spring;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -82,8 +80,8 @@ public class DBInitialization implements InitializingBean {
 				.getUserByName("jonathan");
 
 		for (String filename : initialPictures) {
-			System.out.println("Initialisiere Image: "
-					+ imageService.getImagePath(filename));
+//			System.out.println("Initialisiere Image: "
+//					+ imageService.getImagePath(filename));
 			File file = new File(imageService.getImagePath(filename));
 			Image image = new Image();
 			image.setDescription("description" + imgId);
