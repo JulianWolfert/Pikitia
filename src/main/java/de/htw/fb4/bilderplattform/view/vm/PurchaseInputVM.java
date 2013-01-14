@@ -27,6 +27,7 @@ import de.htw.fb4.bilderplattform.dao.Bankaccount;
 import de.htw.fb4.bilderplattform.dao.GuestPurchase;
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.User;
+import de.htw.fb4.bilderplattform.dao.UserPurchase;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
@@ -218,7 +219,8 @@ public class PurchaseInputVM {
 		purchaseMap.put("totalCartPrice", this.getTotalCartPrice());
 		
 		// if there is no logged in user a guestPurchase has to be created
-		if(SecurityContextHolder.getContext().getAuthentication() == null){
+//		if(SecurityContextHolder.getContext().getAuthentication() == null){
+		if(!BusinessCtx.getInstance().getUserService().isAUserAuthenticated()) {
 
 			GuestPurchase guestPurchase = new GuestPurchase();
 			
@@ -233,10 +235,31 @@ public class PurchaseInputVM {
 			guestPurchase.setBank(banknumber);
 			
 			purchaseMap.put("guestPurchase", guestPurchase);
+			
+			purchaseMap.put("userPurchase", null);
+			
+			purchaseMap.put("registeredUserData", null);
 		} else {
 			purchaseMap.put("guestPurchase", null);
+			
+			UserPurchase userPurchase = new UserPurchase();
+			userPurchase.setUser(BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser());
+			purchaseMap.put("userPurchase", userPurchase);
+			
+			
+			//TODO: Diese Daten einer Entity zuweisen.
+			//so ist es praktischer, weil man der overwiew nur einen Parameter uebergeben muss.
+			HashMap<String, String> registeredUserData = new HashMap<String, String>();
+			registeredUserData.put("firstname", this.getFirstname().toString());
+			registeredUserData.put("surname", this.getSurname());
+			registeredUserData.put("street", this.getStreet());
+			registeredUserData.put("streetnumber", this.getStreetnumber());
+			registeredUserData.put("zipcode", this.getZipcode());
+			registeredUserData.put("city", this.getCity());
+			
+			purchaseMap.put("registeredUserData", registeredUserData);
 		}
-		// TODO hier das urchase Object ubergeben, entweder UserPurchase oder eben nur Purchase
+		// TODO hier das purchase Object ubergeben, entweder UserPurchase oder eben nur Purchase
 		// Purchase Objekt hier erstellen
 		// im naechsten Schritt in die DB schreiben, also beim finalen
 		// Bestaetigen
