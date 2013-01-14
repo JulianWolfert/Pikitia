@@ -1,10 +1,8 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
@@ -12,9 +10,13 @@ import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Checkbox;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
@@ -22,7 +24,6 @@ import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.dao.Bankaccount;
 import de.htw.fb4.bilderplattform.dao.GuestPurchase;
 import de.htw.fb4.bilderplattform.dao.Image;
-import de.htw.fb4.bilderplattform.dao.Purchase;
 import de.htw.fb4.bilderplattform.dao.User;
 import de.htw.fb4.bilderplattform.dao.UserPurchase;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
@@ -40,6 +41,13 @@ public class PurchaseOverviewVM {
 
 	@Wire
 	Button closeButton;
+	@Wire
+	Button submitCart;
+	
+	@Wire
+	Checkbox checkTOS;
+	@Wire
+	Label lblTOS;
 
 	private List<Image> cartImages;
 	private Double totalCartPrice;
@@ -58,6 +66,23 @@ public class PurchaseOverviewVM {
 
 	private HashMap<String, String> registeredUserData = new HashMap<String, String>();
 
+	@AfterCompose
+	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
+		Selectors.wireComponents(view, this, false);
+		
+		this.checkTOS.addEventListener("onCheck", new EventListener() {
+			public void onEvent(Event event) throws Exception {
+				if(checkTOS.isChecked()){
+					submitCart.setDisabled(false);
+					lblTOS.setValue("");
+				}else{
+					submitCart.setDisabled(true);
+					lblTOS.setValue(SpringPropertiesUtil.getProperty("err.checkTermOfService"));
+				}
+			}
+		});
+	}
+	
 	@Init
 	public void init(@ContextParam(ContextType.VIEW) Component view,
 			@ExecutionArgParam("cartImages") List<Image> cartImages,
@@ -76,7 +101,7 @@ public class PurchaseOverviewVM {
 		this.registeredUserData = registeredUserData;
 				
 	    if(BusinessCtx.getInstance().getUserService().isAUserAuthenticated()){
-	    	// HIER WUERDE ICH DAS USERPURCHASE OBJECT NEHMEN! Der user kann doch die fomularfelder aendern. :-) 	
+	    	// weg damit! Der user kann doch die fomularfelder aendern. :-) 	
 //	    	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //	    	Bankaccount bankaccount = BusinessCtx.getInstance().getBankaccountService().getBankaccountByUserId(user.getIdUser());
 	    
@@ -87,7 +112,6 @@ public class PurchaseOverviewVM {
 		    	
 		    	setEmail(user.getEmail());
 		    	
-		    	//hier ist alles korrekt
 		    	setFirstname(getRegisteredUserDataValue("firstname"));
 		    	setSurname(getRegisteredUserDataValue("surname"));
 		        setZipcode(getRegisteredUserDataValue("zipcode"));
@@ -223,7 +247,6 @@ public class PurchaseOverviewVM {
 		this.banknumber = banknumber;
 	}
 
-	// @NotifyChange("newUser")
 	@Command
 	public void submit() {
 		if(this.guestPurchase != null){
@@ -232,26 +255,16 @@ public class PurchaseOverviewVM {
 			BusinessCtx.getInstance().getPurchaseService().saveUserPurchase(this.cartImages, this.userPurchase);
 		}
 		
+		//TODO: EMAIL versenden.
+		
 		Messagebox.show(SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess"), "Info", Messagebox.OK, Messagebox.INFORMATION);
-		// TODO dieses Fenster beim Absenden druecken schliessen
 		this.closeThis();
-	}
-
-	@Command
-	public void enableSubmit() {
-		// TODO bim chekcen der AGBs den Absenden Button aktivieren
 	}
 
 	@Command
 	public void closeThis() {
 		this.modalPurchaseOverview.detach();
 	}
-
-	@AfterCompose
-	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
-		Selectors.wireComponents(view, this, false);
-	}
-
 
 }
 

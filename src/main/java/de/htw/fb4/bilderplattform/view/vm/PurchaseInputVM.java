@@ -41,13 +41,6 @@ public class PurchaseInputVM {
 
 	@Wire
 	Button closeButton;
-	@Wire
-	Button submitCart;
-
-	@Wire
-	Checkbox checkTOS;
-	@Wire
-	Label lblTOS;
 
 	private List<Image> cartImages;
 	private Double totalCartPrice;
@@ -65,18 +58,6 @@ public class PurchaseInputVM {
 	@AfterCompose
 	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
 		Selectors.wireComponents(view, this, false);
-
-		this.checkTOS.addEventListener("onCheck", new EventListener() {
-			public void onEvent(Event event) throws Exception {
-				if(checkTOS.isChecked()){
-					submitCart.setDisabled(false);
-					lblTOS.setValue("");
-				}else{
-					submitCart.setDisabled(true);
-					lblTOS.setValue(SpringPropertiesUtil.getProperty("err.checkTermOfService"));
-				}
-			}
-		});
 	}
 	
 	@Init
@@ -217,7 +198,6 @@ public class PurchaseInputVM {
 		purchaseMap.put("totalCartPrice", this.getTotalCartPrice());
 		
 		// if there is no logged in user a guestPurchase has to be created
-//		if(SecurityContextHolder.getContext().getAuthentication() == null){
 		if(!BusinessCtx.getInstance().getUserService().isAUserAuthenticated()) {
 
 			GuestPurchase guestPurchase = new GuestPurchase();
@@ -244,8 +224,7 @@ public class PurchaseInputVM {
 			userPurchase.setUser(BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser());
 			purchaseMap.put("userPurchase", userPurchase);
 			
-			
-			//TODO: Diese Daten einer Entity zuweisen.
+			//TODO: Diese Daten einer Entity zuweisen. Irgendwann spaeter :-)
 			//so ist es praktischer, weil man der overwiew nur einen Parameter uebergeben muss.
 			HashMap<String, String> registeredUserData = new HashMap<String, String>();
 			registeredUserData.put("firstname", this.getFirstname().toString());
@@ -257,11 +236,6 @@ public class PurchaseInputVM {
 			
 			purchaseMap.put("registeredUserData", registeredUserData);
 		}
-		// TODO hier das purchase Object ubergeben, entweder UserPurchase oder eben nur Purchase
-		// Purchase Objekt hier erstellen
-		// im naechsten Schritt in die DB schreiben, also beim finalen
-		// Bestaetigen
-
 		Executions.createComponents("/purchaseOverview_modal.zul", null,
 				purchaseMap);
 		this.closeThis();

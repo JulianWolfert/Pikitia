@@ -93,19 +93,22 @@
 					</div>
 				</hbox>
 				<separator spacing="15px" />
-				<hbox>
+				<hbox style="width:100%">
 					<div class="control-group">
 						<n:label class="control-label">AGB</n:label>
 						<div class="controls">
 							<checkbox checked="false" id="checkTOS"></checkbox>
-						</div>	
+						</div>
+						<div style="text-align:right;">
+							<label class="error" id="lblTOS" />
+						</div>						
 					</div>
 				</hbox>
 			</n:form>	
 		</div>
 		<div class="modal-footer">
 			<button onClick="@command('closeThis')" class="btn">Abbrechen</button>
-			<button class="btn btn-success" id="submitCart" onClick="@command('submit')">Absenden</button> 
+			<button class="btn btn-success" id="submitCart" onClick="@command('submit')" disabled="true" >Absenden</button> 
 		</div>
 	</div>
 </window>
