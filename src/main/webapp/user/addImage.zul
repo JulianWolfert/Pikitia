@@ -1,7 +1,7 @@
 <!-- created by Peter Horn -->
 <!-- modified by Wojciech Konitzer -->
 
-<?page title="Bilerupload" contentType="text/html;charset=UTF-8"?>
+<?page title="Bilderupload" contentType="text/html;charset=UTF-8"?>
 <zk xmlns:n="native" xmlns:c="client">
 
 	<n:div id="header">

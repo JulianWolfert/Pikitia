@@ -1,40 +1,48 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:c="client">
 
 <window id="modalMessageDetail" 
-	title="Nachrichtendetail"
-	border="normal"
-    width="400px" 
-    height="400px" 
+    width="auto" 
+    height="auto" 
     minimizable="false"
     maximizable="false"
     mode="modal"
     position="center,center" 
-    closable="true"
     action="show:slideDown; hide:slideUp"
-    onCancel="@command('closeThis')"
     apply="org.zkoss.bind.BindComposer"
 	viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.MessageDetailVM')"
+	validationMessages="@id('vmsgs')"
+	form="@id('fx') @save(vm, before='submit') @validator('de.htw.fb4.bilderplattform.view.validator.MessageAnswerValidator')"
 	>
+	
+	<div class="modal-header">
+			<n:h3 id="regModalLabel">Nachricht</n:h3>
+	</div>
 
-	<div> 
-	    <grid id="grid" height="400px" width="400px">        
-	        <columns>
-	            <column width="100px"/>
-	            <column width="100%"/>
-	        </columns>
-	        <rows>
-	        	<row>
-	        		<label value="Betreff:"  />
-	        		<textbox width="100%" value="@bind(vm.message.subject)" />
-	        	</row>
-	        	<row>
-	    			<label value="Nachricht:" />
-					<textbox width="100%" height="200px" value="@bind(vm.message.text)" />	    	
-	        	</row>
-	        	<row>
-	        		<button width="100%" label="Antworten" id="bt_reply" type="button"  onClick="@command('contact')"/>
-	        	</row>
-	        </rows>
-	    </grid>    
-	    
- 	</div>	
+	<div class="modal-body">
+	
+<!--  BETREFF  -->
+				<label value="Betreff:" width="150px" />
+				<hlayout>
+					<textbox readonly="true" value="@bind(vm.message.subject)" width="200px"
+						tabindex="1" />
+				</hlayout>
+<!-- NACHRICHT -->
+				<label value="Nachricht:" width="300px" />
+				<hlayout>
+					<textbox readonly="true" style="resize:none;" rows="6" value="@bind(vm.message.text)" width="300px"
+						tabindex="2" />
+				</hlayout>
+<!-- Antwort -->
+				<label value="Ihre Antwort*:" width="300px" />
+				<hlayout>
+				<textbox id="answerBox" style="resize:none;" value="@bind(fx.text)" rows="6" width="300px" tabindex="3" />
+				</hlayout>
+				<label class="error" value="@load(vmsgs['text'])" />	    
+ 	</div>
+ 	<div class="modal-footer">
+ 		<button label="&#8629; Antworten" id="bt_reply" type="button" class="btn btn-success"  onClick="@command('submit')"/>
+		<button onClick="@command('closeThis')" class="btn">Schließen</button>
+	</div>	
 </window>
+</zk>

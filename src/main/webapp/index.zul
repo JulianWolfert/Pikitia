@@ -7,7 +7,7 @@
 	<n:div id="header">
 		<include src="/layout/header_menu2.zul" />
 	</n:div>
-	<n:div id="content">
+	<n:div id="content" style="padding-top:20px;">
 		<n:div id="content_fullsize">
 			<script type="text/javascript" src="/js/jquery-ui-1.9.2.custom.min.js" ></script>
 			<script type="text/javascript" src="/js/banner.js" ></script>	

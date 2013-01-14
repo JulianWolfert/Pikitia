@@ -1,4 +1,5 @@
 <zk xmlns:n="native" xmlns:c="client">
+<n:link rel="icon" type="image/png" href="images/Logo3.png"></n:link>
 <style src="/bootstrap/css/bootstrap.css"></style>
 <style src="/css/styles.css"></style>
 <style src="/css/header.css"></style>
@@ -22,7 +23,7 @@ viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.HeaderVM')">
 <n:div id="header_content">
 
 	<div class="logo">
-		<a onClick="@command('returnHome')" image="/images/Logo2.png"></a>
+		<a onClick="@command('returnHome')" image="/images/Logo3.png"></a>
 	</div>
 
 	<div class ="main_nav">

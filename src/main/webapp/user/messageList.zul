@@ -1,21 +1,24 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
-<zk>
+<zk xmlns:n="native" xmlns:c="client">
+
+
 	<window id="modalMessageList" 
-		title="Nachrichten"
-		border="normal"
-	    width="450px" 
+	    width="500px" 
 	    height="auto" 
 	    minimizable="false"
 	    maximizable="false"
 	    mode="modal"
 	    position="center,center" 
-	    closable="true"
 	    action="show:slideDown; hide:slideUp"
 	    onCancel="@command('closeThis')"
 	    apply="org.zkoss.bind.BindComposer"			
 		viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.MessageListVM')">
 					
-		
+		<div class="modal-header">
+			<n:h3 id="regModalLabel">Posteingang</n:h3>
+		</div>
+					
+		<div class="modal-body">
 						
 		<borderlayout sclass="complex-layout" height="250px">
 			
@@ -50,6 +53,10 @@
 				</panel>
 			</center>
 		</borderlayout>
+		<div class="modal-footer">
+			<button onClick="@command('closeThis')" class="btn">Schließen</button>
+		</div>
+		</div>
 	</window>			
 </zk>
 

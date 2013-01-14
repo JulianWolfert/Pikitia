@@ -160,6 +160,7 @@ src/main/webapp/gallery.zul -text
 src/main/webapp/gallery_modal.zul -text
 src/main/webapp/images/Logo.png -text
 src/main/webapp/images/Logo2.png -text
+src/main/webapp/images/Logo3.png -text
 src/main/webapp/images/add_small.png -text
 src/main/webapp/images/banner/img01.jpg -text
 src/main/webapp/images/banner/img02.jpg -text
