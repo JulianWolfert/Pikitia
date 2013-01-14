@@ -101,16 +101,14 @@ public class PurchaseOverviewVM {
 		this.registeredUserData = registeredUserData;
 				
 	    if(BusinessCtx.getInstance().getUserService().isAUserAuthenticated()){
-	    	// weg damit! Der user kann doch die fomularfelder aendern. :-) 	
-//	    	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//	    	Bankaccount bankaccount = BusinessCtx.getInstance().getBankaccountService().getBankaccountByUserId(user.getIdUser());
-	    
+
 	    	//Registered User
 	    	if(userPurchase != null){
 		    	User user = userPurchase.getUser();
 		    	Bankaccount bankaccount = BusinessCtx.getInstance().getBankaccountService().getBankaccountByUserId(user.getIdUser());
 		    	
-		    	setEmail(user.getEmail());
+		    	//setEmail(user.getEmail());
+		    	setEmail(getRegisteredUserDataValue("email"));
 		    	
 		    	setFirstname(getRegisteredUserDataValue("firstname"));
 		    	setSurname(getRegisteredUserDataValue("surname"));
@@ -119,10 +117,14 @@ public class PurchaseOverviewVM {
 		        setStreet(getRegisteredUserDataValue("street"));
 		        setStreetnumber(getRegisteredUserDataValue("streetnumber"));
 		        
+		        setBankaccountnumber(getRegisteredUserDataValue("bankaccountnumber"));
+		        setBanknumber(getRegisteredUserDataValue("banknumber"));
+		        
+		        /*
 		        if (bankaccount != null){
 		        	setBankaccountnumber(bankaccount.getAccount_nr());
 		        	setBanknumber(bankaccount.getBank());
-		        } 
+		        } */
 	    	}
 	    } else {    	
 	    	//Guest (without loggin)
@@ -257,7 +259,7 @@ public class PurchaseOverviewVM {
 		
 		//TODO: EMAIL versenden.
 		
-		Messagebox.show(SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess"), "Info", Messagebox.OK, Messagebox.INFORMATION);
+		Messagebox.show(SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess")+ "\n babla", "Info", Messagebox.OK, Messagebox.INFORMATION);
 		this.closeThis();
 	}
 
