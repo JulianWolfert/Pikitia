@@ -1,7 +1,7 @@
 //created by Peter Horn
 
 //configuration
-var intervall = 3000;
+var intervall = 5000;
 
 // do not change values!
 var autoSwitcherOn = true;
