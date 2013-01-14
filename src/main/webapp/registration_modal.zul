@@ -25,7 +25,7 @@
 				<div class="control-group">
 					<n:label class="control-label" for="inputEmail">Benutzername</n:label>
 					<div class="controls">
-					<textbox type="text" value="@bind(fx.username)" placeholder="Benutzername" id="inputEmail"></textbox>	
+					<textbox type="text" value="@bind(fx.username)" placeholder="Benutzername" id="inputEmail" maxlength="20"></textbox>	
 					</div>
 					<div style="text-align:right;">
 					<label class="error" value="@load(vmsgs['username'])" />

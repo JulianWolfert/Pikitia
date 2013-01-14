@@ -95,7 +95,11 @@ public class CommentFormVM {
 	}
 
 	public void setText(String text) {
-		this.text = text;
+		if(text != null){
+			this.text = text.trim();
+		}else{
+			this.text = text;
+		}
 	}
 
 	public void setUsername(String username) {
@@ -104,7 +108,7 @@ public class CommentFormVM {
 
 	@Command
 	public void submit() {
-		String usrname = this.username;
+		String usrname = this.username.trim();
 		if (!userService.isAUserAuthenticated()) {
 			usrname = this.username + " "
 					+ SpringPropertiesUtil.getProperty("lbl.anonymousUser");

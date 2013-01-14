@@ -8,6 +8,7 @@ import org.zkoss.bind.ValidationContext;
 import org.zkoss.bind.validator.AbstractValidator;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.util.ResourcesUtil;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
@@ -40,8 +41,10 @@ public class RegistrationValidator extends AbstractValidator {
 				this.addInvalidMessage(ctx, "username",
 						SpringPropertiesUtil.getProperty("err.usernameIsNotValid"));
 			}else if(username.length() < 4){
+				this.addInvalidMessage(ctx, "username", ResourcesUtil.loadPropertyWithWildcardValues("err.usernameIsTooShortWithLength", 4));
+			}else if(username.length() > 20){
 				this.addInvalidMessage(ctx, "username",
-						SpringPropertiesUtil.getProperty("err.usernameIsTooShort"));
+						ResourcesUtil.loadPropertyWithWildcardValues("err.usernameIsTooLongWithLength", 20));
 			}else{
 				try {
 					BusinessCtx.getInstance().getUserService()
@@ -61,8 +64,7 @@ public class RegistrationValidator extends AbstractValidator {
 			this.addInvalidMessage(ctx, "password",
 					SpringPropertiesUtil.getProperty("err.bothPasswordsAreInvalid"));
 		}else if(!password.matches("^\\S{6,}$")){
-			this.addInvalidMessage(ctx, "password",
-					SpringPropertiesUtil.getProperty("err.passwordIsTooShort"));
+			this.addInvalidMessage(ctx, "username", ResourcesUtil.loadPropertyWithWildcardValues("err.passwordIsTooShortWithLength", 6));
 		}
 	}
 
