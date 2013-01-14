@@ -6,11 +6,11 @@ var intervall = 3000;
 // do not change values!
 var autoSwitcherOn = true;
 var animationIsRunning = false;
-var autoSwitcher = window.setInterval("nextImg()", intervall);
+var autoSwitcher;
 
-window.onload = init;
+window.onload = init_banner;
 
-function init() {
+function init_banner() {
 	var $first = $('.banner_imglist img').first();
 	var banner_height = $('.banner_imglist').height();
 	var banner_width = $('.banner_imglist').width();
@@ -34,6 +34,7 @@ function init() {
 
 	$first.addClass('active');
 	$first.show();
+	autoSwitcher = window.setInterval("nextImg()", intervall);
 }
 
 function resetAutoSwitcher() {
