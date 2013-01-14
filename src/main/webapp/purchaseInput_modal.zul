@@ -119,14 +119,14 @@
 					</div>
 				</hbox>
 				<separator spacing="15px" />
-				<hbox>
+				<hbox style="width:100%">
 					<div class="control-group">
-						<n:label class="control-label" for="checkTOS" onClick="@command('closeThis')">AGB</n:label>
+						<n:label class="control-label">AGB</n:label>
 						<div class="controls">
-							<checkbox checked="false" onCheck="submitCart.setDisabled(false)" id="checkTOS"></checkbox>
+							<checkbox checked="false" id="checkTOS"></checkbox>
 						</div>
 						<div style="text-align:right;">
-							<label class="error" value="@load(vmsgs['termsofservice'])" />
+							<label class="error" id="lblTOS" />
 						</div>						
 					</div>
 				</hbox>
@@ -137,11 +137,5 @@
 			<button class="btn btn-success" id="submitCart" onClick="@command('submit')" disabled="true" >Absenden</button> 
 		</div>
 	</div>
-	<zscript>
-		void enableSubmit(){
-			//submitCart.setDisabled(false);
-			//checkTOS.setDisabled(true);
-		}
-	</zscript>
 </window>
 </zk>
