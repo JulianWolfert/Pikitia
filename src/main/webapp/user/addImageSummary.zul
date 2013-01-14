@@ -36,7 +36,7 @@
 									<row>
 										<label value="Beschreibung*:" />
 										<label
-											value="@bind(vm.image.description)" />
+											value="@bind(vm.image.description)" style="word-wrap:break-word;" />
 									</row>
 									<row>
 										<label value="Preis:*" />
