@@ -3,6 +3,7 @@ package de.htw.fb4.bilderplattform.view.vm;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
@@ -20,6 +21,8 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.dao.Bankaccount;
+import de.htw.fb4.bilderplattform.dao.GuestPurchase;
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.Message;
 import de.htw.fb4.bilderplattform.dao.User;
@@ -40,6 +43,7 @@ public class PurchaseOverviewVM {
 	
 	private List<Image> cartImages;
 	private Double totalCartPrice;
+	private GuestPurchase guestPurchase = null;
 	
 	private String email;
 	private String firstname;
@@ -54,13 +58,46 @@ public class PurchaseOverviewVM {
 	@Init
 	public void init(@ContextParam(ContextType.VIEW) Component view,
 			@ExecutionArgParam("cartImages") List<Image> cartImages,
-			@ExecutionArgParam("totalCartPrice") Double totalCartPrice){
+			@ExecutionArgParam("totalCartPrice") Double totalCartPrice,
+			@ExecutionArgParam("guestPurchase") GuestPurchase guestPurchase){
+		
 		Selectors.wireComponents(view, this, false);
 		this.cartImages = cartImages;
+		this.guestPurchase = guestPurchase;
 		this.totalCartPrice = totalCartPrice;
+				
+	    if(SecurityContextHolder.getContext().getAuthentication() != null){
+	    		    	
+	    	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    	Bankaccount bankaccount = BusinessCtx.getInstance().getBankaccountService().getBankaccountByUserId(user.getIdUser());
+	    	
+	    	setEmail(user.getEmail());
+	    	setFirstname(user.getUsername());
+	    	
+	    	setSurname("TestNachname");
+	        setZipcode("12345");
+	        setCity("TestStadt");
+	        setStreet("TestStrasse");
+	        setStreetnumber("123");
+	        if (bankaccount != null){
+	        	setBankaccountnumber(bankaccount.getAccount_nr());
+	        	setBanknumber(bankaccount.getBank());
+	        }
+	     	        
+	    	/*
+	        setFirstname(user.getFirstname());
+	        setSurname(user.getSurname());
+	        setZipcode(user.getZipcode());
+	        setCity(user.getCity());
+	        setStreet(user.getStreet());
+	        setStreetnumber(user.getStreetnumber());
+			*/
+	        
+	    } else {
+	    	
+	    }
+	    	
 	}
-
-	//je nach dem erstellen eines purchase...
 
 
 	public List<Image> getCartImages() {
@@ -69,6 +106,14 @@ public class PurchaseOverviewVM {
 
 	public void setCartImages(List<Image> cartImages) {
 		this.cartImages = cartImages;
+	}
+
+	public GuestPurchase getGuestPurchase() {
+		return guestPurchase;
+	}
+
+	public void setGuestPurchase(GuestPurchase guestPurchase) {
+		this.guestPurchase = guestPurchase;
 	}
 
 	public Double getTotalCartPrice() {

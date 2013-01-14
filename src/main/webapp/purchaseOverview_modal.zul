@@ -101,21 +101,19 @@
 				<hbox>					
 					<div class="control-group">
 						<n:label class="control-label" for="inputBankAccountNumber">Kontonummer</n:label>
-						<div class="controls">
+						<label value="@bind(fx.bankaccountnumber)" id="inputBankAccountNumber"></label>
+					<!-- <div class="controls">
 							<textbox value="@bind(fx.bankaccountnumber)" placeholder="Kontonummer" id="inputBankAccountNumber"></textbox>
 						</div>
-						<div style="text-align:right;">
-							<label class="error" value="@load(vmsgs['bankaccountnumber'])" />
-						</div>
+					 -->	
+					
 					</div>
 					<div class="control-group">
 						<n:label class="control-label" for="inputBankNumber">Bankleitzahl</n:label>
 						<div class="controls">
 							<textbox value="@bind(fx.banknumber)" placeholder="Bankleitzahl" id="inputBankNumber"></textbox>
 						</div>
-						<div style="text-align:right;">
-							<label class="error" value="@load(vmsgs['banknumber'])" />
-						</div>
+					
 					</div>
 				</hbox>
 				<separator spacing="15px" />
@@ -125,9 +123,7 @@
 						<div class="controls">
 							<checkbox checked="false" id="checkTOS"></checkbox>
 						</div>
-						<div style="text-align:right;">
-							<label class="error" value="@load(vmsgs['termsofservice'])" />
-						</div>
+						
 					</div>
 				</hbox>
 			</n:form>	

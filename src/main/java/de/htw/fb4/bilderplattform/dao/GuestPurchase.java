@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 /**
  * 
- * @author Peter Horn
+ * @author Peter Horn, Benjamin Schock
  *
  */
 @Entity
@@ -25,12 +25,15 @@ public class GuestPurchase {
 	private String street;
 
 	@Column(name = "street_nr", nullable = false)
-	private Integer street_nr;
+	private String street_nr;
 
+	@Column(name = "city", nullable = false)
+	private String city;
+	
 	@Column(name = "postalcode", nullable = false)
 	private String postalcode;
 
-	@Column(name = "email")
+	@Column(name = "email", nullable = false)
 	private String email;
 
 	@Column(name = "bank", nullable = false)
@@ -67,8 +70,12 @@ public class GuestPurchase {
 		return street;
 	}
 
-	public Integer getStreet_nr() {
+	public String getStreet_nr() {
 		return street_nr;
+	}
+	
+	public String getCity() {
+		return city;
 	}
 
 	public String getSurname() {
@@ -103,10 +110,14 @@ public class GuestPurchase {
 		this.street = street;
 	}
 
-	public void setStreet_nr(Integer street_nr) {
+	public void setStreet_nr(String street_nr) {
 		this.street_nr = street_nr;
 	}
 
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}

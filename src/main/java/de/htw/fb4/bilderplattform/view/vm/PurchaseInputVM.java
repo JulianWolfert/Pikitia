@@ -24,6 +24,7 @@ import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.dao.Bankaccount;
+import de.htw.fb4.bilderplattform.dao.GuestPurchase;
 import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.User;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
@@ -87,38 +88,39 @@ public class PurchaseInputVM {
 		Selectors.wireComponents(view, this, false);
 		this.cartImages = cartImages;
 		this.totalCartPrice = totalCartPrice;
-
-		if (SecurityContextHolder.getContext().getAuthentication() != null) {
-
-			User user = (User) SecurityContextHolder.getContext()
-					.getAuthentication().getPrincipal();
-			// TODO Bankaccount
-			Bankaccount bankaccount = BusinessCtx.getInstance()
-					.getBankaccountService()
-					.getBankaccountByUserId(user.getIdUser());
-
-			setEmail(user.getEmail());
-			setFirstname(user.getUsername());
-
-			setSurname("TestNachname");
-			setZipcode("12345");
-			setCity("TestStadt");
-			setStreet("TestStrasse");
-			setStreetnumber("123");
-			setBankaccountnumber(bankaccount.getAccount_nr());
-			setBanknumber(bankaccount.getBank());
-
-			/*
-			 * setFirstname(user.getFirstname()); setSurname(user.getSurname());
-			 * setZipcode(user.getZipcode()); setCity(user.getCity());
-			 * setStreet(user.getStreet());
-			 * setStreetnumber(user.getStreetnumber());
-			 */
-		}
-
+		
+	    if(BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser() != null){
+	    	
+	    	User user = BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser();
+	    	//Bankaccount bankaccount = BusinessCtx.getInstance().getBankaccountService().getBankaccountByUserId(user.getIdUser());
+	    	
+	    	setEmail(user.getEmail());
+	    	setFirstname(user.getUsername());
+	    	
+	    	setSurname("TestNachname");
+	        setZipcode("12345");
+	        setCity("TestStadt");
+	        setStreet("TestStrasse");
+	        setStreetnumber("123");
+	        setBankaccountnumber("123456");
+	        setBanknumber("12345678");
+	        
+	        /*
+	        if (bankaccount != null){
+	        	setBankaccountnumber(bankaccount.getAccount_nr());
+	        	setBanknumber(bankaccount.getBank());
+	        }
+	        
+	        setFirstname(user.getFirstname());
+	        setSurname(user.getSurname());
+	        setZipcode(user.getZipcode());
+	        setCity(user.getCity());
+	        setStreet(user.getStreet());
+	        setStreetnumber(user.getStreetnumber());
+			*/
+	    }
 	}
 
-	// je nach dem erstellen eines purchase...
 
 	public List<Image> getCartImages() {
 		return cartImages;
@@ -214,9 +216,27 @@ public class PurchaseInputVM {
 		final HashMap<String, Object> purchaseMap = new HashMap<String, Object>();
 		purchaseMap.put("cartImages", this.getCartImages());
 		purchaseMap.put("totalCartPrice", this.getTotalCartPrice());
+		
+		// if there is no logged in user a guestPurchase has to be created
+		if(SecurityContextHolder.getContext().getAuthentication() == null){
 
-		// TODO hier das urchase Object ubergeben, entweder UserPurchase oder
-		// eben nur Purchase
+			GuestPurchase guestPurchase = new GuestPurchase();
+			
+			guestPurchase.setEmail(email);
+			guestPurchase.setName(firstname);
+			guestPurchase.setSurname(surname);
+			guestPurchase.setStreet(street);
+			guestPurchase.setStreet_nr(streetnumber);
+			guestPurchase.setPostalcode(zipcode);
+			guestPurchase.setCity(city);
+			guestPurchase.setBank(bankaccountnumber);
+			guestPurchase.setBank(banknumber);
+			
+			purchaseMap.put("guestPurchase", guestPurchase);
+		} else {
+			purchaseMap.put("guestPurchase", null);
+		}
+		// TODO hier das urchase Object ubergeben, entweder UserPurchase oder eben nur Purchase
 		// Purchase Objekt hier erstellen
 		// im naechsten Schritt in die DB schreiben, also beim finalen
 		// Bestaetigen
@@ -232,22 +252,3 @@ public class PurchaseInputVM {
 	}
 
 }
-
-/*
- * @Wire("#modalMessageDetail") private Window win; private Message message;
- * 
- * public Message getMessage() { return message; }
- * 
- * public void setMessage(Message message) { this.message = message; }
- * 
- * 
- * 
- * @Command public void contact() { closeThis(); final HashMap<String, Object>
- * messageMap = new HashMap<String, Object>(); messageMap.put("email",
- * message.getEmail()); messageMap.put("subject", message.getSubject());
- * messageMap.put("userName", message.getReceiver().getUsername());
- * 
- * Executions.createComponents("/user/messageAnswer.zul", null, messageMap); //
- * Sessions.getCurrent().setAttribute("receiver_idUser", "2"); //
- * Executions.getCurrent().sendRedirect("/contactForm.zul"); }
- */

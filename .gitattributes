@@ -7,8 +7,10 @@
 src/main/java/de/htw/fb4/bilderplattform/business/BankaccountServiceImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/BusinessCtx.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/CommentServiceImpl.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/business/GuestPurchaseServiceImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/IBankaccountService.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/ICommentService.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/business/IGuestPurchaseService.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/IImageService.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/business/IMailService.java -text
 src/main/java/de/htw/fb4/bilderplattform/business/IMessageService.java -text
@@ -34,6 +36,7 @@ src/main/java/de/htw/fb4/bilderplattform/dao/BankaccountDAOImpl.java -text svneo
 src/main/java/de/htw/fb4/bilderplattform/dao/Comment.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/CommentDAOImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/GuestPurchase.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/dao/GuestPurchaseDAOImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Image.java -text
 src/main/java/de/htw/fb4/bilderplattform/dao/ImageDAOImpl.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/dao/Message.java -text
