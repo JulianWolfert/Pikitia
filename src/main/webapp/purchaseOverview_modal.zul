@@ -80,7 +80,6 @@
 				<hbox>					
 					<div class="control-group">
 						<n:label class="control-label" for="inputBankAccountNumber">Kontonummer</n:label>
-						<label value="@bind(fx.bankaccountnumber)" id="inputBankAccountNumber"></label>
 						 <div class="controls">
 							<label value="@bind(purchaseOverview_vm.bankaccountnumber)" />
 						</div>
