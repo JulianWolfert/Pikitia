@@ -85,9 +85,8 @@ public class PasswordResetVM {
 				usr.setPassword(randString);
 				userService.saveOrUpdateUser(usr);
 				sendNewPassword(randString, usr.getEmail());
+				lblSuccess.setValue(SpringPropertiesUtil.getProperty("msg.passwordResetSuccess"));
 			}
-			//msg.passwordResetSuccess
-			lblSuccess.setValue(SpringPropertiesUtil.getProperty("msg.passwordResetSuccess"));
 		} catch (UsernameNotFoundException e) {
 			lblUserValid.setValue(SpringPropertiesUtil.getProperty("err.userDoesntExist1") +
 					" \"" + userName + "\" " +
