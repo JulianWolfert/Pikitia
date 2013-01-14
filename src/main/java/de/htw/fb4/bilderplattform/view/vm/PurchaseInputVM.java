@@ -89,7 +89,7 @@ public class PurchaseInputVM {
 		this.cartImages = cartImages;
 		this.totalCartPrice = totalCartPrice;
 		
-	    if(BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser() != null){
+	    if(BusinessCtx.getInstance().getUserService().isAUserAuthenticated()){
 	    	
 	    	User user = BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser();
 	    	//Bankaccount bankaccount = BusinessCtx.getInstance().getBankaccountService().getBankaccountByUserId(user.getIdUser());
