@@ -3,7 +3,6 @@ package de.htw.fb4.bilderplattform.view.vm;
 import java.util.HashMap;
 import java.util.List;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
@@ -19,7 +18,6 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Label;
-import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
@@ -231,7 +229,7 @@ public class PurchaseInputVM {
 			guestPurchase.setStreet_nr(streetnumber);
 			guestPurchase.setPostalcode(zipcode);
 			guestPurchase.setCity(city);
-			guestPurchase.setBank(bankaccountnumber);
+			guestPurchase.setAccount_nr(bankaccountnumber);
 			guestPurchase.setBank(banknumber);
 			
 			purchaseMap.put("guestPurchase", guestPurchase);

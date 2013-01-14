@@ -25,6 +25,7 @@ import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.Purchase;
 import de.htw.fb4.bilderplattform.dao.User;
 import de.htw.fb4.bilderplattform.dao.UserPurchase;
+import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 /**
  * 
@@ -225,28 +226,13 @@ public class PurchaseOverviewVM {
 	// @NotifyChange("newUser")
 	@Command
 	public void submit() {
-		/*
-		 * final HashMap<String, Object> purchaseMap = new HashMap<String,
-		 * Object>(); purchaseMap.put("cartImages", this.getCartImages());
-		 * purchaseMap.put("totalCartPrice", this.getTotalCartPrice());
-		 * 
-		 * Executions.createComponents("/purchaseOverview_modal.zul", null,
-		 * purchaseMap);
-		 */
-		Purchase purchase = new Purchase();
+		if(this.guestPurchase != null){
+			BusinessCtx.getInstance().getPurchaseService().saveGuestPurchase(this.cartImages, this.guestPurchase);
+		}else if(this.userPurchase != null){
+			BusinessCtx.getInstance().getPurchaseService().saveUserPurchase(this.cartImages, this.userPurchase);
+		}
 		
-		Date date = new Date();
-		purchase.setDate(date);
-		purchase.setOrder_nr(String.valueOf(date.getTime()));
-		
-		//TODO!!
-//		if(this.guestPurchase == null){
-//			purchase.setUserPurchase_idUserPurchase(this.userPurchase.getIdUserPurchase());
-//		}else{
-//			purchase.setGuestPurchase_idGuestPurchase(this.guestPurchase.getIdGuestPurchase());
-//		}
-		
-		Messagebox.show("blubblu");
+		Messagebox.show(SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess"), "Info", Messagebox.OK, Messagebox.INFORMATION);
 		// TODO dieses Fenster beim Absenden druecken schliessen
 		this.closeThis();
 	}

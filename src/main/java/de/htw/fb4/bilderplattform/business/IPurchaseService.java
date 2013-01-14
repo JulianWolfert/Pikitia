@@ -5,8 +5,10 @@ import java.util.List;
 import de.htw.fb4.bilderplattform.dao.Bankaccount;
 import de.htw.fb4.bilderplattform.dao.GuestPurchase;
 import de.htw.fb4.bilderplattform.dao.Image;
+import de.htw.fb4.bilderplattform.dao.Purchase;
 import de.htw.fb4.bilderplattform.dao.Purchase_Image;
 import de.htw.fb4.bilderplattform.dao.User;
+import de.htw.fb4.bilderplattform.dao.UserPurchase;
 
 /**
  * 
@@ -24,6 +26,6 @@ public interface IPurchaseService {
 	public Object get_Guest_User_PurchaseData(int idPurchase);
 	public Bankaccount getBankaccountByIdUser(int idUser);
 	
-	public void saveUserPurchase(List<Image> imageList);
+	public void saveUserPurchase(List<Image> imageList, UserPurchase userPurchase);
 	public void saveGuestPurchase(List<Image> imageList, GuestPurchase guestPurchase);
 }

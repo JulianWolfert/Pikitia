@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.dao.DataAccessException;
 import org.springframework.transaction.annotation.Transactional;
@@ -99,4 +100,10 @@ public class PurchaseDAOImpl extends AbstractDAO {
 		}
 		return bank;
 	}
+	
+	@Transactional
+	public void savePurchase(Purchase purchase) {
+		sessionFactory.getCurrentSession().saveOrUpdate(purchase);
+	}
+	
 }
