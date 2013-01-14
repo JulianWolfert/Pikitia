@@ -19,7 +19,7 @@
 	  	<n:fieldset>
 		    <n:legend>Ändern Ihrer Accountdaten</n:legend>
 		    <n:label>Benutzername</n:label>
-		    <textbox value="@bind(fx.username)" width="250px" type="text"></textbox>
+		    <textbox readonly="true" value="@bind(fx.username)" width="250px" type="text"></textbox>
 		    <label class="error" value="@load(vmsgs['username'])" />
 		    <n:label>Passwort</n:label>
 		    <textbox value="@bind(fx.password)" width="250px" type="password"></textbox>

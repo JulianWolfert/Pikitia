@@ -2,9 +2,13 @@ package de.htw.fb4.bilderplattform.view.vm;
 
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zul.Messagebox;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.dao.User;
+import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
 
 /**
@@ -43,6 +47,9 @@ public class UserUpdateVM {
 	@Command
 	public void submit() {
 		BusinessCtx.getInstance().getUserService().saveOrUpdateUser(user);
+		
+		Messagebox.show(SpringPropertiesUtil.getProperty("user.userUpdateSuccess"), "Info", Messagebox.OK, Messagebox.INFORMATION);
+			
 	}
 
 }
