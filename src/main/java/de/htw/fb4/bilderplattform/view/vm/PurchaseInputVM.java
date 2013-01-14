@@ -77,15 +77,19 @@ public class PurchaseInputVM {
 	        setCity("TestStadt");
 	        setStreet("TestStrasse");
 	        setStreetnumber("123");
-	        setBankaccountnumber(bankaccount.getAccount_nr());
-	        setBanknumber(bankaccount.getBank());
+	        //setBankaccountnumber(bankaccount.getAccount_nr());
+	        //setBanknumber(bankaccount.getBank());
 	        
-	        /*
+	        // wenn keine Bankaccount vorhanden ist (bei allen neuen registrierungen)
 	        if (bankaccount != null){
 	        	setBankaccountnumber(bankaccount.getAccount_nr());
 	        	setBanknumber(bankaccount.getBank());
+	        } else {
+	        	setBankaccountnumber("12345678");
+	        	setBanknumber("12345678");
 	        }
 	        
+	        /*
 	        setFirstname(user.getFirstname());
 	        setSurname(user.getSurname());
 	        setZipcode(user.getZipcode());
@@ -218,16 +222,18 @@ public class PurchaseInputVM {
 			UserPurchase userPurchase = new UserPurchase();
 			userPurchase.setUser(BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser());
 			purchaseMap.put("userPurchase", userPurchase);
-			
-			//TODO: Diese Daten einer Entity zuweisen. Irgendwann spaeter :-)
-			//so ist es praktischer, weil man der overwiew nur einen Parameter uebergeben muss.
+
+			//TODO hier eine Entitaet nutzen wuerde mehr Sinn machen
 			HashMap<String, String> registeredUserData = new HashMap<String, String>();
-			registeredUserData.put("firstname", this.getFirstname().toString());
+			registeredUserData.put("email", this.getEmail());
+			registeredUserData.put("firstname", this.getFirstname());
 			registeredUserData.put("surname", this.getSurname());
 			registeredUserData.put("street", this.getStreet());
 			registeredUserData.put("streetnumber", this.getStreetnumber());
 			registeredUserData.put("zipcode", this.getZipcode());
 			registeredUserData.put("city", this.getCity());
+			registeredUserData.put("bankaccountnumber", this.getBankaccountnumber());
+			registeredUserData.put("banknumber", this.getBanknumber());
 			
 			purchaseMap.put("registeredUserData", registeredUserData);
 		}
