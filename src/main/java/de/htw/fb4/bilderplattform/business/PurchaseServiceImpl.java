@@ -13,6 +13,7 @@ import de.htw.fb4.bilderplattform.dao.Image;
 import de.htw.fb4.bilderplattform.dao.Purchase;
 import de.htw.fb4.bilderplattform.dao.PurchaseDAOImpl;
 import de.htw.fb4.bilderplattform.dao.Purchase_Image;
+import de.htw.fb4.bilderplattform.dao.Purchase_ImageDAOImpl;
 import de.htw.fb4.bilderplattform.dao.User;
 import de.htw.fb4.bilderplattform.dao.UserPurchase;
 import de.htw.fb4.bilderplattform.dao.UserPurchaseDAOImpl;
@@ -81,6 +82,8 @@ public class PurchaseServiceImpl implements IPurchaseService {
 				.getApplicationContext().getBean("purchaseDao",
 						PurchaseDAOImpl.class);
 		purchaseDAO.savePurchase(purchase);
+				
+		savePurchaseImage(imageList, purchase);		
 	}
 	
 	@Override
@@ -103,6 +106,21 @@ public class PurchaseServiceImpl implements IPurchaseService {
 				.getApplicationContext().getBean("purchaseDao",
 						PurchaseDAOImpl.class);
 		purchaseDAO.savePurchase(purchase);
+		
+		savePurchaseImage(imageList, purchase);
+	}
+	
+	private void savePurchaseImage(List<Image> imageList, Purchase purchase) {
+		Purchase_ImageDAOImpl purchaseImageDAO = ApplicationContextProvider
+				.getApplicationContext().getBean("purchaseImageDao",
+						Purchase_ImageDAOImpl.class);
+		
+		for(Image image : imageList) {
+			Purchase_Image purchaseImage = new Purchase_Image();
+			purchaseImage.setImage(image);
+			purchaseImage.setPurchase(purchase);
+			purchaseImageDAO.savePurchase_Image(purchaseImage);
+		}
 	}
 	
 	

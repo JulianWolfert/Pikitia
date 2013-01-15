@@ -5,9 +5,7 @@ import java.util.List;
 import de.htw.fb4.bilderplattform.dao.Bankaccount;
 import de.htw.fb4.bilderplattform.dao.GuestPurchase;
 import de.htw.fb4.bilderplattform.dao.Image;
-import de.htw.fb4.bilderplattform.dao.Purchase;
 import de.htw.fb4.bilderplattform.dao.Purchase_Image;
-import de.htw.fb4.bilderplattform.dao.User;
 import de.htw.fb4.bilderplattform.dao.UserPurchase;
 
 /**
