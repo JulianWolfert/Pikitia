@@ -92,8 +92,8 @@ public class PurchaseDAOImpl extends AbstractDAO {
 		Bankaccount bank = new Bankaccount();
 		Session session = sessionFactory.getCurrentSession();
 		try {
-			Criteria criteria = session.createCriteria(Bankaccount.class)
-					.add(Restrictions.eq("User_idUser", idUser));
+			Criteria criteria = session.createCriteria(Bankaccount.class).createCriteria("bankaccountOwner")
+					.add(Restrictions.eq("idUser", idUser));
 			bank = (Bankaccount) criteria.uniqueResult();
 		} catch (DataAccessException dae) {
 			session.getTransaction().rollback();
