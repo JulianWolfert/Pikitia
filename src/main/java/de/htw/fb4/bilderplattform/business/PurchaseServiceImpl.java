@@ -141,6 +141,31 @@ public class PurchaseServiceImpl implements IPurchaseService {
 			purchaseImageDAO.savePurchase_Image(purchaseImage);
 		}
 	}
+	
+	@Override
+	public List<Purchase_Image> getUserPurchasePurchaseImages(UserPurchase userPurchase) {
+	
+		PurchaseDAOImpl purchaseDAO = ApplicationContextProvider
+				.getApplicationContext().getBean("purchaseDao",
+						PurchaseDAOImpl.class);
+
+		int purchaseId = purchaseDAO.getPurchaseIdByUserPurchase(userPurchase);
+		return purchaseDAO.getPurchasesByPurchaseId(purchaseId);
+		
+	} 
+	
+	@Override
+	public List<Purchase_Image> getGuestPurchasePurchaseImages(GuestPurchase guestPurchase) {
+		PurchaseDAOImpl purchaseDAO = ApplicationContextProvider
+				.getApplicationContext().getBean("purchaseDao",
+						PurchaseDAOImpl.class);
+
+		int purchaseId = purchaseDAO.getPurchaseIdByGuestPurchase(guestPurchase);
+		return purchaseDAO.getPurchasesByPurchaseId(purchaseId);
+	} 
+	
+
+
 
 
 }
