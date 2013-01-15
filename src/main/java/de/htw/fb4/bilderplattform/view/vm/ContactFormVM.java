@@ -188,7 +188,6 @@ public class ContactFormVM {
 		
 		String companyName = SpringPropertiesUtil.getProperty("lbl.companyName");		
 		// create email
-		subject = subjectFilter(subject);
 		IMail mail = new MailImpl();
 		mail.setSender(companyName)
 			.setReceiver(emailSender)
@@ -251,14 +250,6 @@ public class ContactFormVM {
 	@Command
 	public void closeThis(){
 		win.detach();
-	}
-	
-	private String subjectFilter(String subject) {
-		subject = subject.replaceAll("ß", "ss");
-		subject = subject.replaceAll("ü", "ue");
-		subject = subject.replaceAll("ä", "ae");
-		subject = subject.replaceAll("ö", "oe");
-		return subject;
 	}
 	
 }

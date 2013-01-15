@@ -28,7 +28,7 @@ public class MailImpl implements IMail {
 		return subject;
 	}
 	public IMail setSubject(String subject) {
-		this.subject = subject;
+		this.subject = subjectFilter(subject);
 		return this;
 	}
 	public String getMessage() {
@@ -44,6 +44,14 @@ public class MailImpl implements IMail {
 	public IMail setTimeStamp(Date timeStamp) {
 		this.timeStamp = timeStamp;
 		return this;
+	}
+	
+	private String subjectFilter(String subject) {
+		subject = subject.replaceAll("ß", "ss");
+		subject = subject.replaceAll("ü", "ue");
+		subject = subject.replaceAll("ä", "ae");
+		subject = subject.replaceAll("ö", "oe");
+		return subject;
 	}
 
 }
