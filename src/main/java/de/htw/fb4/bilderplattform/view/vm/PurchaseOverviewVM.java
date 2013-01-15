@@ -388,7 +388,7 @@ public class PurchaseOverviewVM {
 	    		receiver = this.getEmail();
 	    		subject = SpringPropertiesUtil.getProperty("purchase.mail06");	
 	    		receiverName = this.getFirstname() + " " + this.getSurname();
-	    		url = "http://127.0.0.1:8080/bilderplattform/purchaseDownload.zul?id=" + guestPurchase.getUrlId();
+	    		url = SpringPropertiesUtil.getProperty("purchase.serverUrl") + guestPurchase.getUrlId();
 	    		
 	    		IMail mail = new MailImpl();
 	    		mail.setSender(companyName)

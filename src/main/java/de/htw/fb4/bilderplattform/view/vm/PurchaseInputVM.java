@@ -67,10 +67,10 @@ public class PurchaseInputVM {
 	    if(BusinessCtx.getInstance().getUserService().isAUserAuthenticated()){
 	    	
 	    	User user = BusinessCtx.getInstance().getUserService().getCurrentlyLoggedInUser();
-	    	Bankaccount bankaccount = BusinessCtx.getInstance().getBankaccountService().getBankaccountByUserId(user.getIdUser());
+//	    	Bankaccount bankaccount = BusinessCtx.getInstance().getBankaccountService().getBankaccountByUserId(user.getIdUser());
 	    	
 	    	setEmail(user.getEmail());
-	    	setFirstname(user.getUsername());
+/*	    	setFirstname(user.getUsername());
 	    	
 	    	setSurname("TestNachname");
 	        setZipcode("12345");
@@ -88,7 +88,7 @@ public class PurchaseInputVM {
 	        	setBankaccountnumber("12345678");
 	        	setBanknumber("12345678");
 	        }
-	        
+*/	        
 	        /*
 	        setFirstname(user.getFirstname());
 	        setSurname(user.getSurname());

@@ -43,7 +43,7 @@ public class DBInitialization implements InitializingBean {
 				true, false));
 		users.add(new User("peter", "peter", "s0523841@htw-berlin.de", true,
 				true, false));
-		users.add(new User("ben", "ben", "s0528397@htw-berlin.de", true, true,
+		users.add(new User("ben", "ben", "schock.benjamin@googlemail.com", true, true,
 				false));
 		users.add(new User("julian", "julian", "bla@htw-berlin.de", true, true,
 				false));
@@ -77,7 +77,7 @@ public class DBInitialization implements InitializingBean {
 		IImageService imageService = BusinessCtx.getInstance()
 				.getImageService();
 		User user = BusinessCtx.getInstance().getUserService()
-				.getUserByName("jonathan");
+				.getUserByName("ben");
 
 		for (String filename : initialPictures) {
 //			System.out.println("Initialisiere Image: "
