@@ -89,6 +89,7 @@ src/main/java/de/htw/fb4/bilderplattform/view/vm/ModalGalleryVM.java -text svneo
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PasswordResetVM.java -text
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseAdministrationVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseDetailsVM.java -text svneol=unset#text/plain
+src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseDownloadVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseInputVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/PurchaseOverviewVM.java -text svneol=unset#text/plain
 src/main/java/de/htw/fb4/bilderplattform/view/vm/RegistrationVM.java -text svneol=unset#text/plain
@@ -215,6 +216,7 @@ src/main/webapp/login.zul -text
 src/main/webapp/loginAsPage.zul -text
 src/main/webapp/login_modal.zul -text
 src/main/webapp/password_reset.zul -text
+src/main/webapp/purchaseDownload.zul -text
 src/main/webapp/purchaseInput_modal.zul -text
 src/main/webapp/purchaseOverview_modal.zul -text
 src/main/webapp/registration.zul -text

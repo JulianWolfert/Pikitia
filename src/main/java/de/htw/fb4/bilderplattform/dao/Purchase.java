@@ -24,7 +24,7 @@ public class Purchase {
 
 	@Column(name = "date", nullable = false)
 	private Date date;
-
+	
 	@Column(name = "UserPurchase_idUserPurchase")
 	private Integer UserPurchase_idUserPurchase;
 
@@ -54,7 +54,7 @@ public class Purchase {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
+	
 	public void setIdPurchase(Integer idPurchase) {
 		this.idPurchase = idPurchase;
 	}
@@ -67,7 +67,7 @@ public class Purchase {
 	public void setOrder_nr(String order_nr) {
 		this.order_nr = order_nr;
 	}
-
+	
 	public void setUserPurchase_idUserPurchase(
 			Integer userPurchase_idUserPurchase) {
 		UserPurchase_idUserPurchase = userPurchase_idUserPurchase;

@@ -41,6 +41,9 @@ public class GuestPurchase {
 
 	@Column(name = "account_nr", nullable = false)
 	private String account_nr;
+	
+	@Column(name = "urlId", nullable = false)
+	private String urlId;
 
 	public String getAccount_nr() {
 		return account_nr;
@@ -81,6 +84,10 @@ public class GuestPurchase {
 	public String getSurname() {
 		return surname;
 	}
+	
+	public String getUrlId() {
+		return urlId;
+	}
 
 	public void setAccount_nr(String account_nr) {
 		this.account_nr = account_nr;
@@ -120,5 +127,9 @@ public class GuestPurchase {
 	
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+	
+	public void setUrlId(String urlId) {
+		this.urlId = urlId;
 	}
 }

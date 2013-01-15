@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -104,6 +105,35 @@ public class PurchaseDAOImpl extends AbstractDAO {
 	@Transactional
 	public void savePurchase(Purchase purchase) {
 		sessionFactory.getCurrentSession().saveOrUpdate(purchase);
+	}
+	
+	@Transactional
+	public UserPurchase getUrlIdUserPurchase(String urlId) {
+		/*Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UserPurchase.class)
+				.add(Restrictions.eq("urlId", urlId));
+		if (criteria.uniqueResult() != null){
+			return ((UserPurchase) criteria.uniqueResult());
+		} else {
+			return null;
+		}*/
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"SELECT up FROM UserPurchase up where up.urlId like '" + urlId + "'");
+		return (UserPurchase) query.uniqueResult();
+		
+	}
+	
+	@Transactional
+	public GuestPurchase getUrlIdGuestPurchase(String urlId) {
+		/*Criteria criteria = sessionFactory.getCurrentSession().createCriteria(UserPurchase.class)
+				.add(Restrictions.eq("urlId", urlId));
+		if (criteria.uniqueResult() != null){
+			return ((GuestPurchase) criteria.uniqueResult());
+		} else {
+			return null;
+		}*/
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"SELECT up FROM GuestPurchase up where up.urlId like '" + urlId + "'");
+		return (GuestPurchase) query.uniqueResult();
 	}
 	
 }

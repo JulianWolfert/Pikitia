@@ -1,6 +1,10 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 
@@ -101,7 +105,7 @@ public class PurchaseOverviewVM {
 		this.guestPurchase = guestPurchase;
 		this.totalCartPrice = totalCartPrice;
 		
-		this.guestPurchase = guestPurchase;
+		this.guestPurchase = guestPurchase;		
 		this.userPurchase = userPurchase;
 		this.registeredUserData = registeredUserData;
 				
@@ -130,6 +134,9 @@ public class PurchaseOverviewVM {
 		        	setBankaccountnumber(bankaccount.getAccount_nr());
 		        	setBanknumber(bankaccount.getBank());
 		        } */
+		        
+		      //purchase.setUrlId((getMD5Hash(Integer.toString(guestPurchaseId) + date.toString())));
+		        this.userPurchase.setUrlId((getMD5Hash(new Date().toString())));
 	    	}
 	    } else {    	
 	    	//Guest (without loggin)
@@ -145,6 +152,9 @@ public class PurchaseOverviewVM {
 		        
 		        setBankaccountnumber(guestPurchase.getAccount_nr());
 		        setBanknumber(guestPurchase.getBank());
+		        
+
+				this.guestPurchase.setUrlId((getMD5Hash(new Date().toString())));
 	    	}
 	    }    	
 	}
@@ -258,29 +268,30 @@ public class PurchaseOverviewVM {
 	public void submit() {
 		if(this.guestPurchase != null){
 			BusinessCtx.getInstance().getPurchaseService().saveGuestPurchase(this.cartImages, this.guestPurchase);
+
 		}else if(this.userPurchase != null){
 			BusinessCtx.getInstance().getPurchaseService().saveUserPurchase(this.cartImages, this.userPurchase);
 		}
 		
 		//TODO: EMAIL versenden.
-		sendEmailAndMessage();
+		sendEmailAndMessageOwner();
+		sendEmailAndMessageCustomer();
 		
 		Messagebox.show(SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess01")  
-				+ getTotalCartPrice() 
+				+ " " + getTotalCartPrice() + " " 
 				+ SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess02"), 
 				"Info", Messagebox.OK, Messagebox.INFORMATION);
 		this.closeThis();
 	}
 	
-	private void sendEmailAndMessage(){
+	
+	private void sendEmailAndMessageOwner(){
 			
 		String companyName = SpringPropertiesUtil.getProperty("lbl.companyName");	
 		String receiver = "";
 		String subject = "";
 		String receiverName = "";
 		String messageContent = "";
-		
-		
 		
 		// Owner of each image gets informed
 		for(Image img : cartImages){
@@ -289,19 +300,19 @@ public class PurchaseOverviewVM {
 			receiver = img.getUser().getEmail();
 			subject = SpringPropertiesUtil.getProperty("purchase.subject") + " " + img.getTitle();	
 			receiverName = img.getUser().getUsername();
+			messageContent = preparedMailOwner(receiverName, img.getTitle());
 			
 			IMail mail = new MailImpl();
 			mail.setSender(companyName)
 				.setReceiver(receiver) // Verkaeufer
 				.setSubject("[" + companyName +"] " + subject )
-				.setMessage(preparedMailSeller(receiverName, img.getTitle()))
+				.setMessage(messageContent)
 				.setTimeStamp(Calendar.getInstance().getTime());
 			try {
 				BusinessCtx.getInstance().getMailService().sendMail(mail);
 			} catch (Exception e){}
 			
 			// Message
-			messageContent = img.getTitle() + " " + SpringPropertiesUtil.getProperty("purchase.messageContent");
 			Message msg = new Message(
 					img.getUser(), SpringPropertiesUtil.getProperty("purchase.companymail"), 1, subject, messageContent);				
 			try {
@@ -309,18 +320,113 @@ public class PurchaseOverviewVM {
 			} catch (Exception e) {}
 			
 		}
+		
+		
+	}
+	
+	private void sendEmailAndMessageCustomer(){
+		// Customer gets informed
+		// id basteln
+		// ans Purchase Objekt haengen
+		// zusenden als Mail
+		// zusenden als Nachricht wenn eingeloggter Nutzer
+		
+			
+		String companyName = SpringPropertiesUtil.getProperty("lbl.companyName");	
+		String receiver = "";
+		String subject = "";
+		String receiverName = "";
+		String messageContent = "";
+		
+		//initialisieren der URL
+		String url = "";
+				
+		// Customer gets informed, via Mail and Message
+		if(BusinessCtx.getInstance().getUserService().isAUserAuthenticated()){
+
+	    	//Registered User
+	    	if(userPurchase != null){
+	    		
+	    		// Mail
+	    		receiver = this.getEmail();
+	    		subject = SpringPropertiesUtil.getProperty("purchase.mail06");	
+	    		receiverName = this.getFirstname() + " " + this.getSurname();
+	    		url = "http://127.0.0.1:8080/bilderplattform/purchaseDownload.zul?id=" + userPurchase.getUrlId();
+	    		messageContent = preparedMailCustomer(receiverName, url);
+	    		
+	    		IMail mail = new MailImpl();
+	    		mail.setSender(companyName)
+	    			.setReceiver(receiver) // Kaeufer
+	    			.setSubject("[" + companyName +"] " + subject )
+	    			.setMessage(messageContent)
+	    			.setTimeStamp(Calendar.getInstance().getTime());
+	    		try {
+	    			BusinessCtx.getInstance().getMailService().sendMail(mail);
+	    		} catch (Exception e){}
+	    		
+	    		// Message
+				Message msg = new Message(
+						userPurchase.getUser(), SpringPropertiesUtil.getProperty("purchase.companymail"), 1, subject, messageContent);				
+				try {
+					BusinessCtx.getInstance().getMessageService().saveMessage(msg);
+				} catch (Exception e) {}
+	    	}
+	    } else {    	
+	    	//Guest (without loggin)
+	    	if(guestPurchase != null){
+	    		
+	    		receiver = this.getEmail();
+	    		subject = SpringPropertiesUtil.getProperty("purchase.mail06");	
+	    		receiverName = this.getFirstname() + " " + this.getSurname();
+	    		url = "http://127.0.0.1:8080/bilderplattform/purchaseDownload.zul?id=" + guestPurchase.getUrlId();
+	    		
+	    		IMail mail = new MailImpl();
+	    		mail.setSender(companyName)
+	    			.setReceiver(receiver) // Kaeufer
+	    			.setSubject("[" + companyName +"] " + subject )
+	    			.setMessage(preparedMailCustomer(receiverName, url))
+	    			.setTimeStamp(Calendar.getInstance().getTime());
+	    		try {
+	    			BusinessCtx.getInstance().getMailService().sendMail(mail);
+	    		} catch (Exception e){}
+	    	}
+	    }  
 	}
 	
 	
-	private String preparedMailSeller(String seller, String imgName) {
+	
+			
+			
+	private String preparedMailOwner(String owner, String imgName) {
 		return SpringPropertiesUtil.getProperty("purchase.mail01") + " "
-			+ seller + ",\r\n\r\n" + SpringPropertiesUtil.getProperty("purchase.mail02") 
+			+ owner + ",\r\n\r\n" + SpringPropertiesUtil.getProperty("purchase.mail02") 
 			+ " " + imgName 
 			+ " " + SpringPropertiesUtil.getProperty("purchase.mail03") + "\r\n\r\n"
 			+ SpringPropertiesUtil.getProperty("purchase.mail04");		 
 	}
 	
-
+	private String preparedMailCustomer(String customer, String url) {
+		return SpringPropertiesUtil.getProperty("purchase.mail01") + " "
+			+ customer + ",\r\n\r\n" + SpringPropertiesUtil.getProperty("purchase.mail05") 
+			+ "\r\n\r\n" + url + "\r\n\r\n" + SpringPropertiesUtil.getProperty("purchase.mail04");		 
+	}
+	
+	private String getMD5Hash(String input) {
+		StringBuffer stringBuffer = new StringBuffer();
+		try {
+			MessageDigest md5 = MessageDigest.getInstance("MD5");
+			md5.update(input.getBytes());
+			Formatter f = new Formatter(stringBuffer);
+			for (byte b : md5.digest()) {
+				f.format("%02x", b);
+			}
+		} catch (NoSuchAlgorithmException e) {
+			//log.error(e.getMessage());
+		}
+		return stringBuffer.toString();
+	}
+	
+	
 	@Command
 	public void closeThis() {
 		this.modalPurchaseOverview.detach();

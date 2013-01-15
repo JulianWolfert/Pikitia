@@ -15,6 +15,9 @@ public class UserPurchase {
 	@GeneratedValue
 	@Column(name = "idUserPurchase")
 	private Integer idUserPurchase;
+	
+	@Column(name = "urlId")
+	private String urlId;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
@@ -23,6 +26,10 @@ public class UserPurchase {
 		return idUserPurchase;
 	}
 
+	public String getUrlId(){
+		return urlId;
+	}
+	
 	public User getUser() {
 		return user;
 	}
@@ -30,7 +37,11 @@ public class UserPurchase {
 	public void setIdUserPurchase(Integer idUserPurchase) {
 		this.idUserPurchase = idUserPurchase;
 	}
-
+	
+	public void setUrlId(String urlId) {
+		this.urlId = urlId;
+	}
+	
 	public void setUser(User user) {
 		this.user = user;
 	}

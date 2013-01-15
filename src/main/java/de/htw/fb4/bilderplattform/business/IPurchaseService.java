@@ -22,8 +22,12 @@ public interface IPurchaseService {
 	 * @return a GuestPurchase-, a User-Object or null
 	 */
 	public Object get_Guest_User_PurchaseData(int idPurchase);
+	public Object get_Guest_User_PurchaseData(String urlId);
 	public Bankaccount getBankaccountByIdUser(int idUser);
 	
 	public void saveUserPurchase(List<Image> imageList, UserPurchase userPurchase);
 	public void saveGuestPurchase(List<Image> imageList, GuestPurchase guestPurchase);
+	
+
+	
 }

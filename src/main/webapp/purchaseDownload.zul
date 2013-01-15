@@ -1,0 +1,86 @@
+<!-- 
+<?page title="Kaufen" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:c="client">
+
+<style src="/css/gallery.css"></style>
+
+
+<n:div id="header">
+			
+			<include src="/layout/header_menu2.zul" />
+
+</n:div>
+<n:div id="content">
+
+
+
+<n:div id="content_small">
+
+	<div id="gallery" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('de.htw.fb4.bilderplattform.view.vm.GalleryVM')">
+	
+		<div style="text-align:center; padding-top: 20px; padding-bottom: 30px;">
+
+		
+		  <div class="input-append" forward="onOK=btn.onClick">
+		  	<textbox value="@bind(vm.keyword)" />
+		    <button id="btn" onClick="@command('search')" class="btn">Suche</button> 
+			    <div sclass="search_result">
+					<label id="search_result_id"></label>
+				</div>
+		  </div>
+		
+		</div>
+		
+
+
+		<n:div id="gallery_images_id">
+
+			<div sclass="imageList"/>
+
+		</n:div>
+	</div>
+</n:div>			    
+				
+</n:div>
+
+
+
+</zk>
+
+ -->
+ 
+ 
+<?page title="Warenkorb" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:n="native" xmlns:c="client">	
+<style src="/css/cart.css"></style>	
+<n:div id="header">
+	<include src="/layout/header_menu2.zul" />
+</n:div>
+<n:div id="content">
+	<n:div id="content_small">
+		<div apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('cart_vm') @init('de.htw.fb4.bilderplattform.view.vm.PurchaseDownloadVM')">
+
+			<n:form>
+	  			<n:fieldset>
+		    		<n:legend>Einkaufs-Download</n:legend>	  
+		 
+		 			<div id="cart_table">
+		 
+		 			</div>
+		 		</n:fieldset>
+		 <label id="lblHeader" apply="de.htw.fb4.bilderplattform.view.vm.PurchaseDownloadVM" />
+	
+  <div>
+  	Load from EL [	<label value="${param.test}" />]
+  </div>
+		 		<div sclass="checkout">
+		 			<button onClick="@command('delete')" class="btn">Warenkorb löschen</button>
+		 			<button onClick="@command('checkout')" id="checkout_button" sclass="btn btn-success">Zur Kasse</button>
+		 		</div>
+			</n:form>
+		</div>
+	</n:div>			    			
+</n:div>
+
+</zk>
