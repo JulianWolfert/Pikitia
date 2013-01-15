@@ -69,7 +69,7 @@
 		 
 		 			</div>
 		 		</n:fieldset>
-		 <!-- <label id="lblHeader" apply="de.htw.fb4.bilderplattform.view.vm.PurchaseDownloadVM" />  -->
+		  <label id="lblHeader" visible="false" apply="de.htw.fb4.bilderplattform.view.vm.PurchaseDownloadVM" /> 
 	
 	<div>
   		<label value="${param.test}" />

@@ -210,7 +210,7 @@ public class PurchaseDownloadVM extends GenericForwardComposer{
 				}
 			}
 		}
-		
+		//System.out.print(imageIDs);
 		//this.total_price = calculateTotalPrice();
 		
 	}
@@ -314,9 +314,16 @@ public class PurchaseDownloadVM extends GenericForwardComposer{
 					Image img = BusinessCtx.getInstance().getImageService().getImageByID(Integer.parseInt(img_id));
 					File file = new File(BusinessCtx.getInstance().getImageService().getImagePath(img.getFile()));
 					//System.out.print(file);
-					String mimeType = file.toURL().openConnection().getContentType();
-										
-					Filedownload.save(file, mimeType);
+					//String mimeType = file.toURL().openConnection().getContentType();
+					String name = file.getName();
+					int k = name.lastIndexOf(".");
+					String ext = null;
+					if (k != -1){
+						ext = name.substring(k + 1, name.length());					
+					}
+									
+					
+					Filedownload.save(file, "image/" + ext);
 					
 				/*	
 					Session session = Sessions.getCurrent();
