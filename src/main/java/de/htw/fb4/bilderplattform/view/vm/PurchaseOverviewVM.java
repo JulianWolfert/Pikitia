@@ -1,5 +1,6 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.Selectors;
@@ -21,9 +23,12 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
 import de.htw.fb4.bilderplattform.business.BusinessCtx;
+import de.htw.fb4.bilderplattform.business.mail.IMail;
+import de.htw.fb4.bilderplattform.business.mail.MailImpl;
 import de.htw.fb4.bilderplattform.dao.Bankaccount;
 import de.htw.fb4.bilderplattform.dao.GuestPurchase;
 import de.htw.fb4.bilderplattform.dao.Image;
+import de.htw.fb4.bilderplattform.dao.Message;
 import de.htw.fb4.bilderplattform.dao.User;
 import de.htw.fb4.bilderplattform.dao.UserPurchase;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
@@ -258,33 +263,68 @@ public class PurchaseOverviewVM {
 		}
 		
 		//TODO: EMAIL versenden.
+		sendEmailAndMessage();
 		
-		Messagebox.show(SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess")+ "\n babla", "Info", Messagebox.OK, Messagebox.INFORMATION);
+		Messagebox.show(SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess01")  
+				+ getTotalCartPrice() 
+				+ SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess02"), 
+				"Info", Messagebox.OK, Messagebox.INFORMATION);
 		this.closeThis();
 	}
+	
+	private void sendEmailAndMessage(){
+			
+		String companyName = SpringPropertiesUtil.getProperty("lbl.companyName");	
+		String receiver = "";
+		String subject = "";
+		String receiverName = "";
+		String messageContent = "";
+		
+		
+		
+		// Owner of each image gets informed
+		for(Image img : cartImages){
+			
+			// Mail
+			receiver = img.getUser().getEmail();
+			subject = SpringPropertiesUtil.getProperty("purchase.subject") + " " + img.getTitle();	
+			receiverName = img.getUser().getUsername();
+			
+			IMail mail = new MailImpl();
+			mail.setSender(companyName)
+				.setReceiver(receiver) // Verkaeufer
+				.setSubject("[" + companyName +"] " + subject )
+				.setMessage(preparedMailSeller(receiverName, img.getTitle()))
+				.setTimeStamp(Calendar.getInstance().getTime());
+			try {
+				BusinessCtx.getInstance().getMailService().sendMail(mail);
+			} catch (Exception e){}
+			
+			// Message
+			messageContent = img.getTitle() + " " + SpringPropertiesUtil.getProperty("purchase.messageContent");
+			Message msg = new Message(
+					img.getUser(), SpringPropertiesUtil.getProperty("purchase.companymail"), 1, subject, messageContent);				
+			try {
+				BusinessCtx.getInstance().getMessageService().saveMessage(msg);
+			} catch (Exception e) {}
+			
+		}
+	}
+	
+	
+	private String preparedMailSeller(String seller, String imgName) {
+		return SpringPropertiesUtil.getProperty("purchase.mail01") + " "
+			+ seller + ",\r\n\r\n" + SpringPropertiesUtil.getProperty("purchase.mail02") 
+			+ " " + imgName 
+			+ " " + SpringPropertiesUtil.getProperty("purchase.mail03") + "\r\n\r\n"
+			+ SpringPropertiesUtil.getProperty("purchase.mail04");		 
+	}
+	
 
 	@Command
 	public void closeThis() {
 		this.modalPurchaseOverview.detach();
 	}
-
+	
+	
 }
-
-/*
- * @Wire("#modalMessageDetail") private Window win; private Message message;
- * 
- * public Message getMessage() { return message; }
- * 
- * public void setMessage(Message message) { this.message = message; }
- * 
- * 
- * 
- * @Command public void contact() { closeThis(); final HashMap<String, Object>
- * messageMap = new HashMap<String, Object>(); messageMap.put("email",
- * message.getEmail()); messageMap.put("subject", message.getSubject());
- * messageMap.put("userName", message.getReceiver().getUsername());
- * 
- * Executions.createComponents("/user/messageAnswer.zul", null, messageMap); //
- * Sessions.getCurrent().setAttribute("receiver_idUser", "2"); //
- * Executions.getCurrent().sendRedirect("/contactForm.zul"); }
- */
