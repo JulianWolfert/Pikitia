@@ -37,6 +37,8 @@ public class ImageServiceImpl implements IImageService {
 	
 	private static String WATERMARK_FILE_NAME="watermark.png";
 	private static int WATERMARK_PADDING_PX = 50;
+	
+	private static String IMAGE_FOLDER ="jgkdlejcekcpqikg/";
 
 	//gefixt: wk, 26.12.2012 :-)
 	@Override
@@ -164,19 +166,37 @@ public class ImageServiceImpl implements IImageService {
 		if(fileType != null) {
 			generatedFilename += "." + fileType;
 		}
-		image.setFile(generatedFilename);
+		//image.setFile(generatedFilename);
 		
-		FileUtil.saveFile(filePath + generatedFilename, data);
+		image.setFile(IMAGE_FOLDER + generatedFilename);
+		
+		FileUtil.saveFile(filePath + IMAGE_FOLDER + generatedFilename, data);
 		
 		String previewFilePath = imagesPath
-				+ File.separator + "preview_" + image.getFile();
+				+ File.separator + "preview_" + generatedFilename;
 		FileUtil.saveFile(previewFilePath, data_preview);
-		image.setPreview_file("preview_" + image.getFile());
+		image.setPreview_file("preview_" + generatedFilename);
 		
 		String thumbFilePath = imagesPath
-				+ File.separator + "thumb_" + image.getFile();
+				+ File.separator + "thumb_" + generatedFilename;
 		FileUtil.saveFile(thumbFilePath, data_thumb);
-		image.setThumb_file("thumb_" + image.getFile());
+		image.setThumb_file("thumb_" + generatedFilename);
+		
+		
+		
+		
+		
+//		FileUtil.saveFile(filePath + generatedFilename, data);
+//		
+//		String previewFilePath = imagesPath
+//				+ File.separator + "preview_" + image.getFile();
+//		FileUtil.saveFile(previewFilePath, data_preview);
+//		image.setPreview_file("preview_" + image.getFile());
+//		
+//		String thumbFilePath = imagesPath
+//				+ File.separator + "thumb_" + image.getFile();
+//		FileUtil.saveFile(thumbFilePath, data_thumb);
+//		image.setThumb_file("thumb_" + image.getFile());
 	}
 	
 	private byte[] scaleImg(byte[] data, int pixel) throws IOException {
