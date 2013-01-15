@@ -139,7 +139,7 @@ public class PurchaseDAOImpl extends AbstractDAO {
 	@Transactional
 	public int getPurchaseIdByGuestPurchase(GuestPurchase guestPurchase) {
 		Query query = sessionFactory.getCurrentSession().createQuery(
-				"SELECT up.UserPurchase_idUserPurchase FROM Purchase up where up.GuestPurchase_idGuestPurchase = " + guestPurchase.getIdGuestPurchase());
+				"SELECT up.GuestPurchase_idGuestPurchase FROM Purchase up where up.GuestPurchase_idGuestPurchase = " + guestPurchase.getIdGuestPurchase());
 		return (int) query.uniqueResult();		
 	}
 	
