@@ -136,4 +136,39 @@ public class PurchaseDAOImpl extends AbstractDAO {
 		return (GuestPurchase) query.uniqueResult();
 	}
 	
+	@Transactional
+	public int getPurchaseIdByGuestPurchase(GuestPurchase guestPurchase) {
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"SELECT up.UserPurchase_idUserPurchase FROM Purchase up where up.GuestPurchase_idGuestPurchase = " + guestPurchase.getIdGuestPurchase());
+		return (int) query.uniqueResult();		
+	}
+	
+	@Transactional
+	public int getPurchaseIdByUserPurchase(UserPurchase userPurchase) {
+		Query query = sessionFactory.getCurrentSession().createQuery(
+				"SELECT up.UserPurchase_idUserPurchase FROM Purchase up where up.UserPurchase_idUserPurchase = " + userPurchase.getIdUserPurchase());
+		return (int) query.uniqueResult();		
+	}
+	
+	@Transactional
+	public List<Purchase_Image> getPurchasesByPurchaseId(int purchaseId) {
+		List<Purchase_Image> purchases = new ArrayList<Purchase_Image>();
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			Criteria criteria = session.createCriteria(Purchase_Image.class);
+			purchases = criteria.list();
+			List<Purchase_Image> user_purchases = new ArrayList<Purchase_Image>();
+			// get users purchases only
+			for (Purchase_Image p : purchases) {
+				if (p.getPurchase().getIdPurchase() == purchaseId) {
+					user_purchases.add(p);
+				}
+			}
+			purchases = user_purchases;
+		} catch (DataAccessException dae) {
+			session.getTransaction().rollback();
+		}
+		return purchases;
+	}
+	
 }

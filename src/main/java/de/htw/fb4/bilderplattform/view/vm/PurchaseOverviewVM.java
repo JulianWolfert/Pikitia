@@ -16,6 +16,8 @@ import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Session;
+import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.Selectors;
@@ -273,14 +275,26 @@ public class PurchaseOverviewVM {
 			BusinessCtx.getInstance().getPurchaseService().saveUserPurchase(this.cartImages, this.userPurchase);
 		}
 		
-		//TODO: EMAIL versenden.
 		sendEmailAndMessageOwner();
 		sendEmailAndMessageCustomer();
 		
 		Messagebox.show(SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess01")  
 				+ " " + getTotalCartPrice() + " " 
 				+ SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess02"), 
-				"Info", Messagebox.OK, Messagebox.INFORMATION);
+				"Info", Messagebox.OK, Messagebox.INFORMATION, new EventListener<Event>() {
+					
+					@Override
+					public void onEvent(Event e) throws Exception {
+						if(Messagebox.ON_OK.equals(e.getName())){
+							 Session session = Sessions.getCurrent();
+								List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");
+								imageIDs.clear();
+								session.setAttribute("imageIDs", imageIDs);
+								Executions.sendRedirect("/index.zul");
+						}
+					}
+				});
+		
 		this.closeThis();
 	}
 	
@@ -325,13 +339,8 @@ public class PurchaseOverviewVM {
 	}
 	
 	private void sendEmailAndMessageCustomer(){
+	
 		// Customer gets informed
-		// id basteln
-		// ans Purchase Objekt haengen
-		// zusenden als Mail
-		// zusenden als Nachricht wenn eingeloggter Nutzer
-		
-			
 		String companyName = SpringPropertiesUtil.getProperty("lbl.companyName");	
 		String receiver = "";
 		String subject = "";
@@ -372,9 +381,10 @@ public class PurchaseOverviewVM {
 				} catch (Exception e) {}
 	    	}
 	    } else {    	
-	    	//Guest (without loggin)
+	    	//Guest (without login)
 	    	if(guestPurchase != null){
-	    		
+
+	    		// Mail
 	    		receiver = this.getEmail();
 	    		subject = SpringPropertiesUtil.getProperty("purchase.mail06");	
 	    		receiverName = this.getFirstname() + " " + this.getSurname();
@@ -392,11 +402,7 @@ public class PurchaseOverviewVM {
 	    	}
 	    }  
 	}
-	
-	
-	
-			
-			
+		
 	private String preparedMailOwner(String owner, String imgName) {
 		return SpringPropertiesUtil.getProperty("purchase.mail01") + " "
 			+ owner + ",\r\n\r\n" + SpringPropertiesUtil.getProperty("purchase.mail02") 

@@ -92,7 +92,8 @@
 					</div>
 				</hbox>
 				<separator spacing="15px" />
-				<hbox style="width:100%">
+				<!-- <hbox style="width:100%"> -->
+				<hbox>
 					<div class="control-group">
 						<n:label class="control-label">AGB</n:label>
 						<div class="controls">

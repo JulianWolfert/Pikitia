@@ -39,6 +39,7 @@ public class PurchaseDownloadVM extends GenericForwardComposer{
 
 package de.htw.fb4.bilderplattform.view.vm;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -69,6 +70,7 @@ import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.A;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Messagebox;
 
@@ -76,6 +78,8 @@ import de.htw.fb4.bilderplattform.business.BusinessCtx;
 import de.htw.fb4.bilderplattform.business.util.Util;
 import de.htw.fb4.bilderplattform.dao.GuestPurchase;
 import de.htw.fb4.bilderplattform.dao.Image;
+import de.htw.fb4.bilderplattform.dao.Purchase;
+import de.htw.fb4.bilderplattform.dao.Purchase_Image;
 import de.htw.fb4.bilderplattform.dao.UserPurchase;
 import de.htw.fb4.bilderplattform.spring.SpringPropertiesUtil;
 
@@ -138,40 +142,57 @@ public class PurchaseDownloadVM extends GenericForwardComposer{
 			e.printStackTrace();
 		}
 		
-		
 		String[] id = (String[]) param.get("id");
 		
 		if (id != null){
 			//initializeElements(id[0]);
-			lblHeader.setValue( "Congratulations! Your parameters value is " + id[0] );
+			lblHeader.setValue( "Kein valider Downloadlink, bitte navigieren sie zur Startseite!");
 		} else {
 			lblHeader.setValue( "Keine valide Seite, bitte gehen sie zur Startseite!" );
 		}
 		initializeElements(id[0]);
+		generateCartTable();
 	}
 	
 	
+	@SuppressWarnings("null")
 	private void initializeElements(String urlId) {	
 		
+		// wether its a UserPurchase or GuestPurchase
 		Object objectPurchase = BusinessCtx.getInstance().getPurchaseService().get_Guest_User_PurchaseData(urlId);
-		
-		//lblHeader.setValue( objectPurchase.getClass().toString() + " " + urlId);
+		List<Purchase_Image> purchaseImages = null;
+		List<String> imageIDs = new ArrayList<String>();
 		
 		if (objectPurchase instanceof UserPurchase){
-			
-			
-			
+			// hier muss man die Imageliste erstellen
+			UserPurchase userPurchase = (UserPurchase)objectPurchase;
+			purchaseImages = BusinessCtx.getInstance().getPurchaseService().getUserPurchasePurchaseImages(userPurchase);
+			// nur zu testzwecken
 			lblHeader.setValue(((UserPurchase) objectPurchase).getUrlId());
 		} else if  (objectPurchase instanceof GuestPurchase){
-			lblHeader.setValue(((GuestPurchase) objectPurchase).getUrlId());
+			GuestPurchase guestPurchase = (GuestPurchase)objectPurchase;
+			purchaseImages = BusinessCtx.getInstance().getPurchaseService().getGuestPurchasePurchaseImages(guestPurchase);
+			// nur zu testzwecken
+			lblHeader.setValue(((GuestPurchase) objectPurchase).getUrlId());			
 		} else {
 			return; // Fehler ausgeben
 		}
 		
+		//List<de.htw.fb4.bilderplattform.dao.Image> imageIDs = null;
+		for (Purchase_Image purchases : purchaseImages) {
+			
+			imageIDs.add(purchases.getImage().getIdImage().toString());
+			
+			
+			
+			//imageIDs.addAll(BusinessCtx.getInstance().getImageService().
+			//		.getImageByID(purchases.getImage().getIdImage()).getIdImage().);
+		}
+				//BusinessCtx.getInstance().getImageService().getAllImages().subList(0, 1);
 		
 		
-		Session session = Sessions.getCurrent();
-		List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");
+		//Session session = Sessions.getCurrent();
+		//List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");
 		
 		this.cart = new ArrayList<>();
 
@@ -200,6 +221,7 @@ public class PurchaseDownloadVM extends GenericForwardComposer{
 		
 		
 		Session session = Sessions.getCurrent();
+		@SuppressWarnings("unchecked")
 		List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");
 		
 		this.cart = new ArrayList<>();
@@ -281,13 +303,22 @@ public class PurchaseDownloadVM extends GenericForwardComposer{
 			td_title.appendChild(label_desc);
 			
 			Td td_delete = new Td();
-			A a_delete = new A("", "images/list/j_delete.png");
+			A a_delete = new A("", "images/list/download.jpg");
 			a_delete.setId("del_" + this.cart.get(i).getIdImage().toString());
 			a_delete.addEventListener(Events.ON_CLICK, new EventListener() {
 				@Override
 				public void onEvent(Event e) throws Exception {
 					
+					
 					String img_id = e.getTarget().getId().substring(4);
+					Image img = BusinessCtx.getInstance().getImageService().getImageByID(Integer.parseInt(img_id));
+					File file = new File(BusinessCtx.getInstance().getImageService().getImagePath(img.getFile()));
+					//System.out.print(file);
+					String mimeType = file.toURL().openConnection().getContentType();
+										
+					Filedownload.save(file, mimeType);
+					
+				/*	
 					Session session = Sessions.getCurrent();
 					List<String> imageIDs = (List<String>) session.getAttribute("imageIDs");
 					imageIDs.remove(img_id);
@@ -295,7 +326,7 @@ public class PurchaseDownloadVM extends GenericForwardComposer{
 					initializeElements();
 					cart_table.getChildren().clear();
 					generateCartTable();
-					
+				*/
 				}
 			});
 			td_delete.appendChild(a_delete);
@@ -314,7 +345,7 @@ public class PurchaseDownloadVM extends GenericForwardComposer{
 			tr.appendChild(td_vorschau);
 			tr.appendChild(td_title);
 			tr.appendChild(td_delete);
-			tr.appendChild(td_price);
+			//tr.appendChild(td_price);
 			
 			table_body.appendChild(tr);
 			

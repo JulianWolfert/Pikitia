@@ -69,15 +69,18 @@
 		 
 		 			</div>
 		 		</n:fieldset>
-		 <label id="lblHeader" apply="de.htw.fb4.bilderplattform.view.vm.PurchaseDownloadVM" />
+		 <!-- <label id="lblHeader" apply="de.htw.fb4.bilderplattform.view.vm.PurchaseDownloadVM" />  -->
 	
-  <div>
-  	Load from EL [	<label value="${param.test}" />]
-  </div>
+	<div>
+  		<label value="${param.test}" />
+  	</div>
+  	<!-- 
 		 		<div sclass="checkout">
 		 			<button onClick="@command('delete')" class="btn">Warenkorb löschen</button>
 		 			<button onClick="@command('checkout')" id="checkout_button" sclass="btn btn-success">Zur Kasse</button>
+		 			 
 		 		</div>
+		 		-->
 			</n:form>
 		</div>
 	</n:div>			    			
