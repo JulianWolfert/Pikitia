@@ -28,14 +28,14 @@ public class MailImpl implements IMail {
 		return subject;
 	}
 	public IMail setSubject(String subject) {
-		this.subject = subjectFilter(subject);
+		this.subject = germanSignsFilter(subject);
 		return this;
 	}
 	public String getMessage() {
 		return message;
 	}
 	public IMail setMessage(String message) {
-		this.message = message;
+		this.message = germanSignsFilter(message);
 		return this;
 	}
 	public Date getTimeStamp() {
@@ -46,7 +46,7 @@ public class MailImpl implements IMail {
 		return this;
 	}
 	
-	private String subjectFilter(String subject) {
+	private String germanSignsFilter(String subject) {
 		subject = subject.replaceAll("ß", "ss");
 		subject = subject.replaceAll("ü", "ue");
 		subject = subject.replaceAll("ä", "ae");
