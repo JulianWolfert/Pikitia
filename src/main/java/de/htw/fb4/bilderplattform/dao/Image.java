@@ -73,6 +73,10 @@ public class Image implements Serializable {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="image", cascade = {CascadeType.ALL})
 	private List<Comment> comments = new ArrayList<Comment>();
+	
+//Version 300
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="image", cascade = {CascadeType.ALL})
+	private List<Purchase_Image> purchase_image = new ArrayList<Purchase_Image>();
 
 	public Image() {
 
