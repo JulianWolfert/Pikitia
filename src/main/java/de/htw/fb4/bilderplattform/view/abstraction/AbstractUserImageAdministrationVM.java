@@ -45,8 +45,8 @@ public class AbstractUserImageAdministrationVM extends AbstractRedirection {
 
 	@Command
 	public void deleteImage(@BindingParam("image") final Image image) {
-		Messagebox.show("Bild \"" + image.getTitle() + "\" löschen?",
-				"Bild löschen", Messagebox.YES | Messagebox.NO,
+		Messagebox.show("Bild \"" + image.getTitle() + "\" l\u00F6schen?",
+				"Bild l\u00F6schen", Messagebox.YES | Messagebox.NO,
 				Messagebox.QUESTION, new EventListener<Event>() {
 					@Override
 					public void onEvent(Event event) throws Exception {

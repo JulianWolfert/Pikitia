@@ -34,8 +34,8 @@ public class UserAdministrationVM {
 
 	@Command
 	public void deleteUser(@BindingParam("user") final User user) {
-		Messagebox.show("Benutzer \"" + user.getUsername() + "\" löschen?",
-				"Benutzer löschen", Messagebox.YES | Messagebox.NO,
+		Messagebox.show("Benutzer \"" + user.getUsername() + "\" l\u00F6schen?",
+				"Benutzer l\u00F6schen", Messagebox.YES | Messagebox.NO,
 				Messagebox.QUESTION, new EventListener<Event>() {
 					@Override
 					public void onEvent(Event event) throws Exception {
