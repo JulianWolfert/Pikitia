@@ -77,8 +77,11 @@ public class User implements Serializable, UserDetails {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="receiver", cascade = {CascadeType.REMOVE})
 	private List<Message> messages = new ArrayList<Message>();
-	
+/*
 	@OneToOne(cascade = {CascadeType.REMOVE})
+	private Bankaccount bankaccount;
+*/
+	@OneToOne(fetch = FetchType.LAZY, mappedBy="bankaccountOwner", cascade = {CascadeType.ALL})
 	private Bankaccount bankaccount;
 	
 	public User() {

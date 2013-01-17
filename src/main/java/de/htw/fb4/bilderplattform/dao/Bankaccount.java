@@ -34,10 +34,15 @@ public class Bankaccount implements Serializable {
 
 	@Column(name = "bank", nullable = false)
 	private String bank;
-
+/*
 	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
 	@JoinColumn(name = "idBankaccountOwner_idUser", referencedColumnName = "idUser")
 	private User bankaccountOwner;
+*/
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idBankaccountOwner_idUser", referencedColumnName = "idUser")
+	private User bankaccountOwner;
+	
 	
 	public Bankaccount(){
 		super();
