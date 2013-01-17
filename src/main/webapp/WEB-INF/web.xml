@@ -3,6 +3,20 @@
 	<display-name>Test</display-name>
 	<!-- Spring -->
 	
+	
+	<error-page>
+    	<exception-type>java.lang.Exception</exception-type>
+    	<location>/</location>
+	</error-page>
+	<error-page>
+    	<exception-type>java.lang.Throwable</exception-type>
+    	<location>/</location>
+	</error-page>
+	<error-page>
+    	<exception-type>java.lang.Error</exception-type>
+    	<location>/</location>
+	</error-page>
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<!-- /WEB-INF/applicationContext.xml/ -->
