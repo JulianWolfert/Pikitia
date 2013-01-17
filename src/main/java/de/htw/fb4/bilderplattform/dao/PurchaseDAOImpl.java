@@ -139,15 +139,29 @@ public class PurchaseDAOImpl extends AbstractDAO {
 	@Transactional
 	public int getPurchaseIdByGuestPurchase(GuestPurchase guestPurchase) {
 		Query query = sessionFactory.getCurrentSession().createQuery(
-				"SELECT up.GuestPurchase_idGuestPurchase FROM Purchase up where up.GuestPurchase_idGuestPurchase = " + guestPurchase.getIdGuestPurchase());
+				"SELECT up.idPurchase FROM Purchase up where up.GuestPurchase_idGuestPurchase = " + guestPurchase.getIdGuestPurchase());
+		/*
+		System.out.println("GGGGGGGG");
+		System.out.println(query.toString());
+		int returnValue = (int) query.uniqueResult();
+		System.out.println(returnValue);
+		return returnValue;
+		*/
 		return (int) query.uniqueResult();		
 	}
 	
 	@Transactional
 	public int getPurchaseIdByUserPurchase(UserPurchase userPurchase) {
 		Query query = sessionFactory.getCurrentSession().createQuery(
-				"SELECT up.UserPurchase_idUserPurchase FROM Purchase up where up.UserPurchase_idUserPurchase = " + userPurchase.getIdUserPurchase());
-		return (int) query.uniqueResult();		
+				"SELECT up.idPurchase FROM Purchase up where up.UserPurchase_idUserPurchase = " + userPurchase.getIdUserPurchase());
+		/*
+		System.out.println("UUUUUUU");
+		System.out.println(query.toString());
+		int returnValue = (int) query.uniqueResult();
+		System.out.println(returnValue);
+		return returnValue;
+		*/
+		return (int) query.uniqueResult();
 	}
 	
 	@Transactional
