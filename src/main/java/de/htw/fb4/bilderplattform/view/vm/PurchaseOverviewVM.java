@@ -1,7 +1,9 @@
 package de.htw.fb4.bilderplattform.view.vm;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
@@ -278,8 +280,12 @@ public class PurchaseOverviewVM {
 		sendEmailAndMessageOwner();
 		sendEmailAndMessageCustomer();
 		
+		// do the rounding
+		String totalCartPrice = String.format("%.2f", getTotalCartPrice());
+		
+		
 		Messagebox.show(SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess01")  
-				+ " " + getTotalCartPrice() + " " 
+				+ " " + totalCartPrice + " " 
 				+ SpringPropertiesUtil.getProperty("purchaseOverview.purchaseSendSuccess02"), 
 				"Info", Messagebox.OK, Messagebox.INFORMATION, new EventListener<Event>() {
 					
@@ -312,14 +318,14 @@ public class PurchaseOverviewVM {
 			
 			// Mail
 			receiver = img.getUser().getEmail();
-			subject = SpringPropertiesUtil.getProperty("purchase.subject") + " " + img.getTitle();	
+			subject = SpringPropertiesUtil.getProperty("purchase.subject");	
 			receiverName = img.getUser().getUsername();
-			messageContent = preparedMailOwner(receiverName, img.getTitle());
+			messageContent = preparedMailOwner(receiverName, img.getTitle());		
 			
 			IMail mail = new MailImpl();
 			mail.setSender(companyName)
 				.setReceiver(receiver) // Verkaeufer
-				.setSubject("[" + companyName +"] " + subject )
+				.setSubject("[" + companyName +"] " + subject)
 				.setMessage(messageContent)
 				.setTimeStamp(Calendar.getInstance().getTime());
 			try {

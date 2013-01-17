@@ -70,7 +70,7 @@
 					<div class="control-group">
 						<n:label class="control-label" for="inputStreetNumber">Hausnummer</n:label>
 						<div class="controls">
-							<textbox value="@bind(fx.streetnumber)" placeholder="Nachname" id="inputStreetNumber"></textbox>
+							<textbox value="@bind(fx.streetnumber)" placeholder="Hausnummer" id="inputStreetNumber"></textbox>
 						</div>
 						<div style="text-align:right;">
 							<label class="error" value="@load(vmsgs['streetnumber'])" />

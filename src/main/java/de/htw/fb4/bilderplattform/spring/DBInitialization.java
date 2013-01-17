@@ -49,6 +49,8 @@ public class DBInitialization implements InitializingBean {
 				false));
 		users.add(new User("jonathan", "jonathan", "s0538298@htw-berlin.de",
 				true, true, false));
+		users.add(new User("sefw", "sefw", "sefw@htw-berlin.de",
+				true, true, false));
 
 		initialMessages.add(new Message(users.get(3), "s0528397@htw-berlin.de",
 				1, "Nachricht_1", "Lorem Ipsum 1"));
@@ -84,10 +86,10 @@ public class DBInitialization implements InitializingBean {
 //					+ imageService.getImagePath(filename));
 			File file = new File(imageService.getImagePath(filename));
 			Image image = new Image();
-			image.setDescription("description" + imgId);
+			image.setDescription("Ein wundervolles Bild!");
 			image.setPrice(23.42);
 			image.setTimeStamp(new Date());
-			image.setTitle("title" + imgId);
+			image.setTitle("Bild " + imgId);
 			imgId++;
 
 			byte[] img_data;

@@ -25,6 +25,11 @@
 		</div>
 		<div class="modal-body">
 			<n:form class="form-horizontal">
+			
+			
+			
+			
+			
 				<hbox>
 					<div class="control-group">
 						<n:label class="control-label" for="inputEmail">Email</n:label>
@@ -92,7 +97,6 @@
 					</div>
 				</hbox>
 				<separator spacing="15px" />
-				<!-- <hbox style="width:100%"> -->
 				<hbox>
 					<div class="control-group">
 						<n:label class="control-label">AGB</n:label>
